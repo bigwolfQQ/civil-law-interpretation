@@ -163,6 +163,35 @@ description: 民法條文解釋與教學講義產生器。當使用者提供民�
 
 ---
 
+## Step 6：自動推送至 GitHub（選擇性）
+
+Step 5 使用者確認講義內容無誤後，詢問使用者：
+「講義已確認完成，是否要推送到 GitHub？如果需要，請提供您的 GitHub Personal Access Token（fine-grained，Contents 權限需為 Read and write）與目標 repo 名稱（例如 `帳號/repo名稱`）。」
+
+### 推送前檢查
+1. 確認使用者提供的 token 格式為 `github_pat_` 或 `ghp_` 開頭
+2. 確認目標 repo 名稱格式為 `擁有者/repo名稱`
+3. 若使用者未指定檔案路徑，預設路徑為 `講義/條號-條文名稱.html`（例如 `講義/民法92-93-114條-意思表示不自由.html`）
+
+### 推送方式
+使用 GitHub Contents API（`PUT /repos/{owner}/{repo}/contents/{path}`）：
+1. 先以 `GET` 確認該路徑檔案是否已存在（取得 `sha`，若為新檔案則無需此步驟）
+2. 將講義 HTML 內容轉為 base64
+3. 以 `PUT` 送出，`message` 欄位固定格式：「新增／更新講義：條號＋條文名稱」
+4. Commit 到使用者指定分支，若未指定則使用預設分支（通常為 `main`）
+
+### 安全原則
+- Token 僅用於當次推送操作，**不得**將 token 寫入任何檔案內容、commit 訊息、或 HTML 講義本身
+- 推送完成後，不主動重複顯示 token
+- 若推送失敗（權限不足、repo 不存在、token 格式錯誤等），如實告知失敗原因，並提醒使用者檢查 token 權限設定，不得反覆嘗試或猜測替代方案
+
+### 推送完成後
+告知使用者：
+- 推送成功的檔案路徑與 commit 訊息
+- 該檔案在 GitHub 上的網址（`https://github.com/{owner}/{repo}/blob/{branch}/{path}`）
+
+---
+
 ## 記憶口訣產生原則
 
 速查卡應包含記憶口訣，口訣須：

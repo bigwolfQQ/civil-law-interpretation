@@ -135,6 +135,99 @@
     padding:3rem 0;
     font-size:.95rem;
   }
+
+  /* 分類覆蓋地圖 */
+  .coverage{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:1.1rem 1.3rem 1.3rem;
+    margin-bottom:1.5rem;
+  }
+  .coverage-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:.7rem;
+  }
+  .coverage-header h2{
+    font-family:"Noto Serif TC",serif;
+    font-size:1rem;
+    font-weight:700;
+    color:var(--deep-blue);
+    margin:0;
+  }
+  .coverage-header .progress{
+    font-size:.8rem;
+    color:#7286a0;
+  }
+  .coverage-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:.9rem 1.4rem;
+  }
+  .chapter-block > .chapter-title{
+    font-size:.85rem;
+    font-weight:700;
+    color:var(--deep-blue);
+    margin-bottom:.35rem;
+    padding-bottom:.3rem;
+    border-bottom:1px solid var(--border);
+  }
+  .leaf-list{
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  .leaf-list li{
+    margin:.15rem 0;
+  }
+  .leaf-btn{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    width:100%;
+    background:none;
+    border:none;
+    font-family:inherit;
+    font-size:.82rem;
+    padding:.2rem .35rem;
+    border-radius:6px;
+    cursor:pointer;
+    color:var(--text);
+    text-align:left;
+  }
+  .leaf-btn .indent{
+    padding-left:0.6em;
+  }
+  .leaf-btn:hover{
+    background:var(--light-blue-bg);
+  }
+  .leaf-btn.active{
+    background:var(--deep-blue);
+    color:#fff;
+  }
+  .leaf-btn.active .badge{
+    background:#fff;
+    color:var(--deep-blue);
+  }
+  .leaf-btn .badge{
+    min-width:1.4em;
+    text-align:center;
+    font-size:.72rem;
+    font-weight:700;
+    padding:.05rem .4rem;
+    border-radius:999px;
+    background:var(--light-blue-bg);
+    color:var(--blue);
+  }
+  .leaf-btn.zero .badge{
+    background:#eef1f5;
+    color:#a3adba;
+  }
+  .leaf-btn.zero{
+    color:#9aa5b3;
+  }
   footer{
     text-align:center;
     font-size:.8rem;
@@ -155,6 +248,15 @@
     <input type="text" id="searchInput" placeholder="搜尋條號或主題關鍵字…">
     <select id="categorySelect"></select>
   </div>
+
+  <div class="coverage">
+    <div class="coverage-header">
+      <h2>分類覆蓋地圖（民法總則 §1–152）</h2>
+      <span class="progress" id="coverageProgress"></span>
+    </div>
+    <div class="coverage-grid" id="coverageGrid"></div>
+  </div>
+
   <div class="count" id="countLabel"></div>
   <div class="cards" id="cardGrid"></div>
   <div class="empty" id="emptyState" style="display:none;">沒有符合條件的講義</div>
@@ -204,9 +306,47 @@ const LECTURES = [
 ];
 
 /* ============================================================
+   階層式分類樹（用於分類覆蓋地圖），葉節點 key 對應 CHAPTERS
+   ============================================================ */
+const TREE = [
+  { title: "第一章 法例",
+    leaves: [{ key: "1", label: "§1" }] },
+  { title: "第二章 人",
+    groups: [
+      { title: "第一節 自然人", leaves: [{ key: "2-1", label: "§6" }] },
+      { title: "第二節 法人", groups: [
+        { title: "第一款 通則", leaves: [{ key: "2-2-1", label: "§25" }] },
+        { title: "第二款 社團", leaves: [{ key: "2-2-2", label: "§45" }] },
+        { title: "第三款 財團", leaves: [{ key: "2-2-3", label: "§59" }] }
+      ]}
+    ]},
+  { title: "第三章 物",
+    leaves: [{ key: "3", label: "§66" }] },
+  { title: "第四章 法律行為",
+    groups: [
+      { title: "第一節 通則", leaves: [{ key: "4-1", label: "§71" }] },
+      { title: "第二節 行為能力", leaves: [{ key: "4-2", label: "§75" }] },
+      { title: "第三節 意思表示", leaves: [{ key: "4-3", label: "§86" }] },
+      { title: "第四節 條件及期限", leaves: [{ key: "4-4", label: "§99" }] },
+      { title: "第五節 代理", leaves: [{ key: "4-5", label: "§103" }] },
+      { title: "第六節 無效及撤銷", leaves: [{ key: "4-6", label: "§111" }] }
+    ]},
+  { title: "第五章 期日及期間",
+    leaves: [{ key: "5", label: "§119" }] },
+  { title: "第六章 消滅時效",
+    leaves: [{ key: "6", label: "§125" }] },
+  { title: "第七章 權利之行使",
+    leaves: [{ key: "7", label: "§148" }] }
+];
+
+/* ============================================================
    Rendering
    ============================================================ */
 const chapterMap = Object.fromEntries(CHAPTERS.map(c => [c.key, c.label]));
+
+function countFor(key){
+  return LECTURES.filter(item => item.chapterKey === key).length;
+}
 
 function initCategorySelect(){
   const select = document.getElementById('categorySelect');
@@ -220,6 +360,69 @@ function initCategorySelect(){
     opt.textContent = c.label;
     select.appendChild(opt);
   });
+}
+
+function selectCategory(key){
+  const select = document.getElementById('categorySelect');
+  select.value = (select.value === key) ? '' : key; // 再點一次取消篩選
+  render();
+}
+
+function renderLeafList(leaves, depth){
+  const activeKey = document.getElementById('categorySelect').value;
+  const ul = document.createElement('ul');
+  ul.className = 'leaf-list';
+  leaves.forEach(leaf => {
+    const n = countFor(leaf.key);
+    const li = document.createElement('li');
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'leaf-btn' + (n === 0 ? ' zero' : '') + (activeKey === leaf.key ? ' active' : '');
+    btn.innerHTML = `<span class="indent">${leaf.label}</span><span class="badge">${n}</span>`;
+    btn.addEventListener('click', () => selectCategory(leaf.key));
+    li.appendChild(btn);
+    ul.appendChild(li);
+  });
+  return ul;
+}
+
+function renderGroup(node, container){
+  if (node.leaves){
+    container.appendChild(renderLeafList(node.leaves));
+  }
+  if (node.groups){
+    node.groups.forEach(g => {
+      const sub = document.createElement('div');
+      sub.style.marginBottom = '.4rem';
+      const label = document.createElement('div');
+      label.style.fontSize = '.78rem';
+      label.style.color = '#5a6b80';
+      label.style.margin = '.3rem 0 .1rem';
+      label.textContent = g.title;
+      sub.appendChild(label);
+      renderGroup(g, sub);
+      container.appendChild(sub);
+    });
+  }
+}
+
+function renderCoverageMap(){
+  const grid = document.getElementById('coverageGrid');
+  grid.innerHTML = '';
+  TREE.forEach(chapter => {
+    const block = document.createElement('div');
+    block.className = 'chapter-block';
+    const title = document.createElement('div');
+    title.className = 'chapter-title';
+    title.textContent = chapter.title;
+    block.appendChild(title);
+    renderGroup(chapter, block);
+    grid.appendChild(block);
+  });
+
+  const coveredLeaves = CHAPTERS.filter(c => countFor(c.key) > 0).length;
+  document.getElementById('coverageProgress').textContent =
+    `已覆蓋 ${coveredLeaves} / ${CHAPTERS.length} 節款 · 共 ${LECTURES.length} 篇筆記`;
 }
 
 function render(){
@@ -243,28 +446,29 @@ function render(){
   grid.innerHTML = '';
   if (filtered.length === 0){
     empty.style.display = 'block';
-    return;
+  } else {
+    empty.style.display = 'none';
+    filtered.forEach(item => {
+      const a = document.createElement('a');
+      a.className = 'card';
+      a.href = item.file;
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.innerHTML = `
+        <div class="articles">${item.articles}</div>
+        <div class="title">${item.title}</div>
+        <div class="meta">
+          <span class="tag">${chapterMap[item.chapterKey] || item.chapterKey}</span>
+        </div>
+        <div class="meta" style="margin-top:.5rem;">
+          <span class="date">${item.date}</span>
+        </div>
+      `;
+      grid.appendChild(a);
+    });
   }
-  empty.style.display = 'none';
 
-  filtered.forEach(item => {
-    const a = document.createElement('a');
-    a.className = 'card';
-    a.href = item.file;
-    a.target = '_blank';
-    a.rel = 'noopener';
-    a.innerHTML = `
-      <div class="articles">${item.articles}</div>
-      <div class="title">${item.title}</div>
-      <div class="meta">
-        <span class="tag">${chapterMap[item.chapterKey] || item.chapterKey}</span>
-      </div>
-      <div class="meta" style="margin-top:.5rem;">
-        <span class="date">${item.date}</span>
-      </div>
-    `;
-    grid.appendChild(a);
-  });
+  renderCoverageMap();
 }
 
 initCategorySelect();

@@ -218,14 +218,6 @@
   .leaf-btn:hover:not(.zero){
     background:var(--light-blue-bg);
   }
-  .leaf-btn.active{
-    background:var(--deep-blue);
-    color:#fff;
-  }
-  .leaf-btn.active .badge{
-    background:#fff;
-    color:var(--deep-blue);
-  }
   .leaf-btn .badge{
     min-width:1.6em;
     text-align:center;
@@ -234,15 +226,17 @@
     padding:.1rem .5rem;
     border-radius:999px;
   }
-  /* 有筆記：實心深藍底、白字加粗，明顯可點 */
+
+  /* 有筆記（與是否為目前篩選無關）：淡藍徽章＋深藍粗體文字 */
   .leaf-btn.has-count{
     font-weight:700;
     color:var(--deep-blue);
   }
   .leaf-btn.has-count .badge{
-    background:var(--deep-blue);
-    color:#fff;
+    background:var(--light-blue-bg);
+    color:var(--blue);
   }
+
   /* 無筆記：大幅淡化，不可點 */
   .leaf-btn.zero{
     color:#c3cad6;
@@ -252,6 +246,16 @@
     background:none;
     color:#c3cad6;
     font-weight:400;
+  }
+
+  /* 目前篩選中：獨立於「有無筆記」，用藍色外框標示，不搶走上面的顏色語言 */
+  .leaf-btn.active{
+    box-shadow: inset 0 0 0 2px var(--blue);
+    border-radius:6px;
+  }
+  /* 目前篩選中 且 有筆記：外框＋淡藍底，仍保留深藍粗體文字，不做成全實心色塊 */
+  .leaf-btn.active.has-count{
+    background:var(--light-blue-bg);
   }
   footer{
     text-align:center;

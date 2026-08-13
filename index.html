@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>民法總則教學講義總覽 | civil-law-interpretation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --deep-blue:#1a3a5c;
+    --blue:#2563a8;
+    --light-blue-bg:#e8f0fb;
+    --accent-orange:#c8651a;
+    --text:#26313f;
+    --border:#d7e2f2;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:"Noto Sans TC","Noto Serif TC",sans-serif;
+    background:#f5f8fc;
+    color:var(--text);
+  }
+  header{
+    background:linear-gradient(135deg,var(--deep-blue),var(--blue));
+    color:#fff;
+    padding:2.5rem 1.5rem 2rem;
+    text-align:center;
+  }
+  header h1{
+    font-family:"Noto Serif TC",serif;
+    font-weight:700;
+    font-size:1.8rem;
+    margin:0 0 .4rem;
+  }
+  header p{
+    margin:0;
+    opacity:.85;
+    font-size:.95rem;
+  }
+  main{
+    max-width:1000px;
+    margin:0 auto;
+    padding:1.5rem 1.5rem 4rem;
+  }
+  .controls{
+    display:flex;
+    gap:.75rem;
+    flex-wrap:wrap;
+    margin-bottom:1.5rem;
+    position:sticky;
+    top:0;
+    background:#f5f8fc;
+    padding:1rem 0;
+    z-index:5;
+  }
+  .controls input[type="text"],
+  .controls select{
+    font-family:inherit;
+    font-size:.95rem;
+    padding:.6rem .9rem;
+    border:1px solid var(--border);
+    border-radius:8px;
+    background:#fff;
+    color:var(--text);
+  }
+  .controls input[type="text"]{
+    flex:1;
+    min-width:180px;
+  }
+  .controls select{
+    min-width:220px;
+  }
+  .count{
+    font-size:.85rem;
+    color:#5a6b80;
+    margin-bottom:1rem;
+  }
+  .cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+    gap:1rem;
+  }
+  .card{
+    display:block;
+    text-decoration:none;
+    color:inherit;
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:1.2rem 1.3rem;
+    transition:box-shadow .15s ease, transform .15s ease;
+  }
+  .card:hover{
+    box-shadow:0 6px 18px rgba(26,58,92,.12);
+    transform:translateY(-2px);
+    border-color:var(--blue);
+  }
+  .card .articles{
+    font-family:"Noto Serif TC",serif;
+    font-weight:700;
+    color:var(--deep-blue);
+    font-size:1.05rem;
+    margin-bottom:.4rem;
+  }
+  .card .title{
+    font-size:.95rem;
+    color:var(--text);
+    margin-bottom:.8rem;
+    line-height:1.4;
+  }
+  .card .meta{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:.78rem;
+    color:#7286a0;
+  }
+  .card .tag{
+    background:var(--light-blue-bg);
+    color:var(--blue);
+    padding:.15rem .55rem;
+    border-radius:999px;
+    font-size:.72rem;
+  }
+  .card .date{
+    color:var(--accent-orange);
+    font-weight:500;
+  }
+  .empty{
+    text-align:center;
+    color:#8091a8;
+    padding:3rem 0;
+    font-size:.95rem;
+  }
+  footer{
+    text-align:center;
+    font-size:.8rem;
+    color:#8091a8;
+    padding:2rem 0 3rem;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>民法總則教學講義總覽</h1>
+  <p>civil-law-interpretation ｜ 依民法第一編總則編章節分類</p>
+</header>
+
+<main>
+  <div class="controls">
+    <input type="text" id="searchInput" placeholder="搜尋條號或主題關鍵字…">
+    <select id="categorySelect"></select>
+  </div>
+  <div class="count" id="countLabel"></div>
+  <div class="cards" id="cardGrid"></div>
+  <div class="empty" id="emptyState" style="display:none;">沒有符合條件的講義</div>
+</main>
+
+<footer>civil-law-interpretation · CC BY-NC 4.0</footer>
+
+<script>
+/* ============================================================
+   分類架構：民法第一編 總則（§1–152）
+   key 對應「主要條文所在節／款」，作為每份講義的單一主分類
+   ============================================================ */
+const CHAPTERS = [
+  { key: "1",     label: "第一章 法例（§1）" },
+  { key: "2-1",   label: "第二章 人／第一節 自然人（§6）" },
+  { key: "2-2-1", label: "第二章 人／第二節 法人／第一款 通則（§25）" },
+  { key: "2-2-2", label: "第二章 人／第二節 法人／第二款 社團（§45）" },
+  { key: "2-2-3", label: "第二章 人／第二節 法人／第三款 財團（§59）" },
+  { key: "3",     label: "第三章 物（§66）" },
+  { key: "4-1",   label: "第四章 法律行為／第一節 通則（§71）" },
+  { key: "4-2",   label: "第四章 法律行為／第二節 行為能力（§75）" },
+  { key: "4-3",   label: "第四章 法律行為／第三節 意思表示（§86）" },
+  { key: "4-4",   label: "第四章 法律行為／第四節 條件及期限（§99）" },
+  { key: "4-5",   label: "第四章 法律行為／第五節 代理（§103）" },
+  { key: "4-6",   label: "第四章 法律行為／第六節 無效及撤銷（§111）" },
+  { key: "5",     label: "第五章 期日及期間（§119）" },
+  { key: "6",     label: "第六章 消滅時效（§125）" },
+  { key: "7",     label: "第七章 權利之行使（§148）" }
+];
+
+/* ============================================================
+   講義清單：每完成一份講義，新增一筆物件即可
+   - articles: 條號（顯示用，如「第92、93、114條」）
+   - title: 主題
+   - date: 完成日期 YYYY-MM-DD
+   - chapterKey: 對應 CHAPTERS 的 key（單一主分類，以主要條文所在節為準）
+   - file: 講義相對路徑
+   ============================================================ */
+const LECTURES = [
+  {
+    articles: "第92、93、114條",
+    title: "意思表示不自由（詐欺、脅迫之撤銷）",
+    date: "2026-08-13",
+    chapterKey: "4-3",
+    file: "講義/民法92-93-114條-意思表示不自由.html"
+  }
+];
+
+/* ============================================================
+   Rendering
+   ============================================================ */
+const chapterMap = Object.fromEntries(CHAPTERS.map(c => [c.key, c.label]));
+
+function initCategorySelect(){
+  const select = document.getElementById('categorySelect');
+  const allOption = document.createElement('option');
+  allOption.value = '';
+  allOption.textContent = '全部分類';
+  select.appendChild(allOption);
+  CHAPTERS.forEach(c => {
+    const opt = document.createElement('option');
+    opt.value = c.key;
+    opt.textContent = c.label;
+    select.appendChild(opt);
+  });
+}
+
+function render(){
+  const keyword = document.getElementById('searchInput').value.trim().toLowerCase();
+  const category = document.getElementById('categorySelect').value;
+
+  const filtered = LECTURES.filter(item => {
+    const matchesKeyword = !keyword ||
+      item.articles.toLowerCase().includes(keyword) ||
+      item.title.toLowerCase().includes(keyword);
+    const matchesCategory = !category || item.chapterKey === category;
+    return matchesKeyword && matchesCategory;
+  }).sort((a, b) => b.date.localeCompare(a.date));
+
+  const grid = document.getElementById('cardGrid');
+  const empty = document.getElementById('emptyState');
+  const count = document.getElementById('countLabel');
+
+  count.textContent = `共 ${filtered.length} 份講義（總計 ${LECTURES.length} 份）`;
+
+  grid.innerHTML = '';
+  if (filtered.length === 0){
+    empty.style.display = 'block';
+    return;
+  }
+  empty.style.display = 'none';
+
+  filtered.forEach(item => {
+    const a = document.createElement('a');
+    a.className = 'card';
+    a.href = item.file;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.innerHTML = `
+      <div class="articles">${item.articles}</div>
+      <div class="title">${item.title}</div>
+      <div class="meta">
+        <span class="tag">${chapterMap[item.chapterKey] || item.chapterKey}</span>
+      </div>
+      <div class="meta" style="margin-top:.5rem;">
+        <span class="date">${item.date}</span>
+      </div>
+    `;
+    grid.appendChild(a);
+  });
+}
+
+initCategorySelect();
+document.getElementById('searchInput').addEventListener('input', render);
+document.getElementById('categorySelect').addEventListener('change', render);
+render();
+</script>
+
+</body>
+</html>

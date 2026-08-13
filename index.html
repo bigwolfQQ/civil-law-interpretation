@@ -496,7 +496,18 @@ function render(){
 }
 
 initCategorySelect();
-document.getElementById('searchInput').addEventListener('input', render);
+let searchScrollTimer = null;
+document.getElementById('searchInput').addEventListener('input', () => {
+  render();
+  clearTimeout(searchScrollTimer);
+  const keyword = document.getElementById('searchInput').value.trim();
+  if (keyword){
+    // 停止輸入約 0.5 秒後，自動捲動到結果區，避免被上方的分類覆蓋地圖擋住視線
+    searchScrollTimer = setTimeout(() => {
+      document.getElementById('countLabel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 500);
+  }
+});
 document.getElementById('categorySelect').addEventListener('change', render);
 render();
 </script>

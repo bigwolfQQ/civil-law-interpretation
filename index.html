@@ -191,7 +191,7 @@
     border:none;
     font-family:inherit;
     font-size:.82rem;
-    padding:.2rem .35rem;
+    padding:.3rem .5rem;
     border-radius:6px;
     cursor:pointer;
     color:var(--text);
@@ -200,7 +200,7 @@
   .leaf-btn .indent{
     padding-left:0.6em;
   }
-  .leaf-btn:hover{
+  .leaf-btn:hover:not(.zero){
     background:var(--light-blue-bg);
   }
   .leaf-btn.active{
@@ -212,21 +212,31 @@
     color:var(--deep-blue);
   }
   .leaf-btn .badge{
-    min-width:1.4em;
+    min-width:1.6em;
     text-align:center;
-    font-size:.72rem;
+    font-size:.75rem;
     font-weight:700;
-    padding:.05rem .4rem;
+    padding:.1rem .5rem;
     border-radius:999px;
-    background:var(--light-blue-bg);
-    color:var(--blue);
+  }
+  /* 有筆記：實心深藍底、白字加粗，明顯可點 */
+  .leaf-btn.has-count{
+    font-weight:700;
+    color:var(--deep-blue);
+  }
+  .leaf-btn.has-count .badge{
+    background:var(--deep-blue);
+    color:#fff;
+  }
+  /* 無筆記：大幅淡化，不可點 */
+  .leaf-btn.zero{
+    color:#c3cad6;
+    cursor:not-allowed;
   }
   .leaf-btn.zero .badge{
-    background:#eef1f5;
-    color:#a3adba;
-  }
-  .leaf-btn.zero{
-    color:#9aa5b3;
+    background:none;
+    color:#c3cad6;
+    font-weight:400;
   }
   footer{
     text-align:center;
@@ -363,9 +373,21 @@ function initCategorySelect(){
 }
 
 function selectCategory(key){
+  const items = LECTURES.filter(item => item.chapterKey === key);
+
+  if (items.length === 0) return; // 沒有筆記，不動作（按鈕本身已停用）
+
+  if (items.length === 1){
+    // 只有一篇，直接開啟該講義
+    window.open(items[0].file, '_blank', 'noopener');
+    return;
+  }
+
+  // 多篇：篩選卡片清單，並捲動到卡片區讓使用者看到結果
   const select = document.getElementById('categorySelect');
   select.value = (select.value === key) ? '' : key; // 再點一次取消篩選
   render();
+  document.getElementById('countLabel').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function renderLeafList(leaves, depth){
@@ -377,8 +399,10 @@ function renderLeafList(leaves, depth){
     const li = document.createElement('li');
     const btn = document.createElement('button');
     btn.type = 'button';
-    btn.className = 'leaf-btn' + (n === 0 ? ' zero' : '') + (activeKey === leaf.key ? ' active' : '');
-    btn.innerHTML = `<span class="indent">${leaf.label}</span><span class="badge">${n}</span>`;
+    const stateClass = n === 0 ? 'zero' : 'has-count';
+    btn.className = 'leaf-btn ' + stateClass + (activeKey === leaf.key ? ' active' : '');
+    btn.disabled = (n === 0);
+    btn.innerHTML = `<span class="indent">${leaf.label}</span><span class="badge">${n === 0 ? '–' : n}</span>`;
     btn.addEventListener('click', () => selectCategory(leaf.key));
     li.appendChild(btn);
     ul.appendChild(li);

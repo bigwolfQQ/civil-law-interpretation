@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>民法第114、115、116條——撤銷及承認</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #16233b;
+    --indigo: #2c4a76;
+    --indigo-soft: #3f5f8f;
+    --parchment: #f3ede0;
+    --paper: #fbf8f1;
+    --paper-panel: #fffdf8;
+    --seal: #9c2b3a;
+    --seal-soft: #c7566450;
+    --brass: #a9832f;
+    --line: #ddd3bf;
+    --ink-70: rgba(22,35,59,0.7);
+    --ink-45: rgba(22,35,59,0.45);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Noto Sans TC", sans-serif;
+    color: var(--ink);
+    line-height: 1.85;
+    background: var(--parchment);
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---------- layout shell ---------- */
+  .shell {
+    display: grid;
+    grid-template-columns: 240px minmax(0, 780px);
+    justify-content: center;
+    gap: 0;
+    max-width: 1160px;
+    margin: 0 auto;
+    align-items: start;
+  }
+  .rail {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    padding: 48px 20px 40px 8px;
+    display: flex;
+    flex-direction: column;
+  }
+  .rail-brand {
+    font-family: "Noto Serif TC", serif;
+    font-weight: 700;
+    font-size: 0.82rem;
+    letter-spacing: 0.16em;
+    color: var(--brass);
+    margin-bottom: 4px;
+  }
+  .rail-title {
+    font-family: "Noto Serif TC", serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--ink);
+    margin-bottom: 28px;
+    line-height: 1.5;
+  }
+  .rail nav { display: flex; flex-direction: column; gap: 2px; }
+  .rail a {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--ink-70);
+    font-size: 0.9rem;
+    padding: 8px 10px;
+    border-radius: 3px;
+    border-left: 2px solid transparent;
+    transition: color .15s ease, border-color .15s ease, background .15s ease;
+  }
+  .rail a .idx {
+    font-family: "Noto Serif TC", serif;
+    font-weight: 700;
+    color: var(--brass);
+    font-size: 0.78rem;
+    width: 16px;
+  }
+  .rail a:hover { color: var(--ink); background: rgba(169,131,47,0.08); }
+  .rail a.active {
+    color: var(--ink);
+    font-weight: 700;
+    border-left-color: var(--seal);
+    background: rgba(156,43,58,0.06);
+  }
+  .rail a.pending { color: var(--ink-45); }
+  .rail a.pending .idx { color: var(--ink-45); }
+  .rail-foot {
+    margin-top: auto;
+    font-size: 0.72rem;
+    color: var(--ink-45);
+    line-height: 1.7;
+    padding: 10px;
+    border-top: 1px solid var(--line);
+  }
+
+  .main {
+    background: var(--paper);
+    min-height: 100vh;
+    padding: 56px 56px 100px;
+    box-shadow: -1px 0 0 var(--line);
+  }
+
+  /* ---------- cover ---------- */
+  .cover {
+    position: relative;
+    padding: 54px 8px 40px;
+    margin-bottom: 64px;
+    border-bottom: 1px solid var(--line);
+  }
+  .cover .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.74rem;
+    letter-spacing: 0.24em;
+    color: var(--brass);
+    font-weight: 700;
+    margin-bottom: 18px;
+  }
+  .cover .eyebrow::before {
+    content: "";
+    width: 22px; height: 1px;
+    background: var(--brass);
+  }
+  .cover h1 {
+    font-family: "Noto Serif TC", serif;
+    font-weight: 900;
+    font-size: 2.6rem;
+    line-height: 1.3;
+    margin: 0 0 14px;
+    color: var(--ink);
+    letter-spacing: 0.01em;
+  }
+  .cover .sub {
+    font-size: 1.05rem;
+    color: var(--indigo);
+    font-weight: 500;
+  }
+  .cover-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .ver-badge {
+    font-family: "Noto Serif TC", serif;
+    font-weight: 700;
+    font-size: 0.78rem;
+    color: var(--seal);
+    border: 1px solid var(--seal);
+    border-radius: 20px;
+    padding: 3px 12px;
+    letter-spacing: 0.03em;
+  }
+  .meta-date {
+    font-size: 0.8rem;
+    color: var(--ink-45);
+  }
+  .cover .seal-mark {
+    position: absolute;
+    top: 40px;
+    right: 8px;
+    width: 92px;
+    height: 92px;
+    border: 2.5px solid var(--seal);
+    border-radius: 6px;
+    color: var(--seal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Noto Serif TC", serif;
+    font-weight: 900;
+    font-size: 1.5rem;
+    letter-spacing: 0.1em;
+    writing-mode: vertical-rl;
+    opacity: 0.82;
+    transform: rotate(3deg);
+    background: rgba(156,43,58,0.03);
+  }
+
+  /* ---------- sections ---------- */
+  section { margin-bottom: 76px; scroll-margin-top: 32px; }
+  .sec-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+  .sec-head .num {
+    font-family: "Noto Serif TC", serif;
+    font-weight: 900;
+    font-size: 1.1rem;
+    color: var(--seal);
+  }
+  .sec-head h2 {
+    font-family: "Noto Serif TC", serif;
+    font-weight: 700;
+    font-size: 1.55rem;
+    color: var(--ink);
+    margin: 0;
+  }
+  .sec-head::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+    align-self: center;
+  }
+
+  /* ---------- article box with watermark ---------- */
+  .article-box {
+    position: relative;
+    background: var(--paper-panel);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--indigo);
+    padding: 22px 28px 22px 26px;
+    border-radius: 3px;
+    margin-bottom: 18px;
+    overflow: hidden;
+  }
+  .article-box.related { border-left-color: var(--brass); }
+  .article-box .wm {
+    position: absolute;
+    right: 6px;
+    bottom: -22px;
+    font-family: "Noto Serif TC", serif;
+    font-weight: 900;
+    font-size: 5.4rem;
+    color: var(--indigo);
+    opacity: 0.06;
+    line-height: 1;
+    user-select: none;
+  }
+  .article-box .num {
+    color: var(--indigo);
+    font-weight: 700;
+    font-family: "Noto Serif TC", serif;
+    font-size: 1.05rem;
+    display: block;
+    margin-bottom: 8px;
+  }
+  .article-box.related .num { color: var(--brass); }
+  .article-box .num .tagline {
+    font-family: "Noto Sans TC", sans-serif;
+    font-weight: 500;
+    font-size: 0.76rem;
+    color: var(--ink-45);
+    margin-left: 8px;
+  }
+  .article-box p { margin: 4px 0; position: relative; z-index: 1; }
+
+  .link-note {
+    font-size: 0.88rem;
+    color: var(--ink-70);
+    background: rgba(44,74,118,0.05);
+    border: 1px dashed var(--indigo-soft);
+    border-radius: 4px;
+    padding: 12px 16px;
+    margin-bottom: 18px;
+  }
+  .link-note a { color: var(--indigo-soft); text-decoration: none; border-bottom: 1px dotted var(--indigo-soft); font-weight: 500; }
+  .link-note a:hover { color: var(--seal); border-color: var(--seal); }
+
+  /* ---------- tables ---------- */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 18px 0;
+    font-size: 0.95rem;
+    background: var(--paper-panel);
+  }
+  th, td {
+    border: 1px solid var(--line);
+    padding: 12px 14px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background: var(--ink);
+    color: #f3ede0;
+    font-family: "Noto Serif TC", serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 0.03em;
+  }
+  tr:nth-child(even) td { background: #f6f1e6; }
+
+  h3 {
+    font-family: "Noto Serif TC", serif;
+    font-weight: 600;
+    font-size: 1.12rem;
+    color: var(--indigo);
+    margin: 32px 0 14px;
+    padding-left: 12px;
+    border-left: 3px solid var(--brass);
+  }
+
+  .conclusion {
+    color: var(--ink);
+    font-weight: 700;
+    background: linear-gradient(transparent 60%, rgba(169,131,47,0.25) 60%);
+  }
+  .deny {
+    color: var(--seal);
+    font-weight: 700;
+  }
+
+  /* ---------- case cards ---------- */
+  .case-card {
+    background: var(--paper-panel);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 22px;
+    box-shadow: 0 1px 2px rgba(22,35,59,0.04), 0 8px 20px -14px rgba(22,35,59,0.25);
+  }
+  .case-card .header {
+    background: var(--indigo);
+    color: #fdfaf3;
+    padding: 13px 20px;
+    font-weight: 700;
+    font-family: "Noto Serif TC", serif;
+    font-size: 0.98rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .case-card.exam .header { background: var(--ink); }
+  .case-card .header .tag {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    background: rgba(255,255,255,0.14);
+    padding: 3px 8px;
+    border-radius: 20px;
+  }
+  .case-card .body { padding: 20px 22px; }
+  .case-card .body p { margin: 6px 0; }
+
+  .source-tag {
+    font-size: 0.82rem;
+    color: var(--ink-45);
+    margin: -8px 0 24px 2px;
+    padding-left: 2px;
+  }
+  .source-tag a { color: var(--indigo-soft); text-decoration: none; border-bottom: 1px dotted var(--indigo-soft); }
+  .source-tag a:hover { color: var(--seal); border-color: var(--seal); }
+
+  .fiction-note {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.78rem;
+    color: var(--brass);
+    background: rgba(169,131,47,0.1);
+    padding: 5px 12px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+
+  /* ---------- relationship diagram ---------- */
+  .relation-wrap {
+    margin: 20px 0 22px;
+    padding: 20px 20px 16px;
+    background: var(--paper-panel);
+    border: 1px solid var(--line);
+    border-radius: 5px;
+  }
+  .relation-label {
+    font-size: 0.74rem;
+    letter-spacing: 0.18em;
+    color: var(--brass);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .relation-note {
+    font-size: 0.8rem;
+    color: var(--ink-45);
+    text-align: center;
+    margin-top: 6px;
+  }
+
+  /* ---------- placeholder (empty section) ---------- */
+  .placeholder {
+    position: relative;
+    border: 1.5px dashed var(--line);
+    border-radius: 5px;
+    padding: 40px 24px;
+    text-align: center;
+    background: repeating-linear-gradient(
+      135deg,
+      rgba(169,131,47,0.03),
+      rgba(169,131,47,0.03) 10px,
+      transparent 10px,
+      transparent 20px
+    );
+  }
+  .placeholder .ph-icon {
+    font-family: "Noto Serif TC", serif;
+    font-weight: 900;
+    font-size: 1.3rem;
+    color: var(--brass);
+    margin-bottom: 10px;
+  }
+  .placeholder .ph-text {
+    color: var(--ink-45);
+    font-size: 0.92rem;
+  }
+  .placeholder .ph-badge {
+    display: inline-block;
+    margin-top: 14px;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: var(--brass);
+    border: 1px solid var(--brass);
+    border-radius: 20px;
+    padding: 3px 12px;
+  }
+
+  /* ---------- quickcard ---------- */
+  .quickcard {
+    background: var(--ink);
+    color: #f3ede0;
+    border-radius: 6px;
+    padding: 34px 34px 30px;
+    position: relative;
+    overflow: hidden;
+  }
+  .quickcard::before {
+    content: "速";
+    position: absolute;
+    font-family: "Noto Serif TC", serif;
+    font-weight: 900;
+    font-size: 11rem;
+    right: -18px;
+    bottom: -40px;
+    color: rgba(243,237,224,0.04);
+    line-height: 1;
+  }
+  .quickcard h3 {
+    color: #f3ede0;
+    border-left-color: var(--seal);
+    margin-top: 0;
+    font-size: 1.2rem;
+  }
+  .quickcard table { background: transparent; }
+  .quickcard th { background: rgba(243,237,224,0.1); color: #f3ede0; }
+  .quickcard td { color: #e9e2d0; border-color: rgba(243,237,224,0.15); background: transparent !important; }
+  .mnemonic {
+    position: relative;
+    background: var(--seal);
+    color: #fdf1ee;
+    padding: 16px 20px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-family: "Noto Serif TC", serif;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.05rem;
+    letter-spacing: 0.03em;
+  }
+
+  .note {
+    font-size: 0.85rem;
+    color: var(--ink-45);
+    border-top: 1px solid var(--line);
+    padding-top: 18px;
+    margin-top: 40px;
+    line-height: 1.8;
+  }
+
+  /* ---------- mobile top nav ---------- */
+  .mobile-nav {
+    display: none;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    padding: 10px 14px;
+    overflow-x: auto;
+    white-space: nowrap;
+    gap: 8px;
+  }
+  .mobile-nav a {
+    display: inline-block;
+    font-size: 0.8rem;
+    color: var(--ink-70);
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--line);
+    margin-right: 8px;
+  }
+  .mobile-nav a.pending { color: var(--ink-45); border-style: dashed; }
+  .mobile-nav a.active { background: var(--ink); color: #f3ede0; border-color: var(--ink); }
+
+  @media (max-width: 980px) {
+    .shell { grid-template-columns: 1fr; max-width: 100%; }
+    .rail { display: none; }
+    .mobile-nav { display: flex; }
+    .main { padding: 32px 20px 70px; box-shadow: none; }
+    .cover { padding: 30px 4px 28px; }
+    .cover h1 { font-size: 1.7rem; }
+    .cover .seal-mark { width: 68px; height: 68px; font-size: 1.1rem; top: 24px; }
+    .sec-head h2 { font-size: 1.28rem; }
+    th, td { padding: 9px 10px; font-size: 0.88rem; }
+    .article-box { padding: 18px 18px 18px 18px; }
+    .article-box .wm { font-size: 3.6rem; }
+    .placeholder { padding: 28px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="#sec1" data-i="1">一、原文</a>
+  <a href="#sec2" data-i="2">二、結構</a>
+  <a href="#sec3" data-i="3">三、要件</a>
+  <a href="#sec4" data-i="4" class="pending">四、學說</a>
+  <a href="#sec5" data-i="5">五、實務</a>
+  <a href="#sec6" data-i="6">六、案例</a>
+  <a href="#sec7" data-i="7" class="pending">七、申論</a>
+  <a href="#sec8" data-i="8">八、速查</a>
+</div>
+
+<div class="shell">
+  <aside class="rail">
+    <div class="rail-brand">civil-law-interpretation</div>
+    <div class="rail-title">民法第114、115、116條<br>撤銷及承認</div>
+    <nav id="railNav">
+      <a href="#sec1" data-i="1"><span class="idx">一</span>條文原文</a>
+      <a href="#sec2" data-i="2"><span class="idx">二</span>條文結構</a>
+      <a href="#sec3" data-i="3"><span class="idx">三</span>要件逐項解析</a>
+      <a href="#sec4" data-i="4" class="pending"><span class="idx">四</span>學說見解</a>
+      <a href="#sec5" data-i="5"><span class="idx">五</span>實務見解</a>
+      <a href="#sec6" data-i="6"><span class="idx">六</span>教學案例</a>
+      <a href="#sec7" data-i="7" class="pending"><span class="idx">七</span>申論練習題</a>
+      <a href="#sec8" data-i="8"><span class="idx">八</span>速查卡</a>
+    </nav>
+    <div class="rail-foot">民法總則・第一編<br>第四章第六節・無效及撤銷</div>
+  </aside>
+
+  <main class="main">
+
+    <div class="cover">
+      <div class="eyebrow">民法總則．第一編．法律行為．第六節</div>
+      <h1>民法第114、115、116條</h1>
+      <p class="sub">撤銷及承認之效力與方式</p>
+      <div class="cover-meta">
+        <span class="ver-badge">v1.0</span>
+        <span class="meta-date">2026-08-16</span>
+      </div>
+      <div class="seal-mark">撤承</div>
+    </div>
+
+    <section id="sec1">
+      <div class="sec-head"><span class="num">一</span><h2>條文原文</h2></div>
+
+      <div class="article-box">
+        <span class="wm">114</span>
+        <span class="num">第114條</span>
+        <p>Ⅰ　法律行為經撤銷者，視為自始無效。</p>
+        <p>Ⅱ　當事人知其得撤銷或可得而知者，其法律行為撤銷時，準用前條之規定。</p>
+      </div>
+      <div class="article-box">
+        <span class="wm">115</span>
+        <span class="num">第115條</span>
+        <p>經承認之法律行為，如無特別訂定，溯及為法律行為時發生效力。</p>
+      </div>
+      <div class="article-box">
+        <span class="wm">116</span>
+        <span class="num">第116條</span>
+        <p>Ⅰ　撤銷及承認，應以意思表示為之。</p>
+        <p>Ⅱ　如相對人確定者，前項意思表示，應向相對人為之。</p>
+      </div>
+
+      <div class="article-box related">
+        <span class="wm">113</span>
+        <span class="num">第113條<span class="tagline">關聯條文・第114條第2項準用</span></span>
+        <p>無效法律行為之當事人，於行為當時知其無效，或可得而知者，應負回復原狀或損害賠償之責任。</p>
+      </div>
+
+      <div class="link-note">
+        📎 第114條第1項所稱「撤銷」，其撤銷權多源自第92條（詐欺、脅迫）等規定。第92、93條之要件與除斥期間，本講義不重複展開，詳見《<a href="../講義/民法92-93-114條-意思表示不自由.html">民法第92、93、114條——意思表示不自由與撤銷</a>》。
+      </div>
+    </section>
+
+    <section id="sec2">
+      <div class="sec-head"><span class="num">二</span><h2>條文結構</h2></div>
+      <table>
+        <tr><th>層次</th><th>條文</th><th>核心內容</th></tr>
+        <tr><td>撤銷之效力</td><td>第114條第1項</td><td>視為自始無效（溯及消滅，非向將來失效）</td></tr>
+        <tr><td>撤銷之附隨責任</td><td>第114條第2項</td><td>當事人知其得撤銷或可得而知者，準用第113條負回復原狀或損害賠償責任</td></tr>
+        <tr><td>承認之效力</td><td>第115條</td><td>溯及為法律行為時發生效力（原則），當事人可另行約定發生效力之時點</td></tr>
+        <tr><td>撤銷、承認之方式</td><td>第116條第1項</td><td>以意思表示為之，不要式、不須訴請法院（形成權之行使）</td></tr>
+        <tr><td>意思表示之相對人</td><td>第116條第2項</td><td>相對人確定者，應向相對人為之</td></tr>
+      </table>
+    </section>
+
+    <section id="sec3">
+      <div class="sec-head"><span class="num">三</span><h2>要件逐項解析</h2></div>
+
+      <h3>（一）第114條第1項——撤銷之效力</h3>
+      <p>法律行為經撤銷者，<span class="conclusion">視為自始無效</span>，效力回溯至法律行為作成時，與單純「向後失效」不同——法律行為自始至終都被視為未曾發生過效力，這也是「撤銷」與債編「解除」（原則上向後發生清算關係）在效果上的重要差異。</p>
+
+      <h3>（二）第114條第2項——回復原狀責任之準用</h3>
+      <table>
+        <tr><th>要件</th><th>說明</th></tr>
+        <tr><td>主觀要件</td><td>當事人於行為當時「知其得撤銷」（明知）或「可得而知」（有過失而不知）</td></tr>
+        <tr><td>準用範圍</td><td>準用第113條，負回復原狀或損害賠償之責任</td></tr>
+        <tr><td>適用對象</td><td>不限於撤銷權人，凡於行為時具備前述主觀要件之「當事人」皆有適用</td></tr>
+      </table>
+      <p>本項與第113條的差異在於：第113條規範的是本來就無效的法律行為，第114條第2項則是「原本有效、嗣後經撤銷才溯及無效」的法律行為，兩者在時間軸上狀態不同，但既然撤銷後同樣「視為自始無效」，立法者選擇以準用方式，使當事人負相同的回復原狀或損害賠償責任，避免重複規定。</p>
+
+      <h3>（三）第115條——承認之效力</h3>
+      <p>經承認之法律行為，<span class="conclusion">溯及為法律行為時發生效力</span>，這是原則規定；當事人若另有約定發生效力之時點（例如約定自承認時起才生效），則從其約定。「承認」使原本效力未定或得撤銷之法律行為確定發生效力，性質上為單獨行為、形成權之行使。</p>
+
+      <h3>（四）第116條——撤銷、承認之方式</h3>
+      <table>
+        <tr><th>項次</th><th>要件</th><th>說明</th></tr>
+        <tr><td>第1項</td><td>意思表示為之</td><td>不要式行為，無須另訂契約或提起訴訟，單方意思表示即生效力</td></tr>
+        <tr><td>第2項</td><td>向相對人為之</td><td>若法律行為有確定之相對人（如契約之他方當事人），撤銷或承認之意思表示須向該相對人為之，始能對其發生效力</td></tr>
+      </table>
+      <p>本條為「形成權應如何行使」之通則性規定，凡條文賦予當事人撤銷權或承認權者（如第92條之撤銷、第79條限制行為能力人契約之承認等），行使方式原則上均回歸本條——以意思表示為已足，<span class="deny">不必</span>另行提起形成之訴。</p>
+    </section>
+
+    <section id="sec4">
+      <div class="sec-head"><span class="num">四</span><h2>學說見解</h2></div>
+      <div class="placeholder">
+        <div class="ph-icon">§</div>
+        <div class="ph-text">尚未加入學說見解內容</div>
+        <div class="ph-badge">待補充</div>
+      </div>
+    </section>
+
+    <section id="sec5">
+      <div class="sec-head"><span class="num">五</span><h2>實務見解</h2></div>
+
+      <h3>第116條——撤銷、承認以意思表示為之，不須提起形成之訴</h3>
+      <table>
+        <tr><th>項目</th><th>內容</th></tr>
+        <tr><td>裁判字號</td><td>最高法院52年台上字第836號</td></tr>
+        <tr><td>裁判日期</td><td>民國52年3月23日</td></tr>
+        <tr><td>要旨</td><td>意思表示之內容有錯誤或表示行為有錯誤者，唯表意人始得將其意思表示撤銷之，又有撤銷權人，欲撤銷其自己之意思表示或他人之法律行為者，除法律規定必須訴經法院為之者外，以意思表示為之為已足，勿庸提起形成之訴請求撤銷。</td></tr>
+      </table>
+      <p>此則見解直接呼應第116條第1項：撤銷權原則上為形成權，僅須向相對人為撤銷之意思表示即發生效力，除非法律另有明文要求訴請法院為之（例如：撤銷詐害債權行為，民法第244條即明定「聲請法院撤銷」），否則不必、也不能透過提起形成之訴的方式來行使撤銷權。</p>
+      <div class="source-tag">📂 來源｜全國法規資料庫 <a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&flno=116" target="_blank">law.moj.gov.tw</a></div>
+    </section>
+
+    <section id="sec6">
+      <div class="sec-head"><span class="num">六</span><h2>教學案例</h2></div>
+      <div class="fiction-note">⚠ 教學虛構案例，非真實案例</div>
+
+      <div class="case-card">
+        <div class="header">案例一：明知得撤銷者之回復原狀責任（§114 II）</div>
+        <div class="body">
+          <p><strong>事實</strong>：甲明知自己所收藏之青花瓷瓶為現代仿品，卻向乙表示其為清代真品，並以高價售予乙。乙其後委請專家鑑定，確認為仿品，遂依第92條撤銷該買賣之意思表示。</p>
+          <p><strong>爭點</strong>：買賣契約經乙撤銷後視為自始無效，甲、乙雙方應如何處理已交付之價金與瓷瓶？甲是否須負回復原狀以外之責任？</p>
+          <p><strong>分析</strong>：買賣契約經撤銷，依第114條第1項視為自始無效，雙方互負返還已受領給付之義務（甲返還價金、乙返還瓷瓶）。因甲於締約當時即明知該瓷瓶為仿品而故為不實表示，該當第114條第2項「知其得撤銷」之主觀要件，故準用第113條，甲除返還價金外，就乙因此受有之其他損害（如委請專家鑑定之費用），亦應負損害賠償責任。</p>
+          <p class="conclusion">結論：甲應返還已受領之價金，並依第114條第2項準用第113條，就乙受有之其他損害負賠償責任。</p>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="header">案例二：無權代理下承認之意思表示應向相對人為之（§115、§116）</div>
+        <div class="body">
+          <p><strong>事實</strong>：甲出國期間，授權乙以其名義代為採購辦公設備，並明確約定採購金額上限為新臺幣50萬元。乙為求一次到位，逕與丙簽訂總價80萬元之設備採購契約，逾越授權範圍。甲返國後獲悉此事。</p>
+
+          <div class="relation-wrap">
+            <div class="relation-label">人物關係圖</div>
+            <svg viewBox="0 0 640 340" width="100%" role="img" aria-label="甲乙丙三方法律關係圖">
+              <defs>
+                <marker id="ar-indigo3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M2 1L8 5L2 9" fill="none" stroke="#2c4a76" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </marker>
+                <marker id="ar-brass3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M2 1L8 5L2 9" fill="none" stroke="#a9832f" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </marker>
+              </defs>
+
+              <!-- 甲 box -->
+              <rect x="30" y="90" width="170" height="64" rx="6" fill="#fffdf8" stroke="#2c4a76" stroke-width="1.2"/>
+              <text x="115" y="115" text-anchor="middle" font-family="Noto Serif TC, serif" font-weight="700" font-size="15" fill="#16233b">甲（本人）</text>
+              <text x="115" y="136" text-anchor="middle" font-family="Noto Sans TC, sans-serif" font-size="12" fill="#5b6472">授權金額上限50萬元</text>
+
+              <!-- 丙 box -->
+              <rect x="440" y="90" width="170" height="64" rx="6" fill="#fffdf8" stroke="#2c4a76" stroke-width="1.2"/>
+              <text x="525" y="115" text-anchor="middle" font-family="Noto Serif TC, serif" font-weight="700" font-size="15" fill="#16233b">丙（相對人）</text>
+              <text x="525" y="136" text-anchor="middle" font-family="Noto Sans TC, sans-serif" font-size="12" fill="#5b6472">設備供應商</text>
+
+              <!-- 乙 box -->
+              <rect x="225" y="220" width="190" height="96" rx="6" fill="#fffdf8" stroke="#9c2b3a" stroke-width="1.2"/>
+              <text x="320" y="246" text-anchor="middle" font-family="Noto Serif TC, serif" font-weight="700" font-size="15" fill="#16233b">乙（代理人）</text>
+              <text x="320" y="267" text-anchor="middle" font-family="Noto Sans TC, sans-serif" font-size="12" fill="#5b6472">受託採購辦公設備</text>
+              <text x="320" y="286" text-anchor="middle" font-family="Noto Sans TC, sans-serif" font-size="12" fill="#9c2b3a">逾越50萬元授權，簽訂80萬元契約</text>
+
+              <!-- 甲-乙 -->
+              <line x1="130" y1="154" x2="270" y2="220" stroke="#2c4a76" stroke-width="1.4" marker-end="url(#ar-indigo3)"/>
+              <text x="128" y="196" text-anchor="end" font-family="Noto Sans TC, sans-serif" font-size="12" fill="#2c4a76">授權採購（限50萬元）</text>
+
+              <!-- 丙-乙 -->
+              <line x1="510" y1="154" x2="370" y2="220" stroke="#2c4a76" stroke-width="1.4" marker-end="url(#ar-indigo3)"/>
+              <text x="512" y="196" text-anchor="start" font-family="Noto Sans TC, sans-serif" font-size="12" fill="#2c4a76">簽訂80萬元設備契約</text>
+
+              <!-- 甲-丙 效力未定 -->
+              <path d="M210,90 Q320,35 430,90" fill="none" stroke="#a9832f" stroke-width="1.4" stroke-dasharray="5 5" marker-end="url(#ar-brass3)"/>
+              <text x="320" y="28" text-anchor="middle" font-family="Noto Sans TC, sans-serif" font-size="12" fill="#a9832f">契約效力未定，待甲承認或拒絕</text>
+            </svg>
+            <div class="relation-note">⚠ 紅字部分為乙逾越授權範圍之部分，該契約對甲效力未定</div>
+          </div>
+
+          <p><strong>試問</strong>：甲若欲使該契約對其發生效力，應如何行使承認權？其效力發生之時點為何？</p>
+          <p><strong>分析</strong>：乙逾越代理權限所訂立之契約，就逾越部分屬無權代理，效力未定，須經本人甲承認始對甲發生效力。依第116條，承認為意思表示，且相對人丙為確定之人，故甲之承認意思表示應向丙為之（第116條第2項），不得僅在內部向乙表示了事。甲一旦向丙為承認之意思表示，依第115條，除另有約定外，溯及乙、丙簽約時發生效力。</p>
+          <p class="conclusion">結論：甲之承認應以意思表示向丙為之，經承認後契約溯及訂約時對甲發生效力。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="sec7">
+      <div class="sec-head"><span class="num">七</span><h2>申論練習題</h2></div>
+      <div class="placeholder">
+        <div class="ph-icon">問</div>
+        <div class="ph-text">尚未加入申論練習題與模擬解答</div>
+        <div class="ph-badge">待補充</div>
+      </div>
+    </section>
+
+    <section id="sec8">
+      <div class="sec-head"><span class="num">八</span><h2>速查卡</h2></div>
+      <div class="quickcard">
+        <h3>民法第114、115、116條</h3>
+        <table>
+          <tr><th>條號</th><th>關鍵字</th></tr>
+          <tr><td>114 I</td><td>撤銷＝視為自始無效（溯及消滅）</td></tr>
+          <tr><td>114 II</td><td>明知或可得而知得撤銷者，準用113條負回復原狀／損害賠償責任</td></tr>
+          <tr><td>115</td><td>承認＝原則溯及為法律行為時發生效力</td></tr>
+          <tr><td>116 I</td><td>撤銷、承認以意思表示為之，不須訴請法院</td></tr>
+          <tr><td>116 II</td><td>相對人確定者，應向相對人為之</td></tr>
+        </table>
+        <div class="mnemonic">「溯及生效，意思即成；明知有責，不知則免」</div>
+      </div>
+    </section>
+
+    <div class="note">
+      <p>本講義依「民法條文解釋」skill 產生，條文原文照錄自使用者提供之全國法規資料庫截圖；第113條列為關聯條文（第114條第2項準用），第92、93條不重複全文，以連結方式導向既有講義。教學案例為 AI 虛構，僅供教學參考，均已標明教學用途。學說見解、申論練習題兩節目前尚未補入內容，待另行提供後補上。實務見解已補入最高法院52年台上字第836號（第116條），來源為全國法規資料庫。</p>
+    </div>
+
+  </main>
+</div>
+
+<script>
+  const sections = document.querySelectorAll('section[id]');
+  const railLinks = document.querySelectorAll('#railNav a');
+  const mobileLinks = document.querySelectorAll('#mobileNav a');
+
+  function setActive(id) {
+    railLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+    mobileLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        setActive(entry.target.id);
+      }
+    });
+  }, { rootMargin: '-15% 0px -70% 0px', threshold: 0 });
+
+  sections.forEach(sec => observer.observe(sec));
+
+  [...railLinks, ...mobileLinks].forEach(a => {
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      const id = a.getAttribute('href').slice(1);
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+
+</body>
+</html>

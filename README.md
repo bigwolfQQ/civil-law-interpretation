@@ -25,6 +25,19 @@
 
 ---
 
+## 設計理念
+
+這套工具的架構，剛好呼應 OpenAI 共同創辦人 Andrej Karpathy 在 2026 年提出的「LLM Wiki」方法論——用 raw data（原始素材）、由 LLM 維護的 wiki 層、以及規則層（schema）三層架構，讓知識持續累積而非每次重新整理。對照過來：
+
+| Karpathy 的 LLM Wiki | Civil Law Interpretation |
+|---|---|
+| Raw data（論文、文章） | 條文、學說、實務見解、與 AI 的討論過程 |
+| Wiki 層（LLM 寫的 Markdown 條目） | 講義 HTML（每個法律主題一份） |
+| Schema 層（CLAUDE.md） | SKILL.md（規則、流程、輸出格式） |
+| Query（對 Wiki 提問） | 總覽頁（依編章節分類、可查找） |
+
+---
+
 ## 📂 總覽頁：所有講義的目錄地圖
 
 每產出一份講義，Skill 會自動把它加進本倉庫的 **`index.html`** 總覽頁，並同步推送到 GitHub Pages：

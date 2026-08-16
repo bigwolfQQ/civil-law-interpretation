@@ -102,6 +102,7 @@ description: 民法條文解釋與教學講義產生器。當使用者提供民�
 
 ### HTML 格式規範
 
+- `<head>` 須含 viewport meta tag：`<meta name="viewport" content="width=device-width, initial-scale=1.0">`，並搭配 responsive media query，確保手機版正常顯示
 - 使用 Google Fonts（Noto Serif TC + Noto Sans TC）
 - 色彩系統：深藍（#1a3a5c）、藍（#2563a8）、淡藍背景（#e8f0fb）、強調橙（#c8651a）
 - 結論句以加粗深藍色呈現

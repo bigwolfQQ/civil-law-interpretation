@@ -254,7 +254,13 @@
   .coverage-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-    gap:.9rem 1.4rem;
+    gap:1rem;
+  }
+  .chapter-block{
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:.9rem 1rem 1rem;
+    background:var(--paper);
   }
   .chapter-block > .chapter-title{
     font-family:"Noto Serif TC",serif;
@@ -262,8 +268,8 @@
     font-weight:700;
     color:var(--brass);
     letter-spacing:.02em;
-    margin-bottom:.35rem;
-    padding-bottom:.3rem;
+    margin-bottom:.5rem;
+    padding-bottom:.4rem;
     border-bottom:1px solid var(--line);
   }
   .leaf-list{

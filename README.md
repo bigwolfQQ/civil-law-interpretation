@@ -42,7 +42,7 @@
 
 每產出一份講義，Skill 會自動把它加進本倉庫的 **`index.html`** 總覽頁，並同步推送到 GitHub Pages：
 
-👉 **[https://mjib007.github.io/civil-law-interpretation/](https://mjib007.github.io/civil-law-interpretation/)**
+👉 **[https://bigwolfQQ.github.io/civil-law-interpretation/](https://bigwolfQQ.github.io/civil-law-interpretation/)**
 
 總覽頁不只是「講義清單」，而是一份**依民法總則編章節架構（§1–152）繪製的教學進度地圖**：
 

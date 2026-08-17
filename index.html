@@ -354,12 +354,12 @@
 <body>
 
 <div class="cover">
-  <div class="eyebrow">民法總則．第一編．學習歷程總覽</div>
+  <div class="eyebrow">民法．學習歷程總覽</div>
   <h1>法律學習歷程紀錄器</h1>
-  <p class="sub">civil-law-interpretation ｜ 依民法第一編總則編章節分類</p>
+  <p class="sub">civil-law-interpretation ｜ 依民法第一編總則、物權編等編章節分類</p>
   <div class="cover-meta">
-    <span class="ver-badge">v1.0</span>
-    <span class="meta-date">2026-08-17</span>
+    <span class="ver-badge">v1.1</span>
+    <span class="meta-date">2026-08-18</span>
     <img src="https://visitor-badge.laobi.icu/badge?page_id=mjib007.civil-law-interpretation.index" alt="Visitors" style="opacity:0.85;vertical-align:middle;">
   </div>
   <div class="seal-mark">總覽</div>
@@ -373,7 +373,7 @@
 
   <div class="coverage">
     <div class="coverage-header">
-      <h2>分類覆蓋地圖（民法總則 §1–152）</h2>
+      <h2>分類覆蓋地圖（民法總則 §1–152／物權編）</h2>
       <span class="progress" id="coverageProgress"></span>
     </div>
     <div class="coverage-grid" id="coverageGrid"></div>
@@ -406,7 +406,8 @@ const CHAPTERS = [
   { key: "4-6",   label: "第四章 法律行為／第六節 無效及撤銷（§111）" },
   { key: "5",     label: "第五章 期日及期間（§119）" },
   { key: "6",     label: "第六章 消滅時效（§125）" },
-  { key: "7",     label: "第七章 權利之行使（§148）" }
+  { key: "7",     label: "第七章 權利之行使（§148）" },
+  { key: "wuquan-2", label: "物權編／第二章 所有權（§765）" }
 ];
 
 /* ============================================================
@@ -431,6 +432,13 @@ const LECTURES = [
     date: "2026-08-16",
     chapterKey: "4-6",
     file: "講義/民法114-116條-撤銷及承認.html"
+  },
+  {
+    articles: "第767條",
+    title: "所有權之保護（物上請求權）",
+    date: "2026-08-18",
+    chapterKey: "wuquan-2",
+    file: "講義/民法767條-所有權之保護-物上請求權.html"
   }
 ];
 
@@ -465,7 +473,11 @@ const TREE = [
   { title: "第六章 消滅時效",
     leaves: [{ key: "6", label: "§125" }] },
   { title: "第七章 權利之行使",
-    leaves: [{ key: "7", label: "§148" }] }
+    leaves: [{ key: "7", label: "§148" }] },
+  { title: "物權編",
+    groups: [
+      { title: "第二章 所有權", leaves: [{ key: "wuquan-2", label: "§767" }] }
+    ]}
 ];
 
 /* ============================================================

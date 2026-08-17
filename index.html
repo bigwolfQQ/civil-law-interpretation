@@ -3,43 +3,116 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>民法總則教學講義總覽 | civil-law-interpretation</title>
+<title>法律學習歷程紀錄器 | civil-law-interpretation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --deep-blue:#1a3a5c;
-    --blue:#2563a8;
-    --light-blue-bg:#e8f0fb;
-    --accent-orange:#c8651a;
-    --text:#26313f;
-    --border:#d7e2f2;
+    --ink: #16233b;
+    --indigo: #2c4a76;
+    --indigo-soft: #3f5f8f;
+    --parchment: #f3ede0;
+    --paper: #fbf8f1;
+    --paper-panel: #fffdf8;
+    --seal: #9c2b3a;
+    --seal-soft: #c7566450;
+    --brass: #a9832f;
+    --line: #ddd3bf;
+    --ink-70: rgba(22,35,59,0.7);
+    --ink-45: rgba(22,35,59,0.45);
   }
   *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
   body{
     margin:0;
-    font-family:"Noto Sans TC","Noto Serif TC",sans-serif;
-    background:#f5f8fc;
-    color:var(--text);
+    font-family:"Noto Sans TC",sans-serif;
+    background:var(--parchment);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
   }
-  header{
-    background:linear-gradient(135deg,var(--deep-blue),var(--blue));
-    color:#fff;
-    padding:2.5rem 1.5rem 2rem;
-    text-align:center;
+
+  /* ---------- cover ---------- */
+  .cover{
+    position:relative;
+    max-width:1000px;
+    margin:0 auto;
+    padding:56px 1.5rem 40px;
+    border-bottom:1px solid var(--line);
   }
-  header h1{
+  .cover .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:.74rem;
+    letter-spacing:.24em;
+    color:var(--brass);
+    font-weight:700;
+    margin-bottom:16px;
+  }
+  .cover .eyebrow::before{
+    content:"";
+    width:22px;height:1px;
+    background:var(--brass);
+  }
+  .cover h1{
+    font-family:"Noto Serif TC",serif;
+    font-weight:900;
+    font-size:2.1rem;
+    line-height:1.35;
+    margin:0 0 10px;
+    color:var(--ink);
+    letter-spacing:.01em;
+  }
+  .cover .sub{
+    font-size:1rem;
+    color:var(--indigo);
+    font-weight:500;
+    margin:0;
+  }
+  .cover-meta{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-top:18px;
+    flex-wrap:wrap;
+  }
+  .ver-badge{
     font-family:"Noto Serif TC",serif;
     font-weight:700;
-    font-size:1.8rem;
-    margin:0 0 .4rem;
+    font-size:.78rem;
+    color:var(--seal);
+    border:1px solid var(--seal);
+    border-radius:20px;
+    padding:3px 12px;
+    letter-spacing:.03em;
   }
-  header p{
-    margin:0;
-    opacity:.85;
-    font-size:.95rem;
+  .meta-date{
+    font-size:.8rem;
+    color:var(--ink-45);
   }
+  .cover .seal-mark{
+    position:absolute;
+    top:48px;
+    right:1.5rem;
+    width:76px;
+    height:76px;
+    border:2.5px solid var(--seal);
+    border-radius:6px;
+    color:var(--seal);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:"Noto Serif TC",serif;
+    font-weight:900;
+    font-size:1.15rem;
+    letter-spacing:.1em;
+    writing-mode:vertical-rl;
+    opacity:.82;
+    transform:rotate(3deg);
+    background:rgba(156,43,58,0.03);
+  }
+
   main{
     max-width:1000px;
     margin:0 auto;
@@ -52,7 +125,7 @@
     margin-bottom:1.5rem;
     position:sticky;
     top:0;
-    background:#f5f8fc;
+    background:var(--parchment);
     padding:1rem 0;
     z-index:5;
   }
@@ -61,25 +134,25 @@
     font-family:inherit;
     font-size:.95rem;
     padding:.6rem .9rem;
-    border:1px solid var(--border);
-    border-radius:8px;
-    background:#fff;
-    color:var(--text);
+    border:1px solid var(--line);
+    border-radius:6px;
+    background:var(--paper-panel);
+    color:var(--ink);
     outline:none;
     transition:border-color .15s ease, box-shadow .15s ease;
   }
   .controls input[type="text"]:focus,
   .controls select:focus{
-    border-color:var(--blue);
-    box-shadow:0 0 0 3px rgba(37,99,168,.15);
+    border-color:var(--indigo);
+    box-shadow:0 0 0 3px rgba(44,74,118,.14);
   }
   .controls select{
-    color:#7286a0; /* 預設「全部分類」用淡灰色，像 placeholder */
+    color:var(--ink-45);
   }
   .controls select.filtered{
-    color:var(--blue);
+    color:var(--seal);
     font-weight:700;
-    border-color:var(--blue);
+    border-color:var(--seal);
   }
   .controls input[type="text"]{
     flex:1;
@@ -90,7 +163,7 @@
   }
   .count{
     font-size:.85rem;
-    color:#5a6b80;
+    color:var(--ink-45);
     margin-bottom:1rem;
   }
   .cards{
@@ -102,27 +175,27 @@
     display:block;
     text-decoration:none;
     color:inherit;
-    background:#fff;
-    border:1px solid var(--border);
-    border-radius:12px;
+    background:var(--paper-panel);
+    border:1px solid var(--line);
+    border-radius:8px;
     padding:1.2rem 1.3rem;
-    transition:box-shadow .15s ease, transform .15s ease;
+    transition:box-shadow .15s ease, transform .15s ease, border-color .15s ease;
   }
   .card:hover{
-    box-shadow:0 6px 18px rgba(26,58,92,.12);
+    box-shadow:0 6px 18px rgba(22,35,59,.10);
     transform:translateY(-2px);
-    border-color:var(--blue);
+    border-color:var(--brass);
   }
   .card .articles{
     font-family:"Noto Serif TC",serif;
     font-weight:700;
-    color:var(--deep-blue);
+    color:var(--ink);
     font-size:1.05rem;
     margin-bottom:.4rem;
   }
   .card .title{
     font-size:.95rem;
-    color:var(--text);
+    color:var(--ink-70);
     margin-bottom:.8rem;
     line-height:1.4;
   }
@@ -131,31 +204,33 @@
     justify-content:space-between;
     align-items:center;
     font-size:.78rem;
-    color:#7286a0;
+    color:var(--ink-45);
   }
   .card .tag{
-    background:var(--light-blue-bg);
-    color:var(--blue);
+    background:var(--parchment);
+    color:var(--brass);
     padding:.15rem .55rem;
     border-radius:999px;
     font-size:.72rem;
+    border:1px solid var(--line);
   }
   .card .date{
-    color:var(--accent-orange);
+    color:var(--seal);
     font-weight:500;
   }
   .empty{
     text-align:center;
-    color:#8091a8;
+    color:var(--ink-45);
     padding:3rem 0;
     font-size:.95rem;
+    font-style:italic;
   }
 
   /* 分類覆蓋地圖 */
   .coverage{
-    background:#fff;
-    border:1px solid var(--border);
-    border-radius:12px;
+    background:var(--paper-panel);
+    border:1px solid var(--line);
+    border-radius:8px;
     padding:1.1rem 1.3rem 1.3rem;
     margin-bottom:1.5rem;
   }
@@ -169,12 +244,12 @@
     font-family:"Noto Serif TC",serif;
     font-size:1rem;
     font-weight:700;
-    color:var(--deep-blue);
+    color:var(--ink);
     margin:0;
   }
   .coverage-header .progress{
     font-size:.8rem;
-    color:#7286a0;
+    color:var(--ink-45);
   }
   .coverage-grid{
     display:grid;
@@ -182,12 +257,14 @@
     gap:.9rem 1.4rem;
   }
   .chapter-block > .chapter-title{
+    font-family:"Noto Serif TC",serif;
     font-size:.85rem;
     font-weight:700;
-    color:var(--deep-blue);
+    color:var(--brass);
+    letter-spacing:.02em;
     margin-bottom:.35rem;
     padding-bottom:.3rem;
-    border-bottom:1px solid var(--border);
+    border-bottom:1px solid var(--line);
   }
   .leaf-list{
     list-style:none;
@@ -207,16 +284,16 @@
     font-family:inherit;
     font-size:.82rem;
     padding:.3rem .5rem;
-    border-radius:6px;
+    border-radius:5px;
     cursor:pointer;
-    color:var(--text);
+    color:var(--ink-70);
     text-align:left;
   }
   .leaf-btn .indent{
     padding-left:0.6em;
   }
   .leaf-btn:hover:not(.zero){
-    background:var(--light-blue-bg);
+    background:rgba(44,74,118,0.07);
   }
   .leaf-btn .badge{
     min-width:1.6em;
@@ -227,50 +304,60 @@
     border-radius:999px;
   }
 
-  /* 有筆記（與是否為目前篩選無關）：淡藍徽章＋深藍粗體文字 */
+  /* 有筆記（與是否為目前篩選無關）：淡黃銅徽章＋深墨粗體文字 */
   .leaf-btn.has-count{
     font-weight:700;
-    color:var(--deep-blue);
+    color:var(--ink);
   }
   .leaf-btn.has-count .badge{
-    background:var(--light-blue-bg);
-    color:var(--blue);
+    background:rgba(169,131,47,0.16);
+    color:var(--brass);
   }
 
   /* 無筆記：大幅淡化，不可點 */
   .leaf-btn.zero{
-    color:#c3cad6;
+    color:var(--ink-45);
     cursor:not-allowed;
+    opacity:.6;
   }
   .leaf-btn.zero .badge{
     background:none;
-    color:#c3cad6;
+    color:var(--ink-45);
     font-weight:400;
   }
 
-  /* 目前篩選中：獨立於「有無筆記」，用藍色外框標示，不搶走上面的顏色語言 */
+  /* 目前篩選中：獨立於「有無筆記」，用印璽紅外框標示 */
   .leaf-btn.active{
-    box-shadow: inset 0 0 0 2px var(--blue);
-    border-radius:6px;
+    box-shadow: inset 0 0 0 2px var(--seal);
   }
-  /* 目前篩選中 且 有筆記：外框＋淡藍底，仍保留深藍粗體文字，不做成全實心色塊 */
   .leaf-btn.active.has-count{
-    background:var(--light-blue-bg);
+    background:rgba(156,43,58,0.05);
   }
+
   footer{
     text-align:center;
-    font-size:.8rem;
-    color:#8091a8;
-    padding:2rem 0 3rem;
+    font-size:.78rem;
+    color:var(--ink-45);
+    padding:2.5rem 0 3rem;
+    border-top:1px solid var(--line);
+    max-width:1000px;
+    margin:0 auto;
   }
 </style>
 </head>
 <body>
 
-<header>
-  <h1>民法總則教學講義總覽</h1>
-  <p>civil-law-interpretation ｜ 依民法第一編總則編章節分類</p>
-</header>
+<div class="cover">
+  <div class="eyebrow">民法總則．第一編．學習歷程總覽</div>
+  <h1>法律學習歷程紀錄器</h1>
+  <p class="sub">civil-law-interpretation ｜ 依民法第一編總則編章節分類</p>
+  <div class="cover-meta">
+    <span class="ver-badge">v1.0</span>
+    <span class="meta-date">2026-08-17</span>
+    <img src="https://visitor-badge.laobi.icu/badge?page_id=mjib007.civil-law-interpretation.index" alt="Visitors" style="opacity:0.85;vertical-align:middle;">
+  </div>
+  <div class="seal-mark">總覽</div>
+</div>
 
 <main>
   <div class="controls">
@@ -291,7 +378,7 @@
   <div class="empty" id="emptyState" style="display:none;">沒有符合條件的講義</div>
 </main>
 
-<footer>civil-law-interpretation · CC BY-NC 4.0</footer>
+<footer>civil-law-interpretation · 民法總則．學習歷程紀錄 · CC BY-NC 4.0</footer>
 
 <script>
 /* ============================================================

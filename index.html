@@ -407,7 +407,8 @@ const CHAPTERS = [
   { key: "5",     label: "第五章 期日及期間（§119）" },
   { key: "6",     label: "第六章 消滅時效（§125）" },
   { key: "7",     label: "第七章 權利之行使（§148）" },
-  { key: "wuquan-2", label: "物權編／第二章 所有權（§765）" }
+  { key: "wuquan-2", label: "物權編／第二章 所有權／第一節 通則（§765）" },
+  { key: "wuquan-2-4", label: "物權編／第二章 所有權／第四節 共有（§817）" }
 ];
 
 /* ============================================================
@@ -439,6 +440,13 @@ const LECTURES = [
     date: "2026-08-18",
     chapterKey: "wuquan-2",
     file: "講義/民法767條-所有權之保護-物上請求權.html"
+  },
+  {
+    articles: "第824條",
+    title: "共有物之分割方法",
+    date: "2026-08-18",
+    chapterKey: "wuquan-2-4",
+    file: "講義/民法824條-共有物之分割方法.html"
   }
 ];
 
@@ -476,7 +484,11 @@ const TREE = [
     leaves: [{ key: "7", label: "§148" }] },
   { title: "物權編",
     groups: [
-      { title: "第二章 所有權", leaves: [{ key: "wuquan-2", label: "§767" }] }
+      { title: "第二章 所有權",
+        groups: [
+          { title: "第一節 通則", leaves: [{ key: "wuquan-2", label: "§767" }] },
+          { title: "第四節 共有", leaves: [{ key: "wuquan-2-4", label: "§824" }] }
+        ]}
     ]}
 ];
 

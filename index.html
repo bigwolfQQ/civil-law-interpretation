@@ -356,9 +356,9 @@
 <div class="cover">
   <div class="eyebrow">民法．學習歷程總覽</div>
   <h1>法律學習歷程紀錄器</h1>
-  <p class="sub">civil-law-interpretation ｜ 依民法第一編總則、物權編等編章節分類</p>
+  <p class="sub">civil-law-interpretation ｜ 依民法第一編總則、物權編、繼承編等編章節分類</p>
   <div class="cover-meta">
-    <span class="ver-badge">v1.4</span>
+    <span class="ver-badge">v1.5</span>
     <span class="meta-date">2026-08-18</span>
     <img src="https://visitor-badge.laobi.icu/badge?page_id=mjib007.civil-law-interpretation.index" alt="Visitors" style="opacity:0.85;vertical-align:middle;">
   </div>
@@ -373,7 +373,7 @@
 
   <div class="coverage">
     <div class="coverage-header">
-      <h2>分類覆蓋地圖（民法總則 §1–152／物權編）</h2>
+      <h2>分類覆蓋地圖（民法總則 §1–152／物權編／繼承編）</h2>
       <span class="progress" id="coverageProgress"></span>
     </div>
     <div class="coverage-grid" id="coverageGrid"></div>
@@ -410,7 +410,17 @@ const CHAPTERS = [
   { key: "wuquan-2", label: "物權編／第二章 所有權／第一節 通則（§765）" },
   { key: "wuquan-2-4", label: "物權編／第二章 所有權／第四節 共有（§817）" },
   { key: "wuquan-6", label: "物權編／第六章 抵押權（§860）" },
-  { key: "jicheng-3-2", label: "繼承編／第三章 遺囑／第二節 方式（§1189）" }
+  { key: "jicheng-1",   label: "繼承編／第一章 遺產繼承人（§1138）" },
+  { key: "jicheng-2-1", label: "繼承編／第二章 遺產之繼承／第一節 效力（§1147）" },
+  { key: "jicheng-2-3", label: "繼承編／第二章 遺產之繼承／第三節 遺產之分割（§1164）" },
+  { key: "jicheng-2-4", label: "繼承編／第二章 遺產之繼承／第四節 繼承之拋棄（§1174）" },
+  { key: "jicheng-2-5", label: "繼承編／第二章 遺產之繼承／第五節 無人承認之繼承（§1177）" },
+  { key: "jicheng-3-1", label: "繼承編／第三章 遺囑／第一節 通則（§1186）" },
+  { key: "jicheng-3-2", label: "繼承編／第三章 遺囑／第二節 方式（§1189）" },
+  { key: "jicheng-3-3", label: "繼承編／第三章 遺囑／第三節 效力（§1199）" },
+  { key: "jicheng-3-4", label: "繼承編／第三章 遺囑／第四節 執行（§1209）" },
+  { key: "jicheng-3-5", label: "繼承編／第三章 遺囑／第五節 撤回（§1219）" },
+  { key: "jicheng-3-6", label: "繼承編／第三章 遺囑／第六節 特留分（§1223）" }
 ];
 
 /* ============================================================
@@ -463,6 +473,13 @@ const LECTURES = [
     date: "2026-08-18",
     chapterKey: "wuquan-6",
     file: "講義/民法862條-抵押權效力範圍.html"
+  },
+  {
+    articles: "第1138、1139、1140、1141、1144條",
+    title: "法定繼承人及其順序",
+    date: "2026-08-18",
+    chapterKey: "jicheng-1",
+    file: "講義/民法1138-1139-1140-1141-1144條-法定繼承人及其順序.html"
   }
 ];
 
@@ -507,6 +524,27 @@ const TREE = [
         ]},
       { title: "第六章 抵押權",
         leaves: [{ key: "wuquan-6", label: "§862" }] }
+    ]},
+  { title: "繼承編",
+    groups: [
+      { title: "第一章 遺產繼承人",
+        leaves: [{ key: "jicheng-1", label: "§1138" }] },
+      { title: "第二章 遺產之繼承",
+        groups: [
+          { title: "第一節 效力", leaves: [{ key: "jicheng-2-1", label: "§1147" }] },
+          { title: "第三節 遺產之分割", leaves: [{ key: "jicheng-2-3", label: "§1164" }] },
+          { title: "第四節 繼承之拋棄", leaves: [{ key: "jicheng-2-4", label: "§1174" }] },
+          { title: "第五節 無人承認之繼承", leaves: [{ key: "jicheng-2-5", label: "§1177" }] }
+        ]},
+      { title: "第三章 遺囑",
+        groups: [
+          { title: "第一節 通則", leaves: [{ key: "jicheng-3-1", label: "§1186" }] },
+          { title: "第二節 方式", leaves: [{ key: "jicheng-3-2", label: "§1189" }] },
+          { title: "第三節 效力", leaves: [{ key: "jicheng-3-3", label: "§1199" }] },
+          { title: "第四節 執行", leaves: [{ key: "jicheng-3-4", label: "§1209" }] },
+          { title: "第五節 撤回", leaves: [{ key: "jicheng-3-5", label: "§1219" }] },
+          { title: "第六節 特留分", leaves: [{ key: "jicheng-3-6", label: "§1223" }] }
+        ]}
     ]}
 ];
 

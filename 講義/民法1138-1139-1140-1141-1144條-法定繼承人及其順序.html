@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>民法第1138條｜法定繼承人及其順序</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16233b;
+    --ink-2:#2c4a76;
+    --paper:#f3ede0;
+    --paper-2:#fbf8f1;
+    --paper-3:#fffdf8;
+    --seal:#9c2b3a;
+    --brass:#a9832f;
+    --line:#ddd3bf;
+    --ink-45: rgba(22,35,59,0.45);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Noto Sans TC", sans-serif;
+    line-height:1.85;
+  }
+  h1,h2,h3,.serif{font-family:"Noto Serif TC", serif;}
+  a{color:var(--ink-2);}
+
+  /* Layout */
+  .layout{display:flex; max-width:1180px; margin:0 auto;}
+  nav.sidenav{
+    width:240px; flex-shrink:0; position:sticky; top:0; align-self:flex-start;
+    height:100vh; overflow-y:auto; padding:32px 18px; border-right:1px solid var(--line);
+  }
+  nav.sidenav a{
+    display:block; padding:8px 10px; margin-bottom:2px; border-radius:4px;
+    text-decoration:none; color:var(--ink); font-size:14px; font-weight:500;
+  }
+  nav.sidenav a.active{background:var(--paper-3); color:var(--ink-2); font-weight:700;}
+  nav.sidenav a.dim{color:var(--ink-45); font-weight:400;}
+  main{flex:1; padding:0 40px 80px; box-shadow:-1px 0 0 rgba(0,0,0,0.02);}
+
+  .topnav{display:none;}
+
+  section{padding-top:44px; border-top:1px solid var(--line); margin-top:36px;}
+  section:first-of-type{border-top:none;}
+
+  /* Cover */
+  .cover{padding:70px 0 40px; text-align:left; position:relative; border-top:none;}
+  .eyebrow{
+    display:inline-block; font-family:"Noto Sans TC"; letter-spacing:2px; font-size:12px;
+    color:var(--ink-2); border:1px solid var(--ink-2); padding:4px 10px; border-radius:20px; margin-bottom:18px;
+  }
+  .cover h1{font-size:38px; font-weight:900; margin:0 0 8px; color:var(--ink);}
+  .cover .sub{font-size:16px; color:var(--ink-45); margin-bottom:14px;}
+  .cover-meta{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:26px;}
+  .cover-meta span{
+    font-size:12px; border:1px solid var(--ink-2); color:var(--ink-2);
+    padding:3px 10px; border-radius:20px; background:var(--paper-3);
+  }
+  .ver-badge{border-color:var(--seal) !important; color:var(--seal) !important;}
+  .seal-mark{
+    position:absolute; top:40px; right:0; width:96px; height:96px; border:3px solid var(--seal);
+    border-radius:50%; display:flex; align-items:center; justify-content:center; transform:rotate(-12deg);
+    writing-mode:vertical-rl; color:var(--seal); font-family:"Noto Serif TC"; font-weight:900; font-size:22px;
+    letter-spacing:4px; opacity:0.85;
+  }
+  .toc{margin-top:20px; padding:18px 22px; background:var(--paper-3); border:1px solid var(--line); border-radius:6px;}
+  .toc div{font-size:13px; color:var(--ink-45); margin-bottom:8px; letter-spacing:1px;}
+  .toc ol{margin:0; padding-left:20px; columns:2; font-size:14px;}
+  .toc li{margin-bottom:6px;}
+
+  /* Article box */
+  .article-box{
+    position:relative; background:var(--paper-3); border-left:3px solid var(--ink-2);
+    padding:20px 26px; margin-bottom:18px; border-radius:2px; overflow:hidden;
+  }
+  .article-box .num{
+    position:absolute; right:14px; bottom:-6px; font-family:"Noto Serif TC"; font-weight:900;
+    font-size:86px; color:var(--ink); opacity:0.06; line-height:1; user-select:none;
+  }
+  .article-box h3{margin:0 0 10px; font-size:16px; color:var(--ink-2);}
+  .article-box p{margin:0; font-size:15px;}
+  .article-box ol{margin:6px 0 0; padding-left:22px;}
+
+  /* Tables */
+  table{width:100%; border-collapse:collapse; margin:14px 0 20px; font-size:14px;}
+  th,td{border:1px solid var(--line); padding:10px 12px; text-align:left; vertical-align:top;}
+  th{background:var(--ink); color:var(--paper-2); font-family:"Noto Serif TC"; font-weight:700;}
+  tr:nth-child(even) td{background:#f6f1e6;}
+  tr:nth-child(odd) td{background:var(--paper-3);}
+
+  .conclude-pos{font-weight:700; color:var(--ink); background:linear-gradient(transparent 60%, rgba(169,131,47,0.35) 60%);}
+  .conclude-neg{font-weight:700; color:var(--seal);}
+
+  /* Element cards */
+  .elem{margin-bottom:22px;}
+  .elem h4{
+    font-size:15px; margin:0 0 8px; padding-left:12px; border-left:3px solid var(--brass);
+    color:var(--ink);
+  }
+  .elem p{margin:6px 0; font-size:14.5px;}
+
+  /* Doctrine / precedent cards */
+  .doc-card{
+    background:var(--paper-3); border:1px solid var(--line); border-radius:6px; padding:16px 20px; margin-bottom:14px;
+  }
+  .doc-card .who{font-family:"Noto Serif TC"; font-weight:700; color:var(--ink-2); margin-bottom:4px;}
+  .doc-card .src{font-size:12.5px; color:var(--ink-45); margin-top:6px;}
+  .note-flag{
+    display:inline-block; font-size:11.5px; color:var(--seal); border:1px solid var(--seal);
+    border-radius:12px; padding:1px 8px; margin-left:6px;
+  }
+
+  .placeholder{
+    border:2px dashed var(--brass); border-radius:8px; padding:36px 20px; text-align:center;
+    color:var(--ink-45); background:repeating-linear-gradient(135deg, var(--paper-3), var(--paper-3) 10px, #f2ead5 10px, #f2ead5 20px);
+  }
+  .placeholder .icon{font-size:26px; margin-bottom:8px;}
+  .placeholder .badge{
+    display:inline-block; margin-top:10px; font-size:12px; background:var(--brass); color:var(--paper-2);
+    padding:3px 12px; border-radius:14px;
+  }
+
+  /* Case card */
+  .case-card{
+    background:var(--paper-3); border-radius:8px; box-shadow:0 1px 2px rgba(0,0,0,0.06), 0 6px 18px rgba(22,35,59,0.06);
+    margin-bottom:26px; overflow:hidden;
+  }
+  .case-card .hd{background:var(--ink-2); color:var(--paper-2); padding:10px 20px; font-family:"Noto Serif TC"; font-weight:700;}
+  .case-card .bd{padding:18px 22px;}
+  .case-card .bd p{margin:8px 0; font-size:14.5px;}
+  .case-card .label{font-weight:700; color:var(--ink-2);}
+
+  .essay-card .hd{background:var(--ink);}
+
+  .relation-wrap{margin:18px 0 6px; text-align:center;}
+  .relation-note{font-size:12.5px; color:var(--ink-45); margin-top:6px;}
+
+  .fictional-tag{
+    display:inline-block; font-size:11.5px; color:var(--ink-2); border:1px solid var(--ink-2);
+    border-radius:12px; padding:1px 8px; margin-bottom:8px;
+  }
+
+  /* cheat sheet */
+  .cheat{
+    background:var(--ink); color:var(--paper-2); border-radius:10px; padding:28px 30px; position:relative; overflow:hidden;
+  }
+  .cheat .wm{
+    position:absolute; right:10px; bottom:-24px; font-family:"Noto Serif TC"; font-weight:900; font-size:150px;
+    opacity:0.08; line-height:1; color:var(--paper-2);
+  }
+  .cheat h3{margin-top:0; color:var(--paper-2); font-size:17px;}
+  .cheat ul{padding-left:20px; margin:10px 0;}
+  .cheat li{margin-bottom:8px; font-size:14.5px;}
+  .mnemonic{
+    background:var(--seal); color:var(--paper-2); display:inline-block; padding:10px 18px; border-radius:6px;
+    font-family:"Noto Serif TC"; font-weight:700; font-size:16px; margin-top:10px; letter-spacing:1px;
+  }
+
+  .link-note{border:1px dashed var(--ink-2); border-radius:8px; padding:14px 18px; font-size:13.5px; color:var(--ink-45); margin-top:30px;}
+
+  @media (max-width:980px){
+    nav.sidenav{display:none;}
+    .topnav{
+      display:flex; gap:8px; overflow-x:auto; position:sticky; top:0; background:var(--paper);
+      padding:12px 14px; border-bottom:1px solid var(--line); z-index:10; -webkit-overflow-scrolling:touch;
+    }
+    .topnav a{
+      flex-shrink:0; font-size:13px; padding:6px 14px; border-radius:16px; background:var(--paper-3);
+      border:1px solid var(--line); text-decoration:none; color:var(--ink); white-space:nowrap;
+    }
+    .topnav a.active{background:var(--ink-2); color:var(--paper-2); border-color:var(--ink-2);}
+    .topnav a.dim{color:var(--ink-45);}
+    main{padding:0 18px 60px;}
+    .layout{display:block;}
+    .cover{padding-top:30px;}
+    .seal-mark{position:static; margin-top:20px; transform:rotate(-8deg);}
+    .toc ol{columns:1;}
+    .cover h1{font-size:28px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topnav" id="topnav"></div>
+
+<div class="layout">
+  <nav class="sidenav" id="sidenav"></nav>
+  <main>
+
+    <section class="cover" id="cover">
+      <span class="eyebrow">民法第五編 繼承／第一章 遺產繼承人</span>
+      <h1>法定繼承人及其順序</h1>
+      <div class="sub">民法第 1138、1139、1140、1141、1144 條 教學講義</div>
+      <div class="cover-meta">
+        <span class="ver-badge">v1.0</span>
+        <span class="meta-date">建立日期：2026-08-18</span>
+        <img src="https://visitor-badge.laobi.icu/badge?page_id=mjib007.civil-law-interpretation.1138-1139-1140-1141-1144" alt="visitor badge" style="height:20px;vertical-align:middle;">
+      </div>
+      <div class="seal-mark">法定繼承</div>
+      <div class="toc">
+        <div>本講義目錄</div>
+        <ol>
+          <li><a href="#article">條文原文</a></li>
+          <li><a href="#structure">條文結構</a></li>
+          <li><a href="#elements">要件逐項解析</a></li>
+          <li><a href="#doctrine">學說見解</a></li>
+          <li><a href="#precedent">實務見解</a></li>
+          <li><a href="#case">教學案例</a></li>
+          <li><a href="#essay">申論練習題</a></li>
+          <li><a href="#cheat">速查卡</a></li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="article">
+      <h2>一、條文原文</h2>
+
+      <div class="article-box">
+        <span class="num">1138</span>
+        <h3>民法第 1138 條</h3>
+        <p>遺產繼承人，除配偶外，依左列順序定之：</p>
+        <ol>
+          <li>直系血親卑親屬。</li>
+          <li>父母。</li>
+          <li>兄弟姊妹。</li>
+          <li>祖父母。</li>
+        </ol>
+      </div>
+
+      <div class="article-box">
+        <span class="num">1139</span>
+        <h3>民法第 1139 條</h3>
+        <p>前條所定第一順序之繼承人，以親等近者為先。</p>
+      </div>
+
+      <div class="article-box">
+        <span class="num">1140</span>
+        <h3>民法第 1140 條</h3>
+        <p>第一千一百三十八條所定第一順序之繼承人，有於繼承開始前死亡或喪失繼承權者，由其直系血親卑親屬代位繼承其應繼分。</p>
+      </div>
+
+      <div class="article-box">
+        <span class="num">1141</span>
+        <h3>民法第 1141 條</h3>
+        <p>同一順序之繼承人有數人時，按人數平均繼承。但法律另有規定者，不在此限。</p>
+      </div>
+
+      <div class="article-box">
+        <span class="num">1144</span>
+        <h3>民法第 1144 條</h3>
+        <p>配偶有相互繼承遺產之權，其應繼分，依左列各款定之：</p>
+        <ol>
+          <li>與第一千一百三十八條所定第一順序之繼承人同為繼承時，其應繼分與他繼承人平均。</li>
+          <li>與第一千一百三十八條所定第二順序或第三順序之繼承人同為繼承時，其應繼分為遺產二分之一。</li>
+          <li>與第一千一百三十八條所定第四順序之繼承人同為繼承時，其應繼分為遺產三分之二。</li>
+          <li>無第一千一百三十八條所定第一順序至第四順序之繼承人時，其應繼分為遺產全部。</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="structure">
+      <h2>二、條文結構——法定繼承人架構總覽</h2>
+      <p>本組條文以「配偶為當然繼承人＋血親四順序」為骨架，並以親等近者優先、代位繼承、同順序均分三項規則調整具體分配結果。</p>
+      <table>
+        <tr><th>順序</th><th>繼承人</th><th>發動要件</th><th>特別規則</th></tr>
+        <tr><td>當然繼承人</td><td>配偶</td><td>婚姻關係於繼承開始時仍存續</td><td>不與血親繼承人排順序，應繼分依第1144條另定（§1144）</td></tr>
+        <tr><td>第一順序</td><td>直系血親卑親屬</td><td>與被繼承人有直系血親卑親屬關係</td><td>親等近者優先（§1139）；先死亡或喪失繼承權者由其直系血親卑親屬代位繼承（§1140）</td></tr>
+        <tr><td>第二順序</td><td>父母</td><td>無第一順序繼承人時始得繼承</td><td>同順序數人時平均繼承（§1141）</td></tr>
+        <tr><td>第三順序</td><td>兄弟姊妹</td><td>無第一、二順序繼承人時始得繼承</td><td>同上</td></tr>
+        <tr><td>第四順序</td><td>祖父母</td><td>無前三順序繼承人時始得繼承</td><td>同上</td></tr>
+      </table>
+      <p class="relation-note" style="text-align:left;">核心原則：<span class="conclude-pos">前順序排除後順序</span>——前順序有繼承人存在時，後順序即無繼承權；此與配偶之當然繼承地位並存不悖。</p>
+    </section>
+
+    <section id="elements">
+      <h2>三、要件逐項解析</h2>
+
+      <div class="elem">
+        <h4>（一）配偶之當然繼承地位（§1144）</h4>
+        <p>配偶不列入四順序之中，而是「當然」與有繼承權之各順序繼承人共同繼承，其應繼分隨同為繼承之順序不同而異：與第一順序同為繼承者平均分配；與第二、三順序同為繼承者取遺產二分之一；與第四順序同為繼承者取三分之二；若無任何順序繼承人存在，則配偶單獨取得遺產全部。</p>
+      </div>
+
+      <div class="elem">
+        <h4>（二）第一順序——直系血親卑親屬（§1138①）</h4>
+        <p>指子女、孫子女、曾孫子女等「從己身所出」之直系晚輩血親，不因婚生、非婚生、養子女、性別或出嫁與否而有差異，一律享有平等繼承權。</p>
+      </div>
+
+      <div class="elem">
+        <h4>（三）親等近者為先（§1139）</h4>
+        <p>同屬第一順序時，親等較近者優先繼承，親等較遠者原則上退居其後（例如子女健在時，孫子女不得與之並列繼承），以避免同一順序內親等落差過大所生之公平疑慮。</p>
+      </div>
+
+      <div class="elem">
+        <h4>（四）代位繼承（§1140）</h4>
+        <p>第一順序繼承人中，親等近者若於「繼承開始前死亡」或「喪失繼承權」，由其直系血親卑親屬代位繼承其應繼分，使原應由該親等近者取得之份額不致落空，亦不因此推移予次親等以外之其他順序。代位繼承人係基於自己固有之繼承權而繼承，並非繼承「被代位人」之權利。</p>
+      </div>
+
+      <div class="elem">
+        <h4>（五）同順序均分原則（§1141）</h4>
+        <p>同一順序繼承人有數人時，原則上按人數平均繼承，但法律另有規定者（如代位繼承份額之計算、養子女應繼分之特別規定等）從其規定，非一律機械式均分。</p>
+      </div>
+    </section>
+
+    <section id="doctrine">
+      <h2>四、學說見解</h2>
+      <div class="doc-card">
+        <div class="who">林秀雄</div>
+        <p>繼承人須以有權利能力為前提，即須於「繼承開始時」尚生存者為限，此即學說所稱之「同時存在原則」：若於繼承開始前已死亡，或繼承開始時尚未出生者，即無繼承資格；又判斷繼承人資格之有無應以繼承開始時為基準，是以二人同時死亡者，其相互間不生繼承關係。</p>
+        <div class="src">出處：林秀雄，〈遺產繼承人〉，《月旦法學教室》，第8期，頁47（轉引自公開整理資料，尚未經原始期刊逐字核實，建議進一步查證後正式引用）<span class="note-flag">待核實</span></div>
+      </div>
+    </section>
+
+    <section id="precedent">
+      <h2>五、實務見解</h2>
+      <p>本條（§1138）目前查無大法官解釋或憲法法庭判決，理由為：本條屬繼承人順序之強制規定，性質上為身分法定事項，較少有以此單獨聲請違憲審查之案例。搜尋亦未發現標明案號之最高法院判決可供引用。</p>
+      <div class="doc-card">
+        <div class="who">法務部行政函釋（補充參考，非法院判決）</div>
+        <p>代位繼承人依第1140條規定本於自己固有之繼承權提前繼承順序而為代位繼承，仍不失為第1138條第1款所稱之第一順序遺產繼承人，於遺產及贈與稅法第17條第1項第2款之適用上亦同此認定。</p>
+        <div class="src">性質：行政函釋，非司法裁判，函文字號搜尋結果未載明，僅供參考，正式引用前請自行查證函釋字號<span class="note-flag">待核實</span></div>
+      </div>
+    </section>
+
+    <section id="case">
+      <h2>六、教學案例</h2>
+      <div class="case-card">
+        <div class="hd">案例一：代位繼承之發生（教學虛構案例）</div>
+        <div class="bd">
+          <span class="fictional-tag">本案例為教學目的虛構，與真實人物、案件無關</span>
+          <p><span class="label">事實：</span>甲於2026年死亡，甲之配偶為丁，甲原有獨子乙，惟乙已於2024年先甲死亡，乙留有一子丙。甲別無其他直系血親卑親屬，甲之父母亦均已歿。</p>
+
+          <div class="relation-wrap">
+            <svg viewBox="0 0 640 340" width="100%" style="max-width:560px;">
+              <!-- 甲 top-left -->
+              <rect x="40" y="30" width="200" height="70" rx="6" fill="#fffdf8" stroke="#2c4a76" stroke-width="2"/>
+              <text x="140" y="58" text-anchor="middle" font-family="Noto Serif TC" font-weight="700" font-size="15" fill="#16233b">甲（被繼承人）</text>
+              <text x="140" y="78" text-anchor="middle" font-family="Noto Sans TC" font-size="12" fill="#5b6472">2026年死亡</text>
+
+              <!-- 丁 top-right -->
+              <rect x="400" y="30" width="200" height="70" rx="6" fill="#fffdf8" stroke="#2c4a76" stroke-width="2"/>
+              <text x="500" y="58" text-anchor="middle" font-family="Noto Serif TC" font-weight="700" font-size="15" fill="#16233b">丁（甲之配偶）</text>
+              <text x="500" y="78" text-anchor="middle" font-family="Noto Sans TC" font-size="12" fill="#5b6472">當然繼承人</text>
+
+              <!-- 乙 middle faded -->
+              <rect x="220" y="140" width="200" height="60" rx="6" fill="#f6f1e6" stroke="#ddd3bf" stroke-width="2"/>
+              <text x="320" y="165" text-anchor="middle" font-family="Noto Serif TC" font-weight="700" font-size="14" fill="#5b6472">乙（甲之子）</text>
+              <text x="320" y="184" text-anchor="middle" font-family="Noto Sans TC" font-size="11.5" fill="#5b6472">2024年先甲死亡</text>
+
+              <!-- 丙 bottom red -->
+              <rect x="220" y="250" width="200" height="70" rx="6" fill="#fffdf8" stroke="#9c2b3a" stroke-width="2"/>
+              <text x="320" y="278" text-anchor="middle" font-family="Noto Serif TC" font-weight="700" font-size="15" fill="#9c2b3a">丙（乙之子）</text>
+              <text x="320" y="297" text-anchor="middle" font-family="Noto Sans TC" font-size="11.5" fill="#9c2b3a">爭點：得否代位繼承</text>
+
+              <!-- arrows -->
+              <line x1="140" y1="100" x2="140" y2="150" stroke="#2c4a76" stroke-width="2" marker-end="url(#arrow)"/>
+              <text x="150" y="128" font-size="11" fill="#2c4a76">父子</text>
+
+              <line x1="240" y1="65" x2="400" y2="65" stroke="#2c4a76" stroke-width="2"/>
+              <text x="320" y="58" text-anchor="middle" font-size="11" fill="#2c4a76">夫妻</text>
+
+              <path d="M 300 200 Q 300 225 300 250" fill="none" stroke="#a9832f" stroke-width="2" stroke-dasharray="5 5" marker-end="url(#arrow-brass)"/>
+              <text x="320" y="228" text-anchor="middle" font-size="11" fill="#a9832f">代位繼承</text>
+
+              <defs>
+                <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+                  <path d="M0,0 L8,4 L0,8 z" fill="#2c4a76"/>
+                </marker>
+                <marker id="arrow-brass" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+                  <path d="M0,0 L8,4 L0,8 z" fill="#a9832f"/>
+                </marker>
+              </defs>
+            </svg>
+            <div class="relation-note">爭點核心：乙先於甲死亡，丙得否本於§1140代位繼承乙原應取得之應繼分？</div>
+          </div>
+
+          <p><span class="label">分析：</span>甲死亡時，第一順序繼承人本應為乙，惟乙已於繼承開始前death，依第1140條，由乙之直系血親卑親屬丙代位繼承乙原應繼分。丙係基於自己固有之繼承權而為繼承，非繼承乙之權利，故丙仍屬第1138條第1款之第一順序繼承人。又依第1144條第1款，配偶丁與第一順序繼承人（此處為代位繼承人丙）同為繼承，其應繼分與丙平均。</p>
+          <p><span class="label">結論：</span><span class="conclude-pos">丙得依第1140條代位繼承，本案遺產由丁、丙各繼承二分之一。</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="essay">
+      <h2>七、申論練習題與模擬解答</h2>
+      <span class="fictional-tag">以下題目與解答由 AI 依使用者授權自行擬定，僅供學習參考</span>
+
+      <div class="case-card essay-card">
+        <div class="hd">題目一</div>
+        <div class="bd">
+          <p>甲男與乙女為夫妻，育有子女丙、丁二人。丙婚後生有一子戊，其後丙於甲死亡前一年因意外身故。甲之父母均已歿。甲死亡後遺有財產一千二百萬元，且未留有遺囑。請問：本案何人有繼承權？各人應繼分比例為何？（25分）</p>
+          <p><span class="label">模擬解答：</span></p>
+          <p>依民法第1138條第1款規定，甲之直系血親卑親屬為第一順序繼承人，本案原應為丙、丁二人。惟丙已於甲死亡前一年身故，依第1140條規定，其於繼承開始前死亡，由其直系血親卑親屬即戊代位繼承丙原應取得之應繼分，戊係基於自己固有之繼承權而為繼承，非繼承丙之權利，仍屬第1138條第1款所定之第一順序繼承人。</p>
+          <p>又依第1139條，同屬第一順序之繼承人以親等近者為先，丁與代位繼承人戊均列入計算，先依人數計算原應繼分：丙、丁二人本應各得二分之一，戊代位丙之應繼分，故戊取得原丙應得之二分之一，丁取得二分之一。</p>
+          <p>再依第1144條第1款規定，配偶乙與第一順序繼承人（丁、戊）同為繼承，其應繼分與他繼承人平均，即乙、丁、戊三人平均繼承，各得三分之一。</p>
+          <p><span class="conclude-pos">結論：本案遺產由乙、丁、戊三人共同繼承，每人應繼分各為三分之一，即各得新臺幣四百萬元。</span></p>
+        </div>
+      </div>
+
+      <div class="case-card essay-card">
+        <div class="hd">題目二</div>
+        <div class="bd">
+          <p>承上題事實，若丙並非因意外身故，而係於甲死亡前主動向法院聲明拋棄繼承權，其後甲死亡。試問戊得否依第1140條代位繼承丙之應繼分？並說明理由。（15分）</p>
+          <p><span class="label">模擬解答：</span></p>
+          <p>依第1140條規定，代位繼承之發生要件限於第一順序繼承人「於繼承開始前死亡」或「喪失繼承權」二者，而拋棄繼承權者，其效果係使拋棄人溯及繼承開始時不成為繼承人，與「喪失繼承權」（原具繼承人資格而嗣後因法定事由被剝奪，如民法第1145條所定情形）性質不同，拋棄繼承並非第1140條所稱之代位繼承事由。</p>
+          <p>丙生前主動拋棄繼承權，其性質為拋棄而非死亡或喪失繼承權，戊自不得依第1140條代位繼承丙原應繼分。</p>
+          <p><span class="conclude-neg">結論：戊不得代位繼承，本案第一順序繼承人僅餘丁一人，遺產應由配偶乙與丁依第1144條第1款平均繼承，各得二分之一。</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="cheat">
+      <h2>八、速查卡</h2>
+      <div class="cheat">
+        <div class="wm">1138</div>
+        <h3>法定繼承人及其順序 速記重點</h3>
+        <ul>
+          <li>配偶當然繼承，不入四順序，應繼分依§1144另計</li>
+          <li>血親四順序：卑親屬 → 父母 → 兄弟姊妹 → 祖父母，前順序排除後順序</li>
+          <li>第一順序內：親等近者為先（§1139）</li>
+          <li>代位繼承僅限「死亡」或「喪失繼承權」，拋棄繼承不適用（§1140）</li>
+          <li>同順序數人：原則平均繼承（§1141）</li>
+        </ul>
+        <div class="mnemonic">配偶當然，血親排序；近先遠後，死喪代位</div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+  const sections = [
+    {id:'cover', label:'封面'},
+    {id:'article', label:'條文原文'},
+    {id:'structure', label:'條文結構'},
+    {id:'elements', label:'要件解析'},
+    {id:'doctrine', label:'學說見解'},
+    {id:'precedent', label:'實務見解'},
+    {id:'case', label:'教學案例'},
+    {id:'essay', label:'申論練習題'},
+    {id:'cheat', label:'速查卡'}
+  ];
+
+  function buildNav(container, tag){
+    sections.forEach(s=>{
+      const a = document.createElement('a');
+      a.href = '#'+s.id;
+      a.textContent = s.label;
+      a.dataset.id = s.id;
+      a.addEventListener('click', e=>{
+        e.preventDefault();
+        document.getElementById(s.id).scrollIntoView({behavior:'smooth'});
+      });
+      container.appendChild(a);
+    });
+  }
+  buildNav(document.getElementById('sidenav'), 'side');
+  buildNav(document.getElementById('topnav'), 'top');
+
+  const allLinks = document.querySelectorAll('nav.sidenav a, .topnav a');
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        const id = entry.target.id;
+        allLinks.forEach(l=>{
+          l.classList.toggle('active', l.dataset.id === id);
+        });
+      }
+    });
+  }, {rootMargin:'-20% 0px -70% 0px', threshold:0});
+
+  sections.forEach(s=>{
+    const el = document.getElementById(s.id);
+    if(el) observer.observe(el);
+  });
+</script>
+
+</body>
+</html>

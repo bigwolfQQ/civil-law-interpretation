@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>民法第1189條｜遺囑方式之種類</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16233b;
+    --indigo:#2c4a76;
+    --paper-outer:#f3ede0;
+    --paper-content:#fbf8f1;
+    --paper-card:#fffdf8;
+    --seal:#9c2b3a;
+    --brass:#a9832f;
+    --border:#ddd3bf;
+    --ink-45:rgba(22,35,59,.45);
+    --stripe:#f6f1e6;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper-outer);
+    color:var(--ink);
+    font-family:"Noto Sans TC",sans-serif;
+    line-height:1.75;
+  }
+  h1,h2,h3,h4,.eyebrow,.article-num,.seal-mark{font-family:"Noto Serif TC",serif;}
+  a{color:var(--indigo);}
+  .layout{display:flex;max-width:1240px;margin:0 auto;}
+  /* Sidebar */
+  nav.sidebar{
+    width:240px;flex:0 0 240px;position:sticky;top:0;align-self:flex-start;
+    height:100vh;overflow-y:auto;padding:28px 18px;background:var(--paper-outer);
+  }
+  nav.sidebar .nav-title{font-size:12px;letter-spacing:.1em;color:var(--ink-45);margin-bottom:14px;}
+  nav.sidebar ul{list-style:none;margin:0;padding:0;}
+  nav.sidebar li{margin-bottom:4px;}
+  nav.sidebar a{
+    display:block;padding:8px 10px;border-radius:6px;text-decoration:none;
+    color:var(--ink);font-size:14px;border-left:3px solid transparent;
+  }
+  nav.sidebar a.placeholder-link{color:var(--ink-45);}
+  nav.sidebar a.active{background:var(--paper-card);border-left-color:var(--seal);font-weight:700;color:var(--indigo);}
+  main{flex:1;min-width:0;background:var(--paper-content);box-shadow:-4px 0 18px rgba(22,35,59,.05);padding:0 0 60px;}
+  .container{max-width:840px;margin:0 auto;padding:0 32px;}
+
+  /* Mobile top nav */
+  .mobile-nav{display:none;position:sticky;top:0;z-index:50;background:var(--paper-outer);
+    border-bottom:1px solid var(--border);padding:10px 0;overflow-x:auto;white-space:nowrap;}
+  .mobile-nav .chips{display:inline-flex;gap:8px;padding:0 14px;}
+  .mobile-nav a{
+    display:inline-block;padding:7px 14px;border-radius:999px;background:var(--paper-card);
+    border:1px solid var(--border);color:var(--ink);text-decoration:none;font-size:13px;flex:0 0 auto;
+  }
+  .mobile-nav a.active{background:var(--indigo);color:var(--paper-content);border-color:var(--indigo);}
+  .mobile-nav a.placeholder-link{color:var(--ink-45);}
+
+  /* Cover */
+  .cover{padding:64px 32px 40px;position:relative;}
+  .eyebrow{display:inline-block;font-size:13px;letter-spacing:.08em;color:var(--indigo);
+    border:1px solid var(--indigo);padding:4px 12px;border-radius:999px;margin-bottom:22px;}
+  .cover h1{font-size:clamp(30px,5vw,44px);font-weight:900;margin:0 0 10px;color:var(--ink);}
+  .cover .subtitle{font-size:17px;color:#5b6472;margin:0 0 18px;max-width:560px;}
+  .seal-mark{
+    position:absolute;top:46px;right:32px;width:96px;height:96px;border:3px solid var(--seal);
+    border-radius:10px;transform:rotate(8deg);display:flex;align-items:center;justify-content:center;
+    color:var(--seal);writing-mode:vertical-rl;font-size:22px;font-weight:700;letter-spacing:.15em;
+    background:rgba(156,43,58,.04);
+  }
+  .cover-meta{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:8px;}
+  .cover-meta span{
+    font-size:12.5px;padding:4px 11px;border-radius:6px;border:1px solid var(--indigo);color:var(--indigo);
+    background:rgba(44,74,118,.05);
+  }
+  .ver-badge{border-color:var(--seal) !important;color:var(--seal) !important;background:rgba(156,43,58,.05) !important;}
+  .cover-meta img{vertical-align:middle;height:20px;}
+  .cover-toc{margin-top:30px;border-top:1px dashed var(--border);padding-top:18px;}
+  .cover-toc a{display:inline-block;margin:4px 10px 4px 0;font-size:13.5px;color:var(--ink);text-decoration:none;border-bottom:1px dotted var(--ink-45);}
+
+  section{padding:36px 0;border-top:1px solid var(--border);}
+  section:first-of-type{border-top:none;}
+  .section-title{display:flex;align-items:baseline;gap:10px;margin:0 0 20px;}
+  .section-title .num{color:var(--brass);font-family:"Noto Serif TC",serif;font-weight:700;}
+  .section-title h2{font-size:23px;margin:0;color:var(--ink);}
+
+  /* article box */
+  .article-box{
+    position:relative;background:var(--paper-card);border-left:3px solid var(--indigo);
+    border-radius:4px;padding:18px 22px;margin:16px 0;box-shadow:0 1px 3px rgba(22,35,59,.06);
+    overflow:hidden;
+  }
+  .article-box .watermark{
+    position:absolute;right:8px;bottom:-14px;font-size:96px;font-weight:900;color:var(--ink);
+    opacity:.06;font-family:"Noto Serif TC",serif;line-height:1;pointer-events:none;
+  }
+  .article-box .article-num{color:var(--indigo);font-weight:700;font-size:15px;margin-bottom:6px;}
+  .article-box p{margin:6px 0;position:relative;z-index:1;}
+
+  table{width:100%;border-collapse:collapse;margin:18px 0;background:var(--paper-card);}
+  th,td{border:1px solid var(--border);padding:10px 12px;font-size:14px;text-align:left;vertical-align:top;}
+  th{background:var(--ink);color:var(--paper-content);font-weight:700;}
+  tr:nth-child(even) td{background:var(--stripe);}
+
+  .conclusion-yes{font-weight:700;color:var(--ink);background:linear-gradient(transparent 65%, rgba(169,131,47,.35) 65%);}
+  .conclusion-no{font-weight:700;color:var(--seal);}
+
+  .placeholder{
+    border:2px dashed var(--border);border-radius:10px;padding:34px 20px;text-align:center;
+    background:repeating-linear-gradient(135deg,rgba(169,131,47,.05),rgba(169,131,47,.05) 10px,transparent 10px,transparent 20px);
+    color:var(--ink-45);margin:18px 0;
+  }
+  .placeholder .icon{font-size:26px;margin-bottom:8px;}
+  .placeholder .badge{
+    display:inline-block;margin-top:10px;font-size:12px;padding:3px 12px;border-radius:999px;
+    border:1px solid var(--brass);color:var(--brass);
+  }
+
+  .note-box{border:1px solid var(--seal);background:rgba(156,43,58,.05);border-radius:8px;padding:14px 18px;margin:16px 0;font-size:14px;color:var(--ink);}
+  .note-box strong{color:var(--seal);}
+
+  .case-card,.exam-card{
+    background:var(--paper-card);border-radius:8px;margin:20px 0;
+    box-shadow:0 1px 2px rgba(22,35,59,.08),0 6px 18px rgba(22,35,59,.06);overflow:hidden;
+  }
+  .case-card .card-header{background:var(--indigo);color:var(--paper-content);padding:12px 20px;font-weight:700;font-family:"Noto Serif TC",serif;}
+  .exam-card .card-header{background:var(--ink);color:var(--paper-content);padding:12px 20px;font-weight:700;font-family:"Noto Serif TC",serif;}
+  .case-card .card-body,.exam-card .card-body{padding:18px 22px;}
+  .tag-fictional{display:inline-block;font-size:11.5px;background:rgba(255,255,255,.18);padding:2px 10px;border-radius:999px;margin-left:10px;font-weight:400;}
+
+  .relation-wrap{margin:20px 0;text-align:center;}
+  .relation-note{color:var(--ink-45);font-size:13px;margin-top:8px;}
+
+  .quickcard{background:var(--ink);color:var(--paper-content);border-radius:10px;padding:28px 26px;position:relative;overflow:hidden;margin-top:10px;}
+  .quickcard .deco{position:absolute;right:6px;bottom:-30px;font-size:150px;font-weight:900;opacity:.08;font-family:"Noto Serif TC",serif;}
+  .quickcard h3{margin-top:0;color:var(--paper-content);font-size:18px;}
+  .mnemonic{background:var(--seal);color:#fff;padding:10px 16px;border-radius:6px;margin:8px 0;font-family:"Noto Serif TC",serif;font-size:15px;position:relative;z-index:1;}
+  .quickcard ul{position:relative;z-index:1;padding-left:20px;font-size:14px;}
+
+  .link-note{border:2px dashed var(--border);border-radius:8px;padding:16px 20px;margin-top:20px;font-size:14px;}
+
+  footer.page-footer{text-align:center;color:var(--ink-45);font-size:12.5px;padding:30px 0 10px;}
+
+  @media (max-width:980px){
+    nav.sidebar{display:none;}
+    .mobile-nav{display:block;}
+    .layout{display:block;}
+    main{box-shadow:none;}
+    .container{padding:0 18px;}
+    .seal-mark{position:static;transform:rotate(4deg);margin-bottom:18px;writing-mode:horizontal-tb;width:auto;height:auto;padding:8px 14px;display:inline-flex;}
+    .cover{padding:34px 18px 20px;}
+  }
+</style>
+</head>
+<body>
+<div class="mobile-nav">
+  <div class="chips" id="mobile-chips"></div>
+</div>
+
+<div class="layout">
+  <nav class="sidebar">
+    <div class="nav-title">目錄 CONTENTS</div>
+    <ul id="sidebar-list"></ul>
+  </nav>
+
+  <main>
+    <div class="container">
+
+      <!-- 封面 -->
+      <section class="cover" id="cover" style="border-top:none;">
+        <span class="eyebrow">民法・繼承編・第三章 遺囑・第二節 方式（§1189–§1198）</span>
+        <div class="seal-mark">要式行為</div>
+        <h1>民法第1189條</h1>
+        <div class="subtitle">遺囑方式之種類——自書、公證、密封、代筆、口授，五種法定要式一次掌握</div>
+        <div class="cover-meta">
+          <span class="ver-badge">v1.0</span>
+          <span>建立／最後更新：2026-08-18</span>
+          <img src="https://visitor-badge.laobi.icu/badge?page_id=mjib007.civil-law-interpretation.1189-1197" alt="訪客計數">
+        </div>
+        <div class="cover-toc" id="cover-toc"></div>
+      </section>
+
+      <!-- 條文原文 -->
+      <section id="sec-text">
+        <div class="section-title"><span class="num">二</span><h2>條文原文</h2></div>
+
+        <div class="article-box">
+          <div class="article-num">民法第1189條</div>
+          <p>遺囑應依左列方式之一為之：</p>
+          <p>一、自書遺囑。<br>二、公證遺囑。<br>三、密封遺囑。<br>四、代筆遺囑。<br>五、口授遺囑。</p>
+          <div class="watermark">1189</div>
+        </div>
+
+        <div class="article-box">
+          <div class="article-num">民法第73條（關聯條文）</div>
+          <p>法律行為，不依法定方式者，無效。但法律另有規定者，不在此限。</p>
+          <div class="watermark">73</div>
+        </div>
+
+        <div class="article-box">
+          <div class="article-num">民法第1190條　自書遺囑</div>
+          <p>自書遺囑者，應自書遺囑全文，記明年、月、日，並親自簽名；如有增減、塗改，應註明增減、塗改之處所及字數，另行簽名。</p>
+          <div class="watermark">1190</div>
+        </div>
+
+        <div class="article-box">
+          <div class="article-num">民法第1191條　公證遺囑</div>
+          <p>公證遺囑，應指定二人以上之見證人，在公證人前口述遺囑意旨，由公證人筆記、宣讀、講解，經遺囑人認可後，記明年、月、日，由公證人、見證人及遺囑人同行簽名，遺囑人不能簽名者，由公證人將其事由記明，使按指印代之。</p>
+          <p>前項所定公證人之職務，在無公證人之地，得由法院書記官行之，僑民在中華民國領事駐在地為遺囑時，得由領事行之。</p>
+          <div class="watermark">1191</div>
+        </div>
+
+        <div class="article-box">
+          <div class="article-num">民法第1192條　密封遺囑</div>
+          <p>密封遺囑，應於遺囑上簽名後，將其密封，於封縫處簽名，指定二人以上之見證人，向公證人提出，陳述其為自己之遺囑，如非本人自寫，並陳述繕寫人之姓名、住所，由公證人於封面記明該遺囑提出之年、月、日及遺囑人所為之陳述，與遺囑人及見證人同行簽名。</p>
+          <p>前條第二項之規定，於前項情形準用之。</p>
+          <div class="watermark">1192</div>
+        </div>
+
+        <div class="article-box">
+          <div class="article-num">民法第1193條　密封遺囑之轉換</div>
+          <p>密封遺囑，不具備前條所定之方式，而具備第一千一百九十條所定自書遺囑之方式者，有自書遺囑之效力。</p>
+          <div class="watermark">1193</div>
+        </div>
+
+        <div class="article-box">
+          <div class="article-num">民法第1194條　代筆遺囑</div>
+          <p>代筆遺囑，由遺囑人指定三人以上之見證人，由遺囑人口述遺囑意旨，使見證人中之一人筆記、宣讀、講解，經遺囑人認可後，記明年、月、日及代筆人之姓名，由見證人全體及遺囑人同行簽名，遺囑人不能簽名者，應按指印代之。</p>
+          <div class="watermark">1194</div>
+        </div>
+
+        <div class="article-box">
+          <div class="article-num">民法第1195條　口授遺囑</div>
+          <p>遺囑人因生命危急或其他特殊情形，不能依其他方式為遺囑者，得依左列方式之一為口授遺囑：</p>
+          <p>一、由遺囑人指定二人以上之見證人，並口授遺囑意旨，由見證人中之一人，將該遺囑意旨，據實作成筆記，並記明年、月、日，與其他見證人同行簽名。</p>
+          <p>二、由遺囑人指定二人以上之見證人，並口述遺囑意旨、遺囑人姓名及年、月、日，由見證人全體口述遺囑之為真正及見證人姓名，全部予以錄音，將錄音帶當場密封，並記明年、月、日，由見證人全體在封縫處同行簽名。</p>
+          <div class="watermark">1195</div>
+        </div>
+
+        <div class="article-box">
+          <div class="article-num">民法第1196條　口授遺囑之失效</div>
+          <p>口授遺囑，自遺囑人能依其他方式為遺囑之時起，經過三個月而失其效力。</p>
+          <div class="watermark">1196</div>
+        </div>
+
+        <div class="article-box">
+          <div class="article-num">民法第1197條　口授遺囑之真偽認定</div>
+          <p>口授遺囑，應由見證人中之一人或利害關係人，於為遺囑人死亡後三個月內，提經親屬會議認定其真偽，對於親屬會議之認定如有異議，得聲請法院判定之。</p>
+          <div class="watermark">1197</div>
+        </div>
+      </section>
+
+      <!-- 條文結構 -->
+      <section id="sec-structure">
+        <div class="section-title"><span class="num">三</span><h2>條文結構——五種方式要件總覽</h2></div>
+        <p>第1189條本身是遺囑方式的「目錄性」條文，僅列舉五種方式，具體要件分散於第1190～1197條。五種方式並非任意排列，而是依「介入公權力／第三人程度」由私密到公開遞增（自書 → 密封 → 公證），再加上兩種「代替本人親自完成」的特殊方式（代筆、口授）。</p>
+        <table>
+          <thead>
+            <tr><th>方式</th><th>見證人</th><th>公證人／公權力介入</th><th>核心動作</th><th>簽名／確認方式</th><th>特殊限制</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>自書遺囑<br>§1190</td><td>不需要</td><td>不需要</td><td>親自書寫全文</td><td>親自簽名；增減塗改須另行簽名</td><td>不會語言、不能書寫者不能用</td></tr>
+            <tr><td>公證遺囑<br>§1191</td><td>2人以上</td><td>公證人（或法院書記官／領事）</td><td>遺囑人口述，公證人筆記、宣讀、講解</td><td>公證人、見證人、遺囑人同行簽名；不能簽名者按指印</td><td>須遺囑人親自到場口述</td></tr>
+            <tr><td>密封遺囑<br>§1192、§1193</td><td>2人以上</td><td>公證人</td><td>遺囑先寫好密封，向公證人陳述</td><td>封縫簽名＋公證人、見證人、遺囑人同行簽名</td><td>方式欠缺可轉換為自書遺囑（§1193）</td></tr>
+            <tr><td>代筆遺囑<br>§1194</td><td>3人以上</td><td>不需要</td><td>遺囑人口述，見證人一人筆記、宣讀、講解</td><td>見證人全體及遺囑人同行簽名；不能簽名者按指印</td><td>須具備言語口述能力（實務見解）</td></tr>
+            <tr><td>口授遺囑<br>§1195–1197</td><td>2人以上</td><td>不需要（事後由親屬會議或法院認定真偽）</td><td>筆記式或錄音式二擇一</td><td>見證人同行簽名／封縫簽名</td><td>限「生命危急或特殊情形」；3個月內失效或須送認定</td></tr>
+          </tbody>
+        </table>
+        <p>第73條為總則性的方式違反效果規定：<span class="conclusion-no">遺囑違反第1189條所定方式者，原則上無效</span>，此為要式行為之基本後果，除非法律另有特別規定（如第1193條之轉換）。</p>
+      </section>
+
+      <!-- 要件逐項解析 -->
+      <section id="sec-elements">
+        <div class="section-title"><span class="num">四</span><h2>各款逐項解析</h2></div>
+
+        <h3>（一）第1189條之定性：限制列舉，不容創設</h3>
+        <p>第1189條所列五款屬於<strong>限制列舉（窮盡列舉）</strong>，遺囑人不得自行創設條文以外的方式（例如僅以錄影、僅以電子郵件表示遺願），否則依第73條原則上無效。這是遺囑作為「死後生效、遺囑人已不能到場澄清」之單獨行為，法律特別要求高度要式性，以防止偽造、變造與事後爭議。</p>
+
+        <h3>（二）自書遺囑（§1190）——最單純但風險最集中</h3>
+        <p>要件：①自書全文（須遺囑人親筆，不得由他人代寫或以打字列印）、②記明年月日、③親自簽名、④增減塗改須註明處所字數並另行簽名。因不需見證人或公證人介入，真偽爭議最容易發生在「筆跡是否為本人所寫」與「日期是否記載完整」。</p>
+
+        <h3>（三）公證遺囑（§1191）——公權力介入最深</h3>
+        <p>要件：①二人以上見證人、②遺囑人在公證人前口述遺囑意旨、③公證人筆記、宣讀、講解、④遺囑人認可、⑤記明年月日、⑥公證人、見證人、遺囑人同行簽名。無公證人之地得由法院書記官代行，僑民在領事駐在地得由領事代行。</p>
+
+        <h3>（四）密封遺囑（§1192、§1193）——私密性與轉換機制</h3>
+        <p>密封遺囑的特色在於「遺囑內容不必公開」，公證人僅確認遺囑人陳述其為自己的遺囑，並不知悉內容。第1193條設有<strong>轉換規定</strong>：若密封遺囑因程序欠缺（例如未向公證人陳述、見證人不足）而不符第1192條方式，但若同時符合第1190條自書遺囑之要件（自書全文、記明年月日、親自簽名），則轉換發生自書遺囑之效力，而非逕認無效——這是要式主義下少見的「方式轉換」例外規定。</p>
+
+        <h3>（五）代筆遺囑（§1194）——需求最高但爭議也最多</h3>
+        <p>要件：①三人以上見證人（人數高於公證、密封遺囑之二人）、②遺囑人口述遺囑意旨、③見證人中一人筆記、宣讀、講解、④遺囑人認可、⑤記明年月日及代筆人姓名、⑥見證人全體及遺囑人同行簽名（不能簽名者按指印）。實務上最常見的爭議集中在「口述」是否以言語為必要，以及見證人是否全程在場（詳見下方實務見解）。</p>
+
+        <h3>（六）口授遺囑（§1195–1197）——最後手段、效力最不穩定</h3>
+        <p>僅限「生命危急或其他特殊情形，不能依其他方式為遺囑」時方得使用，屬於補充性、應急性的方式。分為筆記口授（第1項）與錄音口授（第2項）兩種。特色是效力具有<strong>時間限制</strong>：一旦遺囑人能夠恢復以其他方式立遺囑，經過三個月口授遺囑即失效（§1196）；且需事後送親屬會議或法院認定真偽（§1197），與其他四種方式「作成時即確定效力」的性質不同。</p>
+      </section>
+
+      <!-- 學說見解 -->
+      <section id="sec-doctrine">
+        <div class="section-title"><span class="num">五</span><h2>學說見解</h2></div>
+        <div class="placeholder">
+          <div class="icon">📖</div>
+          <div>尚未加入學說見解內容</div>
+          <div class="badge">待補充</div>
+        </div>
+      </section>
+
+      <!-- 實務見解 -->
+      <section id="sec-practice">
+        <div class="section-title"><span class="num">六</span><h2>實務見解</h2></div>
+        <div class="note-box">
+          <strong>核實提醒：</strong>以下判決摘要係經網路搜尋整理，來源多為法律事務所網站之節錄轉引，<strong>尚未經司法院裁判書查詢系統原文核實</strong>。正式引用前，建議至 <a href="https://judgment.judicial.gov.tw/" target="_blank">司法院裁判書查詢系統</a> 輸入案號查閱全文確認。
+        </div>
+
+        <table>
+          <thead><tr><th>案號</th><th>爭點</th><th>見解要旨（改寫整理）</th></tr></thead>
+          <tbody>
+            <tr><td>最高法院85年度台上字第1672號判決</td><td>見證人是否須全程在場</td><td>見證人須自始至終親自在場見聞遺囑作成之整個過程，並得為證明及同行簽名，方符合見證人之實質意義，非僅形式上到場或事後簽名即可。</td></tr>
+            <tr><td>最高法院102年度台上字第98號判決</td><td>公證遺囑見證人中途離席</td><td>公證遺囑之見證人若有一人於過程中一度離去，僅餘一人在場，即屬方式有所欠缺，不能認已符合法定要件。</td></tr>
+            <tr><td>最高法院97年度台上字第847號判決</td><td>見證人指定主體</td><td>見證人應由遺囑人親自指定，若係由他人代為安排、召集，可能影響見證制度之中立性與可信性，進而動搖遺囑效力。</td></tr>
+            <tr><td>最高法院97年度台抗字第645號裁定</td><td>「口述」是否得以非語言方式替代</td><td>喪失語言能力（如啞者或有語言障礙者），因無法以言語表達，不具備「口述」之能力，不能以代筆遺囑方式立遺囑。</td></tr>
+            <tr><td>最高法院111年台上字第1372號判決</td><td>點頭、搖頭、簡單應答是否構成口述</td><td>遺囑人若僅以點頭、搖頭或單一語助詞回應，而未以具體言語陳述其意思內容，不符合第1194條「口述遺囑意旨」之要件。</td></tr>
+            <tr><td>最高法院105年度台簡上字第36號判決</td><td>筆記、宣讀、講解是否須同一見證人為之</td><td>代筆遺囑之筆記、宣讀、講解三項行為的立法目的在於使見證人得以互相印證內容真實，並非要求三者必須由同一見證人完成，見證人間得分工進行，不因此增加法律所無之限制。</td></tr>
+            <tr><td>臺灣高等法院96年度重上字第627號判決</td><td>見證人「在場」之實質意義</td><td>見證人若未全程參與遺囑作成過程，即難以確認遺囑內容是否與遺囑人真意一致，不具備見證應有之證明效力；見證重點不在形式上在場，而在於實際參與並理解整個遺囑形成過程。</td></tr>
+          </tbody>
+        </table>
+
+        <p style="margin-top:18px;"><strong>大法官解釋／憲法法庭判決：</strong>本條（§1189）目前查無大法官解釋或憲法法庭判決，理由為：本條屬私法上要式行為之規範，尚未有人以此聲請違憲審查。</p>
+      </section>
+
+      <!-- 教學案例 -->
+      <section id="sec-cases">
+        <div class="section-title"><span class="num">七</span><h2>教學案例</h2></div>
+        <p style="color:var(--ink-45);font-size:13.5px;">以下案例為教學用途虛構，人物、地名、情節均非真實事件，僅用於輔助理解條文要件之適用。</p>
+
+        <div class="case-card">
+          <div class="card-header">案例一：自書遺囑的塗改風波<span class="tag-fictional">教學用途・虛構</span></div>
+          <div class="card-body">
+            <p><strong>事實：</strong>陳老先生罹病後親筆寫下遺囑全文，記載將名下房產留給長子，並記明年月日、簽名。半年後陳老先生自行以原子筆將「長子」二字劃去，改寫「長子與次子平分」，但未在旁註明塗改處所與字數，也未另行簽名。陳老先生過世後，長子主張塗改部分無效，應以原文為準；次子則主張全份遺囑（含塗改）均屬有效。</p>
+            <p><strong>爭點：</strong>自書遺囑塗改未依第1190條後段規定註明處所字數並另行簽名，其效力應如何認定？是整份遺囑無效，還是僅塗改部分無效、原文仍然有效？</p>
+            <p><strong>分析：</strong>第1190條要求自書遺囑本體具備「自書全文、記明年月日、親自簽名」三項要件，塗改的特別規定（註明處所字數並另行簽名）是為了確保「事後變更」確實出於遺囑人本意，避免遭他人偽造塗改。陳老先生原始遺囑全文、日期、簽名均已具備，符合第1190條前段要件，本體有效；但其後所為之塗改，因未依法註明塗改處所、字數並另行簽名，該部分變更不生效力，依塗改前之原文為準。</p>
+            <p><strong>結論：</strong><span class="conclusion-yes">原始遺囑（房產留給長子）有效</span>；<span class="conclusion-no">未依法定方式所為之塗改不生變更效力</span>。</p>
+          </div>
+        </div>
+
+        <div class="case-card">
+          <div class="card-header">案例二：代筆遺囑的見證人風波<span class="tag-fictional">教學用途・虛構</span></div>
+          <div class="card-body">
+            <p><strong>事實：</strong>林女士病危住院，委由友人甲、乙、丙三人擔任見證人，由甲負責代筆。遺囑製作當日，林女士口述將財產遺贈給照顧她多年的看護丁，經甲筆記、宣讀、講解後，林女士點頭表示認可並按指印。惟丙因臨時有事，於甲宣讀完畢、林女士按指印前即先行離開，事後才回來補簽名。林女士的兒子戊主張遺囑因見證人丙未全程在場而無效。</p>
+
+            <div class="relation-wrap">
+              <svg viewBox="0 0 640 300" width="100%" style="max-width:560px;">
+                <!-- 上方左右：本人 / 受遺贈人 -->
+                <rect x="30" y="20" width="170" height="70" rx="6" fill="#fffdf8" stroke="#2c4a76" stroke-width="2"/>
+                <text x="115" y="46" text-anchor="middle" font-family="Noto Serif TC" font-size="15" font-weight="700" fill="#16233b">林女士</text>
+                <text x="115" y="66" text-anchor="middle" font-family="Noto Sans TC" font-size="12" fill="#5b6472">遺囑人</text>
+
+                <rect x="440" y="20" width="170" height="70" rx="6" fill="#fffdf8" stroke="#2c4a76" stroke-width="2"/>
+                <text x="525" y="46" text-anchor="middle" font-family="Noto Serif TC" font-size="15" font-weight="700" fill="#16233b">看護丁</text>
+                <text x="525" y="66" text-anchor="middle" font-family="Noto Sans TC" font-size="12" fill="#5b6472">受遺贈人</text>
+
+                <!-- 中間：代筆人甲 -->
+                <rect x="235" y="130" width="170" height="70" rx="6" fill="#fffdf8" stroke="#2c4a76" stroke-width="2"/>
+                <text x="320" y="156" text-anchor="middle" font-family="Noto Serif TC" font-size="15" font-weight="700" fill="#16233b">友人甲</text>
+                <text x="320" y="176" text-anchor="middle" font-family="Noto Sans TC" font-size="12" fill="#5b6472">代筆人兼見證人</text>
+
+                <!-- 爭點角色：見證人丙 -->
+                <rect x="30" y="220" width="170" height="70" rx="6" fill="#fffdf8" stroke="#9c2b3a" stroke-width="2"/>
+                <text x="115" y="246" text-anchor="middle" font-family="Noto Serif TC" font-size="15" font-weight="700" fill="#16233b">見證人丙</text>
+                <text x="115" y="264" text-anchor="middle" font-family="Noto Sans TC" font-size="11" fill="#9c2b3a">按指印前中途離場</text>
+
+                <rect x="440" y="220" width="170" height="70" rx="6" fill="#fffdf8" stroke="#2c4a76" stroke-width="2"/>
+                <text x="525" y="246" text-anchor="middle" font-family="Noto Serif TC" font-size="15" font-weight="700" fill="#16233b">見證人乙</text>
+                <text x="525" y="264" text-anchor="middle" font-family="Noto Sans TC" font-size="12" fill="#5b6472">全程在場</text>
+
+                <!-- 箭頭：林女士 -> 甲 委任口述 -->
+                <line x1="150" y1="90" x2="290" y2="130" stroke="#2c4a76" stroke-width="2" marker-end="url(#arrow)"/>
+                <text x="175" y="115" font-family="Noto Sans TC" font-size="11" fill="#2c4a76">口述遺囑意旨</text>
+
+                <!-- 甲 -> 丁 遺贈內容（虛線弧線，爭點：效力歸屬） -->
+                <path d="M400 150 Q 520 140 500 90" fill="none" stroke="#a9832f" stroke-width="2" stroke-dasharray="5 5"/>
+                <text x="430" y="105" font-family="Noto Sans TC" font-size="11" fill="#a9832f">遺贈內容（效力待定）</text>
+
+                <!-- 甲 -> 丙 -->
+                <line x1="290" y1="195" x2="150" y2="220" stroke="#9c2b3a" stroke-width="2" marker-end="url(#arrowRed)"/>
+                <text x="165" y="215" font-family="Noto Sans TC" font-size="11" fill="#9c2b3a">見證（未全程）</text>
+
+                <!-- 甲 -> 乙 -->
+                <line x1="360" y1="195" x2="500" y2="220" stroke="#2c4a76" stroke-width="2" marker-end="url(#arrow)"/>
+                <text x="380" y="215" font-family="Noto Sans TC" font-size="11" fill="#2c4a76">見證（全程）</text>
+
+                <defs>
+                  <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#2c4a76"/></marker>
+                  <marker id="arrowRed" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#9c2b3a"/></marker>
+                </defs>
+              </svg>
+              <p class="relation-note">爭點核心：見證人丙於林女士按指印（認可完成）前即離場，是否仍具備「全程在場見聞」之見證資格，將直接影響遺囑全體效力。</p>
+            </div>
+
+            <p><strong>爭點：</strong>三人見證人中若有一人未全程在場，僅事後補簽名，代筆遺囑是否仍屬有效？</p>
+            <p><strong>分析：</strong>依實務見解（最高法院85年度台上字第1672號判決意旨），見證人須自始至終親自在場見聞遺囑作成之全部過程，方符合見證人制度確保遺囑真意之立法目的。本案丙於林女士按指印（即遺囑人「認可」之最後確認動作）完成前即先行離場，並未見聞遺囑作成的完整過程，事後補簽名並不能治癒此一程序瑕疵。而第1194條明文要求「三人以上見證人」，若丙之見證資格因未全程在場而不生見證效力，則實質上僅餘甲、乙二人合格見證人，不符法定人數要件。</p>
+            <p><strong>結論：</strong>依第1194條、第73條規定，<span class="conclusion-no">系爭代筆遺囑因見證人人數不足法定要件，應屬無效</span>。</p>
+          </div>
+        </div>
+
+        <div class="case-card">
+          <div class="card-header">案例三：密封遺囑的轉換契機<span class="tag-fictional">教學用途・虛構</span></div>
+          <div class="card-body">
+            <p><strong>事實：</strong>王先生自行書寫遺囑全文，記明年月日並親自簽名，隨後將遺囑裝入信封密封，並在封縫處簽名，但因為身體不便，並未親自前往公證處向公證人陳述、也未指定見證人到場。王先生過世後，繼承人間對此份遺囑效力產生爭執。</p>
+            <p><strong>爭點：</strong>密封遺囑因未踐行向公證人陳述、未有見證人在場等程序，明顯不符第1192條所定方式，是否即當然無效？</p>
+            <p><strong>分析：</strong>第1193條設有特別轉換規定：密封遺囑不具備第1192條方式，但若具備第1190條自書遺囑之方式者，仍發生自書遺囑之效力。本案王先生已自書遺囑全文、記明年月日並親自簽名，完全符合第1190條要件，僅欠缺密封遺囑所要求的公證人陳述與見證人程序。</p>
+            <p><strong>結論：</strong>雖不符密封遺囑之方式，依第1193條規定，<span class="conclusion-yes">轉換為自書遺囑，仍屬有效</span>。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 申論題 -->
+      <section id="sec-exam">
+        <div class="section-title"><span class="num">八</span><h2>申論練習題與模擬解答</h2></div>
+        <p style="color:var(--ink-45);font-size:13.5px;">以下題目由 AI 依課堂教學需要自行出題，非取自特定考試或教師提供之題庫，僅供練習參考。</p>
+
+        <div class="exam-card">
+          <div class="card-header">申論題一<span class="tag-fictional">AI 出題</span></div>
+          <div class="card-body">
+            <p><strong>題目：</strong>甲罹患重病住院，某日精神狀況尚可，找來乙、丙、丁三名友人到病房，欲以代筆遺囑處分其財產。甲以微弱但可辨識之言語口述財產分配意旨，由乙筆記、宣讀、講解，甲聽畢點頭並自行簽名。惟過程中丁因接聽電話一度步出病房約五分鐘，待甲簽名完畢後始返回一同簽名。試問：此份代筆遺囑是否有效？</p>
+            <p><strong>模擬解答：</strong></p>
+            <p>按民法第1194條規定，代筆遺囑須由遺囑人指定三人以上之見證人，由遺囑人口述遺囑意旨，使見證人中之一人筆記、宣讀、講解，經遺囑人認可後，記明年、月、日及代筆人之姓名，由見證人全體及遺囑人同行簽名。查甲以微弱但可辨識之言語口述其財產分配意旨，並非僅以點頭、搖頭等非語言方式表意，應認符合「口述」之要件。</p>
+            <p>惟就見證人丁而言，實務見解認為見證人須自始至終親自在場見聞遺囑作成之全部過程，方得認具備見證資格（最高法院85年度台上字第1672號判決意旨參照）。本案丁於甲簽名完畢前一度離開病房，未能見聞甲簽名之過程，縱其返回後補行簽名，仍難認已符合見證人全程在場見聞之要求。丁之見證資格既有瑕疵，實質上僅餘乙、丙二人具備合格見證人資格，未達第1194條所要求之三人以上，其方式即有欠缺。</p>
+            <p>依民法第73條規定，法律行為不依法定方式者，無效。本件代筆遺囑因見證人人數不足法定要件，應屬無效。</p>
+          </div>
+        </div>
+
+        <div class="exam-card">
+          <div class="card-header">申論題二<span class="tag-fictional">AI 出題</span></div>
+          <div class="card-body">
+            <p><strong>題目：</strong>戊因車禍生命垂危送醫，情況緊急，無暇依自書、公證、密封或代筆方式立遺囑，遂口頭指定己、庚二人為見證人，並口述遺囑意旨，由己當場以手機全程錄音，錄音中戊、己、庚均口述確認遺囑內容真正，並各自報上姓名，錄音檔案隨即密封保存，惟因情況緊急，眾人忘記在密封處簽名。三個月後戊奇蹟康復並已能自行處理事務，但未再另立新遺囑，半年後戊因其他疾病過世。試問：戊所留下之口授遺囑是否仍具有效力？</p>
+            <p><strong>模擬解答：</strong></p>
+            <p>按民法第1195條第2款規定，口授遺囑得以錄音方式為之，其要件為：由遺囑人指定二人以上之見證人，並口述遺囑意旨、遺囑人姓名及年、月、日，由見證人全體口述遺囑之為真正及見證人姓名，全部予以錄音，將錄音帶當場密封，並記明年、月、日，由見證人全體在封縫處同行簽名。查戊指定己、庚二人為見證人，並全程錄音記載遺囑意旨、真正性確認及姓名，程序上大致齊備，惟眾人於密封處漏未簽名，此部分方式確有欠缺，依第73條規定，原則上應認方式不完整而使遺囑之效力受影響。</p>
+            <p>惟縱使假設此一程序瑕疵得不影響口授遺囑成立，仍須進一步審究第1196條之失效規定：口授遺囑，自遺囑人能依其他方式為遺囑之時起，經過三個月而失其效力。查戊於立口授遺囑後三個月即已康復，能夠依自書、公證等其他方式重新立遺囑，然其後半年始過世，已逾第1196條所定三個月期間，且未再另立新遺囑。</p>
+            <p>是以，戊所留下之口授遺囑，一方面因封縫處未經見證人簽名而方式有欠缺，另一方面縱不論方式瑕疵，亦因戊康復後逾三個月未依其他方式重新立遺囑而依第1196條規定失其效力。故本件口授遺囑應認為無效，戊之遺產應依法定繼承處理。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 速查卡 -->
+      <section id="sec-quickcard">
+        <div class="section-title"><span class="num">九</span><h2>速查卡</h2></div>
+        <div class="quickcard">
+          <div class="deco">速</div>
+          <h3>五種遺囑方式・見證人人數速記</h3>
+          <div class="mnemonic">自書零證，公密二證，代筆三證</div>
+          <div class="mnemonic">口授危急，筆錄二證，三月失靈</div>
+          <ul>
+            <li><strong>自書</strong>：親寫、記期、親簽——增刪塗改另簽名</li>
+            <li><strong>公證</strong>：二證見公證，筆宣講認簽</li>
+            <li><strong>密封</strong>：先簽後封縫再簽，公證陳述二證同簽；不符方式可轉自書（§1193）</li>
+            <li><strong>代筆</strong>：三證口述筆宣講，認可簽印，全程在場缺一不可</li>
+            <li><strong>口授</strong>：命危無他法，筆記或錄音，三月未轉正式方式即失效（§1196）</li>
+          </ul>
+        </div>
+      </section>
+
+      <footer class="page-footer">民法第1189條 教學講義　v1.0　僅供教學參考，實際案件請諮詢專業律師</footer>
+    </div>
+  </main>
+</div>
+
+<script>
+  const sections = [
+    {id:'cover', label:'封面'},
+    {id:'sec-text', label:'二、條文原文'},
+    {id:'sec-structure', label:'三、條文結構'},
+    {id:'sec-elements', label:'四、要件解析'},
+    {id:'sec-doctrine', label:'五、學說見解', placeholder:true},
+    {id:'sec-practice', label:'六、實務見解'},
+    {id:'sec-cases', label:'七、教學案例'},
+    {id:'sec-exam', label:'八、申論題'},
+    {id:'sec-quickcard', label:'九、速查卡'}
+  ];
+
+  const sidebarList = document.getElementById('sidebar-list');
+  const mobileChips = document.getElementById('mobile-chips');
+  const coverToc = document.getElementById('cover-toc');
+
+  sections.forEach(s=>{
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.href = '#'+s.id; a.textContent = s.label; a.dataset.target = s.id;
+    if(s.placeholder) a.classList.add('placeholder-link');
+    li.appendChild(a); sidebarList.appendChild(li);
+
+    const ma = document.createElement('a');
+    ma.href = '#'+s.id; ma.textContent = s.label; ma.dataset.target = s.id;
+    if(s.placeholder) ma.classList.add('placeholder-link');
+    mobileChips.appendChild(ma);
+
+    if(s.id !== 'cover'){
+      const ca = document.createElement('a');
+      ca.href = '#'+s.id; ca.textContent = s.label;
+      coverToc.appendChild(ca);
+    }
+  });
+
+  document.querySelectorAll('nav.sidebar a, .mobile-nav a').forEach(a=>{
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      document.getElementById(this.dataset.target).scrollIntoView({behavior:'smooth'});
+    });
+  });
+
+  const allNavLinks = document.querySelectorAll('nav.sidebar a, .mobile-nav a');
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        const id = entry.target.id;
+        allNavLinks.forEach(l=>l.classList.toggle('active', l.dataset.target === id));
+        const activeChip = document.querySelector('.mobile-nav a.active');
+        if(activeChip) activeChip.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
+      }
+    });
+  }, {rootMargin:'-40% 0px -50% 0px', threshold:0});
+
+  sections.forEach(s=>{
+    const el = document.getElementById(s.id);
+    if(el) observer.observe(el);
+  });
+</script>
+</body>
+</html>

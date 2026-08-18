@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>民法第862條｜抵押權效力之範圍（一）：從物、從權利及附加物</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16233b;
+    --ink-2:#2c4a76;
+    --paper-outer:#f3ede0;
+    --paper-inner:#fbf8f1;
+    --paper-card:#fffdf8;
+    --seal:#9c2b3a;
+    --brass:#a9832f;
+    --line:#ddd3bf;
+    --ink-45:rgba(22,35,59,.45);
+    --row-even:#f6f1e6;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper-outer);
+    color:var(--ink);
+    font-family:"Noto Sans TC",sans-serif;
+    line-height:1.8;
+  }
+  h1,h2,h3,.serif{font-family:"Noto Serif TC",serif;}
+  a{color:var(--ink-2);}
+
+  /* ===== Layout ===== */
+  .layout{display:flex;max-width:1180px;margin:0 auto;}
+  nav.sidenav{
+    width:240px;flex-shrink:0;position:sticky;top:0;align-self:flex-start;
+    height:100vh;overflow-y:auto;padding:28px 18px;background:var(--paper-outer);
+    border-right:1px solid var(--line);
+  }
+  nav.sidenav .nav-title{font-size:12px;letter-spacing:.15em;color:var(--ink-45);margin-bottom:14px;}
+  nav.sidenav a{
+    display:block;padding:8px 10px;margin-bottom:2px;border-radius:4px;
+    font-size:14px;color:var(--ink);text-decoration:none;border-left:3px solid transparent;
+  }
+  nav.sidenav a.active{background:#efe6d2;border-left-color:var(--brass);font-weight:700;color:var(--ink-2);}
+  nav.sidenav a.dim{color:var(--ink-45);}
+
+  main{flex:1;background:var(--paper-inner);box-shadow:-6px 0 18px -12px rgba(22,35,59,.25);min-width:0;}
+  section{padding:46px 56px;border-bottom:1px dashed var(--line);}
+  section:last-of-type{border-bottom:none;}
+
+  /* ===== Mobile top nav ===== */
+  .topnav{display:none;position:sticky;top:0;z-index:20;background:var(--paper-outer);
+    border-bottom:1px solid var(--line);padding:10px 12px;overflow-x:auto;white-space:nowrap;}
+  .topnav a{display:inline-block;padding:6px 12px;margin-right:6px;border-radius:999px;
+    background:var(--paper-card);border:1px solid var(--line);font-size:13px;color:var(--ink);text-decoration:none;}
+  .topnav a.active{background:var(--ink-2);color:#fbf8f1;border-color:var(--ink-2);}
+  .topnav a.dim{color:var(--ink-45);}
+
+  /* ===== Cover ===== */
+  .cover{padding:64px 56px 48px;position:relative;border-bottom:1px dashed var(--line);}
+  .eyebrow{font-size:13px;letter-spacing:.2em;color:var(--brass);font-weight:700;margin-bottom:10px;}
+  .cover h1{font-size:34px;font-weight:900;margin:0 0 8px;color:var(--ink);}
+  .cover .subtitle{font-size:16px;color:var(--ink-2);margin-bottom:16px;}
+  .cover-meta{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:26px;}
+  .ver-badge{border:1px solid var(--seal);color:var(--seal);font-size:12px;padding:3px 10px;border-radius:999px;font-weight:700;}
+  .meta-date{border:1px solid var(--ink-2);color:var(--ink-2);font-size:12px;padding:3px 10px;border-radius:999px;}
+  .visitor-badge img{display:block;height:20px;}
+  .seal-mark{
+    position:absolute;top:48px;right:56px;width:96px;height:96px;border:3px solid var(--seal);
+    border-radius:8px;display:flex;align-items:center;justify-content:center;
+    transform:rotate(8deg);color:var(--seal);
+  }
+  .seal-mark span{writing-mode:vertical-rl;font-family:"Noto Serif TC",serif;font-weight:900;font-size:20px;letter-spacing:.15em;}
+  .toc{margin-top:8px;display:grid;grid-template-columns:repeat(3,1fr);gap:6px 20px;}
+  .toc a{font-size:14px;color:var(--ink-2);text-decoration:none;}
+
+  /* ===== Article box ===== */
+  .article-box{position:relative;background:var(--paper-card);border-left:3px solid var(--ink-2);
+    padding:22px 26px;margin:14px 0;border-radius:2px;overflow:hidden;box-shadow:0 1px 3px rgba(22,35,59,.08);}
+  .article-box .watermark{position:absolute;right:14px;bottom:-14px;font-family:"Noto Serif TC",serif;
+    font-weight:900;font-size:110px;color:var(--ink);opacity:.06;line-height:1;pointer-events:none;}
+  .article-box .num{font-weight:700;color:var(--ink-2);margin-right:6px;}
+  .article-box p{margin:6px 0;position:relative;z-index:1;}
+
+  /* ===== Headings ===== */
+  h2.sec-title{font-size:22px;font-weight:900;margin:0 0 20px;border-left:4px solid var(--brass);padding-left:14px;}
+  h3.sub-title{font-size:17px;font-weight:700;margin:26px 0 10px;border-left:3px solid var(--brass);padding-left:10px;}
+
+  /* ===== Table ===== */
+  table{width:100%;border-collapse:collapse;margin:14px 0 24px;font-size:14.5px;}
+  thead th{background:var(--ink);color:var(--paper-inner);padding:10px 12px;text-align:left;font-weight:700;}
+  tbody td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top;}
+  tbody tr:nth-child(even){background:var(--row-even);}
+  .yes{color:var(--ink);font-weight:700;background:linear-gradient(transparent 60%, #e9d9a3 60%);}
+  .no{color:var(--seal);font-weight:700;}
+
+  /* ===== Cards ===== */
+  .case-card,.essay-card{background:var(--paper-card);border-radius:6px;margin:18px 0;
+    box-shadow:0 1px 2px rgba(22,35,59,.12), 0 8px 20px -14px rgba(22,35,59,.35);overflow:hidden;}
+  .case-card .card-head{background:var(--ink-2);color:#fbf8f1;padding:12px 20px;font-weight:700;font-family:"Noto Serif TC",serif;}
+  .essay-card .card-head{background:var(--ink);color:#fbf8f1;padding:12px 20px;font-weight:700;font-family:"Noto Serif TC",serif;}
+  .case-card .card-body,.essay-card .card-body{padding:18px 20px;}
+  .case-card .tag{display:inline-block;font-size:11px;background:#efe6d2;color:var(--ink-2);
+    padding:2px 8px;border-radius:999px;margin-bottom:8px;}
+  .conclusion-yes{font-weight:700;color:var(--ink);background:linear-gradient(transparent 62%, #e9d9a3 62%);padding:0 2px;}
+  .conclusion-no{font-weight:700;color:var(--seal);}
+
+  /* ===== Placeholder ===== */
+  .placeholder{border:2px dashed var(--brass);background:repeating-linear-gradient(135deg,#f6f1e6,#f6f1e6 10px,#f1e9d6 10px,#f1e9d6 20px);
+    border-radius:8px;padding:30px;text-align:center;color:var(--ink-45);}
+  .placeholder .badge{display:inline-block;margin-top:8px;font-size:12px;border:1px solid var(--brass);color:var(--brass);
+    padding:2px 10px;border-radius:999px;}
+
+  /* ===== Source note ===== */
+  .source-note{margin-top:10px;font-size:12.5px;color:var(--ink-45);border-left:2px solid var(--line);padding-left:10px;}
+
+  /* ===== Quick card ===== */
+  .quickcard{background:var(--ink);color:#fbf8f1;border-radius:10px;padding:30px 34px;position:relative;overflow:hidden;}
+  .quickcard .deco{position:absolute;right:10px;bottom:-30px;font-size:170px;font-family:"Noto Serif TC",serif;
+    font-weight:900;opacity:.08;line-height:1;}
+  .quickcard h3{margin-top:0;color:#f3ede0;font-size:18px;}
+  .quickcard ul{padding-left:20px;margin:10px 0;}
+  .mnemonic{background:var(--seal);color:#fff5f2;padding:10px 16px;border-radius:6px;display:inline-block;
+    font-family:"Noto Serif TC",serif;font-weight:700;margin-top:10px;letter-spacing:.05em;}
+
+  .link-note{border:1px dashed var(--line);border-radius:8px;padding:16px 20px;margin-top:20px;font-size:14px;color:var(--ink-45);}
+
+  @media (max-width:980px){
+    nav.sidenav{display:none;}
+    .topnav{display:block;}
+    section{padding:32px 20px;}
+    .cover{padding:36px 20px 28px;}
+    .cover h1{font-size:26px;}
+    .seal-mark{display:none;}
+    .toc{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topnav" id="topnav"></div>
+
+<div class="layout">
+  <nav class="sidenav" id="sidenav">
+    <div class="nav-title">章節導覽</div>
+    <a href="#art">一、條文原文</a>
+    <a href="#structure">二、條文結構</a>
+    <a href="#elements">三、要件解析</a>
+    <a href="#doctrine">四、學說見解</a>
+    <a href="#practice">五、實務見解</a>
+    <a href="#cases">六、教學案例</a>
+    <a href="#essay">七、申論練習題</a>
+    <a href="#quickcard">八、速查卡</a>
+  </nav>
+
+  <main>
+    <div class="cover">
+      <div class="eyebrow">民法第三編 物權・第六章 抵押權</div>
+      <h1>民法第862條</h1>
+      <div class="subtitle">抵押權效力之範圍（一）：從物、從權利及附加物</div>
+      <div class="cover-meta">
+        <span class="ver-badge">v1.0</span>
+        <span class="meta-date">2026-08-18</span>
+        <span class="visitor-badge"><img src="https://visitor-badge.laobi.icu/badge?page_id=mjib007.civil-law-interpretation.862" alt="訪客數"></span>
+      </div>
+      <div class="seal-mark"><span>及於從物</span></div>
+      <div class="toc">
+        <a href="#art">一、條文原文</a>
+        <a href="#structure">二、條文結構</a>
+        <a href="#elements">三、要件解析</a>
+        <a href="#doctrine">四、學說見解</a>
+        <a href="#practice">五、實務見解</a>
+        <a href="#cases">六、教學案例</a>
+        <a href="#essay">七、申論練習題</a>
+        <a href="#quickcard">八、速查卡</a>
+      </div>
+    </div>
+
+    <!-- 一、條文原文 -->
+    <section id="art">
+      <h2 class="sec-title">一、條文原文</h2>
+      <div class="article-box">
+        <div class="watermark">862</div>
+        <p><span class="num">Ⅰ</span>抵押權之效力，及於抵押物之從物與從權利。</p>
+        <p><span class="num">Ⅱ</span>第三人於抵押權設定前，就從物取得之權利，不受前項規定之影響。</p>
+        <p><span class="num">Ⅲ</span>以建築物為抵押者，其附加於該建築物而不具獨立性之部分，亦為抵押權效力所及。但其附加部分為獨立之物，如係於抵押權設定後附加者，準用第八百七十七條之規定。</p>
+      </div>
+
+      <h3 class="sub-title">關聯條文</h3>
+      <div class="article-box">
+        <div class="watermark">68</div>
+        <p><span class="num">Ⅰ</span>非主物之成分，常助主物之效用，而同屬於一人者，為從物。但交易上有特別習慣者，依其習慣。</p>
+        <p><span class="num">Ⅱ</span>主物之處分，及於從物。</p>
+      </div>
+      <div class="article-box">
+        <div class="watermark">877</div>
+        <p><span class="num">Ⅰ</span>土地所有人於設定抵押權後，在抵押之土地上營造建築物者，抵押權人於必要時，得於強制執行程序中聲請法院將其建築物與土地併付拍賣。但對於建築物之價金，無優先受清償之權。</p>
+        <p><span class="num">Ⅱ</span>前項規定，於第八百六十六條第二項及第三項之情形，如抵押之不動產上，有該權利人或經其同意使用之人之建築物者，準用之。</p>
+      </div>
+      <div class="article-box">
+        <div class="watermark">861</div>
+        <p><span class="num">Ⅰ</span>抵押權所擔保者為原債權、利息、遲延利息、違約金及實行抵押權之費用。但契約另有約定者，不在此限。</p>
+        <p><span class="num">Ⅱ</span>得優先受償之利息、遲延利息、一年或不及一年定期給付之違約金債權，以於抵押權人實行抵押權聲請強制執行前五年內發生及於強制執行程序中發生者為限。</p>
+      </div>
+      <div class="article-box">
+        <div class="watermark">862-1</div>
+        <p><span class="num">Ⅰ</span>抵押物滅失之殘餘物，仍為抵押權效力所及。抵押物之成分非依物之通常用法而分離成為獨立之動產者，亦同。</p>
+        <p><span class="num">Ⅱ</span>前項情形，抵押權人得請求占有該殘餘物或動產，並依質權之規定，行使其權利。</p>
+      </div>
+    </section>
+
+    <!-- 二、條文結構 -->
+    <section id="structure">
+      <h2 class="sec-title">二、條文結構總覽</h2>
+      <table>
+        <thead>
+          <tr><th>項次</th><th>規範內容</th><th>核心關鍵詞</th><th>功能定位</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>第1項</td><td>抵押權效力及於從物與從權利</td><td>從物・從權利</td><td>效力擴張原則</td></tr>
+          <tr><td>第2項</td><td>第三人於設定前就從物已取得之權利不受影響</td><td>設定前・第三人</td><td>原則之限制（保護交易安全）</td></tr>
+          <tr><td>第3項本文</td><td>建物不具獨立性之附加部分，為抵押權效力所及</td><td>不具獨立性・附加部分</td><td>效力擴張原則（建物特別規定）</td></tr>
+          <tr><td>第3項但書</td><td>附加部分為獨立之物，且於設定後附加者，準用第877條</td><td>獨立之物・設定後・準用877</td><td>例外處理（併付拍賣、無優先受償）</td></tr>
+        </tbody>
+      </table>
+      <p>本條可理解為「一體兩面」的規範架構：第1、2項處理<strong>從物與從權利</strong>的效力範圍與例外；第3項則專就<strong>建築物附加部分</strong>另設規範，並依附加部分是否具獨立性、是否於設定後附加，區分出三種法律效果（附合、附屬、準用877條）。</p>
+    </section>
+
+    <!-- 三、要件解析 -->
+    <section id="elements">
+      <h2 class="sec-title">三、要件逐項解析</h2>
+
+      <h3 class="sub-title">（一）從物與從權利（第1項、第2項）</h3>
+      <table>
+        <thead><tr><th>要件</th><th>內容說明</th><th>法源依據</th></tr></thead>
+        <tbody>
+          <tr><td>從物之定義</td><td>非主物之成分、常助主物之效用、與主物同屬一人，交易上無特別習慣者</td><td>民法第68條第1項</td></tr>
+          <tr><td>是否須於抵押權設定時已存在</td><td>不以設定時已存在為限，嗣後取得亦可（依主從物經濟結合關係客觀判斷）</td><td>學說見解，見本頁「學說見解」章節</td></tr>
+          <tr><td>從物登記與否</td><td>從物如為不動產，無論登記時是否一併登記，均為抵押權效力所及</td><td>條文文義解釋</td></tr>
+          <tr><td>第三人保護</td><td>抵押權設定「前」，第三人已就從物取得之權利，不受抵押權效力擴張影響</td><td>民法第862條第2項</td></tr>
+          <tr><td>從權利舉例</td><td>如地役權等隨主物存在之權利，與從物性質類似，同受本條規範</td><td>條文第1項</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="sub-title">（二）建築物附加部分（第3項）——三分類型</h3>
+      <table>
+        <thead><tr><th>類型</th><th>要件特徵</th><th>法律效果</th></tr></thead>
+        <tbody>
+          <tr><td class="yes">附合之物</td><td>不具獨立性，且非抵押人所建（如無獨立門戶之增建層）</td><td>依附合原理，抵押物所有權當然擴張，抵押權效力隨之及於該部分</td></tr>
+          <tr><td class="yes">附屬物</td><td>不具構造上及使用上獨立性，或雖具構造上獨立性但欠缺使用上獨立性，且為抵押人所建</td><td>民法第862條第3項本文明文：為抵押權效力所及</td></tr>
+          <tr><td class="no">獨立物（非從物）</td><td>具構造上與使用上獨立性，非常助原建物效用之從物</td><td>非抵押權效力所及；如為抵押人於設定後加建，僅得依第3項但書準用第877條聲請併付拍賣，但無優先受償權</td></tr>
+        </tbody>
+      </table>
+      <p>值得注意者，若獨立之附加部分同時符合「從物」要件（常助原建物之效用、交易上無特別習慣），仍應依第1項規定為抵押權效力所及，此與單純「不具獨立性之附加物」（第3項本文）在規範依據上有所不同，惟結論同樣及於抵押權效力範圍——差異僅在「準用877條」之適用與否，取決於該部分是否為「獨立之物」。</p>
+    </section>
+
+    <!-- 四、學說見解 -->
+    <section id="doctrine">
+      <h2 class="sec-title">四、學說見解</h2>
+      <table>
+        <thead><tr><th>學者</th><th>見解摘要</th><th>出處</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>謝在全</td>
+            <td>主物與從物之關係，應依客觀之兩物經濟結合關係而定；為確保抵押權之擔保效果，從物不以抵押權設定時已存在為限，嗣後附加者亦得為抵押權效力所及。</td>
+            <td>《民法物權論（中）》，2007年6月修訂四版，頁427-428、430</td>
+          </tr>
+          <tr>
+            <td>王澤鑑</td>
+            <td>（來源列於參考文獻，惟轉引資料未附具體頁碼與見解摘要，待原書核實後補入）</td>
+            <td>《民法物權》，2009年7月</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="source-note">
+        以上兩則見解轉引自補習班判解彙編（【高點法律專班】法觀人・判解集NO.10），屬非官方網站之節錄轉引，尚未經原始文獻逐字核實，建議正式引用前自行查對謝在全、王澤鑑原書之對應頁碼與完整論述。
+      </div>
+    </section>
+
+    <!-- 五、實務見解 -->
+    <section id="practice">
+      <h2 class="sec-title">五、實務見解</h2>
+
+      <h3 class="sub-title">（一）最高法院判決／裁定</h3>
+      <table>
+        <thead><tr><th>字號</th><th>爭點</th><th>要旨</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>最高法院100年度台上字第4號判決</td>
+            <td>附屬建物之判斷標準</td>
+            <td>判斷是否為附屬建物，除構造上／使用上獨立性外，亦應審酌該建物與原建築間是否具有「物理上之依附關係」。</td>
+          </tr>
+          <tr>
+            <td>最高法院88年度台上字第485號判決</td>
+            <td>增建部分之附合效果</td>
+            <td>增建部分若不具構造上及使用上之獨立性，與原建物作為一體使用，則原建物所有權範圍因而擴張，以原建物為擔保之抵押權範圍亦隨之擴張。</td>
+          </tr>
+          <tr>
+            <td>最高法院99年度台抗字第633號裁定</td>
+            <td>從物之認定標準</td>
+            <td>「苟其常助原有建築物之效用，而交易上無特別習慣者，即屬從物，而為抵押權之效力所及」。</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="source-note">
+        以上三則判決要旨轉引自補習班判解彙編（非司法院原始網站），尚未經司法院裁判書查詢系統（<a href="https://judgment.judicial.gov.tw/" target="_blank">judgment.judicial.gov.tw</a>）原文核對。建議輸入上列案號自行查閱全文後再正式引用。
+      </div>
+
+      <h3 class="sub-title">（二）大法官解釋／憲法法庭判決</h3>
+      <div class="placeholder">
+        <div>⚖️</div>
+        <p>本條（§862）目前查無大法官解釋或憲法法庭判決。理由為：本條屬私法財產權配置之任意／技術性規定，性質上未涉及基本權侵害之違憲審查議題，尚無人以此聲請釋憲。</p>
+        <span class="badge">查無資料</span>
+      </div>
+    </section>
+
+    <!-- 六、教學案例 -->
+    <section id="cases">
+      <h2 class="sec-title">六、教學案例</h2>
+      <p class="source-note">以下案例為教學用途虛構，非真實裁判事實，僅用以協助理解條文要件之涵攝過程。</p>
+
+      <div class="case-card">
+        <div class="card-head">案例一：頂樓加蓋倉庫（從物・不具獨立性附加物）</div>
+        <div class="card-body">
+          <span class="tag">教學用途・虛構案例</span>
+          <p><strong>事實：</strong>甲以其所有A透天厝向銀行乙設定抵押權並登記。抵押權設定後，甲於A屋頂樓加蓋一間鐵皮倉庫，倉庫僅能由A屋內部樓梯進出，無獨立對外出入口，平日用以堆放家具雜物。嗣甲未能清償借款，乙聲請拍賣抵押物，甲主張倉庫係抵押權設定後始加蓋，非抵押權效力所及。</p>
+          <p><strong>分析：</strong>依民法第68條第1項，倉庫是否為從物，應審究其是否常助主物（A屋）之效用、與主物同屬一人，且交易上無特別習慣。本案倉庫由內部樓梯進出、無獨立出入口，欠缺使用上之獨立性，屬「不具獨立性之附加部分」，依民法第862條第3項本文，無論於設定前後附加，均為抵押權效力所及，不生準用第877條之問題。</p>
+          <p><strong>結論：</strong><span class="conclusion-yes">倉庫為抵押權效力所及，乙得就倉庫與A屋一併聲請拍賣，並就全部賣得價金優先受償。</span></p>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="card-head">案例二：設定後加蓋之獨立車庫（獨立之物・準用877條）</div>
+        <div class="card-body">
+          <span class="tag">教學用途・虛構案例</span>
+          <p><strong>事實：</strong>丙以其所有B透天厝向銀行丁設定抵押權。抵押權設定後，丙於B屋旁另行搭建一間具獨立門戶、可單獨對外出入之RC車庫，供出租第三人使用，與B屋無共通牆壁或內部通道。丙屆期未清償，丁聲請拍賣抵押物，並主張車庫應併入拍賣範圍。</p>
+          <p><strong>分析：</strong>車庫具構造上與使用上之獨立性，可獨立對外出入且供第三人單獨使用，非常助B屋效用之從物，亦非「不具獨立性之附加部分」，故非民法第862條第1項或第3項本文效力所及。惟其係於抵押權設定「後」附加，依民法第862條第3項但書，準用第877條規定：丁於必要時得聲請法院將車庫與B屋併付拍賣，但就車庫拍賣所得價金，無優先受清償之權。</p>
+          <p><strong>結論：</strong><span class="conclusion-no">車庫本身非抵押權效力所及，丁僅得聲請併付拍賣，就車庫價金部分無優先受償權，仍應與其他普通債權人依比例受償。</span></p>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="card-head">案例三：設定前已出租之機器（從物・第三人權利之保護）</div>
+        <div class="card-body">
+          <span class="tag">教學用途・虛構案例</span>
+          <p><strong>事實：</strong>戊經營工廠，廠房內置有生產用機器一台（常助廠房生產效用，屬從物）。戊於民國113年1月將該機器出租予第三人己使用，己並占有使用中。同年6月，戊始以工廠廠房（含機器）向銀行庚設定抵押權。嗣戊未能清償，庚聲請拍賣抵押物，並主張機器之租賃關係應隨拍賣而消滅。</p>
+          <p><strong>分析：</strong>機器雖屬廠房之從物，依民法第862條第1項，原則上為抵押權效力所及。惟依第862條第2項，第三人（己）於抵押權設定「前」（113年1月，早於同年6月設定）就從物已取得之權利（承租使用權），不受抵押權效力擴張之影響，此規定旨在保護與抵押人交易之善意第三人。</p>
+          <p><strong>結論：</strong><span class="conclusion-yes">己於抵押權設定前取得之機器承租權，不因庚嗣後設定抵押權而受影響，庚拍賣抵押物時應承受該租賃關係之負擔。</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 七、申論練習題 -->
+    <section id="essay">
+      <h2 class="sec-title">七、申論練習題與模擬解答</h2>
+      <p class="source-note">本單元題目由 AI 依條文要件自行擬定，經使用者明確授權出題；非真實考題，僅供練習用途。</p>
+
+      <div class="essay-card">
+        <div class="card-head">練習題一</div>
+        <div class="card-body">
+          <p>甲以其所有之工廠廠房及基地向銀行乙設定抵押權並登記。廠房內原有生產設備一批，屬常助廠房生產效用之物，於抵押權設定時即已存在且屬甲所有。抵押權設定後，甲另行購入新型生產設備一批，同置於廠房內使用，亦屬常助廠房效用之物。嗣甲屆期未清償借款，乙聲請拍賣抵押物。問：原有生產設備及嗣後購入之新設備，是否均為抵押權效力所及？</p>
+
+          <h3 class="sub-title" style="margin-top:20px;">模擬解答</h3>
+          <p>依民法第862條第1項規定，抵押權之效力，及於抵押物之從物與從權利。而依民法第68條第1項，從物須具備非主物之成分、常助主物之效用、與主物同屬一人，且交易上無特別習慣等要件。本案生產設備無論係設定前原有或設定後購入，均由甲單獨所有、常助廠房生產之效用，且無交易上特別習慣足以排除從物性質之認定，均符合從物之要件。</p>
+          <p>就從物是否須於抵押權設定時業已存在一節，通說認為主物與從物之關係，應依客觀之兩物經濟結合關係而定，並不以抵押權設定時已存在為限，蓋唯有如此始能確保抵押權之擔保效果不因抵押人事後更換或增添從物而落空。是以，甲設定後始購入之新型生產設備，縱非設定時已存在，仍因與廠房間具備客觀經濟結合關係，而屬從物範疇。</p>
+          <p>至於民法第862條第2項所定「第三人於抵押權設定前就從物取得之權利」不受影響之保護規定，係為保護與抵押人交易之善意第三人，本案並無第三人就設備主張權利之情形，尚無適用餘地。</p>
+          <p>綜上，原有生產設備固為抵押權效力所及，嗣後購入之新型生產設備，因與廠房具備客觀之經濟結合關係，同屬從物，<span class="conclusion-yes">亦為抵押權效力所及</span>，乙均得就其聲請併付拍賣並優先受償。</p>
+        </div>
+      </div>
+
+      <div class="essay-card">
+        <div class="card-head">練習題二</div>
+        <div class="card-body">
+          <p>丙以其所有之透天厝向銀行丁設定抵押權。抵押權設定後，丙於原建物旁另行出資興建一棟具獨立出入門戶、獨立衛浴廚房，且結構上與原建物完全分離之磚造平房，供其子居住使用。丙屆期未能清償，丁聲請拍賣抵押物，並主張一併拍賣該平房。丙抗辯平房非抵押權效力所及。問：丁之主張有無理由？</p>
+
+          <h3 class="sub-title" style="margin-top:20px;">模擬解答</h3>
+          <p>本案應先判斷該磚造平房之性質。依民法第862條第3項及相關實務見解，判斷附加部分是否具獨立性，應審酌其構造上及使用上是否具備獨立性，並輔以該建物與原建築間是否具有物理上之依附關係為斷。本案平房具獨立出入門戶、獨立衛浴廚房，結構上與原建物完全分離，核屬構造上與使用上均已具備獨立性之獨立建物，並非「不具獨立性之附加部分」，亦非常助原建物效用之從物，故不符民法第862條第1項及第3項本文之要件。</p>
+          <p>惟本案平房係丙於抵押權設定「後」始行出資興建，依民法第862條第3項但書規定，此種設定後附加之獨立之物，準用第877條之規定，即抵押權人於必要時，得於強制執行程序中聲請法院將該建築物與土地（或原抵押建物）併付拍賣；但就該建築物賣得之價金，無優先受清償之權，以兼顧抵押人、抵押權人與第三人之利益。</p>
+          <p>準此，丁固無法就平房本身主張抵押權之優先受償效力，然依準用第877條之規定，仍<span class="conclusion-yes">得聲請法院將平房與原抵押之透天厝併付拍賣</span>，僅就平房拍賣所得價金，丁不得優先於其他債權人受償，而應依一般債權比例受償。是以丁主張併付拍賣為有理由，惟優先受償之主張為無理由。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 八、速查卡 -->
+    <section id="quickcard">
+      <h2 class="sec-title">八、速查卡</h2>
+      <div class="quickcard">
+        <div class="deco">862</div>
+        <h3>三步驟判斷法</h3>
+        <ul>
+          <li><strong>Step 1｜從物／從權利判斷</strong>：依§68I，是否常助主物效用、同屬一人、無特別習慣 → 是，則§862I效力所及</li>
+          <li><strong>Step 2｜第三人保護</strong>：第三人是否於「設定前」已就從物取得權利 → 是，則§862II排除效力擴張</li>
+          <li><strong>Step 3｜建物附加物三分法</strong>：不具獨立性 → 直接及於效力；具獨立性但屬從物 → 仍及於效力；具獨立性且非從物、設定後附加 → 準用§877（僅得併付拍賣，無優先受償）</li>
+        </ul>
+        <div class="mnemonic">從物從權隨主走，附加獨立看877</div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+  const sections = ['art','structure','elements','doctrine','practice','cases','essay','quickcard']
+    .map(id => document.getElementById(id)).filter(Boolean);
+  const sideLinks = document.querySelectorAll('#sidenav a');
+  const topnavEl = document.getElementById('topnav');
+
+  // build mobile topnav mirroring sidenav
+  document.querySelectorAll('#sidenav a').forEach(a=>{
+    const clone = a.cloneNode(true);
+    topnavEl.appendChild(clone);
+  });
+  const topLinks = document.querySelectorAll('#topnav a');
+
+  function setActive(id){
+    sideLinks.forEach(a=>a.classList.toggle('active', a.getAttribute('href') === '#'+id));
+    topLinks.forEach(a=>a.classList.toggle('active', a.getAttribute('href') === '#'+id));
+  }
+
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        setActive(entry.target.id);
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+  sections.forEach(sec => observer.observe(sec));
+
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', (e)=>{
+      e.preventDefault();
+      const target = document.getElementById(a.getAttribute('href').slice(1));
+      if(target) target.scrollIntoView({behavior:'smooth'});
+    });
+  });
+</script>
+</body>
+</html>

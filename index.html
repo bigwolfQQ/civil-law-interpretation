@@ -31,8 +31,6 @@
     color:var(--ink);
     -webkit-font-smoothing:antialiased;
   }
-
-  /* ---------- cover ---------- */
   .cover{
     position:relative;
     max-width:1000px;
@@ -112,7 +110,6 @@
     transform:rotate(3deg);
     background:rgba(156,43,58,0.03);
   }
-
   main{
     max-width:1000px;
     margin:0 auto;
@@ -225,8 +222,6 @@
     font-size:.95rem;
     font-style:italic;
   }
-
-  /* 分類覆蓋地圖 */
   .coverage{
     background:var(--paper-panel);
     border:1px solid var(--line);
@@ -309,8 +304,6 @@
     padding:.1rem .5rem;
     border-radius:999px;
   }
-
-  /* 有筆記（與是否為目前篩選無關）：淡黃銅徽章＋深墨粗體文字 */
   .leaf-btn.has-count{
     font-weight:700;
     color:var(--ink);
@@ -319,8 +312,6 @@
     background:rgba(169,131,47,0.16);
     color:var(--brass);
   }
-
-  /* 無筆記：大幅淡化，不可點 */
   .leaf-btn.zero{
     color:var(--ink-45);
     cursor:not-allowed;
@@ -331,15 +322,12 @@
     color:var(--ink-45);
     font-weight:400;
   }
-
-  /* 目前篩選中：獨立於「有無筆記」，用印璽紅外框標示 */
   .leaf-btn.active{
     box-shadow: inset 0 0 0 2px var(--seal);
   }
   .leaf-btn.active.has-count{
     background:rgba(156,43,58,0.05);
   }
-
   footer{
     text-align:center;
     font-size:.78rem;
@@ -356,10 +344,10 @@
 <div class="cover">
   <div class="eyebrow">民法．學習歷程總覽</div>
   <h1>法律學習歷程紀錄器</h1>
-  <p class="sub">civil-law-interpretation ｜ 依民法第一編總則、物權編、繼承編等編章節分類</p>
+  <p class="sub">civil-law-interpretation ｜ 依民法第一編總則、物權編、繼承編、債編等編章節分類</p>
   <div class="cover-meta">
-    <span class="ver-badge">v1.5</span>
-    <span class="meta-date">2026-08-18</span>
+    <span class="ver-badge">v1.6</span>
+    <span class="meta-date">2026-08-19</span>
     <img src="https://visitor-badge.laobi.icu/badge?page_id=mjib007.civil-law-interpretation.index" alt="Visitors" style="opacity:0.85;vertical-align:middle;">
   </div>
   <div class="seal-mark">總覽</div>
@@ -373,7 +361,7 @@
 
   <div class="coverage">
     <div class="coverage-header">
-      <h2>分類覆蓋地圖（民法總則 §1–152／物權編／繼承編）</h2>
+      <h2>分類覆蓋地圖（民法總則 §1–152／物權編／繼承編／債編）</h2>
       <span class="progress" id="coverageProgress"></span>
     </div>
     <div class="coverage-grid" id="coverageGrid"></div>
@@ -384,13 +372,9 @@
   <div class="empty" id="emptyState" style="display:none;">沒有符合條件的講義</div>
 </main>
 
-<footer>civil-law-interpretation · 民法總則．學習歷程紀錄 · CC BY-NC 4.0</footer>
+<footer>civil-law-interpretation · 民法學習歷程紀錄 · CC BY-NC 4.0</footer>
 
 <script>
-/* ============================================================
-   分類架構：民法第一編 總則（§1–152）
-   key 對應「主要條文所在節／款」，作為每份講義的單一主分類
-   ============================================================ */
 const CHAPTERS = [
   { key: "1",     label: "第一章 法例（§1）" },
   { key: "2-1",   label: "第二章 人／第一節 自然人（§6）" },
@@ -420,17 +404,10 @@ const CHAPTERS = [
   { key: "jicheng-3-3", label: "繼承編／第三章 遺囑／第三節 效力（§1199）" },
   { key: "jicheng-3-4", label: "繼承編／第三章 遺囑／第四節 執行（§1209）" },
   { key: "jicheng-3-5", label: "繼承編／第三章 遺囑／第五節 撤回（§1219）" },
-  { key: "jicheng-3-6", label: "繼承編／第三章 遺囑／第六節 特留分（§1223）" }
+  { key: "jicheng-3-6", label: "繼承編／第三章 遺囑／第六節 特留分（§1223）" },
+  { key: "zhai-1-5", label: "債編／第一章 通則／第五節 侵權行為（§184）" }
 ];
 
-/* ============================================================
-   講義清單：每完成一份講義，新增一筆物件即可
-   - articles: 條號（顯示用，如「第92、93、114條」）
-   - title: 主題
-   - date: 完成日期 YYYY-MM-DD
-   - chapterKey: 對應 CHAPTERS 的 key（單一主分類，以主要條文所在節為準）
-   - file: 講義相對路徑
-   ============================================================ */
 const LECTURES = [
   {
     articles: "第92、93、114條",
@@ -480,12 +457,16 @@ const LECTURES = [
     date: "2026-08-18",
     chapterKey: "jicheng-1",
     file: "講義/民法1138-1139-1140-1141-1144條-法定繼承人及其順序.html"
+  },
+  {
+    articles: "第188條",
+    title: "僱用人責任",
+    date: "2026-08-19",
+    chapterKey: "zhai-1-5",
+    file: "講義/民法188條-僱用人責任.html"
   }
 ];
 
-/* ============================================================
-   階層式分類樹（用於分類覆蓋地圖），葉節點 key 對應 CHAPTERS
-   ============================================================ */
 const TREE = [
   { title: "第一章 法例",
     leaves: [{ key: "1", label: "§1" }] },
@@ -545,12 +526,16 @@ const TREE = [
           { title: "第五節 撤回", leaves: [{ key: "jicheng-3-5", label: "§1219" }] },
           { title: "第六節 特留分", leaves: [{ key: "jicheng-3-6", label: "§1223" }] }
         ]}
+    ]},
+  { title: "債編",
+    groups: [
+      { title: "第一章 通則",
+        groups: [
+          { title: "第五節 侵權行為", leaves: [{ key: "zhai-1-5", label: "§184" }] }
+        ]}
     ]}
 ];
 
-/* ============================================================
-   Rendering
-   ============================================================ */
 const chapterMap = Object.fromEntries(CHAPTERS.map(c => [c.key, c.label]));
 
 function countFor(key){
@@ -573,18 +558,13 @@ function initCategorySelect(){
 
 function selectCategory(key){
   const items = LECTURES.filter(item => item.chapterKey === key);
-
-  if (items.length === 0) return; // 沒有筆記，不動作（按鈕本身已停用）
-
+  if (items.length === 0) return;
   if (items.length === 1){
-    // 只有一篇，直接開啟該講義
     window.open(items[0].file, '_blank', 'noopener');
     return;
   }
-
-  // 多篇：篩選卡片清單，並捲動到卡片區讓使用者看到結果
   const select = document.getElementById('categorySelect');
-  select.value = (select.value === key) ? '' : key; // 再點一次取消篩選
+  select.value = (select.value === key) ? '' : key;
   render();
   document.getElementById('countLabel').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
@@ -703,7 +683,6 @@ document.getElementById('searchInput').addEventListener('input', () => {
   clearTimeout(searchScrollTimer);
   const keyword = document.getElementById('searchInput').value.trim();
   if (keyword){
-    // 停止輸入約 0.5 秒後，自動捲動到結果區，避免被上方的分類覆蓋地圖擋住視線
     searchScrollTimer = setTimeout(() => {
       document.getElementById('countLabel').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 500);

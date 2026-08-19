@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>民法第1173條｜生前特種贈與之歸扣</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink: #16233b;
+    --indigo: #2c4a76;
+    --paper-outer: #f3ede0;
+    --paper-content: #fbf8f1;
+    --paper-card: #fffdf8;
+    --seal: #9c2b3a;
+    --brass: #a9832f;
+    --border: #ddd3bf;
+    --ink-45: rgba(22,35,59,0.45);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper-outer);
+    color:var(--ink);
+    font-family:'Noto Sans TC', sans-serif;
+    line-height:1.75;
+  }
+  h1,h2,h3,h4,.serif{font-family:'Noto Serif TC', serif;}
+  a{color:var(--indigo);}
+
+  .layout{display:flex; max-width:1180px; margin:0 auto;}
+  .sidenav{
+    width:240px; flex:none; position:sticky; top:0; align-self:flex-start;
+    height:100vh; overflow-y:auto; padding:32px 18px;
+    border-right:1px solid var(--border);
+  }
+  .sidenav .brand{font-family:'Noto Serif TC',serif; font-weight:900; font-size:15px; color:var(--seal); margin-bottom:24px; letter-spacing:1px;}
+  .sidenav ul{list-style:none; padding:0; margin:0;}
+  .sidenav li{margin-bottom:6px;}
+  .sidenav a{
+    display:block; padding:8px 10px; border-radius:4px; font-size:13.5px;
+    color:var(--ink); text-decoration:none; border-left:3px solid transparent;
+  }
+  .sidenav a.active{background:rgba(44,74,118,0.08); border-left-color:var(--indigo); color:var(--indigo); font-weight:700;}
+  .sidenav a.pending{color:var(--ink-45);}
+  .topnav{display:none;}
+
+  .main{flex:1; min-width:0; padding:0 0 80px 0; box-shadow: -6px 0 18px -14px rgba(22,35,59,0.35);}
+  .content{background:var(--paper-content); padding:44px 56px;}
+
+  /* 封面 */
+  .cover{
+    background:linear-gradient(180deg, var(--paper-content), var(--paper-outer));
+    padding:56px 56px 40px; position:relative; border-bottom:1px solid var(--border);
+  }
+  .eyebrow{
+    display:inline-block; font-size:12px; letter-spacing:3px; color:var(--brass);
+    border:1px solid var(--brass); padding:4px 10px; border-radius:2px; margin-bottom:18px;
+  }
+  .cover h1{font-size:34px; font-weight:900; margin:0 0 8px; color:var(--ink); max-width:640px;}
+  .cover .subtitle{font-size:15px; color:var(--ink-45); margin:0 0 14px;}
+  .cover-meta{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:26px;}
+  .ver-badge{border:1px solid var(--seal); color:var(--seal); font-size:12px; padding:3px 9px; border-radius:20px; font-weight:700;}
+  .meta-date, .visitor-wrap{border:1px solid var(--indigo); color:var(--indigo); font-size:12px; padding:3px 9px; border-radius:20px;}
+  .visitor-wrap img{vertical-align:middle; height:16px;}
+  .seal-mark{
+    position:absolute; top:46px; right:56px; width:92px; height:92px; border-radius:50%;
+    border:3px solid var(--seal); color:var(--seal); display:flex; align-items:center; justify-content:center;
+    transform:rotate(-14deg); font-family:'Noto Serif TC',serif; font-weight:900; font-size:17px;
+    writing-mode:vertical-rl; letter-spacing:4px; opacity:0.88;
+  }
+  .cover-toc{margin-top:8px; font-size:13px; color:var(--ink-45);}
+  .cover-toc span{margin-right:14px;}
+
+  /* 條文框 */
+  .article-box{
+    position:relative; background:var(--paper-card); border-left:3px solid var(--indigo);
+    border-radius:4px; padding:20px 24px; margin:16px 0; overflow:hidden;
+    box-shadow:0 1px 3px rgba(22,35,59,0.08);
+  }
+  .article-box .watermark{
+    position:absolute; right:10px; bottom:-18px; font-family:'Noto Serif TC',serif; font-weight:900;
+    font-size:110px; color:var(--ink); opacity:0.06; line-height:1; pointer-events:none;
+  }
+  .article-box h4{margin:0 0 10px; font-size:15px; color:var(--indigo);}
+  .article-box p{margin:0 0 8px; font-size:15px;}
+  .article-box p:last-child{margin-bottom:0;}
+
+  section{padding:40px 0; border-bottom:1px dashed var(--border);}
+  section:last-of-type{border-bottom:none;}
+  .section-title{display:flex; align-items:baseline; gap:10px; margin-bottom:20px;}
+  .section-title .num{font-family:'Noto Serif TC',serif; font-weight:900; color:var(--brass); font-size:14px;}
+  .section-title h2{font-size:22px; margin:0; border-left:4px solid var(--brass); padding-left:12px;}
+
+  table{width:100%; border-collapse:collapse; margin:14px 0; font-size:13.5px;}
+  th,td{border:1px solid var(--border); padding:10px 12px; text-align:left; vertical-align:top;}
+  th{background:var(--ink); color:var(--paper-content); font-family:'Noto Serif TC',serif; font-weight:700;}
+  tr:nth-child(even) td{background:#f6f1e6;}
+  tr:nth-child(odd) td{background:var(--paper-card);}
+
+  .req-list{list-style:none; padding:0; margin:14px 0; display:grid; gap:12px;}
+  .req-list li{
+    background:var(--paper-card); border:1px solid var(--border); border-left:3px solid var(--indigo);
+    border-radius:4px; padding:14px 16px;
+  }
+  .req-list .req-title{font-family:'Noto Serif TC',serif; font-weight:700; color:var(--indigo); margin-bottom:4px; font-size:14.5px;}
+
+  .conclusion-pos{font-weight:700; color:var(--ink); background:linear-gradient(transparent 60%, rgba(169,131,47,0.35) 60%);}
+  .conclusion-neg{font-weight:700; color:var(--seal);}
+
+  .card{
+    background:var(--paper-card); border-radius:6px; margin:16px 0; overflow:hidden;
+    box-shadow:0 1px 2px rgba(22,35,59,0.10), 0 6px 18px -10px rgba(22,35,59,0.25);
+  }
+  .card .card-header{padding:12px 18px; color:var(--paper-content); font-family:'Noto Serif TC',serif; font-weight:700; font-size:14.5px;}
+  .card.case .card-header{background:var(--indigo);}
+  .card.essay .card-header{background:var(--ink);}
+  .card .card-body{padding:18px 20px; font-size:14.5px;}
+  .card .card-body h5{margin:14px 0 6px; font-size:13.5px; color:var(--brass); font-family:'Noto Sans TC';}
+  .card .card-body h5:first-child{margin-top:0;}
+
+  .source-note{
+    margin-top:10px; font-size:12.5px; color:var(--ink-45); border-top:1px dashed var(--border); padding-top:10px;
+  }
+  .unverified{
+    display:inline-block; margin-top:6px; font-size:11.5px; color:var(--seal); border:1px solid var(--seal);
+    border-radius:20px; padding:2px 8px;
+  }
+  .verified{
+    display:inline-block; margin-top:6px; font-size:11.5px; color:var(--indigo); border:1px solid var(--indigo);
+    border-radius:20px; padding:2px 8px;
+  }
+
+  .placeholder{
+    border:2px dashed var(--brass); border-radius:6px; padding:36px 20px; text-align:center;
+    background:repeating-linear-gradient(135deg, rgba(169,131,47,0.05) 0 10px, transparent 10px 20px);
+  }
+  .placeholder .icon{font-size:26px; margin-bottom:8px;}
+  .placeholder .badge{
+    display:inline-block; margin-top:10px; font-size:11.5px; color:var(--brass);
+    border:1px solid var(--brass); border-radius:20px; padding:3px 10px;
+  }
+
+  .relation-wrap{margin:20px 0;}
+  .relation-note{text-align:center; font-size:12.5px; color:var(--ink-45); margin-top:6px;}
+
+  .quickcard{
+    background:var(--ink); color:var(--paper-content); border-radius:8px; padding:28px 30px;
+    position:relative; overflow:hidden;
+  }
+  .quickcard .deco{
+    position:absolute; right:8px; bottom:-30px; font-family:'Noto Serif TC',serif; font-weight:900;
+    font-size:150px; opacity:0.08; line-height:1;
+  }
+  .quickcard h3{margin:0 0 14px; font-size:17px; color:#fbf8f1;}
+  .quickcard ul{margin:0 0 18px; padding-left:20px; font-size:13.5px;}
+  .quickcard li{margin-bottom:6px;}
+  .mnemonic{
+    background:var(--seal); color:#fff; border-radius:6px; padding:14px 18px;
+    font-family:'Noto Serif TC',serif; font-weight:700; font-size:16px; text-align:center; letter-spacing:2px;
+  }
+
+  .link-note{border:1px dashed var(--border); border-radius:6px; padding:16px 20px; font-size:13.5px; color:var(--ink-45); margin-top:10px;}
+
+  @media (max-width:980px){
+    .layout{display:block;}
+    .sidenav{display:none;}
+    .topnav{
+      display:flex; position:sticky; top:0; z-index:20; overflow-x:auto; gap:8px;
+      background:var(--paper-outer); padding:10px 14px; border-bottom:1px solid var(--border);
+    }
+    .topnav a{
+      flex:none; white-space:nowrap; font-size:12.5px; padding:6px 12px; border-radius:20px;
+      background:var(--paper-card); border:1px solid var(--border); color:var(--ink); text-decoration:none;
+    }
+    .topnav a.active{background:var(--indigo); color:#fff; border-color:var(--indigo);}
+    .content{padding:28px 20px;}
+    .cover{padding:36px 20px 28px;}
+    .cover h1{font-size:26px;}
+    .seal-mark{width:70px; height:70px; font-size:13px; top:24px; right:20px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topnav" id="topnav"></div>
+
+<div class="layout">
+  <nav class="sidenav" id="sidenav">
+    <div class="brand">法典卷宗 · 繼承編</div>
+    <ul id="sidenav-list"></ul>
+  </nav>
+
+  <div class="main">
+
+    <div class="cover">
+      <div class="seal-mark">歸扣</div>
+      <span class="eyebrow">第一編　繼承　第三章　遺產之分割</span>
+      <h1>民法第1173條</h1>
+      <p class="subtitle">生前特種贈與之歸扣</p>
+      <div class="cover-meta">
+        <span class="ver-badge">v1.0</span>
+        <span class="meta-date">建立：2026-08-19</span>
+        <span class="visitor-wrap"><img src="https://visitor-badge.laobi.icu/badge?page_id=mjib007.civil-law-interpretation.1173" alt="visitors"></span>
+      </div>
+      <div class="cover-toc">
+        <span>一、條文原文</span><span>二、條文結構</span><span>三、要件解析</span>
+        <span>四、學說見解</span><span>五、實務見解</span><span>六、教學案例</span>
+        <span>七、申論練習</span><span>八、速查卡</span>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- 二、條文原文 -->
+      <section id="sec-article">
+        <div class="section-title"><span class="num">02</span><h2>條文原文</h2></div>
+        <div class="article-box">
+          <div class="watermark">1173</div>
+          <h4>民法第1173條</h4>
+          <p><strong>Ⅰ</strong>　繼承人中有在繼承開始前因結婚、分居或營業，已從被繼承人受有財產之贈與者，應將該贈與價額加入繼承開始時被繼承人所有之財產中，為應繼遺產。但被繼承人於贈與時有反對之意思表示者，不在此限。</p>
+          <p><strong>Ⅱ</strong>　前項贈與價額，應於遺產分割時，由該繼承人之應繼分中扣除。</p>
+          <p><strong>Ⅲ</strong>　贈與價額，依贈與時之價值計算。</p>
+        </div>
+        <p style="font-size:13.5px; color:var(--ink-45);">關聯條文（教學參考，原文照錄）：</p>
+        <div class="article-box">
+          <div class="watermark">1138</div>
+          <h4>民法第1138條（法定繼承順序）</h4>
+          <p>遺產繼承人，除配偶外，依左列順序定之：一、直系血親卑親屬。二、父母。三、兄弟姊妹。四、祖父母。</p>
+        </div>
+        <div class="article-box">
+          <div class="watermark">1144</div>
+          <h4>民法第1144條（配偶應繼分）</h4>
+          <p>配偶有相互繼承遺產之權，其應繼分，依左列各款定之：一、與第1138條所定第一順序之繼承人同為繼承時，其應繼分與他繼承人平均。二、與第二順序或第三順序之繼承人同為繼承時，其應繼分為遺產二分之一。三、與第四順序之繼承人同為繼承時，其應繼分為遺產三分之二。四、無第一順序至第四順序之繼承人時，其應繼分為遺產全部。</p>
+        </div>
+        <div class="article-box">
+          <div class="watermark">1148</div>
+          <h4>民法第1148條（概括繼承之有限責任）</h4>
+          <p>繼承人自繼承開始時，除本法另有規定外，承受被繼承人財產上之一切權利、義務。但權利、義務專屬於被繼承人本身者，不在此限。繼承人對於被繼承人之債務，以因繼承所得遺產為限，負清償責任。</p>
+        </div>
+        <div class="article-box">
+          <div class="watermark">1156</div>
+          <h4>民法第1156條（遺產清冊之陳報）</h4>
+          <p>繼承人於知悉其得繼承之時起三個月內開具遺產清冊陳報法院。前項三個月期間，法院因繼承人之聲請，認為必要時，得延展之。繼承人有數人時，其中一人已依第一項開具遺產清冊陳報法院者，其他繼承人視為已陳報。</p>
+        </div>
+        <div class="article-box">
+          <div class="watermark">1163</div>
+          <h4>民法第1163條（喪失限定利益之事由）</h4>
+          <p>繼承人中有下列各款情事之一者，不得主張第1148條第2項所定之利益：一、隱匿遺產情節重大。二、在遺產清冊為虛偽之記載情節重大。三、意圖詐害被繼承人之債權人之權利而為遺產之處分。</p>
+        </div>
+        <div class="article-box">
+          <div class="watermark">1164</div>
+          <h4>民法第1164條（遺產分割之自由）</h4>
+          <p>繼承人得隨時請求分割遺產。但法律另有規定或契約另有訂定者，不在此限。</p>
+        </div>
+        <div class="article-box">
+          <div class="watermark">1172</div>
+          <h4>民法第1172條（債務之扣還）</h4>
+          <p>繼承人中如對於被繼承人負有債務者，於遺產分割時，應按其債務數額，由該繼承人之應繼分內扣還。</p>
+        </div>
+      </section>
+
+      <!-- 三、條文結構 -->
+      <section id="sec-structure">
+        <div class="section-title"><span class="num">03</span><h2>條文結構總覽</h2></div>
+        <p>第1173條規範的是「歸扣」制度——繼承人生前因結婚、分居或營業已受贈與者，該贈與視為「應繼分之前付」，分割遺產時須先「加回去算」，再從其應繼分「扣除」。</p>
+        <table>
+          <tr><th style="width:20%">項目</th><th>內容</th></tr>
+          <tr><td>制度定位</td><td>遺產分割前之「校正計算」機制，非現物返還，我國採<strong>充當計算主義</strong></td></tr>
+          <tr><td>適用時點</td><td>繼承開始前之生前贈與（與死後之遺贈、應繼分無關）</td></tr>
+          <tr><td>適用原因（列舉）</td><td>結婚、分居、營業，三者為<strong>列舉而非例示</strong>，其他原因贈與（如單純疼愛、學費、生活費）不適用</td></tr>
+          <tr><td>排除方式</td><td>被繼承人於贈與時有反對歸扣之意思表示者，不歸扣</td></tr>
+          <tr><td>計算基準</td><td>依<strong>贈與時之價值</strong>計算，非繼承開始時或分割時之價值</td></tr>
+          <tr><td>法律效果</td><td>①加入應繼遺產　②於該繼承人應繼分中扣除</td></tr>
+        </table>
+      </section>
+
+      <!-- 四、要件逐項解析 -->
+      <section id="sec-elements">
+        <div class="section-title"><span class="num">04</span><h2>要件逐項解析</h2></div>
+        <ul class="req-list">
+          <li>
+            <div class="req-title">要件一：須為（法定）繼承人受贈</div>
+            受贈人須具有繼承人身分，屬於本條之「歸扣義務人」。實務見解認為代位繼承人本身並非生前贈與之受贈人，不當然負歸扣義務；惟被代位人生前所受特種贈與，因其於死亡時已非本條所稱之「繼承人」，該利益性質上構成不當得利，返還義務由代位繼承人依繼承關係承受（詳見下方實務見解）。
+          </li>
+          <li>
+            <div class="req-title">要件二：須於繼承開始前受贈</div>
+            贈與行為須發生在被繼承人死亡（繼承開始）之前。繼承開始後之遺贈或應繼分分配，不適用本條，而應回歸遺囑或分割相關規定處理。
+          </li>
+          <li>
+            <div class="req-title">要件三：須基於結婚、分居或營業之原因</div>
+            三者為<strong>列舉規定</strong>，具高度典型性：「結婚」如嫁妝、婚後住宅資助；「分居」實務採嚴格解釋，須同時具備「實質上分開居住」與「經濟上獨立生活」，僅戶籍分離或形式分家不構成；「營業」則指出資供繼承人經營事業。名義上為學費、生活費、醫療費者，原則上屬扶養義務範疇，不在歸扣之列，但若名為學費、實際供作營業資金，法院仍會探究實質用途認定之。
+          </li>
+          <li>
+            <div class="req-title">要件四：被繼承人未於贈與時為反對歸扣之意思表示</div>
+            此為<strong>消極要件（阻卻事由）</strong>。被繼承人本得於贈與當下明確表示「此贈與不列入歸扣」，一旦有此表示，即排除本條適用。法律未限定此意思表示須以書面為之，惟舉證上以書面並有見證人為宜。
+          </li>
+        </ul>
+        <p>四要件全部具備，始生歸扣之法律效果：<span class="conclusion-pos">將贈與價額加入應繼遺產，並於分割時自該繼承人應繼分中扣除</span>；任一要件不具備（尤其欠缺列舉原因，或被繼承人已為反對表示），則<span class="conclusion-neg">不生歸扣效果</span>，該贈與單純作為生前處分，不列入應繼遺產計算。</p>
+      </section>
+
+      <!-- 五、學說見解 -->
+      <section id="sec-doctrine">
+        <div class="section-title"><span class="num">05</span><h2>學說見解</h2></div>
+        <table>
+          <tr><th style="width:16%">學者</th><th>見解摘要</th><th style="width:26%">出處</th></tr>
+          <tr>
+            <td>戴炎輝、戴東雄</td>
+            <td>本條之設，係為維持共同繼承人間之公平，法律推測被繼承人所為之特種贈與具有「應繼分前付」之意思，故於遺產分割時，應將該生前特種贈與價額加入遺產中為應繼財產，再由應繼分中扣除之。</td>
+            <td>《繼承法》，2003，第151頁</td>
+          </tr>
+          <tr>
+            <td>林秀雄</td>
+            <td>同採「應繼分前付」立場；另就代位繼承人是否應負歸扣義務之爭議，主張代位繼承人係承襲被代位人之應繼分（含其生前特種贈與），基於公平原則，多數學者認應由代位繼承人負歸扣義務。</td>
+            <td>《繼承法講義》修訂八版，第132頁；2005年版，第122–123頁</td>
+          </tr>
+        </table>
+        <div class="source-note">
+          說明：上列學說見解係透過法務部101年3月1日行政函釋，以及臺灣高等法院111年法律座談民事類第8號資料所轉引整理，非直接查閱學者原著全文，建議日後如需嚴謹引註，仍應以原書內容核對為準。
+        </div>
+      </section>
+
+      <!-- 六、實務見解 -->
+      <section id="sec-precedent">
+        <div class="section-title"><span class="num">06</span><h2>實務見解</h2></div>
+
+        <h4 style="font-size:15px; color:var(--indigo); margin-top:0;">（一）大法官解釋／憲法法庭判決</h4>
+        <p style="font-size:14px;">本條（§1173）目前查無大法官解釋或憲法法庭判決，理由為：本條屬遺產分割之技術性、任意規定（被繼承人得以反對表示排除適用），性質上未見有以此聲請違憲審查之案例。關聯之第1148條，於全國法規資料庫分類欄雖列有「大法官解釋」項目，惟點入後亦未見實際掛載之解釋文，故同屬查無狀態。</p>
+
+        <h4 style="font-size:15px; color:var(--indigo);">（二）法院裁判／法律座談</h4>
+        <table>
+          <tr><th style="width:20%">案號</th><th>爭點與內容</th><th style="width:14%">狀態</th></tr>
+          <tr>
+            <td>臺灣高等法院111年法律座談民事類第8號</td>
+            <td>代位繼承人之被代位人於生前經被繼承人為第1173條特種贈與者，代位繼承人是否應負歸扣義務？座談結論採否定見解：代位繼承人非贈與之受贈人，非本條所稱之歸扣義務人；惟被代位人受贈當下並非繼承人，其受有之利益已屬無法律上原因，構成不當得利，該返還義務於被代位人死亡後，由其繼承人（即代位繼承人）繼承。</td>
+            <td><span class="verified">✅ 官方來源已核實</span></td>
+          </tr>
+          <tr>
+            <td>最高法院96年度台上字第392號判決</td>
+            <td>據轉引資料所載見解：歸扣之結果，若受贈額超過應繼分，該繼承人固不得再受遺產分配，但亦無庸返還其超過部分。</td>
+            <td><span class="unverified">⚠️ 未核實引註</span></td>
+          </tr>
+          <tr>
+            <td>最高法院96年度台上字第758號判決</td>
+            <td>據轉引資料所載見解：「分居」須同時具備「實質上分開居住」與「經濟上獨立生活」兩項要件，僅戶籍分離或形式上之分家，不足以成立分居。</td>
+            <td><span class="unverified">⚠️ 未核實引註</span></td>
+          </tr>
+          <tr>
+            <td>最高法院101年度台上字第1447號判決<br><span style="font-size:12px; color:var(--ink-45);">（關聯條文§1148）</span></td>
+            <td>涉及第1148條第2項限定責任利益之性質：是否須繼承人主動提出抗辯始得享有，抑或屬當然發生之法律效果。</td>
+            <td><span class="unverified">⚠️ 未核實引註</span></td>
+          </tr>
+          <tr>
+            <td>最高法院106年度台上字第2048號判決<br><span style="font-size:12px; color:var(--ink-45);">（關聯條文§1148）</span></td>
+            <td>爭點：在法院尚未認定繼承人具第1163條各款喪失限定利益事由前，繼承人是否得先主張以遺產為限負有限責任。</td>
+            <td><span class="unverified">⚠️ 未核實引註</span></td>
+          </tr>
+        </table>
+        <div class="source-note">
+          標示「⚠️ 未核實引註」之判決，係透過非官方網站（法律事務所部落格、學術資料庫標題頁）轉引整理，尚未經司法院裁判書查詢系統原文核實。建議可至司法院裁判書查詢系統（<a href="https://judgment.judicial.gov.tw/" target="_blank">https://judgment.judicial.gov.tw/</a>）輸入前述案號自行查閱全文核對後，再作為正式引註依據。
+        </div>
+      </section>
+
+      <!-- 七、教學案例 -->
+      <section id="sec-cases">
+        <div class="section-title"><span class="num">07</span><h2>教學案例</h2></div>
+        <p style="font-size:13px; color:var(--ink-45);">（以下案例為教學用途虛構，人物與情節均為假設，僅供理解要件操作之用）</p>
+
+        <div class="card case">
+          <div class="card-header">案例一・結婚贈與與反對歸扣之意思表示</div>
+          <div class="card-body">
+            <h5>事實</h5>
+            <p>被繼承人甲有子女乙、丙二人。乙於三年前結婚時，甲贈與新台幣200萬元作為嫁妝，並於贈與契約書中明文記載「本贈與不列入日後遺產歸扣計算」。甲死亡時遺有現存財產600萬元，乙、丙為唯一繼承人。</p>
+            <h5>爭點</h5>
+            <p>乙婚前受贈之200萬元，是否應歸扣入應繼遺產？</p>
+            <h5>分析</h5>
+            <p>依第1173條第1項本文，乙因結婚受贈財產，原則上應將200萬元加入甲死亡時之現存財產600萬元中，合計800萬元為應繼遺產，乙、丙各分400萬元，乙再扣除已受贈之200萬元，僅得再分配200萬元，丙則得分配400萬元。惟本條但書規定，被繼承人於贈與時有反對之意思表示者，不在此限。甲已於贈與契約書中明文表示該筆贈與不列入歸扣計算，符合但書所定之反對意思表示，且法律未要求該意思表示須以特定方式為之，書面記載已足資證明。</p>
+            <h5>結論</h5>
+            <p><span class="conclusion-neg">乙婚前受贈之200萬元不歸扣</span>，甲之遺產仍以現存600萬元為應繼遺產，乙、丙各分配300萬元。</p>
+          </div>
+        </div>
+
+        <div class="card case">
+          <div class="card-header">案例二・代位繼承人之歸扣義務</div>
+          <div class="card-body">
+            <h5>事實</h5>
+            <p>祖父甲有二子：長子乙、次子丁。乙於甲生前因營業受贈500萬元，其後乙先於甲死亡，遺有一子丙。甲死亡時，丙以代位繼承人身分與丁共同繼承甲之遺產，甲死亡時現存財產為1,000萬元。</p>
+            <h5>爭點</h5>
+            <p>乙生前因營業受贈之500萬元，於丙代位繼承甲之遺產時，是否應予歸扣？由何人負擔歸扣義務？</p>
+            <div class="relation-wrap">
+              <svg viewBox="0 0 640 340" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; font-family:'Noto Serif TC',serif;">
+                <!-- 甲 被繼承人 -->
+                <rect x="255" y="20" width="130" height="60" rx="6" fill="#fffdf8" stroke="#2c4a76" stroke-width="1.5"/>
+                <text x="320" y="44" text-anchor="middle" font-size="14" font-weight="700" fill="#16233b">甲（被繼承人）</text>
+                <text x="320" y="62" text-anchor="middle" font-size="11" fill="#5b6472" font-family="'Noto Sans TC'">祖父／贈與人</text>
+
+                <!-- 乙 被代位人 -->
+                <rect x="60" y="150" width="150" height="70" rx="6" fill="#fffdf8" stroke="#9c2b3a" stroke-width="1.5"/>
+                <text x="135" y="176" text-anchor="middle" font-size="14" font-weight="700" fill="#16233b">乙（被代位人）</text>
+                <text x="135" y="192" text-anchor="middle" font-size="11" fill="#5b6472" font-family="'Noto Sans TC'">先於甲死亡</text>
+                <text x="135" y="208" text-anchor="middle" font-size="11" fill="#9c2b3a" font-family="'Noto Sans TC'">受贈500萬（爭點：歸扣義務）</text>
+
+                <!-- 丁 -->
+                <rect x="430" y="150" width="150" height="60" rx="6" fill="#fffdf8" stroke="#2c4a76" stroke-width="1.5"/>
+                <text x="505" y="176" text-anchor="middle" font-size="14" font-weight="700" fill="#16233b">丁（次子）</text>
+                <text x="505" y="194" text-anchor="middle" font-size="11" fill="#5b6472" font-family="'Noto Sans TC'">現存繼承人</text>
+
+                <!-- 丙 代位繼承人 -->
+                <rect x="245" y="255" width="150" height="70" rx="6" fill="#fffdf8" stroke="#9c2b3a" stroke-width="1.5"/>
+                <text x="320" y="281" text-anchor="middle" font-size="14" font-weight="700" fill="#16233b">丙（代位繼承人）</text>
+                <text x="320" y="297" text-anchor="middle" font-size="11" fill="#5b6472" font-family="'Noto Sans TC'">乙之子</text>
+                <text x="320" y="313" text-anchor="middle" font-size="11" fill="#9c2b3a" font-family="'Noto Sans TC'">是否負歸扣義務？</text>
+
+                <!-- 甲-乙 贈與 -->
+                <line x1="270" y1="80" x2="150" y2="150" stroke="#2c4a76" stroke-width="1.5" marker-end="url(#arrow)"/>
+                <text x="175" y="112" font-size="11" fill="#2c4a76" font-family="'Noto Sans TC'">營業贈與500萬</text>
+
+                <!-- 甲-丁 -->
+                <line x1="360" y1="80" x2="490" y2="150" stroke="#2c4a76" stroke-width="1.5" marker-end="url(#arrow)"/>
+                <text x="425" y="112" font-size="11" fill="#2c4a76" font-family="'Noto Sans TC'">法定繼承</text>
+
+                <!-- 乙-丙 代位 -->
+                <line x1="150" y1="220" x2="290" y2="255" stroke="#a9832f" stroke-width="1.5" stroke-dasharray="5 5"/>
+                <text x="165" y="248" font-size="11" fill="#a9832f" font-family="'Noto Sans TC'">代位繼承關係</text>
+
+                <!-- 丁-丙 共同繼承 -->
+                <line x1="470" y1="210" x2="360" y2="255" stroke="#2c4a76" stroke-width="1.5"/>
+                <text x="400" y="240" font-size="11" fill="#2c4a76" font-family="'Noto Sans TC'">共同繼承甲之遺產</text>
+
+                <defs>
+                  <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                    <path d="M0,0 L6,3 L0,6 Z" fill="#2c4a76"/>
+                  </marker>
+                </defs>
+              </svg>
+              <p class="relation-note">核心爭點：丙是否須就乙生前受贈之500萬元負歸扣義務？</p>
+            </div>
+            <h5>分析</h5>
+            <p>依高等法院111年法律座談民事類第8號結論，丙係以自己固有之繼承權直接繼承祖父甲之遺產，並非繼承乙之權利，性質上非第1173條第1項所稱受特種贈與之「繼承人」，故丙本身不負第1173條之歸扣義務。惟乙受贈500萬元時仍為甲之推定繼承人，其受贈之利益本質上屬應繼分之前付；乙先於甲死亡，該利益已欠缺法律上原因，構成不當得利，此一返還義務於乙死亡後，依繼承法理由丙（乙之繼承人）繼受。學說上林秀雄等多數見解亦認為，代位繼承人係承襲被代位人之應繼分而為繼承，基於共同繼承人間之公平，應由代位繼承人負歸扣（或返還）義務，以貫徹被繼承人為特種贈與時應繼分前付之意思。</p>
+            <h5>結論</h5>
+            <p><span class="conclusion-pos">丙雖非第1173條直接規範之歸扣義務人，但因繼承乙之不當得利返還義務，實質上仍應將該500萬元計入計算</span>，甲之應繼遺產仍以1,500萬元（1,000萬現存＋500萬）計算，丙、丁應繼分各750萬元，丙再自其分得部分扣除已由乙受領之500萬元。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 八、申論練習題 -->
+      <section id="sec-essay">
+        <div class="section-title"><span class="num">08</span><h2>申論練習題與模擬解答</h2></div>
+        <p style="font-size:12.5px; color:var(--ink-45);">📝 本題由 AI 依使用者授權自行擬定，僅供練習參考，非真實考題或既存判決事實。</p>
+        <div class="card essay">
+          <div class="card-header">練習題</div>
+          <div class="card-body">
+            <p>甲有子女乙、丙二人。乙於五年前因創業，受甲贈與300萬元作為開業資金，甲贈與時並未為任何反對歸扣之表示。今甲死亡，遺有現存財產900萬元，乙、丙為唯一之法定繼承人。丙主張乙受贈之300萬元應予歸扣，乙則抗辯該筆款項名義上雖為創業資金，惟實際上係甲基於對乙個人之疼愛所為之無因贈與，與「營業」原因無涉，不應歸扣。試問：乙之抗辯有無理由？甲之應繼遺產應如何計算？</p>
+            <h5 style="margin-top:18px; color:var(--indigo);">模擬解答</h5>
+            <p>按民法第1173條第1項規定，繼承人於繼承開始前因結婚、分居或營業，已從被繼承人受有財產之贈與者，除被繼承人贈與時有反對之意思表示外，應將該贈與價額加入繼承開始時被繼承人所有之財產中，為應繼遺產。所謂「營業」原因，依實務及學說見解，係指被繼承人出資供繼承人經營事業之贈與，屬列舉事由之一；至於贈與是否確屬營業性質，應探究其實質用途，非僅以贈與名義為斷。本件乙雖抗辯該300萬元係甲基於疼愛所為之無因贈與，惟依題示事實，該款項係供乙作為創業開業資金之用，客觀上具營業贈與之外觀，且甲於贈與時亦未表示反對歸扣，乙之抗辯僅屬其單方主張，尚不足以推翻該贈與與營業目的間之實質關聯，故乙之抗辯難認有理由。</p>
+            <p>次按同條第2項、第3項規定，前項贈與價額應於遺產分割時由該繼承人之應繼分中扣除，且依贈與時之價值計算。本件乙受贈300萬元既應予歸扣，應將該300萬元加入甲死亡時現存財產900萬元中，合計1,200萬元為應繼遺產；乙、丙依應繼分平均計算（各二分之一），各得600萬元，其中乙已受領300萬元，於遺產分割時應自其應繼分中扣除，僅得再分配300萬元，丙則得分配600萬元。</p>
+            <p>綜上，乙之抗辯不可採，甲之應繼遺產應以1,200萬元計算，乙於分割時實際可得300萬元，丙則得600萬元。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 九、速查卡 -->
+      <section id="sec-quickcard" style="border-bottom:none;">
+        <div class="section-title"><span class="num">09</span><h2>速查卡</h2></div>
+        <div class="quickcard">
+          <div class="deco">速</div>
+          <h3>民法第1173條・生前特種贈與之歸扣</h3>
+          <ul>
+            <li>適用原因：結婚、分居、營業（<strong>列舉</strong>，非例示）</li>
+            <li>阻卻事由：被繼承人贈與時有<strong>反對歸扣之意思表示</strong></li>
+            <li>計算基準：<strong>贈與時之價值</strong>（非繼承時、非分割時）</li>
+            <li>操作方式：<strong>充當計算主義</strong>——加回應繼遺產，再由應繼分中扣除，非現物返還</li>
+            <li>受贈額超過應繼分：不得再分配，<strong>但不需返還</strong>超過部分</li>
+            <li>代位繼承人：本身非歸扣義務人，但繼受被代位人之不當得利返還義務</li>
+          </ul>
+          <div class="mnemonic">婚居業贈須歸扣，反對表示可不歸</div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  const sections = [
+    {id:'sec-article', label:'一・條文原文'},
+    {id:'sec-structure', label:'二・條文結構'},
+    {id:'sec-elements', label:'三・要件解析'},
+    {id:'sec-doctrine', label:'四・學說見解'},
+    {id:'sec-precedent', label:'五・實務見解'},
+    {id:'sec-cases', label:'六・教學案例'},
+    {id:'sec-essay', label:'七・申論練習'},
+    {id:'sec-quickcard', label:'八・速查卡'}
+  ];
+
+  const sidenavList = document.getElementById('sidenav-list');
+  const topnav = document.getElementById('topnav');
+
+  sections.forEach(s => {
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.href = '#' + s.id;
+    a.textContent = s.label;
+    a.dataset.target = s.id;
+    li.appendChild(a);
+    sidenavList.appendChild(li);
+
+    const ta = document.createElement('a');
+    ta.href = '#' + s.id;
+    ta.textContent = s.label;
+    ta.dataset.target = s.id;
+    topnav.appendChild(ta);
+  });
+
+  document.querySelectorAll('.sidenav a, .topnav a').forEach(a=>{
+    a.addEventListener('click', e=>{
+      e.preventDefault();
+      const el = document.getElementById(a.dataset.target);
+      if(el) el.scrollIntoView({behavior:'smooth'});
+    });
+  });
+
+  const allLinks = () => document.querySelectorAll('.sidenav a, .topnav a');
+
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        const id = entry.target.id;
+        allLinks().forEach(a=>{
+          a.classList.toggle('active', a.dataset.target === id);
+        });
+      }
+    });
+  }, {rootMargin: '-20% 0px -70% 0px', threshold: 0});
+
+  sections.forEach(s=>{
+    const el = document.getElementById(s.id);
+    if(el) observer.observe(el);
+  });
+</script>
+
+</body>
+</html>

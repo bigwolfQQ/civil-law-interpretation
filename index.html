@@ -346,7 +346,7 @@
   <h1>法律學習歷程紀錄器</h1>
   <p class="sub">civil-law-interpretation ｜ 依民法第一編總則、物權編、繼承編、債編等編章節分類</p>
   <div class="cover-meta">
-    <span class="ver-badge">v1.6</span>
+    <span class="ver-badge">v1.7</span>
     <span class="meta-date">2026-08-19</span>
     <img src="https://visitor-badge.laobi.icu/badge?page_id=mjib007.civil-law-interpretation.index" alt="Visitors" style="opacity:0.85;vertical-align:middle;">
   </div>
@@ -405,6 +405,7 @@ const CHAPTERS = [
   { key: "jicheng-3-4", label: "繼承編／第三章 遺囑／第四節 執行（§1209）" },
   { key: "jicheng-3-5", label: "繼承編／第三章 遺囑／第五節 撤回（§1219）" },
   { key: "jicheng-3-6", label: "繼承編／第三章 遺囑／第六節 特留分（§1223）" },
+  { key: "zhai-1-1-2", label: "債編／第一章 通則／第一節 債之發生／第二款 代理權之授與（§169）" },
   { key: "zhai-1-5", label: "債編／第一章 通則／第五節 侵權行為（§184）" }
 ];
 
@@ -464,6 +465,13 @@ const LECTURES = [
     date: "2026-08-19",
     chapterKey: "zhai-1-5",
     file: "講義/民法188條-僱用人責任.html"
+  },
+  {
+    articles: "第169、103、107、110條",
+    title: "表見代理",
+    date: "2026-08-19",
+    chapterKey: "zhai-1-1-2",
+    file: "講義/民法169-103-107-110條-表見代理.html"
   }
 ];
 
@@ -531,6 +539,9 @@ const TREE = [
     groups: [
       { title: "第一章 通則",
         groups: [
+          { title: "第一節 債之發生", groups: [
+            { title: "第二款 代理權之授與", leaves: [{ key: "zhai-1-1-2", label: "§169" }] }
+          ]},
           { title: "第五節 侵權行為", leaves: [{ key: "zhai-1-5", label: "§184" }] }
         ]}
     ]}

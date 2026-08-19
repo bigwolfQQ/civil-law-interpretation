@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>民法第565條 居間之定義 | 教學講義</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink: #16233b;
+    --ink-70: rgba(22,35,59,.7);
+    --ink-45: rgba(22,35,59,.45);
+    --indigo: #2c4a76;
+    --paper-outer: #f3ede0;
+    --paper-content: #fbf8f1;
+    --paper-card: #fffdf8;
+    --seal: #9c2b3a;
+    --brass: #a9832f;
+    --border: #ddd3bf;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper-outer);
+    font-family:"Noto Sans TC",sans-serif;
+    color:var(--ink);
+    line-height:1.75;
+  }
+  h1,h2,h3,.serif{font-family:"Noto Serif TC",serif;}
+
+  /* Layout */
+  .layout{display:flex; max-width:1200px; margin:0 auto;}
+  nav.sidebar{
+    width:240px; flex-shrink:0; position:sticky; top:0; align-self:flex-start;
+    height:100vh; overflow-y:auto; padding:32px 18px; border-right:1px solid var(--border);
+  }
+  nav.sidebar a{
+    display:block; padding:8px 10px; margin-bottom:2px; border-radius:6px;
+    color:var(--ink-70); text-decoration:none; font-size:14px; transition:background .15s;
+  }
+  nav.sidebar a.active{background:rgba(44,74,118,.1); color:var(--indigo); font-weight:700;}
+  nav.sidebar a.dim{color:var(--ink-45);}
+  main{flex:1; min-width:0; background:var(--paper-content); box-shadow:-6px 0 18px -12px rgba(22,35,59,.15); padding:0 0 60px;}
+
+  .topnav{display:none;}
+
+  section{max-width:760px; margin:0 auto; padding:56px 32px 0;}
+  section:last-of-type{padding-bottom:20px;}
+
+  /* Cover */
+  .cover{max-width:760px; margin:0 auto; padding:64px 32px 48px; position:relative;}
+  .eyebrow{
+    display:inline-block; font-size:12.5px; letter-spacing:.12em; color:var(--brass);
+    border:1px solid var(--brass); padding:3px 10px; border-radius:20px; margin-bottom:18px;
+  }
+  .cover h1{font-size:34px; font-weight:900; margin:0 0 8px; line-height:1.4;}
+  .cover .sub{font-size:15px; color:var(--ink-70); margin:0 0 14px;}
+  .cover-meta{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:26px;}
+  .cover-meta span{
+    font-size:12px; padding:3px 10px; border-radius:20px; border:1px solid var(--indigo);
+    color:var(--indigo); background:rgba(44,74,118,.05);
+  }
+  .ver-badge{border-color:var(--seal) !important; color:var(--seal) !important; background:rgba(156,43,58,.05) !important;}
+  .seal-mark{
+    position:absolute; top:40px; right:32px; width:78px; height:78px; border:2px solid var(--seal);
+    border-radius:6px; display:flex; align-items:center; justify-content:center; transform:rotate(-8deg);
+    writing-mode:vertical-rl; color:var(--seal); font-family:"Noto Serif TC",serif; font-weight:700;
+    font-size:20px; letter-spacing:4px; opacity:.85;
+  }
+  .toc{list-style:none; padding:0; margin:20px 0 0; border-top:1px solid var(--border); padding-top:18px;}
+  .toc li{font-size:14px; padding:4px 0; color:var(--ink-70);}
+  .toc li b{color:var(--ink); font-family:"Noto Serif TC",serif;}
+
+  h2.section-title{
+    font-size:22px; font-weight:700; margin:0 0 22px; padding-left:14px; border-left:4px solid var(--brass);
+  }
+  h3.sub-title{font-size:17px; font-weight:700; margin:28px 0 12px; padding-left:10px; border-left:3px solid var(--indigo);}
+
+  /* Article box */
+  .article-box{
+    position:relative; background:var(--paper-card); border-left:3px solid var(--indigo);
+    border-radius:4px; padding:20px 24px; margin-bottom:16px; overflow:hidden;
+    box-shadow:0 1px 3px rgba(22,35,59,.08);
+  }
+  .article-box .num{
+    position:absolute; right:10px; bottom:-6px; font-size:76px; font-weight:900; color:var(--ink);
+    opacity:.06; font-family:"Noto Serif TC",serif; line-height:1;
+  }
+  .article-box .label{font-family:"Noto Serif TC",serif; font-weight:700; color:var(--indigo); margin-bottom:6px; font-size:14.5px;}
+  .article-box p{margin:0; position:relative; z-index:1; font-size:15.5px;}
+
+  /* Tables */
+  table{width:100%; border-collapse:collapse; margin:14px 0 22px; font-size:14.5px; background:var(--paper-card);}
+  th,td{border:1px solid var(--border); padding:10px 12px; text-align:left; vertical-align:top;}
+  th{background:var(--ink); color:var(--paper-content); font-family:"Noto Serif TC",serif; font-weight:700;}
+  tr:nth-child(even) td{background:#f6f1e6;}
+  tr:nth-child(odd) td{background:#fffdf8;}
+
+  .conclusion-pos{font-weight:700; color:var(--ink); background:linear-gradient(transparent 60%, rgba(169,131,47,.35) 60%);}
+  .conclusion-neg{font-weight:700; color:var(--seal);}
+
+  /* placeholder */
+  .placeholder{
+    border:2px dashed #c9bfa0; border-radius:8px; padding:36px 20px; text-align:center;
+    background:repeating-linear-gradient(135deg, rgba(169,131,47,.05), rgba(169,131,47,.05) 10px, transparent 10px, transparent 20px);
+    color:var(--ink-45);
+  }
+  .placeholder .icon{font-size:26px; margin-bottom:8px;}
+  .placeholder .badge{
+    display:inline-block; margin-top:10px; font-size:12px; padding:3px 12px; border-radius:20px;
+    background:var(--seal); color:#fff; opacity:.75;
+  }
+
+  /* case card */
+  .case-card{
+    background:var(--paper-card); border-radius:8px; box-shadow:0 1px 2px rgba(22,35,59,.1), 0 6px 16px -8px rgba(22,35,59,.15);
+    margin-bottom:24px; overflow:hidden;
+  }
+  .case-card .head{background:var(--indigo); color:#fff; padding:12px 18px; font-family:"Noto Serif TC",serif; font-weight:700; font-size:15px;}
+  .case-card .body{padding:18px 20px;}
+  .case-card .tag{display:inline-block; font-size:11px; background:rgba(156,43,58,.1); color:var(--seal); padding:2px 8px; border-radius:12px; margin-bottom:10px;}
+  .case-card h4{font-size:14px; margin:14px 0 6px; color:var(--indigo);}
+  .case-card p{margin:0 0 4px; font-size:14.5px;}
+
+  /* practice / doctrine source note */
+  .source-note{
+    font-size:12.5px; color:var(--ink-45); margin-top:8px; padding-top:8px; border-top:1px dashed var(--border);
+  }
+  .judicial-note{
+    font-size:13px; background:rgba(44,74,118,.06); border-left:3px solid var(--indigo); padding:10px 14px; margin-top:10px; border-radius:4px; color:var(--ink-70);
+  }
+
+  /* quick ref card */
+  .quickref{
+    background:var(--ink); color:var(--paper-content); border-radius:10px; padding:30px 28px; position:relative;
+    overflow:hidden; margin-top:10px;
+  }
+  .quickref .deco{position:absolute; right:10px; bottom:-30px; font-size:150px; font-family:"Noto Serif TC",serif; font-weight:900; opacity:.08;}
+  .quickref h3{margin:0 0 16px; font-size:18px; border:none; padding:0; color:var(--paper-content);}
+  .quickref ul{margin:0 0 18px; padding-left:20px; font-size:14.5px;}
+  .quickref li{margin-bottom:8px;}
+  .mnemonic{
+    background:rgba(156,43,58,.85); padding:14px 18px; border-radius:6px; font-family:"Noto Serif TC",serif;
+    font-size:17px; font-weight:700; letter-spacing:.05em; text-align:center; position:relative; z-index:1;
+  }
+
+  .link-note{
+    border:1px dashed var(--border); border-radius:8px; padding:16px 20px; font-size:13.5px; color:var(--ink-70); margin-top:30px;
+  }
+
+  footer{text-align:center; font-size:12px; color:var(--ink-45); padding:30px 0 10px;}
+
+  @media (max-width:980px){
+    nav.sidebar{display:none;}
+    .topnav{
+      display:flex; position:sticky; top:0; z-index:20; background:var(--paper-content);
+      overflow-x:auto; white-space:nowrap; padding:10px 14px; border-bottom:1px solid var(--border);
+      gap:6px;
+    }
+    .topnav a{
+      flex-shrink:0; font-size:13px; padding:6px 12px; border-radius:20px; background:rgba(44,74,118,.08);
+      color:var(--indigo); text-decoration:none;
+    }
+    .topnav a.active{background:var(--indigo); color:#fff;}
+    .topnav a.dim{color:var(--ink-45); background:rgba(22,35,59,.05);}
+    section{padding:40px 18px 0;}
+    .cover{padding:40px 18px 30px;}
+    .seal-mark{width:60px; height:60px; font-size:15px; top:24px; right:18px;}
+    .cover h1{font-size:26px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topnav" id="topnav"></div>
+
+<div class="layout">
+  <nav class="sidebar" id="sidebar"></nav>
+  <main>
+
+    <div class="cover">
+      <div class="seal-mark">居間</div>
+      <span class="eyebrow">民法債編各論・第二十二節　居間</span>
+      <h1>民法第565條<br>居間之定義</h1>
+      <p class="sub">條文結構解析・要件分析・實務見解・教學案例</p>
+      <div class="cover-meta">
+        <span class="ver-badge">v1.0</span>
+        <span>建立日期 2026-08-19</span>
+        <span><img src="https://visitor-badge.laobi.icu/badge?page_id=mjib007.civil-law-interpretation.565" alt="visitors" style="height:14px;vertical-align:middle;"></span>
+      </div>
+      <ul class="toc">
+        <li><b>一</b>　條文原文</li>
+        <li><b>二</b>　條文結構</li>
+        <li><b>三</b>　要件逐項解析</li>
+        <li><b>四</b>　學說見解</li>
+        <li><b>五</b>　實務見解</li>
+        <li><b>六</b>　教學案例</li>
+        <li><b>七</b>　速查卡</li>
+      </ul>
+    </div>
+
+    <!-- 1 條文原文 -->
+    <section id="sec1">
+      <h2 class="section-title">一、條文原文</h2>
+
+      <div class="article-box">
+        <div class="label">第565條　居間之定義</div>
+        <p>稱居間者，謂當事人約定，一方為他方報告訂約之機會或為訂約之媒介，他方給付報酬之契約。</p>
+        <div class="num">565</div>
+      </div>
+
+      <div class="article-box">
+        <div class="label">第566條　居間報酬之決定</div>
+        <p>如依情形，非受報酬即不為報告訂約機會或媒介者，視為允與報酬。<br>
+        未定報酬額者，按照價目表所定給付之。無價目表者，按照習慣給付。</p>
+        <div class="num">566</div>
+      </div>
+
+      <div class="article-box">
+        <div class="label">第568條　報酬請求權之限制</div>
+        <p>居間人，以契約因其報告或媒介而成立者為限，得請求報酬。<br>
+        契約附有停止條件者，於該條件成就前，居間人不得請求報酬。</p>
+        <div class="num">568</div>
+      </div>
+
+      <div class="article-box">
+        <div class="label">第575條　隱名居間之不告知與履行義務</div>
+        <p>當事人之一方，指定居間人不得以其姓名或商號告知相對人者，居間人有不告知之義務。<br>
+        居間人不以當事人一方之姓名或商號告知相對人時，應就該方當事人由契約所生之義務，自己負履行之責，並得為其受領給付。</p>
+        <div class="num">575</div>
+      </div>
+    </section>
+
+    <!-- 2 條文結構 -->
+    <section id="sec2">
+      <h2 class="section-title">二、條文結構</h2>
+      <p>第565條為居間契約之<b>定義性條文</b>，非請求權基礎本身，而是後續請求報酬（§566、§568）等規定所依附的契約類型定義。可拆解為「契約成立要件」與「契約性質」兩層來理解：</p>
+
+      <h3 class="sub-title">（一）契約成立要件架構</h3>
+      <table>
+        <tr><th>要件</th><th>內容</th><th>對應條文</th></tr>
+        <tr><td>當事人約定</td><td>雙方就居間事項達成合意（諾成契約，不須另有交付或方式）</td><td>§565前段</td></tr>
+        <tr><td>一方之給付內容</td><td>為他方報告訂約之機會，<b>或</b>為訂約之媒介（二擇一即可，不須同時具備）</td><td>§565</td></tr>
+        <tr><td>他方之對待給付</td><td>給付報酬（居間為有償、雙務契約）</td><td>§565後段、§566</td></tr>
+      </table>
+
+      <h3 class="sub-title">（二）契約性質定位</h3>
+      <table>
+        <tr><th>性質</th><th>說明</th></tr>
+        <tr><td>諾成契約</td><td>雙方意思表示合致即成立，不須交付標的物或踐行方式</td></tr>
+        <tr><td>不要式契約</td><td>條文未要求書面或其他方式，口頭合意亦可成立</td></tr>
+        <tr><td>有償契約</td><td>他方須給付報酬為契約要素之一，區別於無償之委任</td></tr>
+        <tr><td>雙務契約</td><td>雙方互負對待給付義務（報告或媒介 ↔ 給付報酬）</td></tr>
+      </table>
+    </section>
+
+    <!-- 3 要件逐項解析 -->
+    <section id="sec3">
+      <h2 class="section-title">三、要件逐項解析</h2>
+
+      <h3 class="sub-title">（一）報告居間與媒介居間之區分</h3>
+      <p>§565將居間人之給付內容分為兩種類型，二者性質不同，對報酬請求時點的影響亦有差異（詳見「五、實務見解」）：</p>
+      <table>
+        <tr><th>類型</th><th>居間人之義務內容</th><th>典型例子</th></tr>
+        <tr><td>報告居間</td><td>僅須告知他方存在訂約機會，不須親自出面周旋牽線</td><td>婚友社介紹對象、單純提供買方名單</td></tr>
+        <tr><td>媒介居間</td><td>須居中周旋於雙方當事人間，促成契約成立</td><td>房屋仲介居中協調買賣雙方條件</td></tr>
+      </table>
+
+      <h3 class="sub-title">（二）報酬約定與報酬請求權之關係（§565、§566、§568）</h3>
+      <p>§565要求「他方給付報酬」為契約成立要件之一，但不代表雙方須於訂約時<b>明示約定</b>金額：</p>
+      <ul>
+        <li>§566第1項：依情形非受報酬即不為報告或媒介者，<span class="conclusion-pos">視為允與報酬</span>（默示報酬合意的擬制）</li>
+        <li>§566第2項：未定報酬額者，依價目表；無價目表者，依習慣</li>
+        <li>§568第1項：報酬請求權須以<span class="conclusion-pos">契約因居間人之報告或媒介而成立</span>為限，二者須具因果關係</li>
+        <li>§568第2項：契約附停止條件者，條件成就前<span class="conclusion-neg">不得請求報酬</span></li>
+      </ul>
+
+      <h3 class="sub-title">（三）與相鄰概念之區辨</h3>
+      <table>
+        <tr><th>契約類型</th><th>核心差異</th></tr>
+        <tr><td>居間 v. 委任</td><td>居間限於「報告機會」或「媒介訂約」，且以有償為契約要素；委任事務範圍較廣，且原則上無償（§547）</td></tr>
+        <tr><td>居間 v. 行紀</td><td>居間人僅促成他人間之契約，自己不介入契約當事人地位；行紀人則以自己名義為委託人計算而為交易</td></tr>
+      </table>
+    </section>
+
+    <!-- 4 學說見解 -->
+    <section id="sec4">
+      <h2 class="section-title">四、學說見解</h2>
+      <div class="placeholder">
+        <div class="icon">📖</div>
+        <div>尚未加入學說見解內容</div>
+        <span class="badge">待補充</span>
+      </div>
+      <p class="source-note">說明：已依流程搜尋學者專書、期刊論文及法律資料庫，惟未能找到針對第565條、有明確作者姓名與出處可供查證之學說見解，依防幻覺原則暫不列入，避免以「通說」「多數說」等字眼含糊帶過。待您提供資料或後續搜尋確認來源後，將補入本區塊。</p>
+    </section>
+
+    <!-- 5 實務見解 -->
+    <section id="sec5">
+      <h2 class="section-title">五、實務見解</h2>
+
+      <div class="case-card">
+        <div class="head">最高法院52年台上字第2675號民事判例</div>
+        <div class="body">
+          <p>民法第五百六十五條所定之居間有二種情形，一為報告訂約機會之報告居間，一為訂約之媒介居間。所謂報告居間，不以於訂約時周旋於他人之間為之說合為必要，僅以為他方報告訂約之機會為已足，而居間人之報酬，於雙方當事人因居間而成立契約時，應許其請求。至於居間行為就令自始限於媒介居間，而僅為報告即已有效果時，亦應許居間人得請求報酬之支付。</p>
+          <p class="source-note">來源查詢路徑：法務部全國法規資料庫／司法院判例查詢系統（law.moj.gov.tw）</p>
+        </div>
+      </div>
+
+      <div class="judicial-note">
+        <b>制度說明：</b>本則為民國108年法院組織法修正前選編之「判例」（舊字號）。修法後「判例」制度已不再選編，此類舊判例現僅作為裁判先例參考，不具過去之拘束力，援引時應留意其效力定位已與修法前不同。
+      </div>
+    </section>
+
+    <!-- 6 教學案例 -->
+    <section id="sec6">
+      <h2 class="section-title">六、教學案例</h2>
+
+      <div class="case-card">
+        <div class="head">案例一：報告居間之報酬請求</div>
+        <div class="body">
+          <span class="tag">教學用途・虛構案例</span>
+          <h4>事實</h4>
+          <p>甲經營婚友介紹平台，與會員乙約定：乙若透過甲提供之名單認識對象並完成結婚登記，須給付甲介紹費新臺幣3萬元。甲僅提供乙一份符合條件的對象名單，未曾出面協調雙方，其後乙與名單中的丙順利完婚。</p>
+          <h4>爭點</h4>
+          <p>甲僅提供名單、未實際居中媒介，是否仍得請求報酬？</p>
+          <h4>分析</h4>
+          <p>依§565，居間之給付內容包含「報告訂約之機會」與「為訂約之媒介」兩種類型，二者擇一即可構成居間契約，不須同時具備。甲提供名單之行為屬報告居間，依前述最高法院見解，報告居間不以周旋於雙方為必要，僅須報告機會已足。乙丙因甲之報告而完婚，契約（婚姻，此處比擬一般訂約情形）因甲之報告而成立，依§568第1項，甲得請求報酬。</p>
+          <h4>結論</h4>
+          <p class="conclusion-pos">甲得依約向乙請求介紹費3萬元。</p>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="head">案例二：報酬約定不明時之處理</div>
+        <div class="body">
+          <span class="tag">教學用途・虛構案例</span>
+          <h4>事實</h4>
+          <p>丁委託房屋仲介公司戊為其出售房屋，雙方口頭約定由戊媒介買方，但未談妥報酬金額，僅稱「成交後會給你合理的費用」。戊居中奔走協調，促成丁與買方己簽訂買賣契約。當地不動產仲介業就此類交易素有按成交價一定比例收取服務費之習慣。</p>
+          <h4>爭點</h4>
+          <p>未約定報酬金額，戊得否請求報酬？金額如何計算？</p>
+          <h4>分析</h4>
+          <p>依§565，居間契約成立不以明示約定報酬金額為必要；依情形非受報酬即不為媒介者，依§566第1項視為允與報酬。房屋仲介依其行業性質，顯非無償提供服務，應認雙方就給付報酬已有默示合意。至於金額，依§566第2項，未定報酬額者按價目表，無價目表者按照習慣給付，故應依當地不動產仲介業之收費習慣計算。</p>
+          <h4>結論</h4>
+          <p class="conclusion-pos">戊得依當地仲介業習慣之比例向丁請求報酬。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7 速查卡 -->
+    <section id="sec7">
+      <h2 class="section-title">七、速查卡</h2>
+      <div class="quickref">
+        <div class="deco">速</div>
+        <h3>民法第565條 居間之定義 — 重點回顧</h3>
+        <ul>
+          <li><b>性質</b>：諾成、不要式、有償、雙務契約</li>
+          <li><b>給付內容二選一</b>：報告訂約機會（報告居間）／為訂約之媒介（媒介居間）</li>
+          <li><b>報酬非以明示約定為必要</b>：依情形非受報酬不為給付者，視為允與報酬（§566Ⅰ）</li>
+          <li><b>報酬額</b>：未定者依價目表，無價目表依習慣（§566Ⅱ）</li>
+          <li><b>請求報酬前提</b>：契約須因居間人之報告或媒介而成立，二者須有因果關係（§568Ⅰ）</li>
+          <li><b>停止條件</b>：條件成就前不得請求報酬（§568Ⅱ）</li>
+        </ul>
+        <div class="mnemonic">報告媒介皆可居，成約始能請報酬</div>
+      </div>
+    </section>
+
+    <footer>民法第565條講義 · v1.0 · 2026-08-19</footer>
+  </main>
+</div>
+
+<script>
+  const sections = [
+    {id:'sec1', label:'一、條文原文', done:true},
+    {id:'sec2', label:'二、條文結構', done:true},
+    {id:'sec3', label:'三、要件解析', done:true},
+    {id:'sec4', label:'四、學說見解', done:false},
+    {id:'sec5', label:'五、實務見解', done:true},
+    {id:'sec6', label:'六、教學案例', done:true},
+    {id:'sec7', label:'七、速查卡', done:true},
+  ];
+  const sidebar = document.getElementById('sidebar');
+  const topnav = document.getElementById('topnav');
+  sections.forEach(s=>{
+    const a1 = document.createElement('a');
+    a1.href = '#'+s.id; a1.textContent = s.label; a1.dataset.target = s.id;
+    if(!s.done) a1.classList.add('dim');
+    sidebar.appendChild(a1);
+
+    const a2 = document.createElement('a');
+    a2.href = '#'+s.id; a2.textContent = s.label; a2.dataset.target = s.id;
+    if(!s.done) a2.classList.add('dim');
+    topnav.appendChild(a2);
+  });
+
+  const allLinks = () => document.querySelectorAll('nav.sidebar a, .topnav a');
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        allLinks().forEach(l=>l.classList.remove('active'));
+        document.querySelectorAll(`a[data-target="${entry.target.id}"]`).forEach(l=>l.classList.add('active'));
+      }
+    });
+  }, {rootMargin:'-20% 0px -70% 0px'});
+  sections.forEach(s=>{
+    const el = document.getElementById(s.id);
+    if(el) observer.observe(el);
+  });
+
+  allLinks().forEach(link=>{
+    link.addEventListener('click', (e)=>{
+      e.preventDefault();
+      const target = document.getElementById(link.dataset.target);
+      if(target) target.scrollIntoView({behavior:'smooth'});
+    });
+  });
+</script>
+
+</body>
+</html>

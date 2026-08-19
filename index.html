@@ -3,120 +3,705 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>民法講義總覽</title>
+<title>法律學習歷程紀錄器 | civil-law-interpretation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#16233b; --indigo:#2c4a76;
-    --paper-outer:#f3ede0; --paper-content:#fbf8f1; --paper-card:#fffdf8;
-    --seal-red:#9c2b3a; --brass:#a9832f; --border-grey:#ddd3bf; --ink-45:rgba(22,35,59,.45); --ink-70:rgba(22,35,59,.7);
+    --ink: #16233b;
+    --indigo: #2c4a76;
+    --indigo-soft: #3f5f8f;
+    --parchment: #f3ede0;
+    --paper: #fbf8f1;
+    --paper-panel: #fffdf8;
+    --seal: #9c2b3a;
+    --seal-soft: #c7566450;
+    --brass: #a9832f;
+    --line: #ddd3bf;
+    --ink-70: rgba(22,35,59,0.7);
+    --ink-45: rgba(22,35,59,0.45);
   }
   *{box-sizing:border-box;}
-  body{margin:0;background:var(--paper-outer);font-family:'Noto Sans TC',sans-serif;color:var(--ink);line-height:1.7;}
-  h1,h2,h3,.serif{font-family:'Noto Serif TC',serif;}
-
-  .wrap{max-width:980px;margin:0 auto;padding:0 24px 80px;}
-  .hero{padding:56px 0 32px; border-bottom:1px dashed var(--border-grey); position:relative;}
-  .eyebrow{font-size:12px;letter-spacing:.25em;color:var(--brass);font-weight:700;text-transform:uppercase;}
-  .hero h1{font-size:34px;font-weight:900;margin:12px 0 8px;}
-  .hero p{color:var(--ink-70); max-width:600px; font-size:14.5px;}
-
-  .seal-mark{
-    position:absolute; top:52px; right:0; width:70px; height:92px;
-    border:2px solid var(--seal-red); border-radius:4px; color:var(--seal-red);
-    display:flex; align-items:center; justify-content:center; transform:rotate(6deg);
-    writing-mode:vertical-rl; font-family:'Noto Serif TC',serif; font-weight:700; font-size:17px;
-    letter-spacing:.3em; opacity:.85;
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:"Noto Sans TC",sans-serif;
+    background:var(--parchment);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
   }
-
-  .book{ margin-top:44px; }
-  .book-title{
-    font-size:18px; font-weight:700; padding-left:14px; border-left:4px solid var(--indigo);
-    margin-bottom:4px;
+  .cover{
+    position:relative;
+    max-width:1000px;
+    margin:0 auto;
+    padding:56px 1.5rem 40px;
+    border-bottom:1px solid var(--line);
   }
-  .book-sub{ font-size:12.5px; color:var(--ink-45); padding-left:18px; margin-bottom:18px;}
-
-  .chapter{ margin-bottom:28px; }
-  .chapter-label{
-    font-size:13px; color:var(--brass); font-weight:700; letter-spacing:.06em;
-    margin-bottom:10px; padding-bottom:6px; border-bottom:1px dotted var(--border-grey);
+  .cover .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:.74rem;
+    letter-spacing:.24em;
+    color:var(--brass);
+    font-weight:700;
+    margin-bottom:16px;
   }
-
-  .card-grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(260px,1fr)); gap:14px; }
-  .lecture-card{
-    background:var(--paper-card); border:1px solid var(--border-grey); border-radius:6px;
-    padding:16px 18px; text-decoration:none; color:var(--ink); display:block;
-    box-shadow:0 1px 2px rgba(22,35,59,.05);
-    transition:transform .12s ease, box-shadow .12s ease;
-    position:relative; overflow:hidden;
+  .cover .eyebrow::before{
+    content:"";
+    width:22px;height:1px;
+    background:var(--brass);
   }
-  .lecture-card:hover{ transform:translateY(-2px); box-shadow:0 4px 12px rgba(22,35,59,.1); }
-  .lecture-card .wm{
-    position:absolute; right:-6px; bottom:-16px; font-family:'Noto Serif TC',serif; font-weight:900;
-    font-size:64px; color:var(--ink); opacity:.05; line-height:1;
+  .cover h1{
+    font-family:"Noto Serif TC",serif;
+    font-weight:900;
+    font-size:2.1rem;
+    line-height:1.35;
+    margin:0 0 10px;
+    color:var(--ink);
+    letter-spacing:.01em;
   }
-  .lecture-card .art{ font-size:12px; color:var(--indigo); font-weight:700; margin-bottom:4px; position:relative; z-index:1;}
-  .lecture-card .title{ font-size:15.5px; font-weight:700; margin-bottom:8px; position:relative; z-index:1;}
-  .lecture-card .date{ font-size:12px; color:var(--ink-45); position:relative; z-index:1;}
-
-  .empty-slot{
-    border:2px dashed var(--border-grey); border-radius:6px; padding:20px;
-    display:flex; align-items:center; justify-content:center; color:var(--ink-45); font-size:13px;
-    background:repeating-linear-gradient(135deg, rgba(169,131,47,.04), rgba(169,131,47,.04) 10px, rgba(169,131,47,.07) 10px, rgba(169,131,47,.07) 20px);
+  .cover .sub{
+    font-size:1rem;
+    color:var(--indigo);
+    font-weight:500;
+    margin:0;
   }
-
-  footer{ margin-top:50px; padding-top:20px; border-top:1px dashed var(--border-grey); font-size:12px; color:var(--ink-45); text-align:center;}
+  .cover-meta{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-top:18px;
+    flex-wrap:wrap;
+  }
+  .ver-badge{
+    font-family:"Noto Serif TC",serif;
+    font-weight:700;
+    font-size:.78rem;
+    color:var(--seal);
+    border:1px solid var(--seal);
+    border-radius:20px;
+    padding:3px 12px;
+    letter-spacing:.03em;
+  }
+  .meta-date{
+    font-size:.8rem;
+    color:var(--ink-45);
+  }
+  .cover .seal-mark{
+    position:absolute;
+    top:48px;
+    right:1.5rem;
+    width:76px;
+    height:76px;
+    border:2.5px solid var(--seal);
+    border-radius:6px;
+    color:var(--seal);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:"Noto Serif TC",serif;
+    font-weight:900;
+    font-size:1.15rem;
+    letter-spacing:.1em;
+    writing-mode:vertical-rl;
+    opacity:.82;
+    transform:rotate(3deg);
+    background:rgba(156,43,58,0.03);
+  }
+  main{
+    max-width:1000px;
+    margin:0 auto;
+    padding:1.5rem 1.5rem 4rem;
+  }
+  .controls{
+    display:flex;
+    gap:.75rem;
+    flex-wrap:wrap;
+    margin-bottom:1.5rem;
+    position:sticky;
+    top:0;
+    background:var(--parchment);
+    padding:1rem 0;
+    z-index:5;
+  }
+  .controls input[type="text"],
+  .controls select{
+    font-family:inherit;
+    font-size:.95rem;
+    padding:.6rem .9rem;
+    border:1px solid var(--line);
+    border-radius:6px;
+    background:var(--paper-panel);
+    color:var(--ink);
+    outline:none;
+    transition:border-color .15s ease, box-shadow .15s ease;
+  }
+  .controls input[type="text"]:focus,
+  .controls select:focus{
+    border-color:var(--indigo);
+    box-shadow:0 0 0 3px rgba(44,74,118,.14);
+  }
+  .controls select{
+    color:var(--ink-45);
+  }
+  .controls select.filtered{
+    color:var(--seal);
+    font-weight:700;
+    border-color:var(--seal);
+  }
+  .controls input[type="text"]{
+    flex:1;
+    min-width:180px;
+  }
+  .controls select{
+    min-width:220px;
+  }
+  .count{
+    font-size:.85rem;
+    color:var(--ink-45);
+    margin-bottom:1rem;
+  }
+  .cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+    gap:1rem;
+  }
+  .card{
+    display:block;
+    text-decoration:none;
+    color:inherit;
+    background:var(--paper-panel);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:1.2rem 1.3rem;
+    transition:box-shadow .15s ease, transform .15s ease, border-color .15s ease;
+  }
+  .card:hover{
+    box-shadow:0 6px 18px rgba(22,35,59,.10);
+    transform:translateY(-2px);
+    border-color:var(--brass);
+  }
+  .card .articles{
+    font-family:"Noto Serif TC",serif;
+    font-weight:700;
+    color:var(--ink);
+    font-size:1.05rem;
+    margin-bottom:.4rem;
+  }
+  .card .title{
+    font-size:.95rem;
+    color:var(--ink-70);
+    margin-bottom:.8rem;
+    line-height:1.4;
+  }
+  .card .meta{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:.78rem;
+    color:var(--ink-45);
+  }
+  .card .tag{
+    background:var(--parchment);
+    color:var(--brass);
+    padding:.15rem .55rem;
+    border-radius:999px;
+    font-size:.72rem;
+    border:1px solid var(--line);
+  }
+  .card .date{
+    color:var(--seal);
+    font-weight:500;
+  }
+  .empty{
+    text-align:center;
+    color:var(--ink-45);
+    padding:3rem 0;
+    font-size:.95rem;
+    font-style:italic;
+  }
+  .coverage{
+    background:var(--paper-panel);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:1.1rem 1.3rem 1.3rem;
+    margin-bottom:1.5rem;
+  }
+  .coverage-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:.7rem;
+  }
+  .coverage-header h2{
+    font-family:"Noto Serif TC",serif;
+    font-size:1rem;
+    font-weight:700;
+    color:var(--ink);
+    margin:0;
+  }
+  .coverage-header .progress{
+    font-size:.8rem;
+    color:var(--ink-45);
+  }
+  .coverage-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:1rem;
+  }
+  .chapter-block{
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:.9rem 1rem 1rem;
+    background:var(--paper);
+  }
+  .chapter-block > .chapter-title{
+    font-family:"Noto Serif TC",serif;
+    font-size:.85rem;
+    font-weight:700;
+    color:var(--brass);
+    letter-spacing:.02em;
+    margin-bottom:.5rem;
+    padding-bottom:.4rem;
+    border-bottom:1px solid var(--line);
+  }
+  .leaf-list{
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  .leaf-list li{
+    margin:.15rem 0;
+  }
+  .leaf-btn{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    width:100%;
+    background:none;
+    border:none;
+    font-family:inherit;
+    font-size:.82rem;
+    padding:.3rem .5rem;
+    border-radius:5px;
+    cursor:pointer;
+    color:var(--ink-70);
+    text-align:left;
+  }
+  .leaf-btn .indent{
+    padding-left:0.6em;
+  }
+  .leaf-btn:hover:not(.zero){
+    background:rgba(44,74,118,0.07);
+  }
+  .leaf-btn .badge{
+    min-width:1.6em;
+    text-align:center;
+    font-size:.75rem;
+    font-weight:700;
+    padding:.1rem .5rem;
+    border-radius:999px;
+  }
+  .leaf-btn.has-count{
+    font-weight:700;
+    color:var(--ink);
+  }
+  .leaf-btn.has-count .badge{
+    background:rgba(169,131,47,0.16);
+    color:var(--brass);
+  }
+  .leaf-btn.zero{
+    color:var(--ink-45);
+    cursor:not-allowed;
+    opacity:.6;
+  }
+  .leaf-btn.zero .badge{
+    background:none;
+    color:var(--ink-45);
+    font-weight:400;
+  }
+  .leaf-btn.active{
+    box-shadow: inset 0 0 0 2px var(--seal);
+  }
+  .leaf-btn.active.has-count{
+    background:rgba(156,43,58,0.05);
+  }
+  footer{
+    text-align:center;
+    font-size:.78rem;
+    color:var(--ink-45);
+    padding:2.5rem 0 3rem;
+    border-top:1px solid var(--line);
+    max-width:1000px;
+    margin:0 auto;
+  }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <div class="hero">
-    <div class="seal-mark">卷宗</div>
-    <div class="eyebrow">民法條文教學講義．總覽</div>
-    <h1>民法講義總覽</h1>
-    <p>依編章分類收錄各條文教學講義，點擊卡片進入個別講義。目前已建立「債編．債之移轉」「債編．居間」分類，總則編架構保留供日後擴充。</p>
+
+<div class="cover">
+  <div class="eyebrow">民法．學習歷程總覽</div>
+  <h1>法律學習歷程紀錄器</h1>
+  <p class="sub">civil-law-interpretation ｜ 依民法第一編總則、物權編、繼承編、債編等編章節分類</p>
+  <div class="cover-meta">
+    <span class="ver-badge">v1.7</span>
+    <span class="meta-date">2026-08-19</span>
+    <img src="https://visitor-badge.laobi.icu/badge?page_id=mjib007.civil-law-interpretation.index" alt="Visitors" style="opacity:0.85;vertical-align:middle;">
   </div>
-
-  <!-- 總則編（保留，尚無講義） -->
-  <div class="book">
-    <div class="book-title">民法第一編．總則</div>
-    <div class="book-sub">§1–152．分類架構已保留，尚未收錄講義</div>
-    <div class="empty-slot">尚無總則編講義，架構已保留供日後擴充</div>
-  </div>
-
-  <!-- 債編 -->
-  <div class="book">
-    <div class="book-title">民法第二編．債</div>
-    <div class="book-sub">依章節分類收錄</div>
-
-    <div class="chapter">
-      <div class="chapter-label">第一章 通則．第六節 債之移轉</div>
-      <div class="card-grid">
-        <a class="lecture-card" href="講義/民法298條-表見讓與與通知不可撤銷.html">
-          <span class="wm">298</span>
-          <div class="art">第298條</div>
-          <div class="title">表見讓與與通知之不可撤銷效力</div>
-          <div class="date">2026-08-19</div>
-        </a>
-      </div>
-    </div>
-
-    <div class="chapter">
-      <div class="chapter-label">第二章 各種之債．第二十二節 居間</div>
-      <div class="card-grid">
-        <a class="lecture-card" href="講義/民法565條-居間之定義.html">
-          <span class="wm">565</span>
-          <div class="art">第565、566、568、575條</div>
-          <div class="title">居間之定義</div>
-          <div class="date">2026-08-19</div>
-        </a>
-      </div>
-    </div>
-
-  </div>
-
-  <footer>civil-law-interpretation lecture series</footer>
+  <div class="seal-mark">總覽</div>
 </div>
+
+<main>
+  <div class="controls">
+    <input type="text" id="searchInput" placeholder="搜尋條號或主題關鍵字…">
+    <select id="categorySelect"></select>
+  </div>
+
+  <div class="coverage">
+    <div class="coverage-header">
+      <h2>分類覆蓋地圖（民法總則 §1–152／物權編／繼承編／債編）</h2>
+      <span class="progress" id="coverageProgress"></span>
+    </div>
+    <div class="coverage-grid" id="coverageGrid"></div>
+  </div>
+
+  <div class="count" id="countLabel"></div>
+  <div class="cards" id="cardGrid"></div>
+  <div class="empty" id="emptyState" style="display:none;">沒有符合條件的講義</div>
+</main>
+
+<footer>civil-law-interpretation · 民法學習歷程紀錄 · CC BY-NC 4.0</footer>
+
+<script>
+const CHAPTERS = [
+  { key: "1",     label: "第一章 法例（§1）" },
+  { key: "2-1",   label: "第二章 人／第一節 自然人（§6）" },
+  { key: "2-2-1", label: "第二章 人／第二節 法人／第一款 通則（§25）" },
+  { key: "2-2-2", label: "第二章 人／第二節 法人／第二款 社團（§45）" },
+  { key: "2-2-3", label: "第二章 人／第二節 法人／第三款 財團（§59）" },
+  { key: "3",     label: "第三章 物（§66）" },
+  { key: "4-1",   label: "第四章 法律行為／第一節 通則（§71）" },
+  { key: "4-2",   label: "第四章 法律行為／第二節 行為能力（§75）" },
+  { key: "4-3",   label: "第四章 法律行為／第三節 意思表示（§86）" },
+  { key: "4-4",   label: "第四章 法律行為／第四節 條件及期限（§99）" },
+  { key: "4-5",   label: "第四章 法律行為／第五節 代理（§103）" },
+  { key: "4-6",   label: "第四章 法律行為／第六節 無效及撤銷（§111）" },
+  { key: "5",     label: "第五章 期日及期間（§119）" },
+  { key: "6",     label: "第六章 消滅時效（§125）" },
+  { key: "7",     label: "第七章 權利之行使（§148）" },
+  { key: "wuquan-2", label: "物權編／第二章 所有權／第一節 通則（§765）" },
+  { key: "wuquan-2-4", label: "物權編／第二章 所有權／第四節 共有（§817）" },
+  { key: "wuquan-6", label: "物權編／第六章 抵押權（§860）" },
+  { key: "jicheng-1",   label: "繼承編／第一章 遺產繼承人（§1138）" },
+  { key: "jicheng-2-1", label: "繼承編／第二章 遺產之繼承／第一節 效力（§1147）" },
+  { key: "jicheng-2-3", label: "繼承編／第二章 遺產之繼承／第三節 遺產之分割（§1164）" },
+  { key: "jicheng-2-4", label: "繼承編／第二章 遺產之繼承／第四節 繼承之拋棄（§1174）" },
+  { key: "jicheng-2-5", label: "繼承編／第二章 遺產之繼承／第五節 無人承認之繼承（§1177）" },
+  { key: "jicheng-3-1", label: "繼承編／第三章 遺囑／第一節 通則（§1186）" },
+  { key: "jicheng-3-2", label: "繼承編／第三章 遺囑／第二節 方式（§1189）" },
+  { key: "jicheng-3-3", label: "繼承編／第三章 遺囑／第三節 效力（§1199）" },
+  { key: "jicheng-3-4", label: "繼承編／第三章 遺囑／第四節 執行（§1209）" },
+  { key: "jicheng-3-5", label: "繼承編／第三章 遺囑／第五節 撤回（§1219）" },
+  { key: "jicheng-3-6", label: "繼承編／第三章 遺囑／第六節 特留分（§1223）" },
+  { key: "zhai-1-1-2", label: "債編／第一章 通則／第一節 債之發生／第二款 代理權之授與（§169）" },
+  { key: "zhai-1-5", label: "債編／第一章 通則／第五節 侵權行為（§184）" }
+];
+
+const LECTURES = [
+  {
+    articles: "第92、93、114條",
+    title: "意思表示不自由（詐欺、脅迫之撤銷）",
+    date: "2026-08-13",
+    chapterKey: "4-3",
+    file: "講義/民法92-93-114條-意思表示不自由.html"
+  },
+  {
+    articles: "第114、115、116條",
+    title: "撤銷及承認",
+    date: "2026-08-16",
+    chapterKey: "4-6",
+    file: "講義/民法114-116條-撤銷及承認.html"
+  },
+  {
+    articles: "第767條",
+    title: "所有權之保護（物上請求權）",
+    date: "2026-08-18",
+    chapterKey: "wuquan-2",
+    file: "講義/民法767條-所有權之保護-物上請求權.html"
+  },
+  {
+    articles: "第824條",
+    title: "共有物之分割方法",
+    date: "2026-08-18",
+    chapterKey: "wuquan-2-4",
+    file: "講義/民法第824條-共有物分割之方法.html"
+  },
+  {
+    articles: "第1189條",
+    title: "遺囑方式之種類",
+    date: "2026-08-18",
+    chapterKey: "jicheng-3-2",
+    file: "講義/民法1189-1197條-遺囑方式之種類.html"
+  },
+  {
+    articles: "第862條",
+    title: "抵押權效力之範圍（從物、從權利及附加物）",
+    date: "2026-08-18",
+    chapterKey: "wuquan-6",
+    file: "講義/民法862條-抵押權效力範圍.html"
+  },
+  {
+    articles: "第1138、1139、1140、1141、1144條",
+    title: "法定繼承人及其順序",
+    date: "2026-08-18",
+    chapterKey: "jicheng-1",
+    file: "講義/民法1138-1139-1140-1141-1144條-法定繼承人及其順序.html"
+  },
+  {
+    articles: "第188條",
+    title: "僱用人責任",
+    date: "2026-08-19",
+    chapterKey: "zhai-1-5",
+    file: "講義/民法188條-僱用人責任.html"
+  },
+  {
+    articles: "第169、103、107、110條",
+    title: "表見代理",
+    date: "2026-08-19",
+    chapterKey: "zhai-1-1-2",
+    file: "講義/民法169-103-107-110條-表見代理.html"
+  }
+];
+
+const TREE = [
+  { title: "第一章 法例",
+    leaves: [{ key: "1", label: "§1" }] },
+  { title: "第二章 人",
+    groups: [
+      { title: "第一節 自然人", leaves: [{ key: "2-1", label: "§6" }] },
+      { title: "第二節 法人", groups: [
+        { title: "第一款 通則", leaves: [{ key: "2-2-1", label: "§25" }] },
+        { title: "第二款 社團", leaves: [{ key: "2-2-2", label: "§45" }] },
+        { title: "第三款 財團", leaves: [{ key: "2-2-3", label: "§59" }] }
+      ]}
+    ]},
+  { title: "第三章 物",
+    leaves: [{ key: "3", label: "§66" }] },
+  { title: "第四章 法律行為",
+    groups: [
+      { title: "第一節 通則", leaves: [{ key: "4-1", label: "§71" }] },
+      { title: "第二節 行為能力", leaves: [{ key: "4-2", label: "§75" }] },
+      { title: "第三節 意思表示", leaves: [{ key: "4-3", label: "§86" }] },
+      { title: "第四節 條件及期限", leaves: [{ key: "4-4", label: "§99" }] },
+      { title: "第五節 代理", leaves: [{ key: "4-5", label: "§103" }] },
+      { title: "第六節 無效及撤銷", leaves: [{ key: "4-6", label: "§111" }] }
+    ]},
+  { title: "第五章 期日及期間",
+    leaves: [{ key: "5", label: "§119" }] },
+  { title: "第六章 消滅時效",
+    leaves: [{ key: "6", label: "§125" }] },
+  { title: "第七章 權利之行使",
+    leaves: [{ key: "7", label: "§148" }] },
+  { title: "物權編",
+    groups: [
+      { title: "第二章 所有權",
+        groups: [
+          { title: "第一節 通則", leaves: [{ key: "wuquan-2", label: "§767" }] },
+          { title: "第四節 共有", leaves: [{ key: "wuquan-2-4", label: "§824" }] }
+        ]},
+      { title: "第六章 抵押權",
+        leaves: [{ key: "wuquan-6", label: "§862" }] }
+    ]},
+  { title: "繼承編",
+    groups: [
+      { title: "第一章 遺產繼承人",
+        leaves: [{ key: "jicheng-1", label: "§1138" }] },
+      { title: "第二章 遺產之繼承",
+        groups: [
+          { title: "第一節 效力", leaves: [{ key: "jicheng-2-1", label: "§1147" }] },
+          { title: "第三節 遺產之分割", leaves: [{ key: "jicheng-2-3", label: "§1164" }] },
+          { title: "第四節 繼承之拋棄", leaves: [{ key: "jicheng-2-4", label: "§1174" }] },
+          { title: "第五節 無人承認之繼承", leaves: [{ key: "jicheng-2-5", label: "§1177" }] }
+        ]},
+      { title: "第三章 遺囑",
+        groups: [
+          { title: "第一節 通則", leaves: [{ key: "jicheng-3-1", label: "§1186" }] },
+          { title: "第二節 方式", leaves: [{ key: "jicheng-3-2", label: "§1189" }] },
+          { title: "第三節 效力", leaves: [{ key: "jicheng-3-3", label: "§1199" }] },
+          { title: "第四節 執行", leaves: [{ key: "jicheng-3-4", label: "§1209" }] },
+          { title: "第五節 撤回", leaves: [{ key: "jicheng-3-5", label: "§1219" }] },
+          { title: "第六節 特留分", leaves: [{ key: "jicheng-3-6", label: "§1223" }] }
+        ]}
+    ]},
+  { title: "債編",
+    groups: [
+      { title: "第一章 通則",
+        groups: [
+          { title: "第一節 債之發生", groups: [
+            { title: "第二款 代理權之授與", leaves: [{ key: "zhai-1-1-2", label: "§169" }] }
+          ]},
+          { title: "第五節 侵權行為", leaves: [{ key: "zhai-1-5", label: "§184" }] }
+        ]}
+    ]}
+];
+
+const chapterMap = Object.fromEntries(CHAPTERS.map(c => [c.key, c.label]));
+
+function countFor(key){
+  return LECTURES.filter(item => item.chapterKey === key).length;
+}
+
+function initCategorySelect(){
+  const select = document.getElementById('categorySelect');
+  const allOption = document.createElement('option');
+  allOption.value = '';
+  allOption.textContent = '全部分類';
+  select.appendChild(allOption);
+  CHAPTERS.forEach(c => {
+    const opt = document.createElement('option');
+    opt.value = c.key;
+    opt.textContent = c.label;
+    select.appendChild(opt);
+  });
+}
+
+function selectCategory(key){
+  const items = LECTURES.filter(item => item.chapterKey === key);
+  if (items.length === 0) return;
+  if (items.length === 1){
+    window.open(items[0].file, '_blank', 'noopener');
+    return;
+  }
+  const select = document.getElementById('categorySelect');
+  select.value = (select.value === key) ? '' : key;
+  render();
+  document.getElementById('countLabel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function renderLeafList(leaves, depth){
+  const activeKey = document.getElementById('categorySelect').value;
+  const ul = document.createElement('ul');
+  ul.className = 'leaf-list';
+  leaves.forEach(leaf => {
+    const n = countFor(leaf.key);
+    const li = document.createElement('li');
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    const stateClass = n === 0 ? 'zero' : 'has-count';
+    btn.className = 'leaf-btn ' + stateClass + (activeKey === leaf.key ? ' active' : '');
+    btn.disabled = (n === 0);
+    btn.innerHTML = `<span class="indent">${leaf.label}</span><span class="badge">${n === 0 ? '–' : n}</span>`;
+    btn.addEventListener('click', () => selectCategory(leaf.key));
+    li.appendChild(btn);
+    ul.appendChild(li);
+  });
+  return ul;
+}
+
+function renderGroup(node, container){
+  if (node.leaves){
+    container.appendChild(renderLeafList(node.leaves));
+  }
+  if (node.groups){
+    node.groups.forEach(g => {
+      const sub = document.createElement('div');
+      sub.style.marginBottom = '.4rem';
+      const label = document.createElement('div');
+      label.style.fontSize = '.78rem';
+      label.style.color = '#5a6b80';
+      label.style.margin = '.3rem 0 .1rem';
+      label.textContent = g.title;
+      sub.appendChild(label);
+      renderGroup(g, sub);
+      container.appendChild(sub);
+    });
+  }
+}
+
+function renderCoverageMap(){
+  const grid = document.getElementById('coverageGrid');
+  grid.innerHTML = '';
+  TREE.forEach(chapter => {
+    const block = document.createElement('div');
+    block.className = 'chapter-block';
+    const title = document.createElement('div');
+    title.className = 'chapter-title';
+    title.textContent = chapter.title;
+    block.appendChild(title);
+    renderGroup(chapter, block);
+    grid.appendChild(block);
+  });
+
+  const coveredLeaves = CHAPTERS.filter(c => countFor(c.key) > 0).length;
+  document.getElementById('coverageProgress').textContent =
+    `已覆蓋 ${coveredLeaves} / ${CHAPTERS.length} 節款 · 共 ${LECTURES.length} 篇筆記`;
+}
+
+function render(){
+  const keyword = document.getElementById('searchInput').value.trim().toLowerCase();
+  const categorySelectEl = document.getElementById('categorySelect');
+  const category = categorySelectEl.value;
+  categorySelectEl.classList.toggle('filtered', category !== '');
+
+  const filtered = LECTURES.filter(item => {
+    const matchesKeyword = !keyword ||
+      item.articles.toLowerCase().includes(keyword) ||
+      item.title.toLowerCase().includes(keyword);
+    const matchesCategory = !category || item.chapterKey === category;
+    return matchesKeyword && matchesCategory;
+  }).sort((a, b) => b.date.localeCompare(a.date));
+
+  const grid = document.getElementById('cardGrid');
+  const empty = document.getElementById('emptyState');
+  const count = document.getElementById('countLabel');
+
+  count.textContent = `共 ${filtered.length} 份講義（總計 ${LECTURES.length} 份）`;
+
+  grid.innerHTML = '';
+  if (filtered.length === 0){
+    empty.style.display = 'block';
+  } else {
+    empty.style.display = 'none';
+    filtered.forEach(item => {
+      const a = document.createElement('a');
+      a.className = 'card';
+      a.href = item.file;
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.innerHTML = `
+        <div class="articles">${item.articles}</div>
+        <div class="title">${item.title}</div>
+        <div class="meta">
+          <span class="tag">${chapterMap[item.chapterKey] || item.chapterKey}</span>
+        </div>
+        <div class="meta" style="margin-top:.5rem;">
+          <span class="date">${item.date}</span>
+        </div>
+      `;
+      grid.appendChild(a);
+    });
+  }
+
+  renderCoverageMap();
+}
+
+initCategorySelect();
+let searchScrollTimer = null;
+document.getElementById('searchInput').addEventListener('input', () => {
+  render();
+  clearTimeout(searchScrollTimer);
+  const keyword = document.getElementById('searchInput').value.trim();
+  if (keyword){
+    searchScrollTimer = setTimeout(() => {
+      document.getElementById('countLabel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 500);
+  }
+});
+document.getElementById('categorySelect').addEventListener('change', render);
+render();
+</script>
+
 </body>
 </html>

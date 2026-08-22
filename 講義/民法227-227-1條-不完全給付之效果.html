@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>民法第227條｜不完全給付 教學講義</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink: #16233b;
+    --indigo: #2c4a76;
+    --paper-outer: #f3ede0;
+    --paper-content: #fbf8f1;
+    --paper-card: #fffdf8;
+    --seal-red: #9c2b3a;
+    --brass: #a9832f;
+    --border-gray: #ddd3bf;
+    --ink-45: rgba(22,35,59,0.45);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper-outer);
+    color:var(--ink);
+    font-family:'Noto Sans TC', sans-serif;
+    line-height:1.75;
+  }
+  h1,h2,h3,h4,.serif{font-family:'Noto Serif TC', serif;}
+  a{color:var(--indigo);}
+
+  /* ===== Layout ===== */
+  .layout{display:flex; max-width:1280px; margin:0 auto;}
+  .sidebar{
+    width:240px; flex-shrink:0; position:sticky; top:0; height:100vh;
+    padding:32px 18px; overflow-y:auto; border-right:1px solid var(--border-gray);
+  }
+  .sidebar .nav-title{font-size:12px; letter-spacing:2px; color:var(--ink-45); margin-bottom:16px;}
+  .sidebar nav a{
+    display:block; padding:9px 10px; margin-bottom:2px; border-radius:6px;
+    font-size:14px; color:var(--ink); text-decoration:none; border-left:3px solid transparent;
+  }
+  .sidebar nav a.active{background:rgba(44,74,118,0.08); border-left:3px solid var(--indigo); font-weight:700;}
+  .sidebar nav a.faded{color:var(--ink-45);}
+  .main{flex:1; min-width:0; background:var(--paper-content); box-shadow:-8px 0 24px -20px rgba(0,0,0,0.3); padding:0 0 80px 0;}
+  .section{padding:48px 56px; border-bottom:1px dashed var(--border-gray); scroll-margin-top:24px;}
+  .section:last-child{border-bottom:none;}
+
+  /* mobile top nav */
+  .topnav{display:none;}
+
+  @media (max-width:980px){
+    .sidebar{display:none;}
+    .layout{display:block;}
+    .topnav{
+      display:flex; gap:8px; overflow-x:auto; position:sticky; top:0; z-index:10;
+      background:var(--paper-outer); padding:12px 14px; border-bottom:1px solid var(--border-gray);
+    }
+    .topnav a{
+      flex-shrink:0; padding:7px 14px; border-radius:999px; background:var(--paper-card);
+      border:1px solid var(--border-gray); font-size:13px; color:var(--ink); text-decoration:none; white-space:nowrap;
+    }
+    .topnav a.active{background:var(--indigo); color:var(--paper-content); border-color:var(--indigo);}
+    .topnav a.faded{color:var(--ink-45);}
+    .section{padding:36px 20px;}
+  }
+
+  /* ===== Cover ===== */
+  .cover{
+    padding:64px 56px 48px; position:relative; border-bottom:1px dashed var(--border-gray);
+    background:linear-gradient(180deg, rgba(169,131,47,0.05), transparent 60%);
+  }
+  .eyebrow{
+    display:inline-block; font-size:12px; letter-spacing:3px; color:var(--brass);
+    border:1px solid var(--brass); padding:4px 12px; border-radius:999px; margin-bottom:18px;
+  }
+  .cover h1{font-size:40px; font-weight:900; margin:0 0 8px; color:var(--ink);}
+  .cover .subtitle{font-size:16px; color:var(--ink-45); margin-bottom:14px;}
+  .cover-meta{display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:28px;}
+  .ver-badge{
+    border:1px solid var(--seal-red); color:var(--seal-red); font-size:12px; font-weight:700;
+    padding:3px 10px; border-radius:5px;
+  }
+  .meta-date, .meta-visitor{
+    border:1px solid var(--indigo); color:var(--indigo); font-size:12px;
+    padding:3px 10px; border-radius:5px;
+  }
+  .meta-visitor img{vertical-align:middle; height:15px;}
+  .seal-mark{
+    position:absolute; top:56px; right:56px; width:96px; height:96px; border-radius:50%;
+    border:3px solid var(--seal-red); color:var(--seal-red); display:flex; align-items:center; justify-content:center;
+    transform:rotate(-12deg); font-family:'Noto Serif TC', serif; font-weight:900; font-size:20px;
+    writing-mode:vertical-rl; letter-spacing:4px;
+  }
+  @media (max-width:980px){ .seal-mark{display:none;} .cover{padding:40px 20px;} .cover h1{font-size:28px;} }
+
+  .toc{display:grid; grid-template-columns:repeat(3,1fr); gap:8px 20px; margin-top:8px;}
+  @media (max-width:700px){ .toc{grid-template-columns:1fr 1fr;} }
+  .toc a{font-size:14px; color:var(--indigo); text-decoration:none;}
+  .toc span{color:var(--ink-45); margin-right:6px;}
+
+  /* ===== Article box ===== */
+  .article-box{
+    position:relative; background:var(--paper-card); border-left:3px solid var(--indigo);
+    border-radius:4px; padding:20px 24px; margin:18px 0; overflow:hidden;
+    box-shadow:0 1px 3px rgba(0,0,0,0.06);
+  }
+  .article-box .num-watermark{
+    position:absolute; right:8px; bottom:-18px; font-family:'Noto Serif TC', serif; font-weight:900;
+    font-size:96px; color:var(--ink); opacity:0.06; line-height:1; pointer-events:none;
+  }
+  .article-box h4{margin:0 0 10px; font-size:16px; color:var(--indigo);}
+  .article-box p{margin:0 0 6px; position:relative; z-index:1;}
+
+  /* ===== Table ===== */
+  table{width:100%; border-collapse:collapse; margin:16px 0; font-size:14px;}
+  thead th{background:var(--ink); color:var(--paper-content); padding:10px 12px; text-align:left; font-weight:700;}
+  tbody td{padding:10px 12px; border-bottom:1px solid var(--border-gray); vertical-align:top;}
+  tbody tr:nth-child(even){background:#f6f1e6;}
+  tbody tr:nth-child(odd){background:#fffdf8;}
+
+  .conclude-yes{font-weight:700; color:var(--ink); background:linear-gradient(transparent 65%, rgba(169,131,47,0.35) 0%);}
+  .conclude-no{font-weight:700; color:var(--seal-red);}
+
+  /* ===== Case card / essay card ===== */
+  .card{
+    background:var(--paper-card); border-radius:8px; margin:20px 0; overflow:hidden;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.08), 0 8px 20px -12px rgba(0,0,0,0.25);
+  }
+  .card-header{padding:12px 20px; color:var(--paper-content); font-weight:700; font-family:'Noto Serif TC',serif;}
+  .card.case .card-header{background:var(--indigo);}
+  .card.essay .card-header{background:var(--ink);}
+  .card-body{padding:20px 24px;}
+  .tag{display:inline-block; font-size:11px; padding:2px 8px; border-radius:999px; background:rgba(255,255,255,0.25); margin-left:8px;}
+
+  .relation-wrap{margin:20px 0; text-align:center;}
+  .relation-note{font-size:13px; color:var(--ink-45); text-align:center; margin-top:6px;}
+
+  /* ===== Placeholder (not used here but kept per skill spec) ===== */
+  .placeholder{
+    border:2px dashed var(--brass); border-radius:8px; padding:32px; text-align:center; color:var(--ink-45);
+  }
+
+  /* ===== Speed card ===== */
+  .speed-card{
+    background:var(--ink); color:var(--paper-content); border-radius:10px; padding:28px 32px;
+    position:relative; overflow:hidden;
+  }
+  .speed-card .deco{
+    position:absolute; right:10px; bottom:-30px; font-family:'Noto Serif TC',serif; font-weight:900;
+    font-size:150px; opacity:0.08; line-height:1;
+  }
+  .speed-card h3{margin-top:0; color:var(--paper-content);}
+  .mnemonic{
+    background:var(--seal-red); color:#fff; padding:14px 18px; border-radius:6px; font-weight:700;
+    font-family:'Noto Serif TC',serif; font-size:17px; letter-spacing:1px; margin:16px 0; display:inline-block;
+  }
+  .speed-card ul{padding-left:20px;}
+
+  .link-note{
+    border:1px dashed var(--border-gray); border-radius:8px; padding:16px 20px; margin-top:24px; font-size:14px;
+  }
+
+  .source-note{font-size:12px; color:var(--ink-45); margin-top:10px; line-height:1.6;}
+  .req-box{
+    background:var(--paper-card); border:1px solid var(--border-gray); border-radius:8px; padding:18px 20px; margin:14px 0;
+  }
+  .req-box h4{margin:0 0 8px; color:var(--indigo); font-size:15px;}
+</style>
+</head>
+<body>
+
+<div class="topnav" id="topnav"></div>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="nav-title">章節目錄</div>
+    <nav id="sidenav">
+      <a href="#cover">封面</a>
+      <a href="#s1">一、條文原文</a>
+      <a href="#s2">二、條文結構</a>
+      <a href="#s3">三、要件逐項解析</a>
+      <a href="#s4">四、學說見解</a>
+      <a href="#s5">五、實務見解</a>
+      <a href="#s6">六、教學案例</a>
+      <a href="#s7">七、申論練習題</a>
+      <a href="#s8">八、速查卡</a>
+    </nav>
+  </aside>
+
+  <main class="main">
+
+    <section class="cover" id="cover">
+      <div class="seal-mark">加害給付</div>
+      <div class="eyebrow">民法．債編總則．第二章 債之效力．第一節 給付</div>
+      <h1>民法第227條</h1>
+      <div class="subtitle">不完全給付之效果——瑕疵給付與加害給付</div>
+      <div class="cover-meta">
+        <span class="ver-badge">v1.0</span>
+        <span class="meta-date">建立日期：2026-08-22</span>
+        <span class="meta-visitor"><img src="https://visitor-badge.laobi.icu/badge?page_id=mjib007.civil-law-interpretation.227-227-1" alt="visitor"></span>
+      </div>
+      <div class="toc">
+        <a href="#s1"><span>01</span>條文原文</a>
+        <a href="#s2"><span>02</span>條文結構</a>
+        <a href="#s3"><span>03</span>要件逐項解析</a>
+        <a href="#s4"><span>04</span>學說見解</a>
+        <a href="#s5"><span>05</span>實務見解</a>
+        <a href="#s6"><span>06</span>教學案例</a>
+        <a href="#s7"><span>07</span>申論練習題</a>
+        <a href="#s8"><span>08</span>速查卡</a>
+      </div>
+    </section>
+
+    <!-- ============ 1. 條文原文 ============ -->
+    <section class="section" id="s1">
+      <h2>一、條文原文</h2>
+
+      <div class="article-box">
+        <h4>民法第227條（不完全給付之效果）</h4>
+        <p>Ⅰ　因可歸責於債務人之事由，致為不完全給付者，債權人得依關於給付遲延或給付不能之規定行使其權利。</p>
+        <p>Ⅱ　因不完全給付而生前項以外之損害者，債權人並得請求賠償。</p>
+        <span class="num-watermark">227</span>
+      </div>
+
+      <div class="article-box">
+        <h4>民法第227條之1（債務不履行侵害人格權之準用）</h4>
+        <p>債務人因債務不履行，致債權人之人格權受侵害者，準用第一百九十二條至第一百九十五條及第一百九十七條之規定，負損害賠償責任。</p>
+        <span class="num-watermark">227-1</span>
+      </div>
+
+      <div class="article-box">
+        <h4>民法第226條（給付不能之損害賠償）</h4>
+        <p>Ⅰ　因可歸責於債務人之事由，致給付不能者，債權人得請求賠償損害。</p>
+        <p>Ⅱ　前項情形，給付一部不能者，若其他部分之履行，於債權人無利益時，債權人得拒絕該部之給付，請求全部不履行之損害賠償。</p>
+        <span class="num-watermark">226</span>
+      </div>
+
+      <div class="article-box">
+        <h4>民法第213條（損害賠償之方法——回復原狀）</h4>
+        <p>Ⅰ　負損害賠償責任者，除法律另有規定或契約另有訂定外，應回復他方損害發生前之原狀。</p>
+        <p>Ⅱ　因回復原狀而應給付金錢者，自損害發生時起，加給利息。</p>
+        <p>Ⅲ　第一項情形，債權人得請求支付回復原狀所必要之費用，以代回復原狀。</p>
+        <span class="num-watermark">213</span>
+      </div>
+
+      <div class="article-box">
+        <h4>民法第215條（金錢賠償）</h4>
+        <p>不能回復原狀或回復顯有重大困難者，應以金錢賠償其損害。</p>
+        <span class="num-watermark">215</span>
+      </div>
+
+      <div class="article-box">
+        <h4>民法第216條（損害賠償之範圍）</h4>
+        <p>Ⅰ　損害賠償，除法律另有規定或契約另有訂定外，應以填補債權人所受損害及所失利益為限。</p>
+        <p>Ⅱ　依通常情形，或依已定之計劃、設備或其他特別情事，可得預期之利益，視為所失利益。</p>
+        <span class="num-watermark">216</span>
+      </div>
+
+      <div class="article-box">
+        <h4>民法第354條（物之瑕疵擔保責任）</h4>
+        <p>Ⅰ　物之出賣人對於買受人，應擔保其物依第三百七十三條之規定危險移轉於買受人時無滅失或減少其價值之瑕疵，亦無滅失或減少其通常效用或契約預定效用之瑕疵。但減少之程度，無關重要者，不得視為瑕疵。</p>
+        <p>Ⅱ　出賣人並應擔保其物於危險移轉時，具有其所保證之品質。</p>
+        <span class="num-watermark">354</span>
+      </div>
+
+      <div class="article-box">
+        <h4>民法第184條（一般侵權行為）</h4>
+        <p>Ⅰ　因故意或過失，不法侵害他人之權利者，負損害賠償責任。故意以背於善良風俗之方法，加損害於他人者亦同。</p>
+        <p>Ⅱ　違反保護他人之法律，致生損害於他人者，負賠償責任。但能證明其行為無過失者，不在此限。</p>
+        <span class="num-watermark">184</span>
+      </div>
+
+      <div class="article-box">
+        <h4>民法第192條（侵害生命權之財產上損害賠償）</h4>
+        <p>Ⅰ　不法侵害他人致死者，對於支出醫療及增加生活上需要之費用或殯葬費之人，亦應負損害賠償責任。</p>
+        <p>Ⅱ　被害人對於第三人負有法定扶養義務者，加害人對於該第三人亦應負損害賠償責任。</p>
+        <p>Ⅲ　第一百九十三條第二項之規定，於前項損害賠償適用之。</p>
+        <span class="num-watermark">192</span>
+      </div>
+
+      <div class="article-box">
+        <h4>民法第193條（侵害身體健康之財產上損害賠償）</h4>
+        <p>Ⅰ　不法侵害他人之身體或健康者，對於被害人因此喪失或減少勞動能力或增加生活上之需要時，應負損害賠償責任。</p>
+        <p>Ⅱ　前項損害賠償，法院得因當事人之聲請，定為支付定期金。但須命加害人提出擔保。</p>
+        <span class="num-watermark">193</span>
+      </div>
+
+      <div class="article-box">
+        <h4>民法第194條（侵害生命權之非財產上損害賠償）</h4>
+        <p>不法侵害他人致死者，被害人之父、母、子、女及配偶，雖非財產上之損害，亦得請求賠償相當之金額。</p>
+        <span class="num-watermark">194</span>
+      </div>
+
+      <div class="article-box">
+        <h4>民法第195條（侵害人格法益之非財產上損害賠償）</h4>
+        <p>Ⅰ　不法侵害他人之身體、健康、名譽、自由、信用、隱私、貞操，或不法侵害其他人格法益而情節重大者，被害人雖非財產上之損害，亦得請求賠償相當之金額。其名譽被侵害者，並得請求回復名譽之適當處分。</p>
+        <p>Ⅱ　前項請求權，不得讓與或繼承。但以金額賠償之請求權已依契約承諾，或已起訴者，不在此限。</p>
+        <p>Ⅲ　前二項規定，於不法侵害他人基於父、母、子、女或配偶關係之身分法益而情節重大者，準用之。</p>
+        <span class="num-watermark">195</span>
+      </div>
+
+      <div class="article-box">
+        <h4>民法第197條（侵權行為損害賠償請求權之時效）</h4>
+        <p>Ⅰ　因侵權行為所生之損害賠償請求權，自請求權人知有損害及賠償義務人時起，二年間不行使而消滅，自有侵權行為時起，逾十年者亦同。</p>
+        <p>Ⅱ　損害賠償之義務人，因侵權行為受利益，致被害人受損害者，於前項時效完成後，仍應依關於不當得利之規定，返還其所受之利益於被害人。</p>
+        <span class="num-watermark">197</span>
+      </div>
+    </section>
+
+    <!-- ============ 2. 條文結構 ============ -->
+    <section class="section" id="s2">
+      <h2>二、條文結構——請求權基礎架構總覽</h2>
+      <p>第227條規範「不完全給付」，是債務不履行三種型態（給付遲延、給付不能、不完全給付）中最晚被實務與立法承認、也最容易與物之瑕疵擔保責任混淆的一種。其請求權架構可拆解如下：</p>
+
+      <table>
+        <thead>
+          <tr><th>層次</th><th>內容</th><th>法律效果</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>第一層：定性</td>
+            <td>債務人「已為給付」，但給付內容不符債之本旨</td>
+            <td>成立不完全給付（區別於未為給付之給付遲延／給付不能）</td>
+          </tr>
+          <tr>
+            <td>第二層：分類</td>
+            <td>瑕疵給付（給付本身有缺陷）／加害給付（瑕疵並侵害債權人履行利益以外之固有利益）</td>
+            <td>決定適用第227條第1項或第2項</td>
+          </tr>
+          <tr>
+            <td>第三層：瑕疵給付效果（Ⅰ項）</td>
+            <td>可補正 → 準用給付遲延規定；不能補正 → 準用給付不能規定</td>
+            <td>修補、減價、解除契約、賠償履行利益</td>
+          </tr>
+          <tr>
+            <td>第三層：加害給付效果（Ⅱ項）</td>
+            <td>因給付瑕疵致生履行利益以外之損害（固有利益損害、人身損害）</td>
+            <td>另行請求賠償，得與第Ⅰ項損害併存</td>
+          </tr>
+          <tr>
+            <td>第四層：人格權受侵害時</td>
+            <td>加害給付侵及債權人人格權者</td>
+            <td>依第227條之1，準用第192-195條、第197條，得請求財產上及非財產上損害賠償</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="req-box">
+        <h4>請求權基礎摘要</h4>
+        <p style="margin:0;">債權人得主張之請求權基礎，依序為：<b>第227條第1項</b>（瑕疵給付部分，準用給付遲延／給付不能規定）＋<b>第227條第2項</b>（加害給付部分之額外損害）＋（若涉及人格權受侵害）<b>第227條之1準用第192條至第195條、第197條</b>。損害賠償之方法與範圍，則依<b>第213條→第215條→第216條</b>之順序決定。</p>
+      </div>
+    </section>
+
+    <!-- ============ 3. 要件逐項解析 ============ -->
+    <section class="section" id="s3">
+      <h2>三、要件逐項解析</h2>
+
+      <h3>（一）不完全給付之成立要件</h3>
+      <table>
+        <thead><tr><th>要件</th><th>內容</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>① 債務人已為給付</td>
+            <td>債務人有實際提出給付之行為</td>
+            <td>此為區辨不完全給付與給付遲延／給付不能之關鍵：若債務人根本未為給付，即非不完全給付（最高法院96年度台上字第2084號民事裁定參照）</td>
+          </tr>
+          <tr>
+            <td>② 給付不符債之本旨</td>
+            <td>給付內容有瑕疵，或給付方法、時間、地點違反契約目的與誠信原則</td>
+            <td>不以契約成立「後」發生之瑕疵為限，締約時已存在而故意過失未告知之瑕疵，亦可構成（最高法院99年度台上字第2033號民事判決參照）</td>
+          </tr>
+          <tr>
+            <td>③ 可歸責於債務人之事由</td>
+            <td>債務人就給付瑕疵之發生有故意或過失</td>
+            <td>採過失責任主義，非如物之瑕疵擔保責任採法定無過失責任（最高法院106年度台上字第1049號民事判決參照）；由債權人負舉證責任</td>
+          </tr>
+          <tr>
+            <td>④ 致生損害</td>
+            <td>因給付瑕疵，債權人受有履行利益或固有利益之損害</td>
+            <td>損害態樣決定適用第227條第1項或第2項</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>（二）瑕疵給付 vs 加害給付</h3>
+      <table>
+        <thead><tr><th>類型</th><th>定義</th><th>損害範圍</th><th>法律效果</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>瑕疵給付</td>
+            <td>給付本身存有缺陷，未逾越給付客體本身</td>
+            <td>僅限於給付本身之瑕疵損害（履行利益）</td>
+            <td class="conclude-yes">依第227條第1項，準用給付遲延或給付不能規定</td>
+          </tr>
+          <tr>
+            <td>加害給付</td>
+            <td>給付瑕疵進而侵害債權人履行利益以外之固有利益（其他財產或人身）</td>
+            <td>瑕疵結果損害，及於契約標的以外之固有利益</td>
+            <td class="conclude-yes">依第227條第2項，債權人得另行請求賠償</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="font-size:14px; color:var(--ink-45);">最高法院108年度台上字第1712號民事判決明確採此二分：承攬人所為不完全給付造成之損害，可分為瑕疵給付（瑕疵損害）與加害給付（瑕疵結果損害）。</p>
+
+      <h3>（三）加害給付與人格權受侵害之銜接——第227條之1</h3>
+      <p>若加害給付進一步侵害債權人之<b>人格權</b>（如身體、健康、生命），第227條之1使債權人得於契約責任下，準用侵權行為編第192條至第195條、第197條之規定請求賠償。此一設計之意義在於：</p>
+      <table>
+        <thead><tr><th>比較項目</th><th>契約責任（第227條、第227條之1）</th><th>侵權行為責任（第184條）</th></tr></thead>
+        <tbody>
+          <tr><td>舉證責任</td><td>推定債務人有過失，由債務人證明自己無可歸責事由</td><td>由被害人（原告）舉證加害人有故意或過失</td></tr>
+          <tr><td>請求權時效</td><td>一般請求權時效（民法第125條，十五年）</td><td>第197條特別短期時效：知悉起二年，行為起十年</td></tr>
+          <tr><td>賠償範圍</td><td>依第213條至第216條決定；準用192-195條後亦得請求非財產上損害（慰撫金）</td><td>依侵權行為規定請求</td></tr>
+        </tbody>
+      </table>
+      <p>可見立法者透過第227條之1，讓債權人在人格權受侵害時，能同時享有契約責任「舉證責任轉換、時效較長」之優勢，又能取得侵權行為編中慰撫金等非財產上損害賠償之保護，此為「契約責任與侵權責任功能接軌」之立法設計。</p>
+
+      <h3>（四）損害賠償之方法與範圍——第213條至第216條</h3>
+      <div class="req-box">
+        <h4>三段適用順序（不得跳躍引用）</h4>
+        <p style="margin:0;">① <b>第213條</b>：損害賠償原則上應回復原狀 →② <b>第215條</b>：不能回復原狀或回復顯有重大困難時，始轉換為金錢賠償 →③ <b>第216條</b>：金錢賠償範圍以「所受損害」＋「所失利益」為限。</p>
+      </div>
+      <p><b>相當因果關係之限制</b>：所失利益之計算，須以「依通常情形，或依已定之計劃、設備或其他特別情事，可得預期之利益」為限（第216條第2項）。偶發事件（如中彩券、意外暴利）欠缺相當因果關係，不在賠償範圍內。</p>
+
+      <h3>（五）與物之瑕疵擔保責任（第354條）之關係</h3>
+      <p>買賣契約中，出賣人交付有瑕疵之物，可能同時該當第354條物之瑕疵擔保責任與第227條不完全給付，兩者發生請求權競合。實務上二者最大差異在於：物之瑕疵擔保責任為<b>法定無過失責任</b>（不問出賣人是否可歸責），不完全給付責任則以<b>過失責任主義</b>為原則，須有可歸責於債務人之事由。買受人得選擇對自己有利之請求權基礎主張。</p>
+    </section>
+
+    <!-- ============ 4. 學說見解 ============ -->
+    <section class="section" id="s4">
+      <h2>四、學說見解</h2>
+      <table>
+        <thead><tr><th>學者</th><th>見解摘要</th><th>出處</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>王澤鑑</td>
+            <td>不完全給付屬於債務不履行之一種，性質上為「積極侵害債權」——債務人雖已提出給付，但給付內容不符合債之本旨，與消極不給付（給付遲延、給付不能）性質有別</td>
+            <td>《民法學說與判例研究（第三冊）》，1981年，頁69-71</td>
+          </tr>
+          <tr>
+            <td>孫森焱</td>
+            <td>不完全給付可再分為「瑕疵給付」（瑕疵損害，僅給付本身有缺陷）與「加害給付」（瑕疵結果損害，因給付瑕疵進而損及債權人履行利益以外之固有利益，如身體、其他財產）</td>
+            <td>《民法債編總論下冊》，2010年，頁564</td>
+          </tr>
+          <tr>
+            <td>陳自強</td>
+            <td>對不完全給付制度之繼受發展有專文討論，指出此制度係參考德國「積極侵害債權」理論轉化而來，並就我國實務發展脈絡加以整理</td>
+            <td>《違約責任與契約解消》，2016年9月版，頁9-10</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="source-note">⚠️ 以上學說整理主要轉引自期刊論文及網路資料之節錄，尚未逐字核對原書頁碼，建議日後有機會對照原著全文確認。</p>
+    </section>
+
+    <!-- ============ 5. 實務見解 ============ -->
+    <section class="section" id="s5">
+      <h2>五、實務見解</h2>
+      <table>
+        <thead><tr><th>判決</th><th>要旨</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>最高法院108年度台上字第1712號民事判決</td>
+            <td>承攬人所為不完全給付造成之損害，可分為瑕疵給付（瑕疵損害）與加害給付（瑕疵結果損害）</td>
+          </tr>
+          <tr>
+            <td>最高法院96年度台上字第2084號民事裁定</td>
+            <td>構成不完全給付之要件，須債務人「已為給付」，僅所提出之給付與債之本旨不相符合；若債務人未為給付，屬給付不能、給付拒絕或給付遲延，非屬不完全給付範疇</td>
+          </tr>
+          <tr>
+            <td>最高法院99年度台上字第2033號民事判決</td>
+            <td>第227條不以契約成立「後」發生之瑕疵為限，出賣人締約時故意過失未告知標的物既存之瑕疵，仍可構成不完全給付；若標的自始客觀不能，則屬第246條契約無效之範疇，非不完全給付問題</td>
+          </tr>
+          <tr>
+            <td>最高法院106年度台上字第1049號民事判決</td>
+            <td>不完全給付債務不履行責任非如物之瑕疵擔保責任採法定無過失責任，而係以過失責任主義為原則，須以有可歸責於債務人之事由為成立要件</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="source-note">⚠️ 以上四則判決要旨轉引自非官方網站（法律百科、法律事務所文章、補習班講義），尚未經司法院裁判書查詢系統原文核實。建議至 <a href="https://judgment.judicial.gov.tw/" target="_blank">司法院裁判書查詢系統</a> 輸入案號自行查閱全文核對後，再作為正式引用依據。<br>大法官解釋／憲法法庭判決部分：目前查無相關解釋或判決，理由為本條屬債編任意規定之私法規範，未見有人以此聲請違憲審查。</p>
+    </section>
+
+    <!-- ============ 6. 教學案例 ============ -->
+    <section class="section" id="s6">
+      <h2>六、教學案例<span style="font-size:13px; color:var(--ink-45); font-weight:400;">（虛構案例，僅供教學用途）</span></h2>
+
+      <div class="card case">
+        <div class="card-header">案例一：瑕疵給付與加害給付之區辨<span class="tag">教學用途</span></div>
+        <div class="card-body">
+          <p><b>事實</b>：甲向乙訂購一批冷凍鮮蝦，約定乙須以攝氏零下18度以下冷鏈配送。乙配送時因冷藏設備故障，鮮蝦於運送途中解凍又重新冷凍，甲收貨後未察覺，將部分鮮蝦供應予下游餐廳丙，丙之顧客食用後集體食物中毒送醫，甲因此須賠償丙之損失，並須銷毀庫存剩餘鮮蝦。</p>
+          <p><b>爭點</b>：乙之行為屬瑕疵給付、加害給付，或兩者兼具？甲得向乙主張何種賠償？</p>
+          <p><b>分析</b>：乙已完成給付（交付鮮蝦），但給付方式（冷鏈中斷）致給付內容不符債之本旨，構成不完全給付。鮮蝦本身因解凍再冷凍而喪失食用價值，屬「瑕疵給付」，甲得依第227條第1項準用給付不能規定，請求賠償鮮蝦價金之損害。而甲因此對丙負擔之賠償責任、庫存銷毀損失，係履行利益以外之固有利益損害，屬「加害給付」，甲得依第227條第2項另行請求賠償。若乙就設備故障有可歸責事由（如疏於保養、未及時發現故障），要件即已具備。</p>
+          <p><b>結論</b>：甲得依第227條第1項及第2項，分別請求鮮蝦價金損害（瑕疵給付部分）及對丙之賠償責任、庫存銷毀等衍生損害（加害給付部分），二者性質不同，得併存請求。</p>
+        </div>
+      </div>
+
+      <div class="card case">
+        <div class="card-header">案例二：加害給付侵害人格權時之準用效果<span class="tag">教學用途</span></div>
+        <div class="card-body">
+          <p><b>事實</b>：甲至乙開設之美容工作室進行醫美雷射療程，乙施作時因儀器參數設定錯誤，導致甲臉部灼傷並留下永久性疤痕，甲因此需長期就醫並產生精神上痛苦。</p>
+          <p><b>爭點</b>：甲得否依契約關係，請求非財產上損害賠償（慰撫金）？</p>
+          <p><b>分析</b>：乙提供之醫美服務屬給付內容不符債之本旨，構成不完全給付；因儀器操作疏失致甲身體健康受侵害（人格權受侵害），屬加害給付之一種。依第227條之1，債務人因債務不履行致債權人人格權受侵害者，準用第192條至第195條、第197條規定。甲得依準用第193條請求增加生活上需要之醫療費用及勞動能力減損之財產上損害，並得依準用第195條請求非財產上損害賠償（慰撫金）。此一契約責任路徑之時效較侵權行為（第197條之二年／十年）更為有利，且毋須由甲證明乙有故意過失，而係由乙證明自己無可歸責事由。</p>
+          <p><b>結論</b>：甲得依第227條之1準用第193條、第195條規定，向乙請求醫療費用、勞動能力減損之財產上損害，及相當金額之非財產上損害賠償（慰撫金）。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 7. 申論練習題 ============ -->
+    <section class="section" id="s7">
+      <h2>七、申論練習題與模擬解答</h2>
+
+      <div class="card essay">
+        <div class="card-header">練習題<span class="tag">AI擬題，已獲授權</span></div>
+        <div class="card-body">
+          <p>甲向乙購買一批工業用機台，約定乙須完成安裝及測試後點交。乙依約安裝完畢並測試通過，惟因乙安裝時未依規定鎖緊電路接頭，機台運轉三日後因接頭鬆脫走火，不僅機台本身燒毀，並延燒波及甲廠房內原有之另一台機器及庫存原料。試問甲得向乙主張何種權利？</p>
+        </div>
+      </div>
+
+      <div class="card essay">
+        <div class="card-header">模擬解答</div>
+        <div class="card-body">
+          <p>乙已依約完成機台之安裝及測試並點交予甲，其給付行為業已完成，惟因安裝時未依規定鎖緊電路接頭，致給付內容存有瑕疵，不符債之本旨，應構成民法第227條之不完全給付。</p>
+          <p>就機台本身燒毀之損害而言，此屬給付客體本身之瑕疵損害，性質上為「瑕疵給付」。依民法第227條第1項，因可歸責於乙之事由（未依規定鎖緊電路接頭），致給付內容有瑕疵且已不能補正（機台已燒毀），甲得依關於給付不能之規定，向乙請求機台之損害賠償。</p>
+          <p>就甲廠房內另一台機器及庫存原料遭延燒之損害而言，此係逾越契約給付客體範圍、侵害甲履行利益以外固有利益之損害，性質上為「加害給付」。依民法第227條第2項，甲就此部分之損害，得另行向乙請求賠償，不受第1項瑕疵給付損害賠償範圍之限制。</p>
+          <p>關於損害賠償之方法與範圍，依民法第213條規定，原則上應回復損害發生前之原狀；惟機台及財物既已燒毀滅失，回復原狀顯有重大困難，依民法第215條規定，應以金錢賠償其損害。而金錢賠償之範圍，依民法第216條規定，以填補甲所受損害（機台價值、另一機器及原料之損失）及所失利益（若因機台燒毀致甲營業中斷，依通常情形可得預期之營業利益）為限。</p>
+          <p>綜上，甲得依民法第227條第1項及第2項，向乙請求機台本身、廠房內另一機器及庫存原料之損害賠償，並得依第213條至第216條規定，以金錢賠償方式，請求所受損害及所失利益。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 8. 速查卡 ============ -->
+    <section class="section" id="s8">
+      <h2>八、速查卡</h2>
+      <div class="speed-card">
+        <div class="deco">速</div>
+        <h3>民法第227條 不完全給付</h3>
+        <ul>
+          <li><b>成立要件</b>：已為給付＋不符債之本旨＋可歸責於債務人＋致生損害</li>
+          <li><b>二分類型</b>：瑕疵給付（給付本身瑕疵，準用給付遲延／不能）／加害給付（瑕疵結果損害，另行賠償）</li>
+          <li><b>人格權受侵害</b>：第227條之1準用第192-195、197條</li>
+          <li><b>賠償方法順序</b>：第213條（原狀）→第215條（金錢）→第216條（所受損害＋所失利益）</li>
+          <li><b>與物之瑕疵擔保</b>：物之瑕疵擔保為無過失責任，不完全給付為過失責任，二者可能競合</li>
+        </ul>
+        <div class="mnemonic">已給不本旨，瑕加二分明；侵格準侵權，原金填所失</div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+  // populate mobile top nav by cloning sidebar links
+  const sideLinks = Array.from(document.querySelectorAll('#sidenav a'));
+  const topnav = document.getElementById('topnav');
+  sideLinks.forEach(a=>{
+    const clone = a.cloneNode(true);
+    topnav.appendChild(clone);
+  });
+
+  const allNavLinks = () => Array.from(document.querySelectorAll('#sidenav a, #topnav a'));
+
+  allNavLinks().forEach(a=>{
+    a.addEventListener('click', e=>{
+      e.preventDefault();
+      const id = a.getAttribute('href').slice(1);
+      const el = document.getElementById(id);
+      if(el) el.scrollIntoView({behavior:'smooth'});
+    });
+  });
+
+  const sections = ['cover','s1','s2','s3','s4','s5','s6','s7','s8'].map(id=>document.getElementById(id)).filter(Boolean);
+
+  const setActive = (id) => {
+    allNavLinks().forEach(a=>{
+      a.classList.toggle('active', a.getAttribute('href') === '#'+id);
+    });
+  };
+
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        setActive(entry.target.id);
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+
+  sections.forEach(sec=>observer.observe(sec));
+</script>
+
+</body>
+</html>

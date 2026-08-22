@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>民法第354條｜物之瑕疵擔保責任</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16233b;
+    --indigo:#2c4a76;
+    --paper-outer:#f3ede0;
+    --paper-content:#fbf8f1;
+    --paper-card:#fffdf8;
+    --seal:#9c2b3a;
+    --brass:#a9832f;
+    --border:#ddd3bf;
+    --ink-45: rgba(22,35,59,0.45);
+    --row-alt:#f6f1e6;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--paper-outer); color:var(--ink);
+    font-family:'Noto Sans TC',sans-serif; line-height:1.75;
+  }
+  h1,h2,h3,h4,.serif{font-family:'Noto Serif TC',serif;}
+  a{color:var(--indigo);}
+  .layout{display:flex; max-width:1180px; margin:0 auto;}
+  /* 側邊導覽 */
+  .sidenav{
+    width:240px; flex-shrink:0; position:sticky; top:0; align-self:flex-start;
+    height:100vh; overflow-y:auto; padding:28px 18px; border-right:1px solid var(--border);
+  }
+  .sidenav .nav-title{font-size:12px; letter-spacing:2px; color:var(--ink-45); margin-bottom:14px;}
+  .sidenav a{
+    display:block; padding:8px 10px; margin-bottom:2px; border-radius:6px;
+    color:var(--ink); text-decoration:none; font-size:14.5px;
+  }
+  .sidenav a.placeholder-link{color:var(--ink-45);}
+  .sidenav a.active{background:var(--ink); color:var(--paper-content); font-weight:500;}
+  /* 手機導覽 */
+  .mobilenav{display:none; position:sticky; top:0; z-index:20; background:var(--paper-outer);
+    border-bottom:1px solid var(--border); padding:10px 12px; overflow-x:auto; white-space:nowrap;}
+  .mobilenav a{display:inline-block; padding:7px 14px; margin-right:6px; border-radius:999px;
+    background:var(--paper-card); border:1px solid var(--border); color:var(--ink); text-decoration:none; font-size:13px;}
+  .mobilenav a.active{background:var(--ink); color:var(--paper-content);}
+  main{flex:1; min-width:0; padding:0 0 80px; box-shadow:-6px 0 16px -12px rgba(22,35,59,0.15);}
+  section{padding:52px 56px; border-bottom:1px dashed var(--border);}
+  section:last-child{border-bottom:none;}
+  /* 封面 */
+  .cover{background:var(--paper-content); position:relative; padding:64px 56px 48px;}
+  .eyebrow{font-size:13px; letter-spacing:3px; color:var(--brass); font-weight:700; margin-bottom:14px;}
+  .cover h1{font-size:34px; font-weight:900; margin:0 0 10px; color:var(--ink);}
+  .cover .sub{font-size:16px; color:var(--ink-45); margin-bottom:18px;}
+  .cover-meta{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:28px;}
+  .cover-meta span{font-size:12.5px; padding:4px 10px; border-radius:5px; border:1px solid var(--indigo); color:var(--indigo);}
+  .ver-badge{border-color:var(--seal)!important; color:var(--seal)!important; font-weight:700;}
+  .seal-mark{
+    position:absolute; top:48px; right:56px; width:88px; height:88px; border:3px solid var(--seal);
+    border-radius:50%; display:flex; align-items:center; justify-content:center; transform:rotate(-12deg);
+    writing-mode:vertical-rl; color:var(--seal); font-family:'Noto Serif TC',serif; font-weight:900; font-size:20px;
+    letter-spacing:4px;
+  }
+  .toc{margin-top:10px;}
+  .toc ol{columns:2; padding-left:20px; font-size:14.5px; color:var(--ink);}
+  /* 條文原文 */
+  .article-box{
+    position:relative; background:var(--paper-card); border-left:3px solid var(--indigo);
+    border-radius:4px; padding:20px 24px; margin-bottom:22px; overflow:hidden;
+    box-shadow:0 1px 3px rgba(22,35,59,0.06);
+  }
+  .article-box .num-watermark{
+    position:absolute; right:8px; bottom:-6px; font-family:'Noto Serif TC',serif; font-weight:900;
+    font-size:96px; color:var(--ink); opacity:0.06; line-height:1; pointer-events:none;
+  }
+  .article-box h4{margin:0 0 8px; color:var(--indigo); font-size:16px;}
+  .article-box p{margin:4px 0; font-size:15px;}
+  /* 表格 */
+  table{width:100%; border-collapse:collapse; margin:18px 0; font-size:14.5px;}
+  th{background:var(--ink); color:var(--paper-content); padding:10px 12px; text-align:left; font-family:'Noto Serif TC',serif;}
+  td{padding:10px 12px; border-bottom:1px solid var(--border);}
+  tr:nth-child(even) td{background:var(--paper-card);}
+  tr:nth-child(odd) td{background:var(--row-alt);}
+  .positive{color:var(--ink); font-weight:700; background:linear-gradient(transparent 60%, rgba(169,131,47,0.35) 60%);}
+  .negative{color:var(--seal); font-weight:700;}
+  /* 案例卡／申論題卡 */
+  .case-card, .exam-card{
+    background:var(--paper-card); border-radius:8px; margin-bottom:24px;
+    box-shadow:0 1px 2px rgba(22,35,59,0.08), 0 6px 18px -10px rgba(22,35,59,0.25);
+    overflow:hidden;
+  }
+  .case-card .card-head{background:var(--indigo); color:var(--paper-content); padding:12px 20px; font-family:'Noto Serif TC',serif; font-weight:700;}
+  .exam-card .card-head{background:var(--ink); color:var(--paper-content); padding:12px 20px; font-family:'Noto Serif TC',serif; font-weight:700;}
+  .case-card .card-body, .exam-card .card-body{padding:20px 24px;}
+  .tag{display:inline-block; font-size:11.5px; padding:2px 9px; border-radius:999px; background:rgba(255,255,255,0.2); margin-left:8px;}
+  .fiction-tag{background:var(--brass); color:#fff; font-size:11.5px; padding:2px 9px; border-radius:999px; margin-left:8px;}
+  details.answer{margin-top:14px; background:var(--paper-content); border:1px solid var(--border); border-radius:6px; padding:12px 16px;}
+  details.answer summary{cursor:pointer; font-weight:700; color:var(--indigo);}
+  /* 學說/實務 見解卡 */
+  .opinion-card{background:var(--paper-card); border:1px solid var(--border); border-radius:6px; padding:16px 20px; margin-bottom:14px;}
+  .opinion-card .who{font-weight:700; color:var(--indigo); font-family:'Noto Serif TC',serif;}
+  .source-note{font-size:12.5px; color:var(--ink-45); margin-top:8px;}
+  .disclaimer-box{background:var(--row-alt); border-left:3px solid var(--brass); padding:12px 16px; font-size:13.5px; color:var(--ink-45); border-radius:4px; margin-top:16px;}
+  /* 速查卡 */
+  .cheatsheet{background:var(--ink); color:var(--paper-content); border-radius:10px; padding:28px 32px; position:relative; overflow:hidden;}
+  .cheatsheet::after{content:"速"; position:absolute; right:10px; bottom:-30px; font-family:'Noto Serif TC',serif; font-size:180px; font-weight:900; color:rgba(255,255,255,0.06);}
+  .cheatsheet h3{margin-top:0; color:var(--paper-content);}
+  .mnemonic{background:var(--seal); color:#fff; padding:12px 18px; border-radius:6px; font-family:'Noto Serif TC',serif; font-size:17px; font-weight:700; margin:16px 0; display:inline-block;}
+  .cheatsheet ul{padding-left:20px;}
+  .cheatsheet li{margin-bottom:8px; font-size:14.5px;}
+  /* 佔位樣式（保留規範，本講義未使用但保留CSS供未來章節擴充） */
+  .placeholder{border:2px dashed var(--brass); border-radius:8px; padding:40px; text-align:center; color:var(--ink-45); background:repeating-linear-gradient(45deg, rgba(169,131,47,0.04), rgba(169,131,47,0.04) 10px, transparent 10px, transparent 20px);}
+  .placeholder .badge{display:inline-block; margin-top:10px; background:var(--brass); color:#fff; font-size:12px; padding:3px 12px; border-radius:999px;}
+  h2.section-title{font-size:22px; border-left:5px solid var(--brass); padding-left:14px; margin-top:0;}
+  @media (max-width:980px){
+    .sidenav{display:none;}
+    .mobilenav{display:block;}
+    section{padding:36px 20px;}
+    .cover{padding:44px 20px 32px;}
+    .seal-mark{top:24px; right:20px; width:64px; height:64px; font-size:14px;}
+    .toc ol{columns:1;}
+    table{font-size:13px;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="mobilenav" id="mobilenav">
+  <a href="#cover">封面</a>
+  <a href="#articles">條文</a>
+  <a href="#structure">結構</a>
+  <a href="#elements">要件解析</a>
+  <a href="#doctrine">學說</a>
+  <a href="#precedent">實務</a>
+  <a href="#cases">案例</a>
+  <a href="#terms">名詞</a>
+  <a href="#exam">申論題</a>
+  <a href="#cheatsheet">速查卡</a>
+</nav>
+
+<div class="layout">
+  <aside class="sidenav" id="sidenav">
+    <div class="nav-title">章節導覽</div>
+    <a href="#cover">一、封面</a>
+    <a href="#articles">二、條文原文</a>
+    <a href="#structure">三、條文結構</a>
+    <a href="#elements">四、要件逐項解析</a>
+    <a href="#doctrine">五、學說見解</a>
+    <a href="#precedent">六、實務見解</a>
+    <a href="#cases">七、教學案例</a>
+    <a href="#terms">八、專有名詞解釋</a>
+    <a href="#exam">九、申論練習題</a>
+    <a href="#cheatsheet">十、速查卡</a>
+  </aside>
+
+  <main>
+    <section class="cover" id="cover">
+      <div class="seal-mark">得解除</div>
+      <div class="eyebrow">民法・債編各論・買賣・第七款 買賣之效力</div>
+      <h1>物之瑕疵擔保責任</h1>
+      <div class="sub">民法第354、355、356、359、360條 § 損害賠償基礎條文：第213、215、216條</div>
+      <div class="cover-meta">
+        <span class="ver-badge">v1.0</span>
+        <span class="meta-date">建立日期：2026-08-22</span>
+        <span><img src="https://visitor-badge.laobi.icu/badge?page_id=mjib007.civil-law-interpretation.354-355-356-359-360" alt="訪客數" style="vertical-align:middle;height:14px;"></span>
+      </div>
+      <div class="toc">
+        <ol>
+          <li>條文原文</li>
+          <li>條文結構</li>
+          <li>要件逐項解析</li>
+          <li>學說見解</li>
+          <li>實務見解</li>
+          <li>教學案例</li>
+          <li>專有名詞解釋</li>
+          <li>申論練習題與模擬解答</li>
+          <li>速查卡</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="articles">
+      <h2 class="section-title">條文原文</h2>
+
+      <div class="article-box">
+        <span class="num-watermark">354</span>
+        <h4>第354條【物之瑕疵擔保責任】</h4>
+        <p>Ⅰ　物之出賣人對於買受人，應擔保其物依第三百七十三條之規定危險移轉於買受人時無滅失或減少其價值之瑕疵，亦無滅失或減少其通常效用或契約預定效用之瑕疵。但減少之程度，無關重要者，不得視為瑕疵。</p>
+        <p>Ⅱ　出賣人並應擔保其物於危險移轉時，具有其所保證之品質。</p>
+      </div>
+
+      <div class="article-box">
+        <span class="num-watermark">355</span>
+        <h4>第355條【瑕疵擔保責任之排除】</h4>
+        <p>Ⅰ　買受人於契約成立時，知其物有前條第一項所稱之瑕疵者，出賣人不負擔保之責。</p>
+        <p>Ⅱ　買受人因重大過失，而不知有前條第一項所稱之瑕疵者，出賣人如未保證其無瑕疵時，不負擔保之責。但故意不告知其瑕疵者，不在此限。</p>
+      </div>
+
+      <div class="article-box">
+        <span class="num-watermark">356</span>
+        <h4>第356條【買受人之檢查通知義務】</h4>
+        <p>Ⅰ　買受人應按物之性質，依通常程序從速檢查其所受領之物。如發見有應由出賣人負擔保責任之瑕疵時，應即通知出賣人。</p>
+        <p>Ⅱ　買受人怠於為前項之通知者，除依通常之檢查不能發見之瑕疵外，視為承認其所受領之物。</p>
+        <p>Ⅲ　不能即知之瑕疵，至日後發見者，應即通知出賣人，怠於為通知者，視為承認其所受領之物。</p>
+      </div>
+
+      <div class="article-box">
+        <span class="num-watermark">359</span>
+        <h4>第359條【解除契約或請求減少價金】</h4>
+        <p>買賣因物有瑕疵，而出賣人依前五條之規定，應負擔保之責者，買受人得解除其契約或請求減少其價金。但依情形，解除契約顯失公平者，買受人僅得請求減少價金。</p>
+      </div>
+
+      <div class="article-box">
+        <span class="num-watermark">360</span>
+        <h4>第360條【缺少保證品質之損害賠償】</h4>
+        <p>買賣之物，缺少出賣人所保證之品質者，買受人得不解除契約或請求減少價金，而請求不履行之損害賠償；出賣人故意不告知物之瑕疵者亦同。</p>
+      </div>
+
+      <div class="article-box">
+        <span class="num-watermark">213</span>
+        <h4>第213條【損害賠償之方法：回復原狀】</h4>
+        <p>Ⅰ　負損害賠償責任者，除法律另有規定或契約另有訂定外，應回復他方損害發生前之原狀。</p>
+        <p>Ⅱ　因回復原狀而應給付金錢者，自損害發生時起，加給利息。</p>
+        <p>Ⅲ　第一項情形，債權人得請求支付回復原狀所必要之費用，以代回復原狀。</p>
+      </div>
+
+      <div class="article-box">
+        <span class="num-watermark">215</span>
+        <h4>第215條【回復原狀顯有困難時之金錢賠償】</h4>
+        <p>不能回復原狀或回復顯有重大困難者，應以金錢賠償其損害。</p>
+      </div>
+
+      <div class="article-box">
+        <span class="num-watermark">216</span>
+        <h4>第216條【損害賠償之範圍】</h4>
+        <p>Ⅰ　損害賠償，除法律另有規定或契約另有訂定外，應以填補債權人所受損害及所失利益為限。</p>
+        <p>Ⅱ　依通常情形，或依已定之計劃、設備或其他特別情事，可得預期之利益，視為所失利益。</p>
+      </div>
+    </section>
+
+    <section id="structure">
+      <h2 class="section-title">條文結構（請求權基礎架構總覽）</h2>
+      <p>買受人主張物之瑕疵擔保責任，其請求權基礎架構可拆解如下五個層次：</p>
+      <table>
+        <tr><th>層次</th><th>審查內容</th><th>對應條文</th></tr>
+        <tr><td>① 瑕疵存在</td><td>物於危險移轉時，是否具有價值瑕疵／通常效用瑕疵／契約預定效用瑕疵／保證品質瑕疵，且非「無關重要」之減損</td><td>354 Ⅰ、Ⅱ</td></tr>
+        <tr><td>② 判斷基準時</td><td>以「危險移轉時」（原則為交付時，依373條）為判斷瑕疵存否之基準</td><td>354 Ⅰ、373</td></tr>
+        <tr><td>③ 排除事由（買受人主觀狀態）</td><td>買受人於契約成立時是否明知瑕疵，或因重大過失而不知，致出賣人免責；但出賣人故意不告知者例外</td><td>355 Ⅰ、Ⅱ</td></tr>
+        <tr><td>④ 買受人協力義務</td><td>買受人是否已依通常程序從速檢查並即時通知，逾期視為承認受領物無瑕疵</td><td>356</td></tr>
+        <tr><td>⑤ 法律效果之選擇</td><td>解除契約／請求減少價金（擇一，顯失公平時僅得減價）；或缺保證品質時之不履行損害賠償（不以解除或減價為前提）</td><td>359、360</td></tr>
+      </table>
+      <p>其中第360條之「不履行之損害賠償」，其賠償方法與範圍另須回歸損害賠償一般規定：先依213條原則回復原狀，不能回復原狀或顯有重大困難者依215條轉為金錢賠償，賠償範圍則依216條以「所受損害＋所失利益」為限。</p>
+    </section>
+
+    <section id="elements">
+      <h2 class="section-title">各要件逐項解析</h2>
+
+      <h3>354條：瑕疵之四種態樣</h3>
+      <table>
+        <tr><th>類型</th><th>說明</th></tr>
+        <tr><td>價值瑕疵</td><td>物於危險移轉時，交易價值較應有價值減少</td></tr>
+        <tr><td>通常效用瑕疵</td><td>物欠缺同類物品依通常交易觀念應具備之效用</td></tr>
+        <tr><td>契約預定效用瑕疵</td><td>物雖具通常效用，但欠缺契約當事人特別約定或預定之特定用途效用</td></tr>
+        <tr><td>保證品質瑕疵（354 Ⅱ）</td><td>出賣人曾就物之品質為保證，物於危險移轉時未具備該保證品質——不論通常標準如何，逕以保證內容為判斷基準，屬獨立且較嚴格之擔保</td></tr>
+      </table>
+      <p><strong>「無關重要」但書</strong>：354條Ⅰ項但書排除輕微、對價值或效用影響極小之減損，實務上須綜合考量瑕疵對整體交易目的之影響程度、交易慣例與雙方約定判斷，非一概而論。</p>
+
+      <h3>355條：排除事由</h3>
+      <ul>
+        <li><strong>Ⅰ項（明知）</strong>：買受人於契約成立「當時」即已知悉瑕疵存在，屬於買受人自願承擔風險，出賣人免責。</li>
+        <li><strong>Ⅱ項（重大過失不知）</strong>：買受人雖不知瑕疵，但其不知係出於重大過失（顯著疏於一般人應有之注意），原則上出賣人亦免責；惟若出賣人「故意」隱匿不告知瑕疵，則不得主張此項免責——因出賣人惡意隱匿之可責性，優先於買受人之過失。</li>
+      </ul>
+
+      <h3>356條：檢查通知義務（不真正義務）</h3>
+      <p>此為買受人之「不真正義務」（Obliegenheit），違反不生損害賠償責任，而是發生權利失權效果：</p>
+      <ol>
+        <li>Ⅰ項：受領物後應「依通常程序從速檢查」，發現瑕疵應「即」通知出賣人。</li>
+        <li>Ⅱ項：怠於通知者，除依通常檢查方式仍無法發現之瑕疵外，視為承認受領物無瑕疵（喪失擔保請求權）。</li>
+        <li>Ⅲ項：對於當下不能發現、日後始發現之瑕疵，仍應「即」通知，否則同樣視為承認。</li>
+      </ol>
+
+      <h3>359條：解除契約 vs. 減少價金</h3>
+      <p>買受人得就二者「擇一」行使，但受「顯失公平」之限制——若解除契約對出賣人造成的損害明顯大於瑕疵對買受人所生之損害（如瑕疵輕微但解約會使出賣人受鉅額損失），買受人僅得請求減少價金，不得解除契約，用以平衡雙方利益、避免權利濫用。</p>
+
+      <h3>360條：缺保證品質之損害賠償</h3>
+      <p>本條賦予買受人「不以解除契約或減少價金為前提」之獨立請求權——只要物缺少出賣人保證之品質，或出賣人故意不告知瑕疵，買受人得直接請求「不履行之損害賠償」。其賠償方法與範圍應回歸213、215、216條：</p>
+      <ol>
+        <li><strong>213條（原則）</strong>：原則上應回復損害發生前之原狀。</li>
+        <li><strong>215條（例外轉換）</strong>：不能回復原狀或顯有重大困難者，始轉換為金錢賠償。</li>
+        <li><strong>216條（賠償範圍）</strong>：金錢賠償以「所受損害」（積極損害）及「所失利益」（消極損害，含依通常情形或特別情事可得預期之利益）為限。</li>
+      </ol>
+    </section>
+
+    <section id="doctrine">
+      <h2 class="section-title">學說見解</h2>
+      <div class="opinion-card">
+        <div class="who">蔡晶瑩</div>
+        <p>就「物之瑕疵」之定義存在主觀說與客觀說之分歧。主觀說主張應以契約當事人約定之品質、用途為判斷基準；客觀說則以物之通常交易觀念為判斷基準。作者比較德國現行買賣法關於物之瑕疵概念之規定及歐盟指令之規範發展趨勢後，認為物之瑕疵定義應以<strong>主觀說</strong>較為可採，較能配合國際發展潮流，也更符合買受人利益之保障與等價交易之公平期待。</p>
+        <div class="source-note">📂 出處：蔡晶瑩，〈物之瑕疵的概念在買賣法上之適用〉<br>🔗 <a href="http://cycu.lawbank.com.tw/Download/15/01220003.PDF" target="_blank">http://cycu.lawbank.com.tw/Download/15/01220003.PDF</a></div>
+      </div>
+      <div class="disclaimer-box">⚠️ 以上學說見解已濃縮改寫，非逐字照抄原文。內容取自公開學術文章，建議進一步查證原文全文以確認完整論述脈絡。</div>
+    </section>
+
+    <section id="precedent">
+      <h2 class="section-title">實務見解</h2>
+
+      <div class="opinion-card">
+        <div class="who">最高法院90年度台上字第1460號</div>
+        <p>闡述「物之瑕疵」之定義：凡依通常交易觀念，或依當事人之約定，認為物應具備之價值、效用或品質而不具備者，即為物有瑕疵；並揭示買受人主張出賣人交付之物有瑕疵，應就此有利於己之事實負舉證責任。</p>
+        <div class="source-note">🔗 案號查詢：司法院裁判書查詢系統 https://judgment.judicial.gov.tw/（輸入案號自行查閱全文）｜轉引來源：legalpro-civil.com.tw</div>
+      </div>
+
+      <div class="opinion-card">
+        <div class="who">最高法院100年度台上字第1468號</div>
+        <p>揭示物之瑕疵擔保責任屬於<strong>法定無過失責任</strong>——不論瑕疵是否可歸責於出賣人，出賣人均須擔保標的物於交付時無瑕疵。</p>
+        <div class="source-note">🔗 案號查詢：司法院裁判書查詢系統｜轉引來源：臺北市政府法務局消保網</div>
+      </div>
+
+      <div class="opinion-card">
+        <div class="who">最高法院102年度台上字第2161號</div>
+        <p>重申物之瑕疵之定義，並進一步指出：若出賣之特定物所含數量短少，致物之價值、效用或品質有所欠缺者，亦屬物之瑕疵。</p>
+        <div class="source-note">🔗 案號查詢：司法院裁判書查詢系統｜轉引來源：vocus.cc</div>
+      </div>
+
+      <div class="opinion-card">
+        <div class="who">最高法院76年度台上字第1449號</div>
+        <p>就360條損害賠償請求權之時效適用，認為應適用民法第125條所定15年一般時效，而非365條所定六個月／五年之短期除斥期間——因360條之性質與359條解除、減價請求權不同。</p>
+        <div class="source-note">🔗 案號查詢：司法院裁判書查詢系統｜轉引來源：睿益法律事務所</div>
+      </div>
+
+      <div class="opinion-card">
+        <div class="who">最高法院77年度第7次民事庭會議決議</div>
+        <p>就瑕疵於契約成立「後」始發生之情形，認為出賣人應同時負物之瑕疵擔保責任及不完全給付責任，二者屬自由競合關係——買受人得擇一或併行主張。</p>
+        <div class="source-note">🔗 決議查詢：司法院裁判書查詢系統｜轉引來源：legalworks.info</div>
+      </div>
+
+      <div class="disclaimer-box">
+        ⚠️ <strong>核實提醒</strong>：以上判決字號、決議內容均轉引自非官方網站（律師事務所、法律部落格），尚未經司法院裁判書查詢系統原文逐字核實。正式引用前，建議至 <a href="https://judgment.judicial.gov.tw/" target="_blank">https://judgment.judicial.gov.tw/</a> 輸入對應案號查閱全文比對。<br>
+        另查無大法官解釋或憲法法庭判決直接涉及第354條，理由為：本條屬債編私法任意規範性質，未見有人以此聲請違憲審查。
+      </div>
+    </section>
+
+    <section id="cases">
+      <h2 class="section-title">教學案例 <span class="fiction-tag">教學虛構案例</span></h2>
+
+      <div class="case-card">
+        <div class="card-head">案例一：怠於檢查通知的引擎異音 <span class="tag">354・355・356</span></div>
+        <div class="card-body">
+          <p><strong>事實</strong>：甲將自用二手房車以新臺幣20萬元出售並交付予乙。交車後第3日，乙即發現引擎啟動時有異常噪音，但因近日工作繁忙，未予理會，直到第25日車輛於行駛中熄火拋錨，乙始送修，並於送修後才首次以電話通知甲車輛有瑕疵。</p>
+          <p><strong>爭點</strong>：乙得否主張物之瑕疵擔保責任？</p>
+          <p><strong>分析</strong>：引擎異音足以影響車輛通常效用，屬354條Ⅰ項之瑕疵，且無證據顯示乙於締約時明知或有重大過失不知（異音於交車後第3日始出現徵兆，難謂締約時已可預見），355條之免責事由尚不成立。然依356條Ⅰ項，買受人應按物之性質從速檢查並即時通知；引擎異音屬依通常檢查方式「可得發現」之瑕疵類型，乙於發現異音後遲至22日後才通知，已逾越「從速」、「即」通知之要求，依356條Ⅱ項，視為承認其受領之車輛無瑕疵，喪失瑕疵擔保請求權。</p>
+          <p><strong>結論</strong>：乙因怠於履行檢查通知義務，不得再向甲主張物之瑕疵擔保責任。</p>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="card-head">案例二：未搭載保證款式硬碟的筆記型電腦 <span class="tag">354・360・213・215・216</span></div>
+        <div class="card-body">
+          <p><strong>事實</strong>：甲於契約中明文保證所出售之筆記型電腦搭載「A牌固態硬碟」，並以此作為報價依據之一。交付後乙發現實際搭載之硬碟為「B牌」，經第三方測試，B牌硬碟讀寫速度較A牌慢，但電腦仍可正常使用，未達無法使用之程度。乙欲繼續使用該電腦，僅要求金錢補償。</p>
+          <p><strong>爭點</strong>：乙得否請求損害賠償？賠償範圍為何？</p>
+          <p><strong>分析</strong>：甲就硬碟品牌已為契約上之品質保證，交付之物未具備該保證品質，構成354條Ⅱ項之保證品質瑕疵。因乙不欲解除契約亦不請求減少價金，僅欲金錢補償，得依360條直接請求「不履行之損害賠償」，不以先行解除契約或請求減價為前提。就賠償方法，依213條原則應回復原狀，惟硬碟品牌差異已屬既定事實，回復原狀（更換為A牌）雖非不能，但若甲已無法取得該型號硬碟或更換成本顯不相當，即屬215條「顯有重大困難」，應轉換為金錢賠償；賠償範圍依216條，以填補乙所受之損害（即A牌與B牌硬碟之市場價差）為限，若乙能證明因效能較慢受有其他可得預期之營業利益損失，亦得依216條Ⅱ項一併請求。</p>
+          <p><strong>結論</strong>：乙得依360條請求不履行之損害賠償，賠償方法與範圍依213、215、216條認定，原則上以硬碟價差為基本賠償額。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="terms">
+      <h2 class="section-title">專有名詞解釋</h2>
+      <table>
+        <tr><th>名詞</th><th>說明</th></tr>
+        <tr><td>危險移轉</td><td>買賣標的物滅失、毀損之風險由出賣人移轉予買受人負擔之時點，依373條原則為「交付時」；瑕疵擔保責任即以此時點作為瑕疵存否之判斷基準時。</td></tr>
+        <tr><td>法定無過失責任</td><td>不以出賣人有故意或過失為要件之法定責任類型——只要客觀上物於危險移轉時存有瑕疵，出賣人即應負擔保責任，不論其是否知悉或可歸責。</td></tr>
+        <tr><td>種類之物／特定之物</td><td>種類之物（如「一噸白米」）僅以種類、數量指定，物有瑕疵時買受人得依364條另行請求交付無瑕疵之物；特定之物（如「這輛車牌OOO-OOOO的汽車」）則為具體特定標的，瑕疵發生時無法另行交付替代物，僅得依359、360條主張解除、減價或損害賠償。</td></tr>
+        <tr><td>不真正義務（Obliegenheit）</td><td>違反該義務並不發生損害賠償責任，而是使負擔該義務之一方喪失其原本得主張之權利（如失權效果）。356條之檢查通知義務即屬此類，違反者非負賠償責任，而是喪失瑕疵擔保請求權。</td></tr>
+        <tr><td>除斥期間與消滅時效</td><td>359、365條之解除、減價請求權適用除斥期間（一經期間經過即確定消滅，不生中斷或不完成問題）；360條之損害賠償請求權則依實務見解（76年台上1449號）適用民法125條之15年一般消滅時效（得因請求、承認等事由中斷）。</td></tr>
+      </table>
+    </section>
+
+    <section id="exam">
+      <h2 class="section-title">申論練習題與模擬解答 <span class="fiction-tag">AI出題（已獲授權）</span></h2>
+
+      <div class="exam-card">
+        <div class="card-head">題目一</div>
+        <div class="card-body">
+          <p>甲將其自用之古董手錶以新臺幣15萬元出售予乙，並於契約書中載明「保證錶芯為原廠零件，無經維修更換」。交付後三個月，乙因手錶停止運轉送修，維修師傅發現錶芯機芯確為原廠零件無誤，惟錶面玻璃有一道細微刮痕，經鑑價師認定該刮痕對手錶市場價值幾無影響。乙以「錶有瑕疵」為由，要求解除契約並返還價金。試問乙之主張有無理由？</p>
+          <details class="answer">
+            <summary>模擬解答（展開查看）</summary>
+            <p>乙得否解除契約，應分別檢視錶面刮痕是否構成354條之瑕疵，以及甲就錶芯所為之保證是否已被違反。</p>
+            <p>就錶芯保證部分，鑑定結果顯示錶芯確為原廠零件，甲之保證品質並未欠缺，354條Ⅱ項之保證品質瑕疵不成立，乙無從依此主張任何擔保責任。</p>
+            <p>就錶面刮痕部分，雖手錶外觀存有物理上之缺點，然依354條Ⅰ項但書，減少之程度無關重要者，不得視為瑕疵。經鑑價師認定該刮痕對手錶市場價值幾無影響，依通常交易觀念，此等細微、不影響物之價值與效用之瑕疵，尚難認定已達354條所稱之瑕疵程度，應屬但書排除之情形。</p>
+            <p>退一步言，縱認刮痕構成輕微瑕疵，依359條，買受人得解除契約或請求減少價金，但解除契約顯失公平者，僅得請求減少價金。古董手錶原廠錶芯完好，僅錶面存有對價值影響極微之刮痕，若許乙解除整份契約、要求返還全部價金15萬元，其結果對甲顯失公平，依359條但書，乙至多僅得請求減少與刮痕相當之些微價金，不得解除契約。</p>
+            <p>結論：乙以錶有瑕疵為由請求解除契約並返還價金，為無理由。</p>
+          </details>
+        </div>
+      </div>
+
+      <div class="exam-card">
+        <div class="card-head">題目二</div>
+        <div class="card-body">
+          <p>甲經營中古機車行，明知店內一輛機車之引擎曾因泡水而更換過缸頭，仍將該機車出售予乙，並未告知此情事。乙受領機車後，依通常方式試騎並檢查外觀，未發現異狀，遂未為任何通知。半年後，該機車因缸頭密合度不佳導致漏油，經送修始查悉曾泡水更換缸頭之情事。乙主張甲應負物之瑕疵擔保責任及損害賠償責任，甲抗辯乙受領時未依356條為通知，已視為承認機車無瑕疵。試問甲之抗辯有無理由？乙得主張何種權利？</p>
+          <details class="answer">
+            <summary>模擬解答（展開查看）</summary>
+            <p><strong>一、356條抗辯部分</strong></p>
+            <p>依356條Ⅰ項，買受人應按物之性質，依通常程序從速檢查其所受領之物，就依通常檢查方式可得發現之瑕疵，應即通知出賣人；未通知者，依Ⅱ項視為承認受領物無瑕疵。惟同項亦明文排除「依通常之檢查不能發見之瑕疵」。缸頭因泡水更換之情事，屬機車內部結構問題，非經通常試騎及外觀檢查所能查知，須待實際故障送修拆解後始能發現，性質上屬356條Ⅲ項所稱「不能即知之瑕疵」。乙於半年後故障送修查悉真相後即主張權利，難謂有何遲延通知之情事，356條之失權效果尚不成立。故甲以乙未即時通知為由抗辯視為承認，為無理由。</p>
+            <p><strong>二、乙得主張之權利</strong></p>
+            <p>缸頭泡水更換足以影響機車通常效用及安全性，構成354條Ⅰ項之瑕疵。甲明知此瑕疵卻未告知，依355條Ⅱ項但書，縱認乙受領時未盡完全注意義務，甲仍不得因此主張免責，蓋出賣人故意不告知瑕疵者，不適用免責規定。</p>
+            <p>就法律效果，乙得依359條解除契約或請求減少價金；又因甲屬故意不告知瑕疵之情形，依360條後段，乙亦得不解除契約或減少價金，而逕行請求不履行之損害賠償。就賠償方法，依213條原則應回復原狀（如更換合格缸頭之費用），若回復顯有重大困難，依215條轉換為金錢賠償；賠償範圍依216條，以乙所受損害（含送修費用、因漏油可能造成之其他損失）及所失利益為限。</p>
+            <p>結論：甲之356條抗辯無理由；乙得依359條解除契約或請求減少價金，亦得依360條請求不履行之損害賠償，二者擇一行使。</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="cheatsheet">
+      <h2 class="section-title" style="color:var(--paper-content); border-left-color:var(--brass);"></h2>
+      <div class="cheatsheet">
+        <h3>速查卡：物之瑕疵擔保責任</h3>
+        <div class="mnemonic">「知過不責，怠查視認」</div>
+        <p style="font-size:13.5px; color:rgba(255,255,255,0.7); margin-top:-8px;">──買受人明知或重大過失不知瑕疵，出賣人不責（355）；買受人怠於檢查通知，視為承認（356）</p>
+        <ul>
+          <li><strong>瑕疵基準時</strong>：危險移轉時（原則交付時，373條）</li>
+          <li><strong>瑕疵四態樣</strong>：價值減損／通常效用減損／契約預定效用減損／欠缺保證品質（354）</li>
+          <li><strong>排除事由</strong>：買受人明知（355Ⅰ）；買受人重大過失不知，但出賣人故意不告知者不適用（355Ⅱ）</li>
+          <li><strong>協力義務</strong>：從速檢查＋即時通知，怠於通知視為承認（356）；不能即知之瑕疵，日後發現仍應即通知</li>
+          <li><strong>效果擇一</strong>：解除契約 <em>或</em> 請求減少價金；顯失公平時僅得減價（359）</li>
+          <li><strong>獨立請求權</strong>：缺保證品質／故意不告知 → 不履行之損害賠償，不以解除或減價為前提（360）</li>
+          <li><strong>損害賠償三部曲</strong>：原則回復原狀（213）→ 顯有重大困難始轉金錢賠償（215）→ 範圍為所受損害＋所失利益（216）</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+  const sections = document.querySelectorAll('main section[id]');
+  const sideLinks = document.querySelectorAll('.sidenav a');
+  const mobileLinks = document.querySelectorAll('.mobilenav a');
+
+  function setActive(id){
+    sideLinks.forEach(a=>a.classList.toggle('active', a.getAttribute('href')==='#'+id));
+    mobileLinks.forEach(a=>a.classList.toggle('active', a.getAttribute('href')==='#'+id));
+  }
+
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){ setActive(entry.target.id); }
+    });
+  }, {rootMargin:'-20% 0px -70% 0px', threshold:0});
+  sections.forEach(s=>observer.observe(s));
+
+  document.querySelectorAll('.sidenav a, .mobilenav a').forEach(a=>{
+    a.addEventListener('click', (e)=>{
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if(target){ target.scrollIntoView({behavior:'smooth'}); }
+    });
+  });
+</script>
+</body>
+</html>

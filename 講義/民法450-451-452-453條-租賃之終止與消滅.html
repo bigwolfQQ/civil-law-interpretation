@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>民法第450條・租賃契約之消滅｜法典卷宗</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#16233b;
+  --indigo:#2c4a76;
+  --paper-outer:#f3ede0;
+  --paper-content:#fbf8f1;
+  --paper-card:#fffdf8;
+  --seal:#9c2b3a;
+  --brass:#a9832f;
+  --border:#ddd3bf;
+  --ink-45:rgba(22,35,59,.45);
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--paper-outer);color:var(--ink);font-family:'Noto Sans TC',sans-serif;line-height:1.75;}
+h1,h2,h3,.serif{font-family:'Noto Serif TC',serif;}
+a{color:var(--indigo);}
+
+/* ---- layout ---- */
+.wrap{display:flex;max-width:1180px;margin:0 auto;}
+.sidebar{width:240px;flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto;padding:32px 18px;border-right:1px solid var(--border);}
+.sidebar h4{font-size:12px;letter-spacing:2px;color:var(--ink-45);margin:0 0 14px 4px;}
+.sidebar a{display:block;padding:8px 10px;border-radius:6px;color:var(--ink);text-decoration:none;font-size:14.5px;margin-bottom:2px;}
+.sidebar a.dim{color:var(--ink-45);}
+.sidebar a.active{background:var(--indigo);color:#fbf8f1;}
+.main{flex:1;min-width:0;background:var(--paper-content);box-shadow:-6px 0 18px -12px rgba(22,35,59,.25);padding:0 0 60px;}
+
+.mobile-nav{display:none;position:sticky;top:0;z-index:20;background:var(--paper-content);border-bottom:1px solid var(--border);overflow-x:auto;white-space:nowrap;padding:10px 12px;}
+.mobile-nav a{display:inline-block;padding:7px 14px;margin-right:8px;border-radius:999px;background:var(--paper-card);border:1px solid var(--border);color:var(--ink);text-decoration:none;font-size:13px;}
+.mobile-nav a.active{background:var(--indigo);color:#fff;border-color:var(--indigo);}
+.mobile-nav a.dim{color:var(--ink-45);}
+
+section{padding:46px 48px;border-bottom:1px dashed var(--border);}
+section:last-child{border-bottom:none;}
+h2.section-title{font-size:24px;font-weight:900;margin:0 0 22px;padding-left:14px;border-left:4px solid var(--brass);}
+h3.sub-title{font-size:17px;font-weight:700;margin:26px 0 10px;padding-left:10px;border-left:3px solid var(--indigo);}
+
+/* ---- cover ---- */
+.cover{background:linear-gradient(180deg,var(--paper-content),var(--paper-outer));padding:60px 48px 40px;position:relative;border-bottom:1px dashed var(--border);}
+.eyebrow{font-size:12.5px;letter-spacing:3px;color:var(--brass);font-weight:700;margin-bottom:14px;}
+.cover h1{font-size:34px;font-weight:900;margin:0 0 10px;line-height:1.4;}
+.cover .subtitle{color:var(--ink-45);font-size:15px;margin-bottom:16px;}
+.cover-meta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px;}
+.cover-meta span{font-size:12.5px;padding:4px 10px;border:1px solid var(--indigo);border-radius:999px;color:var(--indigo);background:var(--paper-card);}
+.ver-badge{border-color:var(--seal) !important;color:var(--seal) !important;}
+.seal-mark{position:absolute;top:44px;right:48px;width:86px;height:86px;border:3px solid var(--seal);border-radius:10px;transform:rotate(8deg);display:flex;align-items:center;justify-content:center;writing-mode:vertical-rl;color:var(--seal);font-family:'Noto Serif TC',serif;font-weight:900;font-size:20px;letter-spacing:4px;background:rgba(156,43,58,.03);}
+.cover-toc{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13.5px;color:var(--ink-45);margin-top:6px;}
+
+/* ---- article box ---- */
+.article-box{position:relative;background:var(--paper-card);border-left:3px solid var(--indigo);border-radius:4px;padding:18px 22px;margin:14px 0;overflow:hidden;box-shadow:0 1px 3px rgba(22,35,59,.06);}
+.article-box .num-watermark{position:absolute;right:10px;bottom:-14px;font-family:'Noto Serif TC',serif;font-weight:900;font-size:100px;color:var(--ink);opacity:.06;pointer-events:none;line-height:1;}
+.article-box p{margin:0 0 6px;position:relative;z-index:1;}
+.article-box .clause-no{color:var(--indigo);font-weight:700;margin-right:4px;}
+.article-box .art-label{font-size:12.5px;color:var(--ink-45);margin-bottom:6px;display:block;}
+
+/* ---- tables ---- */
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14.5px;background:var(--paper-card);}
+th,td{border:1px solid var(--border);padding:10px 12px;text-align:left;vertical-align:top;}
+th{background:var(--ink);color:var(--paper-content);font-weight:700;}
+tr:nth-child(even) td{background:#f6f1e6;}
+tr:nth-child(odd) td{background:#fffdf8;}
+.pos{font-weight:700;color:var(--ink);background:linear-gradient(transparent 60%, rgba(169,131,47,.35) 60%);}
+.neg{font-weight:700;color:var(--seal);}
+
+/* ---- placeholder ---- */
+.placeholder{border:2px dashed var(--brass);border-radius:8px;padding:32px 20px;text-align:center;background:repeating-linear-gradient(135deg,rgba(169,131,47,.05),rgba(169,131,47,.05) 10px,transparent 10px,transparent 20px);}
+.placeholder .icon{font-size:26px;margin-bottom:8px;}
+.placeholder .txt{color:var(--ink-45);font-size:14px;margin-bottom:10px;}
+.placeholder .badge{display:inline-block;font-size:12px;padding:4px 12px;border-radius:999px;background:var(--brass);color:#fff;}
+
+/* ---- cards ---- */
+.card{background:var(--paper-card);border-radius:8px;box-shadow:0 1px 2px rgba(22,35,59,.08),0 6px 16px -8px rgba(22,35,59,.18);margin:18px 0;overflow:hidden;}
+.card .card-head{padding:12px 18px;font-weight:700;color:#fff;font-family:'Noto Serif TC',serif;}
+.card.case .card-head{background:var(--indigo);}
+.card.essay .card-head{background:var(--ink);}
+.card .card-body{padding:18px 20px;}
+.tag{display:inline-block;font-size:11.5px;padding:2px 9px;border-radius:999px;background:var(--paper-outer);color:var(--ink-45);margin-left:8px;}
+
+/* ---- relation diagram note ---- */
+.relation-note{text-align:center;color:var(--ink-45);font-size:13px;margin-top:6px;}
+
+/* ---- cheatsheet ---- */
+.cheatsheet{background:var(--ink);color:#f3ede0;border-radius:10px;padding:28px 26px;position:relative;overflow:hidden;}
+.cheatsheet .deco{position:absolute;right:6px;bottom:-18px;font-family:'Noto Serif TC',serif;font-weight:900;font-size:120px;color:#fff;opacity:.06;}
+.cheatsheet h3{color:#f3ede0;margin-top:0;border-left:3px solid var(--brass);padding-left:10px;}
+.mnemonic{background:var(--seal);color:#fff;padding:12px 16px;border-radius:6px;font-family:'Noto Serif TC',serif;font-weight:700;font-size:17px;text-align:center;margin:14px 0;letter-spacing:1px;}
+.cheatsheet ul{padding-left:20px;position:relative;z-index:1;}
+.cheatsheet li{margin-bottom:8px;}
+
+/* ---- link-note ---- */
+.link-note{border:1px dashed var(--indigo);border-radius:8px;padding:16px 18px;font-size:14px;color:var(--ink);background:var(--paper-card);}
+
+/* ---- source note ---- */
+.source-note{font-size:12.5px;color:var(--ink-45);border-top:1px dashed var(--border);margin-top:14px;padding-top:10px;}
+.caveat{font-size:12.5px;color:var(--seal);background:rgba(156,43,58,.06);border-left:3px solid var(--seal);padding:8px 12px;margin:10px 0;border-radius:3px;}
+
+@media (max-width:980px){
+  .sidebar{display:none;}
+  .mobile-nav{display:block;}
+  section{padding:32px 20px;}
+  .cover{padding:40px 20px 28px;}
+  .seal-mark{width:66px;height:66px;top:26px;right:20px;font-size:15px;}
+  .cover h1{font-size:26px;}
+}
+</style>
+</head>
+<body>
+<div class="mobile-nav" id="mobileNav"></div>
+<div class="wrap">
+  <nav class="sidebar" id="sidebar">
+    <h4>章節導覽</h4>
+    <div id="navList"></div>
+  </nav>
+
+  <main class="main">
+    <div class="cover">
+      <div class="seal-mark">得終止</div>
+      <div class="eyebrow">民法債編各論・第二章第五節 租賃</div>
+      <h1>第450條<br>租賃契約之消滅</h1>
+      <div class="subtitle">定期屆滿當然消滅・不定期隨時終止・先期通知規則</div>
+      <div class="cover-meta">
+        <span class="ver-badge">v1.0</span>
+        <span>建立日期 2026-08-22</span>
+        <span>最後更新 2026-08-22</span>
+        <span id="visitorBadgeWrap"><img src="https://visitor-badge.laobi.icu/badge?page_id=bigwolfQQ.civil-law-interpretation.450" alt="visitors" style="vertical-align:middle;height:18px;"></span>
+      </div>
+      <div class="cover-toc">
+        <span>一、條文原文</span><span>二、條文結構</span><span>三、要件解析</span><span>四、學說見解</span>
+        <span>五、實務見解</span><span>六、教學案例</span><span>七、申論練習</span><span>八、速查卡</span>
+      </div>
+    </div>
+
+    <section id="sec-article">
+      <h2 class="section-title">一、條文原文</h2>
+      <div class="article-box">
+        <span class="num-watermark">450</span>
+        <span class="art-label">民法第450條</span>
+        <p><span class="clause-no">Ⅰ</span>租賃定有期限者，其租賃關係，於期限屆滿時消滅。</p>
+        <p><span class="clause-no">Ⅱ</span>未定期限者，各當事人得隨時終止契約。但有利於承租人之習慣者，從其習慣。</p>
+        <p><span class="clause-no">Ⅲ</span>前項終止契約，應依習慣先期通知。但不動產之租金，以星期、半個月或一個月定其支付之期限者，出租人應以曆定星期、半個月或一個月之末日為契約終止期，並應至少於一星期、半個月或一個月前通知之。</p>
+      </div>
+
+      <h3 class="sub-title">關聯條文</h3>
+      <div class="article-box">
+        <span class="num-watermark">449</span>
+        <span class="art-label">民法第449條（租賃之最長期限）</span>
+        <p>租賃契約之期限，不得逾二十年。逾二十年者，縮短為二十年。</p>
+        <p>前項期限，當事人得更新之。</p>
+        <p>租用基地建築房屋者，不適用第一項之規定。</p>
+      </div>
+      <div class="article-box">
+        <span class="num-watermark">451</span>
+        <span class="art-label">民法第451條（租賃契約之默示更新）</span>
+        <p>租賃期限屆滿後，承租人仍為租賃物之使用收益，而出租人不即表示反對之意思者，視為以不定期限繼續契約。</p>
+      </div>
+      <div class="article-box">
+        <span class="num-watermark">452</span>
+        <span class="art-label">民法第452條（因承租人死亡而終止租約）</span>
+        <p>承租人死亡者，租賃契約雖定有期限，其繼承人仍得終止契約。但應依第四百五十條第三項之規定，先期通知。</p>
+      </div>
+      <div class="article-box">
+        <span class="num-watermark">453</span>
+        <span class="art-label">民法第453條（定期租約另有終止約定之先期通知）</span>
+        <p>定有期限之租賃契約，如約定當事人之一方於期限屆滿前，得終止契約者，其終止契約，應依第四百五十條第三項之規定，先期通知。</p>
+      </div>
+      <div class="article-box">
+        <span class="num-watermark">454</span>
+        <span class="art-label">民法第454條（未到期租金之返還）</span>
+        <p>租賃契約，依前二條之規定終止時，如終止後始到期之租金，出租人已預先受領者，應返還之。</p>
+      </div>
+      <div class="article-box">
+        <span class="num-watermark">455</span>
+        <span class="art-label">民法第455條（承租人之返還義務）</span>
+        <p>承租人於租賃關係終止後，應返還租賃物；租賃物有生產力者，並應保持其生產狀態，返還出租人。</p>
+      </div>
+      <div class="article-box">
+        <span class="num-watermark">440</span>
+        <span class="art-label">民法第440條（租金遲付之終止・對照條文，非本條核心）</span>
+        <p>承租人租金支付有遲延者，出租人得定相當期限，催告承租人支付租金，如承租人於其期限內不為支付，出租人得終止契約。</p>
+        <p>租賃物為房屋者，遲付租金之總額，非達二個月之租額，不得依前項之規定，終止契約。其租金約定於每期開始時支付者，並應於遲延給付逾二個月時，始得終止契約。</p>
+        <p>租用建築房屋之基地，遲付租金之總額，達二年之租額時，適用前項之規定。</p>
+      </div>
+      <div class="caveat">※ 第440條屬「租金遲付」之獨立終止事由，終止原因與消滅方式均與第450條不同，僅作對照，不納入第450條要件解析核心。</div>
+    </section>
+
+    <section id="sec-structure">
+      <h2 class="section-title">二、條文結構：租賃關係消滅之二元架構</h2>
+      <p>第450條是租賃關係「自然消滅」與「任意終止」的總開關，依契約是否定有期限，分成兩條完全不同的路徑：</p>
+      <table>
+        <tr><th>類型</th><th>消滅方式</th><th>依據</th><th>是否須通知</th><th>延伸條文</th></tr>
+        <tr>
+          <td><strong>定有期限</strong></td>
+          <td class="pos">期限屆滿，當然消滅</td>
+          <td>第450條第1項</td>
+          <td class="neg">原則不須通知</td>
+          <td>§449（期限上限）／§451（默示更新）／§452、§453（例外提前終止仍須先期通知）</td>
+        </tr>
+        <tr>
+          <td><strong>未定期限</strong></td>
+          <td class="pos">任意終止（隨時終止權）</td>
+          <td>第450條第2項</td>
+          <td class="pos">須依習慣先期通知</td>
+          <td>§450Ⅲ（曆定終止期與通知期間）</td>
+        </tr>
+      </table>
+
+      <h3 class="sub-title">第3項：先期通知之計算規則（不動產月租為例）</h3>
+      <p>第3項是實務上爭議最多的一項，規範「不動產」且租金以星期、半個月或一個月為支付週期時，通知與終止必須綁定「曆定期間之末日」，不能任意挑一天終止：</p>
+      <table>
+        <tr><th>租金支付週期</th><th>契約終止期</th><th>應提前通知之期間</th></tr>
+        <tr><td>以星期定支付期</td><td>該星期之末日（星期六）</td><td>至少一星期前</td></tr>
+        <tr><td>以半個月定支付期</td><td>該半個月之末日（十五日或月底）</td><td>至少半個月前</td></tr>
+        <tr><td>以一個月定支付期</td><td>該月之末日（月底）</td><td>至少一個月前</td></tr>
+      </table>
+      <p class="relation-note">例如：月租租賃，出租人於4月15日發出終止通知，因終止期須為「曆定月底」且須提前一個月，最早只能以5月31日為終止期，不能以5月15日終止。</p>
+    </section>
+
+    <section id="sec-elements">
+      <h2 class="section-title">三、各要件逐項解析</h2>
+
+      <h3 class="sub-title">要件一：定有期限租賃 —— 期限屆滿即消滅（§450Ⅰ）</h3>
+      <p>只要契約明確約定期限，租賃關係在期限屆滿的那一刻「當然消滅」，不需要任何一方為終止的意思表示，也不需要通知對方。這是法律關係自動結束的效果，而非「終止權」的行使。</p>
+      <p>但要注意兩個延伸情況：若期限屆滿後承租人仍在使用收益，且出租人不即表示反對，依第451條會「視為」轉換成不定期租賃，脫離第1項的當然消滅效果；又依第449條，租期原則上不得逾20年（租用基地建築房屋者除外），逾期部分縮短為20年。</p>
+
+      <h3 class="sub-title">要件二：未定期限租賃 —— 任意終止權（§450Ⅱ）</h3>
+      <p>未約定期限時，法律賦予雙方「隨時終止」的權利，這是一種形成權，一經合法行使並到達對方即發生效力。但第2項設有但書：如當地有「有利於承租人」的習慣，該習慣優先於法律的隨時終止規定而適用——這是租賃法制中少見的「習慣優先於任意規定」設計，立法目的在於保護居於相對弱勢地位的承租人。</p>
+
+      <h3 class="sub-title">要件三：先期通知義務（§450Ⅲ）</h3>
+      <p>行使第2項的任意終止權並非毫無限制，第3項要求終止「應依習慣先期通知」，避免他方措手不及。而對於「不動產」且租金以星期、半個月或一個月計算者，法律進一步將通知規則具體化為「曆定期間末日＋對應長度之提前通知」，如前述表格所示，是第2項任意終止權在不動產租賃上的具體操作規則。</p>
+
+      <h3 class="sub-title">延伸要件：例外情形下的先期通知準用</h3>
+      <p>第452條（承租人死亡）與第453條（約定得提前終止）都是「定期租賃」例外提前結束的情形，但兩者都明文「應依第450條第3項之規定，先期通知」——顯示即使是例外的提前終止權，仍須遵守第3項的通知機制，可見第3項不僅是第2項的附屬規定，更是全條「終止類型」消滅方式的共通程序性要件。</p>
+
+      <h3 class="sub-title">終止後的效果：連動第454、455條</h3>
+      <p>依第450條（或第452、453條）終止契約後，會產生兩項後續義務：其一，若出租人已預先受領終止後始到期之租金，依第454條應返還該部分；其二，承租人依第455條負有返還租賃物之義務，若租賃物有生產力（如農地、廠房設備），並應保持其生產狀態返還，不得任意荒廢。</p>
+    </section>
+
+    <section id="sec-doctrine">
+      <h2 class="section-title">四、學說見解</h2>
+      <div class="placeholder">
+        <div class="icon">📚</div>
+        <div class="txt">尚未加入學說見解內容</div>
+        <div class="badge">待補充</div>
+      </div>
+      <p class="source-note">已搜尋學者專書、期刊資料庫及考用書摘，未查得可具名歸屬（含出處頁碼）之學說見解，依防幻覺原則暫不列入。歡迎日後提供學者見解與出處，或授權再次搜尋。</p>
+    </section>
+
+    <section id="sec-practice">
+      <h2 class="section-title">五、實務見解</h2>
+      <div class="caveat">⚠️ 以下判決內容係由網路二手轉引整理而成，尚未經司法院裁判書查詢系統原文核實，正式引用前建議自行查證全文。</div>
+
+      <h3 class="sub-title">最高法院69年台上字第4001號</h3>
+      <p>要旨：租賃定有期限者，其租賃關係於期限屆滿時消滅（民法第450條第1項），如無同法第451條所定視為以不定期限繼續契約之情事，依同法第455條規定，承租人應於租期屆滿時返還租賃物。</p>
+      <p class="source-note">查詢方式：本判決可至司法院裁判書查詢系統（judgment.judicial.gov.tw）輸入案號【69年，台上，4001號】自行查閱全文。</p>
+
+      <h3 class="sub-title">最高法院109年度台上字第3225號</h3>
+      <p>要旨：依民法第450條第1、2項規定，僅未定期限之租賃契約，各當事人始得隨時終止契約；定有期限之租賃契約，如無約定或法定事由發生，其租賃關係於期限屆滿時始為消滅，當事人一方不得任意終止契約。</p>
+      <p class="source-note">查詢方式：本判決可至司法院裁判書查詢系統（judgment.judicial.gov.tw）輸入案號【109年，台上，3225號】自行查閱全文。</p>
+
+      <h3 class="sub-title">見解演變：舊實務 vs. 較新實務</h3>
+      <p>值得注意的是，早期曾有實務見解（最高法院18年上字第2001號判例、89年台上字第1333號裁定）認為：即使租約未約定得提前終止，只要一方願意賠償對方損失，仍得於期限屆滿前終止租賃契約，無庸徵得他方同意。</p>
+      <p>但上述109年台上字第3225號判決所代表的較新實務見解，已回歸第450條文義，認為定有期限之租賃契約原則上不得任意終止，除非有約定或法定事由。學習時應留意：18年台上判例屬「舊判例」，於民國108年法院組織法修正後不再選編，現僅作為裁判先例參考，已不具過去之拘束力，且其見解已被較新實務所取代。</p>
+      <p class="source-note">查詢方式：舊判例可至司法院法學資料檢索系統或全國法規資料庫之判例查詢路徑查閱（law.moj.gov.tw）。</p>
+    </section>
+
+    <section id="sec-cases">
+      <h2 class="section-title">六、教學案例</h2>
+      <p class="source-note">以下案例為教學用途虛構，人物與情節均為假設，僅用於輔助理解條文操作。</p>
+
+      <div class="card case">
+        <div class="card-head">案例一：定期租賃屆滿・當然消滅<span class="tag">§450Ⅰ・教學用途</span></div>
+        <div class="card-body">
+          <p><strong>事實：</strong>甲將所有之套房出租予乙，租期明定自113年1月1日起至113年12月31日止，為期一年。租期屆滿當日，乙未搬離亦未表示續租意願，甲亦未表示反對，乙仍持續居住並支付租金。</p>
+          <p><strong>爭點：</strong>租期屆滿後，租賃關係是否當然消滅？乙繼續使用套房的法律效果為何？</p>
+          <p><strong>分析：</strong>依第450條第1項，租賃關係本應於113年12月31日期限屆滿時當然消滅，無須任何一方為意思表示。然而，乙屆滿後仍為使用收益，而甲並未即時表示反對，依第451條，此時「視為」以不定期限繼續契約——租賃關係並未真正終止，而是轉換為不定期租賃，日後如甲欲終止，須依第450條第2、3項之任意終止程序，不能再主張「期限已屆滿」而逕行請求返還。</p>
+          <p><strong>結論：</strong><span class="pos">租賃關係未消滅，轉為不定期租賃，甲須改依第450條第2、3項終止程序收回房屋。</span></p>
+        </div>
+      </div>
+
+      <div class="card case">
+        <div class="card-head">案例二：不定期月租之終止期計算<span class="tag">§450Ⅲ・教學用途</span></div>
+        <div class="card-body">
+          <p><strong>事實：</strong>丙與丁訂立房屋租賃契約，未約定期限，租金以每月10日給付一次。丙於113年3月20日以存證信函通知丁，表示於113年4月10日終止租約。</p>
+          <p><strong>爭點：</strong>丙所指定之終止期（4月10日）是否合法？</p>
+          <p><strong>分析：</strong>本件租金以「一個月」為支付週期，依第450條第3項，出租人應以「曆定一個月之末日」為契約終止期，而非任意指定之日期，且須至少提前一個月通知。丙於3月20日通知，往前推算，最早可行使終止效力之日期須落在通知日起算滿一個月之後的「月底」，即4月30日，而非丙所指定之4月10日。</p>
+          <p><strong>結論：</strong><span class="neg">丙指定4月10日為終止期不合法，應更正為4月30日方符合第450條第3項規定。</span></p>
+        </div>
+      </div>
+
+      <div class="card case">
+        <div class="card-head">案例三：定期租約提前終止約定之通知義務<span class="tag">§450Ⅲ・§453・教學用途</span></div>
+        <div class="card-body">
+          <p><strong>事實：</strong>戊出租店面予己，租期三年，契約另約定「出租人得於租期屆滿前，因自用需要提前終止契約」。租期屆滿前八個月，戊以口頭告知己將於一個月後收回店面。</p>
+          <p><strong>爭點：</strong>戊的提前終止是否合法？口頭通知是否足夠？</p>
+          <p><strong>分析：</strong>本件租約雖定有期限，但雙方已於契約中約定提前終止之事由，依第453條，此類約定終止仍應依第450條第3項規定「先期通知」。系爭店面租金支付方式若為月租，依第3項規定，戊應以曆定月底為終止期，並至少提前一個月通知，通知方式法律未強制要求書面，惟為保全舉證，實務上建議以存證信函為之。</p>
+          <p><strong>結論：</strong><span class="neg">戊僅提前一個月且以口頭通知，通知期間與終止期若未落在曆定月底，仍不合法；即便合法終止，依第454條，戊已預收終止後始到期之租金者，仍應返還予己。</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="sec-essay">
+      <h2 class="section-title">七、申論練習題與模擬解答</h2>
+      <p class="source-note">以下題目與解答由 AI 出題（經使用者授權），供練習參考，非實際考題。</p>
+
+      <div class="card essay">
+        <div class="card-head">練習題一<span class="tag">基礎・§450</span></div>
+        <div class="card-body">
+          <p><strong>題目：</strong>甲將其所有房屋出租予乙，租期一年，租期屆滿後乙未搬離，甲亦未表示反對。半年後，甲欲收回房屋，遂於某月5日通知乙於次月5日遷離，租金原約定每月月初給付一次。試問甲之終止是否合法？</p>
+          <details>
+            <summary style="cursor:pointer;color:var(--indigo);font-weight:700;">模擬解答（點擊展開）</summary>
+            <p>租期屆滿後乙繼續使用收益，甲未即時表示反對，依民法第451條規定，視為以不定期限繼續契約，租賃關係並未因期限屆滿而消滅，而是轉換為不定期租賃。</p>
+            <p>甲既欲終止不定期租賃，即應適用民法第450條第2項及第3項規定。系爭房屋租金以「一個月」為支付週期，依第450條第3項，出租人應以曆定一個月之末日為契約終止期，並應至少於一個月前通知承租人，不得任意指定終止日期。</p>
+            <p>甲於某月5日通知，指定次月5日為終止期，其終止期並非曆定月底，與第450條第3項規定不符，縱使通知期間已滿一個月，仍因終止期指定錯誤而不合法。</p>
+            <p><span class="neg">結論：甲之終止不合法，終止期應更正為曆定月底方符規定。</span></p>
+          </details>
+        </div>
+      </div>
+
+      <div class="card essay">
+        <div class="card-head">練習題二<span class="tag">進階・§450／§452／§454</span></div>
+        <div class="card-body">
+          <p><strong>題目：</strong>丙出租店面予丁，租期五年，租金以半個月為支付週期並預先給付。租賃關係進行至第二年，丁不幸死亡，丁之繼承人戊欲終止租約，遂通知丙將於半個月後終止。丙已預先受領終止後始到期之半個月租金，戊主張應予返還。試問戊之終止是否合法？丙是否應返還租金？</p>
+          <details>
+            <summary style="cursor:pointer;color:var(--indigo);font-weight:700;">模擬解答（點擊展開）</summary>
+            <p>本件租約雖定有期限，然依民法第452條規定，承租人死亡者，其租賃契約雖定有期限，繼承人仍得終止契約，但應依第450條第3項規定，先期通知。系爭租金以半個月為支付週期，依第450條第3項，出租人應以曆定半個月之末日（十五日或月底）為契約終止期，並應至少於半個月前通知之。</p>
+            <p>戊通知丙將於「半個月後」終止，若該終止期恰為曆定半個月之末日（即十五日或月底），且通知期間已滿半個月，則其終止合於第452條準用第450條第3項之規定，應屬合法；反之若終止期非落於曆定末日，則終止不合法，須重新起算。</p>
+            <p>就租金返還部分，依民法第454條規定，租賃契約依前二條（即第452、453條）之規定終止時，如終止後始到期之租金，出租人已預先受領者，應返還之。丙既已預先受領終止後始到期之半個月租金，於契約合法終止之前提下，即應依第454條規定返還予戊。</p>
+            <p><span class="pos">結論：戊之終止若終止期符合曆定半個月末日之規定，即屬合法；丙已預收終止後始到期之租金，依第454條應予返還。</span></p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="sec-cheatsheet">
+      <h2 class="section-title">八、速查卡</h2>
+      <div class="cheatsheet">
+        <div class="deco">速</div>
+        <h3>第450條核心速記</h3>
+        <div class="mnemonic">期屆自滅，未定隨終；曆定月底，先期通知</div>
+        <ul>
+          <li><strong>定期租賃</strong>：期限屆滿＝當然消滅，無須通知（§450Ⅰ）</li>
+          <li><strong>不定期租賃</strong>：雙方隨時得終止，但有利承租人之習慣優先（§450Ⅱ）</li>
+          <li><strong>先期通知</strong>：不動產＋星期／半月／月租 → 曆定期間末日終止，提前對應期間通知（§450Ⅲ）</li>
+          <li><strong>屆滿續住不反對</strong> → 視為不定期租賃（§451）</li>
+          <li><strong>承租人死亡</strong> → 繼承人得終止，仍須依§450Ⅲ先期通知（§452）</li>
+          <li><strong>約定得提前終止</strong> → 仍須依§450Ⅲ先期通知（§453）</li>
+          <li><strong>終止後</strong>：出租人返還預收未到期租金（§454）／承租人返還租賃物（§455）</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+const sections=[
+  {id:'sec-article',label:'一、條文原文'},
+  {id:'sec-structure',label:'二、條文結構'},
+  {id:'sec-elements',label:'三、要件解析'},
+  {id:'sec-doctrine',label:'四、學說見解',dim:true},
+  {id:'sec-practice',label:'五、實務見解'},
+  {id:'sec-cases',label:'六、教學案例'},
+  {id:'sec-essay',label:'七、申論練習'},
+  {id:'sec-cheatsheet',label:'八、速查卡'},
+];
+const navList=document.getElementById('navList');
+const mobileNav=document.getElementById('mobileNav');
+sections.forEach(s=>{
+  const a=document.createElement('a');
+  a.href='#'+s.id; a.textContent=s.label; a.dataset.target=s.id;
+  if(s.dim) a.classList.add('dim');
+  navList.appendChild(a);
+
+  const m=document.createElement('a');
+  m.href='#'+s.id; m.textContent=s.label; m.dataset.target=s.id;
+  if(s.dim) m.classList.add('dim');
+  mobileNav.appendChild(m);
+});
+document.querySelectorAll('.sidebar a, .mobile-nav a').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    document.getElementById(a.dataset.target).scrollIntoView({behavior:'smooth'});
+  });
+});
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      const id=entry.target.id;
+      document.querySelectorAll('.sidebar a, .mobile-nav a').forEach(a=>{
+        a.classList.toggle('active', a.dataset.target===id);
+      });
+    }
+  });
+},{rootMargin:'-30% 0px -60% 0px'});
+sections.forEach(s=>{
+  const el=document.getElementById(s.id);
+  if(el) observer.observe(el);
+});
+</script>
+</body>
+</html>

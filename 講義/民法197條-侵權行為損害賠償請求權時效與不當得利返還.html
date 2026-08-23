@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>民法第197條｜侵權行為損害賠償請求權之時效與不當得利返還 教學講義</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#16233b;
+  --indigo:#2c4a76;
+  --paper-outer:#f3ede0;
+  --paper-content:#fbf8f1;
+  --paper-card:#fffdf8;
+  --seal:#9c2b3a;
+  --brass:#a9832f;
+  --border:#ddd3bf;
+  --ink-45:rgba(22,35,59,.45);
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--paper-outer);color:var(--ink);font-family:'Noto Sans TC',sans-serif;line-height:1.85;}
+h1,h2,h3,.serif{font-family:'Noto Serif TC',serif;}
+a{color:var(--indigo);}
+
+.shell{display:flex;max-width:1180px;margin:0 auto;}
+.sidenav{width:240px;flex-shrink:0;position:sticky;top:0;align-self:flex-start;height:100vh;overflow-y:auto;padding:28px 18px;border-right:1px solid var(--border);}
+.sidenav a{display:block;padding:8px 10px;border-radius:6px;color:var(--ink);text-decoration:none;font-size:14px;margin-bottom:2px;}
+.sidenav a.active{background:var(--indigo);color:var(--paper-card);}
+.sidenav a.todo{color:var(--ink-45);}
+.main{flex:1;min-width:0;background:var(--paper-content);box-shadow:-6px 0 18px -12px rgba(22,35,59,.25);}
+.mobilenav{display:none;}
+
+@media (max-width:980px){
+  .shell{display:block;}
+  .sidenav{display:none;}
+  .mobilenav{display:flex;position:sticky;top:0;z-index:20;overflow-x:auto;gap:6px;padding:10px 12px;background:var(--paper-outer);border-bottom:1px solid var(--border);white-space:nowrap;}
+  .mobilenav a{flex-shrink:0;padding:7px 14px;border-radius:999px;background:var(--paper-card);border:1px solid var(--border);color:var(--ink);text-decoration:none;font-size:13px;}
+  .mobilenav a.active{background:var(--indigo);color:var(--paper-card);border-color:var(--indigo);}
+  .mobilenav a.todo{color:var(--ink-45);}
+}
+
+section{padding:46px 44px;border-bottom:1px solid var(--border);}
+@media(max-width:600px){section{padding:32px 20px;}}
+
+.cover{background:linear-gradient(180deg,var(--paper-content),var(--paper-outer));position:relative;padding:56px 44px 40px;}
+.eyebrow{display:inline-block;font-size:12.5px;letter-spacing:.12em;color:var(--indigo);border:1px solid var(--indigo);border-radius:999px;padding:4px 14px;margin-bottom:18px;}
+.cover h1{font-size:clamp(28px,4.5vw,42px);font-weight:900;margin:0 0 8px;color:var(--ink);}
+.cover .sub{font-size:16px;color:var(--ink-45);margin-bottom:14px;}
+.cover-meta{display:flex;flex-wrap:wrap;gap:10px;font-size:12.5px;margin-bottom:26px;}
+.cover-meta span{border:1px solid var(--indigo);border-radius:6px;padding:3px 10px;color:var(--indigo);background:var(--paper-card);}
+.cover-meta .ver-badge{border-color:var(--seal);color:var(--seal);}
+.seal-mark{position:absolute;top:38px;right:44px;width:74px;height:96px;border:2px solid var(--seal);border-radius:6px;display:flex;align-items:center;justify-content:center;transform:rotate(6deg);background:var(--paper-card);}
+.seal-mark span{writing-mode:vertical-rl;color:var(--seal);font-family:'Noto Serif TC',serif;font-weight:700;font-size:20px;letter-spacing:.15em;}
+.toc{margin-top:20px;background:var(--paper-card);border:1px solid var(--border);border-radius:10px;padding:18px 22px;}
+.toc h3{margin:0 0 10px;font-size:14px;color:var(--indigo);}
+.toc ol{margin:0;padding-left:20px;font-size:14px;color:var(--ink);}
+.toc li{margin-bottom:4px;}
+
+.article-box{position:relative;background:var(--paper-card);border-left:3px solid var(--indigo);border-radius:0 8px 8px 0;padding:22px 26px;margin:16px 0;overflow:hidden;box-shadow:0 1px 3px rgba(22,35,59,.06);}
+.article-box .num-wm{position:absolute;right:14px;bottom:-14px;font-family:'Noto Serif TC',serif;font-weight:900;font-size:96px;color:var(--ink);opacity:.06;line-height:1;pointer-events:none;}
+.article-box h4{margin:0 0 10px;font-size:15px;color:var(--indigo);}
+.article-box p{margin:0 0 6px;font-size:15px;}
+
+table{width:100%;border-collapse:collapse;background:var(--paper-card);border:1px solid var(--border);font-size:14.5px;}
+th,td{border:1px solid var(--border);padding:10px 14px;text-align:left;vertical-align:top;}
+th{background:var(--ink);color:var(--paper-content);font-weight:500;}
+tr:nth-child(even) td{background:#f6f1e6;}
+
+.pos{font-weight:700;color:var(--ink);background:linear-gradient(transparent 60%,rgba(169,131,47,.35) 60%);}
+.neg{font-weight:700;color:var(--seal);}
+
+.placeholder{border:2px dashed #cdbf9a;border-radius:10px;padding:34px;text-align:center;background:repeating-linear-gradient(135deg,var(--paper-content),var(--paper-content) 10px,#f2ead6 10px,#f2ead6 20px);}
+.placeholder .icon{font-size:26px;margin-bottom:8px;}
+.placeholder .badge{display:inline-block;margin-top:10px;background:var(--brass);color:#fff;font-size:12px;padding:3px 12px;border-radius:999px;}
+
+.case-card,.essay-card,.term-card{background:var(--paper-card);border-radius:10px;border:1px solid var(--border);margin:20px 0;box-shadow:0 1px 2px rgba(22,35,59,.08),0 6px 16px -10px rgba(22,35,59,.25);overflow:hidden;}
+.case-card .hd{background:var(--indigo);color:var(--paper-content);padding:12px 20px;font-family:'Noto Serif TC',serif;font-weight:700;}
+.essay-card .hd{background:var(--ink);color:var(--paper-content);padding:12px 20px;font-family:'Noto Serif TC',serif;font-weight:700;}
+.term-card .hd{background:var(--brass);color:var(--paper-content);padding:10px 20px;font-family:'Noto Serif TC',serif;font-weight:700;font-size:15px;}
+.case-card .bd,.essay-card .bd,.term-card .bd{padding:20px 24px;}
+.tag{display:inline-block;font-size:12px;background:var(--paper-outer);border:1px solid var(--border);border-radius:999px;padding:2px 10px;margin-left:8px;color:var(--ink-45);}
+
+.relation-wrap{margin:18px 0;text-align:center;}
+.relation-note{font-size:13px;color:var(--ink-45);margin-top:6px;}
+
+.cheat{background:var(--ink);color:var(--paper-content);border-radius:12px;padding:28px 30px;position:relative;overflow:hidden;}
+.cheat .big-wm{position:absolute;right:10px;bottom:-30px;font-family:'Noto Serif TC',serif;font-weight:900;font-size:150px;opacity:.08;}
+.cheat h3{margin-top:0;color:var(--paper-content);font-size:17px;}
+.cheat ul{padding-left:20px;font-size:14.5px;}
+.mnemonic{margin-top:16px;background:var(--seal);border-radius:8px;padding:14px 18px;font-family:'Noto Serif TC',serif;font-size:16px;letter-spacing:.05em;}
+
+.link-note{border:1px dashed var(--border);border-radius:8px;padding:14px 18px;font-size:14px;margin-top:24px;background:var(--paper-card);}
+
+.src-note{font-size:12.5px;color:var(--ink-45);border-top:1px dashed var(--border);margin-top:14px;padding-top:8px;}
+h2.sec-title{font-size:20px;border-left:5px solid var(--brass);padding-left:12px;margin-bottom:22px;}
+h3.sub-title{font-size:16px;color:var(--indigo);border-left:3px solid var(--indigo);padding-left:10px;margin:26px 0 12px;}
+</style>
+</head>
+<body>
+
+<div class="mobilenav" id="mobilenav"></div>
+
+<div class="shell">
+  <nav class="sidenav" id="sidenav"></nav>
+
+  <main class="main">
+
+    <!-- 封面 -->
+    <section class="cover" id="cover">
+      <div class="seal-mark"><span>二年十年</span></div>
+      <div class="eyebrow">民法第二編 債｜第一章 通則｜第五節 侵權行為</div>
+      <h1>民法第197條</h1>
+      <div class="sub">侵權行為損害賠償請求權之消滅時效，與時效完成後之不當得利返還</div>
+      <div class="cover-meta">
+        <span class="ver-badge">v1.0</span>
+        <span class="meta-date">建立日期 2026-08-23</span>
+        <span><img alt="visitor" style="vertical-align:middle;height:14px;" src="https://visitor-badge.laobi.icu/badge?page_id=mjib007.civil-law-interpretation.197"></span>
+      </div>
+      <div class="toc">
+        <h3>目錄</h3>
+        <ol>
+          <li>條文原文</li>
+          <li>條文結構</li>
+          <li>要件逐項解析</li>
+          <li>專有名詞解釋</li>
+          <li>學說見解</li>
+          <li>實務見解</li>
+          <li>教學案例</li>
+          <li>申論練習題與模擬解答</li>
+          <li>速查卡</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 條文原文 -->
+    <section id="article">
+      <h2 class="sec-title">一、條文原文</h2>
+      <div class="article-box">
+        <span class="num-wm">197</span>
+        <h4>民法第197條（主條文）</h4>
+        <p>Ⅰ　因侵權行為所生之損害賠償請求權，自請求權人知有損害及賠償義務人時起，二年間不行使而消滅，自有侵權行為時起，逾十年者亦同。</p>
+        <p>Ⅱ　損害賠償之義務人，因侵權行為受利益，致被害人受損害者，於前項時效完成後，仍應依關於不當得利之規定，返還其所受之利益於被害人。</p>
+      </div>
+
+      <h3 class="sub-title">關聯條文</h3>
+      <div class="article-box">
+        <span class="num-wm">184</span>
+        <h4>民法第184條（一般侵權行為，必要條文）</h4>
+        <p>Ⅰ　因故意或過失，不法侵害他人之權利者，負損害賠償責任。故意以背於善良風俗之方法，加損害於他人者亦同。</p>
+        <p>Ⅱ　違反保護他人之法律，致生損害於他人者，負賠償責任。但能證明其行為無過失者，不在此限。</p>
+      </div>
+      <div class="article-box">
+        <span class="num-wm">179</span>
+        <h4>民法第179條（不當得利，必要條文）</h4>
+        <p>無法律上之原因而受利益，致他人受損害者，應返還其利益。雖有法律上之原因，而其後已不存在者，亦同。</p>
+      </div>
+      <div class="article-box">
+        <span class="num-wm">125</span>
+        <h4>民法第125條（一般時效，建議條文）</h4>
+        <p>請求權，因十五年間不行使而消滅。但法律所定期間較短者，依其規定。</p>
+      </div>
+      <div class="article-box">
+        <span class="num-wm">128</span>
+        <h4>民法第128條（時效之起算，建議條文）</h4>
+        <p>消滅時效，自請求權可行使時起算。以不行為為目的之請求權，自為行為時起算。</p>
+      </div>
+      <div class="article-box">
+        <span class="num-wm">213</span>
+        <h4>民法第213條（損害賠償方法，比較條文）</h4>
+        <p>Ⅰ　負損害賠償責任者，除法律另有規定或契約另有訂定外，應回復他方損害發生前之原狀。</p>
+        <p>Ⅱ　因回復原狀而應給付金錢者，自損害發生時起，加給利息。</p>
+        <p>Ⅲ　第一項情形，債權人得請求支付回復原狀所必要之費用，以代回復原狀。</p>
+      </div>
+      <div class="article-box">
+        <span class="num-wm">215</span>
+        <h4>民法第215條（金錢賠償，比較條文）</h4>
+        <p>不能回復原狀或回復顯有重大困難者，應以金錢賠償其損害。</p>
+      </div>
+      <div class="article-box">
+        <span class="num-wm">216</span>
+        <h4>民法第216條（賠償範圍，比較條文）</h4>
+        <p>Ⅰ　損害賠償，除法律另有規定或契約另有訂定外，應以填補債權人所受損害及所失利益為限。</p>
+        <p>Ⅱ　依通常情形，或依已定之計劃、設備或其他特別情事，可得預期之利益，視為所失利益。</p>
+      </div>
+      <p class="src-note">📌 第213、215、216條為損害賠償「範圍與方法」之一般規定，與第197條所處理的「時效」問題並非同一層次，但於比較第197條第2項不當得利返還之「利益返還範圍」與一般侵權行為「損害賠償範圍」之差異時，可作為對照參考。</p>
+    </section>
+
+    <!-- 條文結構 -->
+    <section id="structure">
+      <h2 class="sec-title">二、條文結構 — 請求權基礎架構</h2>
+      <table>
+        <tr><th style="width:22%">層次</th><th>內容</th></tr>
+        <tr><td>本條性質</td><td>非獨立之請求權基礎，而是第184條侵權行為損害賠償請求權的<strong>消滅時效</strong>特別規定（第1項），以及時效完成後之<strong>補充性不當得利返還請求權</strong>（第2項）</td></tr>
+        <tr><td>第1項雙軌時效</td><td>①主觀短期時效：知有損害＋知賠償義務人時起2年　②客觀長期時效：自侵權行為時起10年　— 二者<strong>並行計算，先屆至者優先消滅該請求權</strong></td></tr>
+        <tr><td>時效完成之效力</td><td>時效完成僅生「抗辯權」，須由賠償義務人於訴訟中主張，法院不得依職權審酌（民法時效制度之一般原理）</td></tr>
+        <tr><td>第2項請求權基礎</td><td>第197條第2項結合第179條不當得利規定，於第1項時效完成後，被害人得另行請求加害人返還其因侵權行為所受之利益</td></tr>
+        <tr><td>第2項時效</td><td>本項為獨立之不當得利請求權，另行適用第125條一般時效（15年），非受第1項二年／十年之拘束</td></tr>
+      </table>
+    </section>
+
+    <!-- 要件解析 -->
+    <section id="elements">
+      <h2 class="sec-title">三、要件逐項解析</h2>
+
+      <h3 class="sub-title">要件① 主觀短期時效（二年）之起算</h3>
+      <table>
+        <tr><th style="width:20%">雙重明知</th><td>條文之「知」，依實務通說須同時具備：（1）<strong>知有損害</strong>——知悉自己權利受有何項損害；（2）<strong>知賠償義務人</strong>——知悉何人應負賠償責任。二者缺一，時效即不起算。</td></tr>
+        <tr><td>「知」之程度</td><td>解釋上須達到「明知」之程度，而非「可得而知」；單純懷疑或可得查知而未查知，尚不足以起算時效。</td></tr>
+        <tr><td>舉證責任</td><td>當事人就「知悉在前」之時間點有爭執時，應由<strong>主張時效抗辯之賠償義務人</strong>就請求權人知悉在前之事實負舉證責任。</td></tr>
+        <tr><td>損害額變動之影響</td><td>「知有損害」僅須知悉受有何種損害，至損害的具體金額縱嗣後有所變動或擴大，原則上不影響時效之進行（相關爭議見下方實務見解）。</td></tr>
+      </table>
+
+      <h3 class="sub-title">要件② 客觀長期時效（十年）</h3>
+      <table>
+        <tr><th style="width:20%">起算點</th><td>不問請求權人主觀上是否知悉損害或賠償義務人，一律自<strong>侵權行為發生時</strong>起算，逾十年即罹於時效。</td></tr>
+        <tr><td>功能</td><td>作為短期時效之外部界線，避免請求權人長期未能知悉損害或義務人時，法律關係無限期懸而不決，兼顧法安定性。</td></tr>
+      </table>
+
+      <h3 class="sub-title">要件③ 兩時效之關係</h3>
+      <table>
+        <tr><th style="width:20%">並行計算</th><td>二年之主觀時效與十年之客觀時效各自獨立起算、獨立進行，<strong>任一時效先屆滿</strong>，該損害賠償請求權即歸消滅（賠償義務人得主張時效抗辯）。</td></tr>
+        <tr><td>常見情形</td><td>多數案件中二年主觀時效先於十年客觀時效完成；惟若請求權人遲遲未能知悉賠償義務人（如肇事逃逸未查獲），則可能於十年客觀時效屆滿時，二年主觀時效根本尚未起算，此時仍以十年為限。</td></tr>
+      </table>
+
+      <h3 class="sub-title">要件④ 第2項不當得利返還之要件</h3>
+      <table>
+        <tr><th style="width:20%">適用時機</th><td>僅於第1項損害賠償請求權<strong>已因時效完成</strong>後，才有適用餘地；若第1項請求權尚未罹時效，被害人本可逕行主張侵權行為損害賠償，無庸適用第2項。</td></tr>
+        <tr><td>要件內容</td><td>①賠償義務人因侵權行為受有利益　②被害人因此受有損害　③以上二者具有因果關聯</td></tr>
+        <tr><td>與第179條之關係</td><td>本項為不當得利之特殊類型，性質上仍屬不當得利返還請求權，惟其「無法律上原因」之要件已由「因侵權行為受利益」之構成事實所涵蓋，毋庸另外個別審查。</td></tr>
+        <tr><td>返還範圍</td><td>依不當得利之一般法理，以賠償義務人「現存利益」為返還範圍，通常小於（或不同於）第216條損害賠償所涵蓋之「所受損害＋所失利益」全部範圍。</td></tr>
+      </table>
+
+      <h3 class="sub-title">法律效果對照</h3>
+      <table>
+        <tr><th>情形</th><th>效果</th></tr>
+        <tr><td>二年、十年時效均未完成</td><td class="pos">得依第184條逕行請求侵權行為損害賠償（範圍依第213、215、216條）</td></tr>
+        <tr><td>第1項時效已完成，義務人受有利益</td><td>不得再請求損害賠償，但得依第197條第2項＋第179條請求返還其所受利益（範圍限於現存利益）</td></tr>
+        <tr><td>第2項不當得利請求權逾15年（第125條）</td><td class="neg">不當得利返還請求權亦罹於時效，被害人無法律上救濟途徑</td></tr>
+      </table>
+    </section>
+
+    <!-- 專有名詞解釋 -->
+    <section id="terms">
+      <h2 class="sec-title">四、專有名詞解釋<span class="tag">補充單元・整理彙編</span></h2>
+
+      <div class="term-card">
+        <div class="hd">消滅時效之「抗辯權說」</div>
+        <div class="bd"><p>時效完成後，請求權本身並不當然消滅，僅使義務人取得「拒絕給付」之抗辯權；須義務人於訴訟上主張時效抗辯，法院始得據以駁回請求權人之請求，法院不得依職權審酌時效是否完成。</p></div>
+      </div>
+      <div class="term-card">
+        <div class="hd">主觀時效 vs 客觀時效</div>
+        <div class="bd"><p>主觀時效：以請求權人「知悉」特定事實（如知有損害及賠償義務人）為起算前提；客觀時效：不問請求權人主觀知悉與否，一律自特定客觀事實發生時（如侵權行為發生時）起算，功能上作為主觀時效的外部上限。</p></div>
+      </div>
+      <div class="term-card">
+        <div class="hd">現存利益</div>
+        <div class="bd"><p>不當得利返還範圍之判斷基準之一，指受利益人於請求返還時「實際仍保有」之利益；若受利益人已將所受利益消費殆盡且非因惡意致利益不存在，得主張返還範圍以現存部分為限（民法第182條相關法理，本講義暫不展開）。</p></div>
+      </div>
+      <div class="term-card">
+        <div class="hd">除斥期間（與消滅時效之區辨）</div>
+        <div class="bd"><p>除斥期間係就「形成權」（如撤銷權）所設之存續期間，期間屆滿權利當然消滅，法院得依職權審酌；與消滅時效僅生抗辯權、須當事人主張者不同。第197條規範者為請求權之消滅時效，非除斥期間。</p></div>
+      </div>
+    </section>
+
+    <!-- 學說見解 -->
+    <section id="doctrine">
+      <h2 class="sec-title">五、學說見解</h2>
+      <div class="placeholder">
+        <div class="icon">📖</div>
+        <p>尚未加入學說見解內容</p>
+        <span class="badge">待補充</span>
+      </div>
+      <p class="src-note">⚠️ 已依關鍵字搜尋學者專書、期刊論文及考用書摘整理資料，惟未查得附有明確作者姓名、書名／期刊與頁碼之學說見解，故暫以空白佔位呈現。若您可提供學者專書或期刊出處，將依格式補入。</p>
+    </section>
+
+    <!-- 實務見解 -->
+    <section id="precedent">
+      <h2 class="sec-title">六、實務見解</h2>
+      <table>
+        <tr><th style="width:26%">案號</th><th style="width:50%">要旨</th><th>查詢方式</th></tr>
+        <tr>
+          <td>最高法院72年台上字第1428號判決</td>
+          <td>「知有損害及賠償義務人」之「知」，係指明知而言；當事人就知悉時點有爭執時，應由主張時效抗辯之義務人，就請求權人知悉在前之事實負舉證責任。</td>
+          <td>judgment.judicial.gov.tw 輸入案號查詢</td>
+        </tr>
+        <tr>
+          <td>最高法院104年度台上字第1009號民事判決</td>
+          <td>被害人須實際知悉賠償義務人之身分，二年主觀時效始行起算；單純知悉損害發生而不知加害人為何人者，時效尚不起算。</td>
+          <td>judgment.judicial.gov.tw 輸入案號查詢</td>
+        </tr>
+        <tr>
+          <td>最高法院110年度台上字第1414號民事判決</td>
+          <td>就「知有損害及賠償義務人」之主觀時效起算時點，重申實務向來穩定見解；本案原審（高等法院）就「知有損害」之認定見解，經最高法院發回廢棄。</td>
+          <td>judgment.judicial.gov.tw 輸入案號查詢</td>
+        </tr>
+      </table>
+      <p class="src-note">
+        📌 上列判決原文可至司法院裁判書查詢系統（<a href="https://judgment.judicial.gov.tw/" target="_blank">judgment.judicial.gov.tw</a>）輸入對應案號自行查閱全文核實；上列摘要轉引自非官方網站整理資料，尚未經司法院原文逐字核實，正式引用前建議再查證原文。<br>
+        📌 本條（§197）目前查無大法官解釋或憲法法庭判決，理由：本條屬私法上消滅時效期間之技術性規範，未見有人以此聲請違憲審查。搜尋過程中另發現有網路資料提及「大法官釋字第107號」與本條「知悉」定義相關，惟經查核，釋字第107號實際內容為已登記不動產所有人回復請求權不適用消滅時效規定，與本條主題不符，研判該引用有誤，本講義不予採用。
+      </p>
+    </section>
+
+    <!-- 教學案例 -->
+    <section id="cases">
+      <h2 class="sec-title">七、教學案例<span class="tag">AI虛構・教學用途</span></h2>
+
+      <div class="case-card">
+        <div class="hd">案例一　肇事逃逸 — 主觀時效起算之雙重明知</div>
+        <div class="bd">
+          <p><strong>事實：</strong>甲於民國113年3月1日騎車行經路口，遭乙駕車自後方追撞後逃逸，甲當場受傷送醫，但因現場無監視器亦無目擊者，警方偵查逾一年半仍未查獲肇事者。直到114年9月間，警方比對車損油漆與行車軌跡，始確認乙為肇事者並移送地檢署，甲於收受不起訴處分書後始得知乙之身分，遂於114年10月對乙提起民事求償。乙抗辯甲之請求權已罹於二年時效。</p>
+
+          <p><strong>分析：</strong>甲雖於113年3月1日事故發生當下即已「知有損害」（受傷之事實），惟直至114年9月間收受不起訴處分書時，始「知賠償義務人」為乙。依第197條第1項規定，二年主觀時效須以「知有損害」及「知賠償義務人」二者均已具備為起算前提，缺一不可，故本案二年時效應自114年9月甲知悉乙之身分時起算，而非自113年3月事故發生時起算。乙就甲「知悉在前」之事實負舉證責任，惟乙未能舉出甲於更早時點即已知悉其身分之證據。</p>
+          <p><strong>結論：</strong>甲之請求權尚未罹於二年時效（自114年9月起算，114年10月提起訴訟顯未逾二年），亦未逾自侵權行為時起算之十年客觀時效，乙之時效抗辯為無理由，甲得依第184條請求乙負損害賠償責任。</p>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="hd">案例二　仿冒品銷售 — 時效完成後之不當得利返還</div>
+        <div class="bd">
+          <p><strong>事實：</strong>丙為某手工皮件品牌之設計師，其原創皮件圖樣於108年間遭丁盜用並大量製造仿冒品販售牟利。丙於108年間即已知悉丁仿冒其圖樣（知有損害及知賠償義務人），惟因忙於事業未及時提告，直至113年間始委請律師提起訴訟，此時距丙知悉已逾二年。丁抗辯丙之侵權行為損害賠償請求權已罹於時效。</p>
+
+          <p><strong>分析：</strong>丙自108年知悉丁仿冒其設計起算二年時效，至113年提告時確已逾二年，丁之時效抗辯有理由，丙不得再依第184條請求損害賠償。惟依第197條第2項，丁因販售仿冒品而受有利益（銷售所得），致丙受有損害（原創設計未獲授權金、市場被稀釋），縱第1項時效已完成，丙仍得依第197條第2項結合第179條規定，請求丁返還其因仿冒行為所受之利益。</p>
+          <p><strong>結論：</strong>丙不得再主張侵權行為損害賠償（範圍原可涵蓋所受損害及所失利益，見第216條），但得另行請求丁返還其銷售仿冒品之現存利益；此一不當得利返還請求權另行適用第125條十五年時效，自丙得行使時起算，丙於113年提起訴訟並未逾此十五年期間。本案凸顯第197條第2項作為「時效完成後之最後防線」的立法功能——避免加害人終局保有其不法所得之利益。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 申論題 -->
+    <section id="essays">
+      <h2 class="sec-title">八、申論練習題與模擬解答<span class="tag">AI自行出題（已授權）</span></h2>
+
+      <div class="essay-card">
+        <div class="hd">練習題一</div>
+        <div class="bd">
+          <p><strong>題目：</strong>A之名譽於110年5月間遭B在網路社群散布不實言論而受損，A當時即已看到該則貼文並知悉發文者為B，惟A考量訴訟曠日廢時，遲未提告。114年6月間，A因故重新檢視該事件，始委請律師提起侵權行為損害賠償訴訟。B抗辯A之請求權已罹於民法第197條第1項之二年時效。試問B之抗辯有無理由？</p>
+          <div class="src-note">📂 題目來源｜AI 自行擬定（依授權），非真實考題或真實案例</div>
+
+          <h3 class="sub-title" style="margin-top:22px;">模擬解答</h3>
+          <p>按因侵權行為所生之損害賠償請求權，自請求權人知有損害及賠償義務人時起，二年間不行使而消滅，民法第197條第1項定有明文。所謂「知」，依實務見解係指明知而言，須請求權人同時知悉損害之發生及賠償義務人為何人，二者兼備，時效方始起算。</p>
+          <p>查A於110年5月間見及該則貼文時，即已同時知悉其名譽受損（知有損害）及發文者為B（知賠償義務人），二年主觀時效之起算要件於斯時已然具備，應自110年5月起算二年時效。A雖遲至114年6月始委請律師提起訴訟，距其知悉之時已逾二年，其請求權依第197條第1項規定已因時效完成而消滅。</p>
+          <p>從而，B就A之請求權已罹於二年時效乙節提出抗辯，於法有據，其抗辯應屬有理由；A不得再依民法第184條請求B負侵權行為損害賠償責任。惟A如欲進一步主張B因該不實言論受有利益（例如藉此獲取流量或業務上之不正競爭利益）致其受有損害，則屬第197條第2項及第179條不當得利返還之另一問題，須另行審究B是否確受有可返還之現存利益。</p>
+        </div>
+      </div>
+
+      <div class="essay-card">
+        <div class="hd">練習題二</div>
+        <div class="bd">
+          <p><strong>題目：</strong>C公司於111年間發現其專有技術遭離職員工D洩漏予競爭對手E公司使用，C公司於111年即已知悉D洩漏技術之事實及D之身分，卻遲至115年始提起訴訟，其對D之侵權行為損害賠償請求權已罹於二年時效。試問C公司得否轉向對E公司主張權利？如可，其依據及請求範圍為何？</p>
+          <div class="src-note">📂 題目來源｜AI 自行擬定（依授權），非真實考題或真實案例</div>
+
+          <h3 class="sub-title" style="margin-top:22px;">模擬解答</h3>
+          <p>C公司對D之侵權行為損害賠償請求權，因C公司自111年即已知悉損害及賠償義務人D，逾二年始於115年提起訴訟，依民法第197條第1項規定已罹於時效，D得對此提出時效抗辯。惟本題進一步涉及者，係C公司得否轉向對E公司（使用該技術之第三人，而非直接侵權行為人D）主張權利之問題，須分別檢視E公司之法律地位。</p>
+          <p>若E公司明知或可得而知該技術係D不法洩漏取得，仍加以利用而受有營業上利益，則E公司本身亦可能該當民法第184條之侵權行為要件（例如故意背於善良風俗加損害於他人，或違反保護他人法律），此時應個別審查E公司是否知悉、是否具有故意或過失，以及對E公司之二年、十年時效是否已完成，此為獨立於對D之請求權以外之另一侵權行為法律關係，不因對D之請求權罹時效而當然一併消滅。</p>
+          <p>其次，縱認C公司對D之請求權已罹時效、且對E公司另行起訴之侵權行為請求權亦有時效或舉證上之困難，若能證明D因洩漏技術受有利益（如取得對價或於E公司獲得職位、股權等對價利益），C公司仍得依第197條第2項及第179條之規定，於十五年時效內請求D返還其所受之利益，惟此一不當得利返還請求權之相對人限於「受利益之賠償義務人」本身（即D），尚不當然及於受讓技術之第三人E公司，蓋E公司與C公司間並無直接之給付或損益變動關係，須另循其他請求權基礎（如個別審查E公司自身是否成立侵權行為）處理。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 速查卡 -->
+    <section id="cheatsheet">
+      <h2 class="sec-title">九、速查卡</h2>
+      <div class="cheat">
+        <span class="big-wm">速</span>
+        <h3>民法第197條 — 侵權時效與不當得利返還</h3>
+        <ul>
+          <li><strong>雙軌時效：</strong>主觀2年（知有損害＋知賠償義務人，二者兼備）／客觀10年（自侵權行為時起），先屆至者優先</li>
+          <li><strong>知之程度：</strong>須「明知」，非「可得而知」；舉證責任在主張時效抗辯之義務人</li>
+          <li><strong>時效效力：</strong>僅生抗辯權，須義務人主張，法院不依職權審酌</li>
+          <li><strong>第2項最後防線：</strong>第1項時效完成後，義務人受利益、被害人受損害者，仍得依不當得利（§179）請求返還，另計15年時效（§125）</li>
+          <li><strong>返還範圍差異：</strong>不當得利返還＝現存利益（通常較小）；侵權損害賠償＝所受損害＋所失利益（§216，通常較大）</li>
+        </ul>
+        <div class="mnemonic">「知損知人二年限，逾十不當十五年」</div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+const sections = [
+  {id:'cover', label:'封面'},
+  {id:'article', label:'一、條文原文'},
+  {id:'structure', label:'二、條文結構'},
+  {id:'elements', label:'三、要件解析'},
+  {id:'terms', label:'四、專有名詞解釋'},
+  {id:'doctrine', label:'五、學說見解'},
+  {id:'precedent', label:'六、實務見解'},
+  {id:'cases', label:'七、教學案例'},
+  {id:'essays', label:'八、申論練習題'},
+  {id:'cheatsheet', label:'九、速查卡'}
+];
+const sidenav = document.getElementById('sidenav');
+const mobilenav = document.getElementById('mobilenav');
+sections.forEach(s=>{
+  const a1 = document.createElement('a'); a1.href='#'+s.id; a1.textContent=s.label; a1.dataset.id=s.id;
+  sidenav.appendChild(a1);
+  const a2 = document.createElement('a'); a2.href='#'+s.id; a2.textContent=s.label; a2.dataset.id=s.id;
+  mobilenav.appendChild(a2);
+});
+sidenav.querySelectorAll('a').forEach(a=>{
+  a.addEventListener('click', e=>{ e.preventDefault(); document.getElementById(a.dataset.id).scrollIntoView({behavior:'smooth'}); });
+});
+mobilenav.querySelectorAll('a').forEach(a=>{
+  a.addEventListener('click', e=>{ e.preventDefault(); document.getElementById(a.dataset.id).scrollIntoView({behavior:'smooth'}); });
+});
+const allLinks = () => [...sidenav.querySelectorAll('a'), ...mobilenav.querySelectorAll('a')];
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      allLinks().forEach(l=>l.classList.remove('active'));
+      allLinks().filter(l=>l.dataset.id===entry.target.id).forEach(l=>l.classList.add('active'));
+    }
+  });
+}, {rootMargin:'-40% 0px -50% 0px'});
+sections.forEach(s=>{ const el=document.getElementById(s.id); if(el) observer.observe(el); });
+</script>
+</body>
+</html>

@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>民法第866條——抵押權設定後之用益權與其他權利｜教學講義</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink: #16233b;
+    --indigo: #2c4a76;
+    --paper-outer: #f3ede0;
+    --paper-content: #fbf8f1;
+    --paper-card: #fffdf8;
+    --seal: #9c2b3a;
+    --brass: #a9832f;
+    --border: #ddd3bf;
+    --ink-45: rgba(22,35,59,.45);
+    --ink-65: rgba(22,35,59,.65);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--paper-outer); color:var(--ink);
+    font-family:"Noto Sans TC", sans-serif; line-height:1.8;
+  }
+  h1,h2,h3,h4,.serif{font-family:"Noto Serif TC", serif;}
+  a{color:var(--indigo);}
+  .layout{display:flex; max-width:1180px; margin:0 auto;}
+  .sidenav{
+    width:240px; flex-shrink:0; position:sticky; top:0; align-self:flex-start;
+    height:100vh; overflow-y:auto; padding:32px 18px; border-right:1px solid var(--border);
+  }
+  .sidenav .brand{font-family:"Noto Serif TC"; font-weight:900; font-size:15px; color:var(--indigo); margin-bottom:22px; letter-spacing:.05em;}
+  .sidenav ul{list-style:none; margin:0; padding:0;}
+  .sidenav li{margin-bottom:4px;}
+  .sidenav a{
+    display:block; padding:8px 10px; border-radius:6px; font-size:14px; color:var(--ink-65);
+    text-decoration:none; border-left:3px solid transparent; transition:.15s;
+  }
+  .sidenav a.active{background:rgba(44,74,118,.08); color:var(--indigo); border-left-color:var(--indigo); font-weight:700;}
+  .sidenav a.todo{color:var(--ink-45); font-style:italic;}
+  .topnav{display:none;}
+  .main{flex:1; background:var(--paper-content); box-shadow:-6px 0 18px rgba(22,35,59,.04); min-height:100vh;}
+  .section{padding:48px 56px; border-bottom:1px dashed var(--border);}
+  .section:last-child{border-bottom:none;}
+
+  /* Cover */
+  .cover{padding:64px 56px 48px; position:relative; background:linear-gradient(180deg, rgba(169,131,47,.06), transparent 60%);}
+  .eyebrow{
+    display:inline-block; font-size:12px; letter-spacing:.15em; color:var(--brass);
+    border:1px solid var(--brass); padding:3px 10px; border-radius:20px; margin-bottom:18px;
+  }
+  .cover h1{font-size:34px; font-weight:900; color:var(--ink); margin:0 0 10px; line-height:1.3;}
+  .cover .sub{font-size:16px; color:var(--ink-65); margin:0 0 14px;}
+  .cover-meta{display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:28px;}
+  .cover-meta span{
+    font-size:12px; padding:3px 10px; border-radius:20px; border:1px solid var(--indigo); color:var(--indigo);
+  }
+  .ver-badge{border-color:var(--seal) !important; color:var(--seal) !important; font-weight:700;}
+  .seal-mark{
+    position:absolute; top:56px; right:56px; width:88px; height:88px; border:2px solid var(--seal);
+    border-radius:6px; transform:rotate(8deg); display:flex; align-items:center; justify-content:center;
+    color:var(--seal); font-family:"Noto Serif TC"; writing-mode:vertical-rl; font-weight:900; font-size:20px;
+    letter-spacing:.2em; opacity:.85;
+  }
+  .toc{background:var(--paper-card); border:1px solid var(--border); border-radius:10px; padding:20px 24px; margin-top:8px;}
+  .toc h3{margin:0 0 10px; font-size:14px; color:var(--indigo);}
+  .toc ol{margin:0; padding-left:20px; columns:2; font-size:14px; color:var(--ink-65);}
+
+  /* Article box */
+  .article-box{
+    position:relative; background:var(--paper-card); border-left:3px solid var(--indigo);
+    border-radius:4px; padding:22px 26px; margin:16px 0; overflow:hidden; box-shadow:0 1px 3px rgba(22,35,59,.05);
+  }
+  .article-box .watermark{
+    position:absolute; right:8px; bottom:-6px; font-family:"Noto Serif TC"; font-weight:900;
+    font-size:96px; color:var(--ink); opacity:.06; line-height:1; pointer-events:none;
+  }
+  .article-box h4{margin:0 0 10px; font-size:15px; color:var(--indigo);}
+  .article-box .item{margin:0 0 8px; font-size:15px;}
+  .article-box .item b{color:var(--seal); margin-right:6px;}
+  .article-box.other{border-left-color:var(--brass);}
+  .article-box.other h4{color:var(--brass);}
+
+  h2.h-title{font-size:22px; font-weight:900; margin:0 0 6px;}
+  .h-eyebrow{font-size:12px; color:var(--brass); letter-spacing:.1em; margin-bottom:6px; display:block;}
+
+  table{width:100%; border-collapse:collapse; margin:18px 0; font-size:14px;}
+  thead th{background:var(--ink); color:var(--paper-content); padding:10px 12px; text-align:left; font-weight:700;}
+  tbody td{padding:10px 12px; border-bottom:1px solid var(--border);}
+  tbody tr:nth-child(odd){background:var(--paper-card);}
+  tbody tr:nth-child(even){background:#f6f1e6;}
+
+  .yes{font-weight:700; color:var(--ink); background:linear-gradient(transparent 60%, rgba(169,131,47,.35) 60%);}
+  .no{font-weight:700; color:var(--seal);}
+
+  .req-block{margin:22px 0;}
+  .req-block h3{font-size:17px; color:var(--ink); border-left:4px solid var(--brass); padding-left:10px; margin-bottom:8px;}
+  .req-block p{margin:6px 0; font-size:15px; color:var(--ink-65);}
+
+  .placeholder{
+    border:2px dashed var(--brass); border-radius:10px; padding:40px 20px; text-align:center;
+    background:repeating-linear-gradient(135deg, rgba(169,131,47,.05), rgba(169,131,47,.05) 10px, transparent 10px, transparent 20px);
+    color:var(--ink-45);
+  }
+  .placeholder .icon{font-size:28px; margin-bottom:10px;}
+  .placeholder .badge{
+    display:inline-block; margin-top:12px; font-size:12px; padding:4px 14px; border-radius:20px;
+    border:1px solid var(--brass); color:var(--brass);
+  }
+
+  .case-card, .quiz-card{
+    background:var(--paper-card); border-radius:10px; margin:20px 0; overflow:hidden;
+    box-shadow:0 1px 2px rgba(22,35,59,.06), 0 6px 16px rgba(22,35,59,.05);
+  }
+  .case-card .head{background:var(--indigo); color:var(--paper-content); padding:12px 20px; font-family:"Noto Serif TC"; font-weight:700; font-size:15px;}
+  .quiz-card .head{background:var(--ink); color:var(--paper-content); padding:12px 20px; font-family:"Noto Serif TC"; font-weight:700; font-size:15px;}
+  .case-card .body, .quiz-card .body{padding:20px 24px;}
+  .case-card .tag{display:inline-block; font-size:11px; background:rgba(255,255,255,.15); padding:2px 10px; border-radius:12px; margin-left:8px;}
+  .case-card h5, .quiz-card h5{margin:14px 0 6px; font-size:13px; color:var(--brass); letter-spacing:.05em;}
+
+  .relation-wrap{margin:18px 0; text-align:center;}
+  .relation-note{font-size:13px; color:var(--ink-45); margin-top:8px;}
+
+  .conclusion-pos{font-weight:700; color:var(--ink); background:linear-gradient(transparent 65%, rgba(169,131,47,.4) 65%); padding:0 2px;}
+  .conclusion-neg{font-weight:700; color:var(--seal);}
+
+  .cheat{
+    background:var(--ink); color:var(--paper-content); border-radius:12px; padding:32px 34px; position:relative; overflow:hidden;
+  }
+  .cheat .deco{position:absolute; right:10px; bottom:-20px; font-size:130px; font-family:"Noto Serif TC"; font-weight:900; opacity:.08;}
+  .cheat h3{margin:0 0 14px; font-size:18px;}
+  .cheat ul{margin:0; padding-left:20px; font-size:14px;}
+  .cheat li{margin-bottom:10px;}
+  .mantra{
+    background:var(--seal); color:#fffdf8; padding:14px 18px; border-radius:8px; margin-top:16px;
+    font-family:"Noto Serif TC"; font-weight:700; font-size:16px; text-align:center; letter-spacing:.05em;
+  }
+
+  .source-block{
+    margin-top:14px; font-size:13px; color:var(--ink-65); border-top:1px dashed var(--border); padding-top:10px;
+  }
+  .source-block a{word-break:break-all;}
+
+  .link-note{border:1px dashed var(--border); border-radius:10px; padding:16px 20px; font-size:14px; color:var(--ink-65);}
+
+  @media (max-width: 980px){
+    .layout{display:block;}
+    .sidenav{display:none;}
+    .topnav{
+      display:flex; position:sticky; top:0; z-index:20; background:var(--paper-outer);
+      overflow-x:auto; gap:8px; padding:10px 14px; border-bottom:1px solid var(--border);
+    }
+    .topnav a{
+      flex-shrink:0; font-size:12px; padding:6px 14px; border-radius:20px; border:1px solid var(--border);
+      color:var(--ink-65); text-decoration:none; background:var(--paper-card); white-space:nowrap;
+    }
+    .topnav a.active{background:var(--indigo); color:#fff; border-color:var(--indigo);}
+    .section{padding:32px 20px;}
+    .cover{padding:40px 20px 30px;}
+    .seal-mark{top:28px; right:20px; width:64px; height:64px; font-size:15px;}
+    .cover h1{font-size:26px;}
+    .toc ol{columns:1;}
+  }
+</style>
+</head>
+<body>
+<div class="topnav" id="topnav"></div>
+<div class="layout">
+  <nav class="sidenav" id="sidenav">
+    <div class="brand">民法物權編・抵押權</div>
+    <ul id="navlist"></ul>
+  </nav>
+
+  <main class="main">
+    <section class="section cover" id="sec-cover">
+      <div class="seal-mark">可拍賣</div>
+      <span class="eyebrow">物權編・第六章 抵押權・第一節 普通抵押權</span>
+      <h1>民法第866條</h1>
+      <p class="sub">抵押權設定後之用益權與其他權利——除去主義之體系解析</p>
+      <div class="cover-meta">
+        <span class="ver-badge">v1.0</span>
+        <span class="meta-date">建立日期：2026-08-23</span>
+        <img src="https://visitor-badge.laobi.icu/badge?page_id=mjib007.civil-law-interpretation.866" alt="訪客計數" style="height:20px; vertical-align:middle;">
+      </div>
+      <div class="toc">
+        <h3>目錄</h3>
+        <ol>
+          <li>條文原文</li>
+          <li>條文結構</li>
+          <li>要件逐項解析</li>
+          <li>學說見解</li>
+          <li>實務見解</li>
+          <li>教學案例</li>
+          <li>申論練習題與模擬解答</li>
+          <li>速查卡</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 條文原文 -->
+    <section class="section" id="sec-article">
+      <span class="h-eyebrow">02 · ARTICLE</span>
+      <h2 class="h-title">條文原文</h2>
+
+      <div class="article-box">
+        <div class="watermark">866</div>
+        <h4>民法第866條（主條文）</h4>
+        <p class="item"><b>Ⅰ</b>不動產所有人設定抵押權後，於同一不動產上，得設定地上權或其他以使用收益為目的之物權，或成立租賃關係。但其抵押權不因此而受影響。</p>
+        <p class="item"><b>Ⅱ</b>前項情形，抵押權人實行抵押權受有影響者，法院得除去該權利或終止該租賃關係後拍賣之。</p>
+        <p class="item"><b>Ⅲ</b>不動產所有人設定抵押權後，於同一不動產上，成立第一項以外之權利者，準用前項之規定。</p>
+      </div>
+
+      <div class="article-box">
+        <div class="watermark">865</div>
+        <h4>民法第865條（關聯條文・必要）</h4>
+        <p class="item">不動產所有人，因擔保數債權，就同一不動產，設定數抵押權者，其次序依登記之先後定之。</p>
+      </div>
+
+      <div class="article-box">
+        <div class="watermark">877</div>
+        <h4>民法第877條（關聯條文・建議）</h4>
+        <p class="item"><b>Ⅰ</b>土地所有人於設定抵押權後，在抵押之土地上營造建築物者，抵押權人於必要時，得於強制執行程序中聲請法院將其建築物與土地併付拍賣。但對於建築物之價金，無優先受清償之權。</p>
+        <p class="item"><b>Ⅱ</b>前項規定，於第八百六十六條第二項及第三項之情形，如抵押之不動產上，有該權利人或經其同意使用之人之建築物者，準用之。</p>
+      </div>
+
+      <div class="article-box">
+        <div class="watermark">425</div>
+        <h4>民法第425條（關聯條文・比較概念）</h4>
+        <p class="item"><b>Ⅰ</b>出租人於租賃物交付後，承租人占有中，縱將其所有權讓與第三人，其租賃契約，對於受讓人仍繼續存在。</p>
+        <p class="item"><b>Ⅱ</b>前項規定，於未經公證之不動產租賃契約，其期限逾五年或未定期限者，不適用之。</p>
+      </div>
+
+      <div class="article-box other">
+        <div class="watermark">98</div>
+        <h4>強制執行法第98條（程序法・非民法條文）</h4>
+        <p class="item"><b>Ⅰ</b>拍賣之不動產，買受人自領得執行法院所發給權利移轉證書之日起，取得該不動產所有權，債權人承受債務人之不動產者亦同。</p>
+        <p class="item"><b>Ⅱ</b>前項不動產原有之地上權、永佃權、地役權、典權及租賃關係隨同移轉。但發生於設定抵押權之後，並對抵押權有影響，經執行法院除去後拍賣者，不在此限。</p>
+        <p class="item"><b>Ⅲ</b>存於不動產上之抵押權及其他優先受償權，因拍賣而消滅。但抵押權所擔保之債權未定清償期或其清償期尚未屆至，而拍定人或承受抵押物之債權人聲明願在拍定或承受之抵押物價額範圍內清償債務，經抵押權人同意者，不在此限。</p>
+      </div>
+    </section>
+
+    <!-- 條文結構 -->
+    <section class="section" id="sec-structure">
+      <span class="h-eyebrow">03 · STRUCTURE</span>
+      <h2 class="h-title">條文結構總覽</h2>
+      <p>第866條處理的是「抵押權設定後，同一不動產上再成立其他權利」時的效力歸屬問題，可拆解為三層結構：</p>
+      <table>
+        <thead><tr><th>層次</th><th>對應項次</th><th>規範內容</th><th>法律效果</th></tr></thead>
+        <tbody>
+          <tr><td>① 原則</td><td>第1項</td><td>抵押權設定後，所有人仍得設定地上權、其他用益物權，或成立租賃關係</td><td class="yes">抵押權不因此受影響（優先效力）</td></tr>
+          <tr><td>② 例外救濟</td><td>第2項</td><td>上述用益權/租賃致抵押權實行受影響</td><td class="no">法院得除去該權利或終止租賃後拍賣</td></tr>
+          <tr><td>③ 擴張適用</td><td>第3項</td><td>成立第1項以外之其他權利（如使用借貸）</td><td>準用第2項除去規定</td></tr>
+        </tbody>
+      </table>
+      <p>可將本條理解為一組「請求權基礎」思路：抵押權人主張除去用益權／終止租賃／除去其他權利時，須依序檢驗四項要件（詳見下節）。</p>
+    </section>
+
+    <!-- 要件逐項解析 -->
+    <section class="section" id="sec-elements">
+      <span class="h-eyebrow">04 · ELEMENTS</span>
+      <h2 class="h-title">要件逐項解析</h2>
+
+      <div class="req-block">
+        <h3>要件一：抵押權須已合法設定於先</h3>
+        <p>本條規範的前提，是不動產上已存在一個依民法第860條以下規定合法設定並登記之抵押權。抵押權之次序，依第865條「登記之先後」定之——這正是本條「不因此而受影響」得以成立的制度基礎：登記在先者，效力優先於登記在後成立之權利。</p>
+      </div>
+
+      <div class="req-block">
+        <h3>要件二：於同一不動產上，成立「時間在後」之權利</h3>
+        <p>包含三種類型：</p>
+        <table>
+          <thead><tr><th>類型</th><th>第866條對應項次</th><th>例示</th></tr></thead>
+          <tbody>
+            <tr><td>用益物權</td><td>第1項</td><td>地上權、不動產役權、典權</td></tr>
+            <tr><td>債之關係（租賃）</td><td>第1項</td><td>房屋出租予第三人</td></tr>
+            <tr><td>其他權利（債之關係，非用益物權亦非租賃）</td><td>第3項</td><td>使用借貸關係</td></tr>
+          </tbody>
+        </table>
+        <p>關鍵在於「時間點」：必須是抵押權「設定後」才成立的權利，若該用益權或租賃早於抵押權設定，則其次序本即優先，非本條規範對象（應回歸第865條次序原則處理）。</p>
+      </div>
+
+      <div class="req-block">
+        <h3>要件三：抵押權「不因此而受影響」之基本效力（第1項但書）</h3>
+        <p>條文用語為「不受影響」，其精確意涵是：後成立之用益權／租賃，本身仍屬有效成立，但<span class="conclusion-pos">在對抵押權人的關係上不生對抗力</span>——即所謂「相對不生效力」，而非該用益權／租賃契約絕對無效。這也是立法理由中特別指出「學者間意見不一」而以第2項予以明文化的爭點所在。</p>
+      </div>
+
+      <div class="req-block">
+        <h3>要件四：抵押權「實行受有影響」（除去主義之啟動要件）</h3>
+        <p>依釋字第304號解釋理由書之闡明，「受有影響」具體指向：<span class="conclusion-neg">拍賣時發生無人應買，或出價不足清償抵押債權之情形</span>。並非只要有用益權或租賃存在就當然除去，而須先聲請拍賣、確實產生上述不利結果，法院才會除去該權利或終止租賃關係後重新拍賣。</p>
+        <p>除去之方式：法院<span class="conclusion-pos">得依聲請，亦得依職權</span>為之（立法理由明文），不以抵押權人主動聲請為限。</p>
+      </div>
+
+      <div class="req-block">
+        <h3>要件五：除去後之銜接——建築物之併付拍賣（連結第877條第2項）</h3>
+        <p>用益權雖經除去，若該用益權人（或經其同意使用之人）在抵押之不動產上有建築物，不能置之不理。此時依第877條第2項，準用第877條第1項規定，將該建築物與土地併付拍賣（但建築物價金抵押權人無優先受償權），避免房地分離所生之社會成本與法律關係複雜化。</p>
+      </div>
+    </section>
+
+    <!-- 學說見解 -->
+    <section class="section" id="sec-doctrine">
+      <span class="h-eyebrow">05 · DOCTRINE</span>
+      <h2 class="h-title">學說見解</h2>
+      <div class="placeholder">
+        <div class="icon">📖</div>
+        <p>尚未加入學說見解內容</p>
+        <span class="badge">待補充</span>
+      </div>
+    </section>
+
+    <!-- 實務見解 -->
+    <section class="section" id="sec-precedent">
+      <span class="h-eyebrow">06 · PRECEDENT</span>
+      <h2 class="h-title">實務見解</h2>
+
+      <div class="req-block">
+        <h3>釋字第304號解釋（民國81年）</h3>
+        <p>本號解釋源於聲請人主張民法第866條與司法院院字第1446號解釋有違反憲法平等權之疑義。解釋理由書進一步闡明除去主義的具體適用要件：<span class="conclusion-pos">拍賣時發生「無人應買」或「出價不足清償抵押債權」之情形，即須除去該項權利而為拍賣，並於拍定後解除被除去權利者之占有而點交於拍定人</span>，此為使抵押權人得依抵押權設定時之權利狀態受清償之必要。</p>
+        <div class="source-block">📂 來源｜司法院憲法法庭網站　🔗 <a href="https://cons.judicial.gov.tw/jcc/zh-tw/jep03/show?expno=304" target="_blank">https://cons.judicial.gov.tw/jcc/zh-tw/jep03/show?expno=304</a></div>
+      </div>
+
+      <div class="req-block">
+        <h3>釋字第119號解釋（民國56年）</h3>
+        <p>就「典權」類型作出補充闡釋：所有人於不動產上設定抵押權後，復與第三人設定典權，抵押權不因此受影響；抵押權人屆期未受清償實行抵押權拍賣時，因典權存在致無人應買或出價不足清償抵押債權者，執行法院得除去典權負擔重行估價拍賣。拍賣結果清償抵押債權有餘時，<span class="conclusion-pos">典權人之典價，對於登記在後之權利人，享有優先受償權</span>。</p>
+        <div class="source-block">📂 來源｜司法院憲法法庭網站　🔗 <a href="https://cons.judicial.gov.tw/jcc/zh-tw/jep03/show?expno=119" target="_blank">https://cons.judicial.gov.tw/jcc/zh-tw/jep03/show?expno=119</a></div>
+      </div>
+
+      <div class="req-block">
+        <h3>司法院院字第1446號解釋（舊制）</h3>
+        <p>本則解釋為修法前之見解，亦是現行第866條第2項增訂之立法依據之一：抵押權設定後與第三人訂立租賃契約，若因此影響抵押物售價致抵押權無法受清償，該租賃契約對抵押權人不生效力，執行法院得以無租賃狀態逕予執行。此見解已於96年修法時明文化為現行第2項規定。</p>
+        <p style="font-size:13px; color:var(--ink-45);">※ 提醒：「判例」制度已於民國108年法院組織法修正後不再選編，「解釋」與「判例」性質不同，惟此號解釋作成年代甚早，僅作為理解修法沿革之歷史資料，內容已由現行條文吸收。</p>
+      </div>
+
+      <div class="req-block">
+        <h3>最高法院60年台上字第4615號判例</h3>
+        <p>闡述除去主義若未被執行的效果：若執行法院未依聲請或依職權除去影響抵押權之在後租賃關係，逕行拍賣並於拍賣公告載明有租賃關係之事實，則<span class="conclusion-neg">該租賃關係非但未被除去，且已成為拍賣契約內容之一部</span>，對應買人或承受人依繼受取得之法理，租賃關係仍繼續存在。</p>
+        <p style="font-size:13px; color:var(--ink-45);">※ 提醒：本則屬「判例」舊字號，依108年法院組織法修正後之制度，現僅作為裁判先例參考，不具過去之拘束力。</p>
+        <div class="source-block">📂 案號查詢｜可至司法院裁判書查詢系統（<a href="https://judgment.judicial.gov.tw/" target="_blank">https://judgment.judicial.gov.tw/</a>）輸入案號查閱全文。</div>
+      </div>
+
+      <div class="req-block">
+        <h3>最高法院87年度台抗字第126號裁定</h3>
+        <p>呼應釋字第304號解釋理由書之見解，就「無人應買或出價不足清償抵押債權」之判斷標準予以具體闡述，作為執行實務認定除去要件之參考依據。</p>
+        <div class="source-block">📂 案號查詢｜可至司法院裁判書查詢系統（<a href="https://judgment.judicial.gov.tw/" target="_blank">https://judgment.judicial.gov.tw/</a>）輸入案號查閱全文。</div>
+      </div>
+
+      <div class="req-block">
+        <h3>臺灣高等法院臺南分院102年度抗字第129號民事裁定</h3>
+        <p>確認修正後民法第866條第2項規定，與修法前院字第1446號解釋意旨相同：只要租賃權發生在抵押權設定之後，且影響抵押物售價以致抵押權無法受清償者，法院即可除去租賃權後拍賣之。</p>
+        <div class="source-block">📂 案號查詢｜可至司法院裁判書查詢系統（<a href="https://judgment.judicial.gov.tw/" target="_blank">https://judgment.judicial.gov.tw/</a>）輸入案號查閱全文。</div>
+      </div>
+    </section>
+
+    <!-- 教學案例 -->
+    <section class="section" id="sec-cases">
+      <span class="h-eyebrow">07 · CASES</span>
+      <h2 class="h-title">教學案例</h2>
+      <p style="font-size:13px; color:var(--ink-45);">※ 以下案例為配合條文教學所虛構之情境，僅供教學用途，非真實案件。</p>
+
+      <div class="case-card">
+        <div class="head">案例一：租賃關係致抵押權實行受影響<span class="tag">教學用途</span></div>
+        <div class="body">
+          <h5>事實</h5>
+          <p>甲將其所有之A屋設定普通抵押權予乙銀行，擔保債權額新臺幣500萬元，並辦妥登記。抵押權設定後，甲將A屋出租予丙，租期3年，租金依市價收取，並無異常。其後甲屆期未清償債務，乙聲請法院拍賣A屋。因A屋上存有丙之租賃關係，拍賣時無人應買。</p>
+
+          <div class="relation-wrap">
+            <svg viewBox="0 0 640 340" width="100%" style="max-width:560px;">
+              <line x1="160" y1="90" x2="320" y2="230" stroke="#2c4a76" stroke-width="2"/>
+              <text x="200" y="150" font-family="Noto Sans TC" font-size="12" fill="#2c4a76">設定抵押權（在先）</text>
+              <line x1="480" y1="90" x2="320" y2="230" stroke="#a9832f" stroke-width="2" stroke-dasharray="5 5"/>
+              <text x="380" y="150" font-family="Noto Sans TC" font-size="12" fill="#a9832f">出租A屋（在後）</text>
+
+              <rect x="100" y="40" width="120" height="60" rx="6" fill="#fffdf8" stroke="#2c4a76" stroke-width="1.5"/>
+              <text x="160" y="65" text-anchor="middle" font-family="Noto Serif TC" font-weight="700" font-size="14">乙</text>
+              <text x="160" y="82" text-anchor="middle" font-family="Noto Sans TC" font-size="11" fill="#5b6472">抵押權人（銀行）</text>
+
+              <rect x="420" y="40" width="140" height="60" rx="6" fill="#fffdf8" stroke="#2c4a76" stroke-width="1.5"/>
+              <text x="490" y="65" text-anchor="middle" font-family="Noto Serif TC" font-weight="700" font-size="14">丙</text>
+              <text x="490" y="82" text-anchor="middle" font-family="Noto Sans TC" font-size="11" fill="#5b6472">承租人</text>
+
+              <rect x="255" y="230" width="140" height="66" rx="6" fill="#fffdf8" stroke="#9c2b3a" stroke-width="1.8"/>
+              <text x="325" y="256" text-anchor="middle" font-family="Noto Serif TC" font-weight="700" font-size="14">甲</text>
+              <text x="325" y="272" text-anchor="middle" font-family="Noto Sans TC" font-size="11" fill="#5b6472">所有人／出租人</text>
+              <text x="325" y="288" text-anchor="middle" font-family="Noto Sans TC" font-size="11" fill="#9c2b3a">租賃致拍賣無人應買</text>
+            </svg>
+            <p class="relation-note">爭點：丙之租賃關係得否對抗乙之抵押權？乙得否聲請法院除去該租賃關係？</p>
+          </div>
+
+          <h5>爭點</h5>
+          <p>丙之租賃契約成立於抵押權設定之後，依第866條第1項但書，對乙之抵押權不生對抗力；問題在於乙得否依第2項聲請法院終止該租賃關係後拍賣。</p>
+
+          <h5>分析</h5>
+          <p>依民法第866條第1項，甲於抵押權設定後仍得將A屋出租予丙，此租賃關係本身有效成立，但「不因此影響」乙之抵押權，即丙之租賃在對乙之關係上不生對抗力。因拍賣時已發生無人應買之情形（要件四），依第2項，乙得聲請法院終止丙之租賃關係後重新拍賣。</p>
+
+          <h5>結論</h5>
+          <p><span class="conclusion-pos">乙得依民法第866條第2項，聲請法院終止丙之租賃關係後拍賣A屋。</span>終止後，丙不得以其租賃權對抗拍定人，僅得依民法相關規定向甲求償。</p>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="head">案例二：地上權致抵押權實行受影響，涉及建築物併付拍賣<span class="tag">教學用途</span></div>
+        <div class="body">
+          <h5>事實</h5>
+          <p>甲以其所有之A地設定抵押權予乙，擔保債權額新臺幣800萬元並辦妥登記。抵押權設定後，甲將A地設定地上權予丙，丙並在A地上興建B屋自用。其後甲屆期未清償，乙聲請拍賣A地，因地上權存在，拍賣時出價均不足清償抵押債權。</p>
+
+          <div class="relation-wrap">
+            <svg viewBox="0 0 640 340" width="100%" style="max-width:560px;">
+              <line x1="160" y1="90" x2="320" y2="230" stroke="#2c4a76" stroke-width="2"/>
+              <text x="195" y="150" font-family="Noto Sans TC" font-size="12" fill="#2c4a76">設定抵押權（在先）</text>
+              <line x1="480" y1="90" x2="320" y2="230" stroke="#a9832f" stroke-width="2" stroke-dasharray="5 5"/>
+              <text x="370" y="150" font-family="Noto Sans TC" font-size="12" fill="#a9832f">設定地上權（在後）</text>
+
+              <rect x="100" y="40" width="120" height="60" rx="6" fill="#fffdf8" stroke="#2c4a76" stroke-width="1.5"/>
+              <text x="160" y="65" text-anchor="middle" font-family="Noto Serif TC" font-weight="700" font-size="14">乙</text>
+              <text x="160" y="82" text-anchor="middle" font-family="Noto Sans TC" font-size="11" fill="#5b6472">抵押權人</text>
+
+              <rect x="410" y="40" width="150" height="60" rx="6" fill="#fffdf8" stroke="#2c4a76" stroke-width="1.5"/>
+              <text x="485" y="65" text-anchor="middle" font-family="Noto Serif TC" font-weight="700" font-size="14">丙</text>
+              <text x="485" y="82" text-anchor="middle" font-family="Noto Sans TC" font-size="11" fill="#5b6472">地上權人／B屋所有人</text>
+
+              <rect x="255" y="230" width="140" height="66" rx="6" fill="#fffdf8" stroke="#9c2b3a" stroke-width="1.8"/>
+              <text x="325" y="256" text-anchor="middle" font-family="Noto Serif TC" font-weight="700" font-size="14">甲</text>
+              <text x="325" y="272" text-anchor="middle" font-family="Noto Sans TC" font-size="11" fill="#5b6472">土地所有人</text>
+              <text x="325" y="288" text-anchor="middle" font-family="Noto Sans TC" font-size="11" fill="#9c2b3a">地上權致出價不足</text>
+            </svg>
+            <p class="relation-note">爭點：地上權除去後，丙所興建之B屋應如何處理？是否隨同A地一併拍賣？</p>
+          </div>
+
+          <h5>爭點</h5>
+          <p>乙除去丙之地上權後拍賣A地固無疑義，惟丙在A地上有B屋，若僅拍賣土地，將產生房地異主之問題，此時應如何處理B屋，涉及第877條第2項之併付拍賣規定。</p>
+
+          <h5>分析</h5>
+          <p>依民法第866條第2項，乙得聲請法院除去丙之地上權後拍賣A地。惟丙於A地上有B屋存在，依第877條第2項準用第877條第1項規定，乙得於必要時在強制執行程序中聲請法院將B屋與A地併付拍賣，以避免房地分離、簡化法律關係。惟依第877條第1項但書，乙<span class="conclusion-neg">對於B屋之價金並無優先受清償之權</span>，僅得就A地價金優先受償。</p>
+
+          <h5>結論</h5>
+          <p><span class="conclusion-pos">乙得聲請法院除去丙之地上權，並依第877條第2項聲請將B屋與A地併付拍賣；</span>惟B屋拍賣所得價金，應歸屬丙（或依法優先受償之其他權利人），乙不得就此部分優先受償。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 申論題 -->
+    <section class="section" id="sec-quiz">
+      <span class="h-eyebrow">08 · EXERCISE</span>
+      <h2 class="h-title">申論練習題與模擬解答</h2>
+      <p style="font-size:13px; color:var(--ink-45);">※ 以下題目與解答由 AI 依使用者授權自行出題並作答，僅供練習參考，非官方考題。</p>
+
+      <div class="quiz-card">
+        <div class="head">題目一</div>
+        <div class="body">
+          <p>甲以其所有之A屋設定抵押權予乙銀行，並辦妥登記。其後甲將A屋出租予丙，租期3年。屆期甲未清償債務，乙聲請拍賣A屋，因丙之租賃關係致無人應買。試問：乙得否聲請法院除去丙之租賃關係？其法律依據及要件為何？</p>
+
+          <h5>模擬解答</h5>
+          <p>不動產所有人設定抵押權後，於同一不動產上得成立租賃關係，但依民法第866條第1項但書規定，抵押權不因此而受影響，是以甲、丙間之租賃契約雖有效成立，然於甲設定抵押權予乙之後始成立，對乙之抵押權不生對抗力。</p>
+          <p>依民法第866條第2項規定，前項情形抵押權人實行抵押權受有影響者，法院得終止該租賃關係後拍賣之，而所謂「受有影響」，依釋字第304號解釋理由書意旨，係指拍賣時發生無人應買，或出價不足清償抵押債權之情形。本案乙聲請拍賣A屋，因丙之租賃關係存在致無人應買，已合致「實行受有影響」之要件。</p>
+          <p>從而，<span class="conclusion-pos">乙得依民法第866條第2項規定，聲請法院終止丙之租賃關係後，以無租賃狀態重新拍賣A屋</span>，法院亦得依職權為之，不以乙聲請為限。丙之租賃關係經終止後，不得對抵押物之拍定人主張繼續存在，僅得依其與甲間之租賃契約關係，另向甲請求相關損害賠償。</p>
+        </div>
+      </div>
+
+      <div class="quiz-card">
+        <div class="head">題目二</div>
+        <div class="body">
+          <p>甲以其所有之A地設定抵押權予乙，並辦妥登記。其後甲將A地設定地上權予丙，丙並在A地上興建B屋。嗣乙抵押權屆期未獲清償，聲請拍賣A地，因地上權存在致出價均不足清償抵押債權，法院除去地上權後拍賣A地。試問：B屋應如何處理？</p>
+
+          <h5>模擬解答</h5>
+          <p>甲設定抵押權予乙後，於A地上設定地上權予丙，依民法第866條第1項，此地上權之設定並不影響乙之抵押權；乙聲請拍賣A地時，因地上權存在致出價不足清償抵押債權，已合致民法第866條第2項「抵押權人實行抵押權受有影響」之要件，法院自得除去丙之地上權後拍賣A地。</p>
+          <p>惟丙於A地上有B屋，若僅將A地拍賣而未一併處理B屋，將導致房地異主，法律關係複雜，且將影響應買人之投標意願。為解決此一問題，民法第877條第2項規定，於第866條第2項之情形，如抵押之不動產上，有該權利人（即丙）或經其同意使用之人之建築物者，準用第877條第1項併付拍賣之規定。</p>
+          <p>從而，<span class="conclusion-pos">乙於必要時，得於強制執行程序中聲請法院將B屋與A地併付拍賣</span>，以使房地同歸一人，簡化法律關係並利於拍賣程序進行。惟依第877條第1項但書規定，<span class="conclusion-neg">乙對於B屋之拍賣價金並無優先受清償之權</span>，該部分價金應歸屬於丙（或依法優先受償之其他權利人），乙僅得就A地之拍賣價金優先受償其抵押債權。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 速查卡 -->
+    <section class="section" id="sec-cheat">
+      <span class="h-eyebrow">09 · CHEAT SHEET</span>
+      <h2 class="h-title">速查卡</h2>
+      <div class="cheat">
+        <div class="deco">速</div>
+        <h3>民法第866條・重點速記</h3>
+        <ul>
+          <li><b>原則</b>：抵押權設定後仍得設定用益物權／成立租賃（第1項），但抵押權效力優先，不受影響。</li>
+          <li><b>除去要件</b>：須「實行抵押權受有影響」＝拍賣無人應買或出價不足清償（釋字304號）。</li>
+          <li><b>除去方式</b>：法院得依聲請，亦得依職權為之，不以抵押權人主動聲請為限。</li>
+          <li><b>第3項擴張</b>：地上權、其他物權、租賃以外之權利（如使用借貸），準用第2項除去規定。</li>
+          <li><b>銜接條文</b>：除去用益權後，若該權利人有建築物存在，依第877條第2項併付拍賣（但建築物價金無優先受償權）。</li>
+        </ul>
+        <div class="mantra">先後定次序，受影響始除去</div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+  const sections = [
+    {id:'sec-cover', label:'封面'},
+    {id:'sec-article', label:'條文原文'},
+    {id:'sec-structure', label:'條文結構'},
+    {id:'sec-elements', label:'要件解析'},
+    {id:'sec-doctrine', label:'學說見解', todo:true},
+    {id:'sec-precedent', label:'實務見解'},
+    {id:'sec-cases', label:'教學案例'},
+    {id:'sec-quiz', label:'申論題與解答'},
+    {id:'sec-cheat', label:'速查卡'}
+  ];
+
+  const navlist = document.getElementById('navlist');
+  const topnav = document.getElementById('topnav');
+
+  sections.forEach(s => {
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.href = '#' + s.id;
+    a.textContent = s.label;
+    a.dataset.target = s.id;
+    if (s.todo) a.classList.add('todo');
+    li.appendChild(a);
+    navlist.appendChild(li);
+
+    const ta = document.createElement('a');
+    ta.href = '#' + s.id;
+    ta.textContent = s.label;
+    ta.dataset.target = s.id;
+    topnav.appendChild(ta);
+  });
+
+  document.querySelectorAll('.sidenav a, .topnav a').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      document.getElementById(a.dataset.target).scrollIntoView({behavior:'smooth'});
+    });
+  });
+
+  const allLinks = () => document.querySelectorAll('.sidenav a, .topnav a');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        allLinks().forEach(a => {
+          a.classList.toggle('active', a.dataset.target === entry.target.id);
+        });
+      }
+    });
+  }, {rootMargin: '-40% 0px -50% 0px', threshold: 0});
+
+  sections.forEach(s => {
+    const el = document.getElementById(s.id);
+    if (el) observer.observe(el);
+  });
+</script>
+</body>
+</html>

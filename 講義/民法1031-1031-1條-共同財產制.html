@@ -126,6 +126,9 @@
   .quickref{background:var(--ink);color:var(--paper-inner);border-radius:12px;padding:32px;position:relative;overflow:hidden;}
   .quickref .deco{position:absolute;right:12px;bottom:-30px;font-family:'Noto Serif TC',serif;font-weight:900;font-size:160px;opacity:0.08;}
   .quickref h3{color:var(--paper-inner);margin-top:0;}
+  .quickref-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;background:transparent;}
+  .quickref-table td{background:transparent !important;color:var(--paper-inner);padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.15);}
+  .quickref-table td:first-child{color:var(--brass);font-weight:700;white-space:nowrap;width:80px;}
   .mnemonic{background:var(--red);color:var(--paper-inner);padding:14px 18px;border-radius:8px;font-family:'Noto Serif TC',serif;font-size:18px;text-align:center;margin:16px 0;}
 
   .link-note{border:1px dashed var(--ink2);border-radius:8px;padding:16px 20px;margin-top:24px;font-size:14px;color:var(--ink2);}
@@ -421,13 +424,13 @@
       <div class="quickref">
         <div class="deco">速</div>
         <h3>民法第1031條 共同財產制核心速記</h3>
-        <table style="background:transparent;">
-          <tr><td style="color:#fbf8f1;border-color:rgba(255,255,255,0.15);">成立前提</td><td style="color:#fbf8f1;border-color:rgba(255,255,255,0.15);">書面約定財產制，未約定回歸法定財產制（§1005）</td></tr>
-          <tr><td style="color:#fbf8f1;border-color:rgba(255,255,255,0.15);">財產範圍</td><td style="color:#fbf8f1;border-color:rgba(255,255,255,0.15);">原則共同財產；例外三款特有財產（個人用／職業用／書面聲明贈物）</td></tr>
-          <tr><td style="color:#fbf8f1;border-color:rgba(255,255,255,0.15);">所有型態</td><td style="color:#fbf8f1;border-color:rgba(255,255,255,0.15);">公同共有，無應有部分</td></tr>
-          <tr><td style="color:#fbf8f1;border-color:rgba(255,255,255,0.15);">管理</td><td style="color:#fbf8f1;border-color:rgba(255,255,255,0.15);">原則共同管理，得約定一方管理（§1032）</td></tr>
-          <tr><td style="color:#fbf8f1;border-color:rgba(255,255,255,0.15);">處分</td><td style="color:#fbf8f1;border-color:rgba(255,255,255,0.15);">應得他方同意；欠缺原則不得對抗善意第三人（§1033）</td></tr>
-          <tr><td style="color:#fbf8f1;border-color:rgba(255,255,255,0.15);">債務</td><td style="color:#fbf8f1;border-color:rgba(255,255,255,0.15);">共同財產＋各自特有財產雙軌清償（§1034）</td></tr>
+        <table class="quickref-table">
+          <tr><td>成立前提</td><td>書面約定財產制，未約定回歸法定財產制（§1005）</td></tr>
+          <tr><td>財產範圍</td><td>原則共同財產；例外三款特有財產（個人用／職業用／書面聲明贈物）</td></tr>
+          <tr><td>所有型態</td><td>公同共有，無應有部分</td></tr>
+          <tr><td>管理</td><td>原則共同管理，得約定一方管理（§1032）</td></tr>
+          <tr><td>處分</td><td>應得他方同意；欠缺原則不得對抗善意第三人（§1033）</td></tr>
+          <tr><td>債務</td><td>共同財產＋各自特有財產雙軌清償（§1034）</td></tr>
         </table>
         <div class="mnemonic">「合併公同，特有除外；處分同意，善意不礙」</div>
       </div>

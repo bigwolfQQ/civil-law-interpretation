@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>民法第179條｜不當得利 教學講義</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#16233b;
+  --indigo:#2c4a76;
+  --paper-outer:#f3ede0;
+  --paper-content:#fbf8f1;
+  --paper-card:#fffdf8;
+  --seal:#9c2b3a;
+  --brass:#a9832f;
+  --border:#ddd3bf;
+  --ink-45:rgba(22,35,59,.45);
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--paper-outer);color:var(--ink);font-family:'Noto Sans TC',sans-serif;line-height:1.85;}
+h1,h2,h3,.serif{font-family:'Noto Serif TC',serif;}
+a{color:var(--indigo);}
+
+/* ===== layout ===== */
+.shell{display:flex;max-width:1180px;margin:0 auto;}
+.sidenav{width:240px;flex-shrink:0;position:sticky;top:0;align-self:flex-start;height:100vh;overflow-y:auto;padding:28px 18px;border-right:1px solid var(--border);}
+.sidenav a{display:block;padding:8px 10px;border-radius:6px;color:var(--ink);text-decoration:none;font-size:14px;margin-bottom:2px;}
+.sidenav a.active{background:var(--indigo);color:var(--paper-card);}
+.sidenav a.todo{color:var(--ink-45);}
+.main{flex:1;min-width:0;background:var(--paper-content);box-shadow:-6px 0 18px -12px rgba(22,35,59,.25);}
+.mobilenav{display:none;}
+
+@media (max-width:980px){
+  .shell{display:block;}
+  .sidenav{display:none;}
+  .mobilenav{display:flex;position:sticky;top:0;z-index:20;overflow-x:auto;gap:6px;padding:10px 12px;background:var(--paper-outer);border-bottom:1px solid var(--border);white-space:nowrap;}
+  .mobilenav a{flex-shrink:0;padding:7px 14px;border-radius:999px;background:var(--paper-card);border:1px solid var(--border);color:var(--ink);text-decoration:none;font-size:13px;}
+  .mobilenav a.active{background:var(--indigo);color:var(--paper-card);border-color:var(--indigo);}
+  .mobilenav a.todo{color:var(--ink-45);}
+}
+
+section{padding:46px 44px;border-bottom:1px solid var(--border);}
+@media(max-width:600px){section{padding:32px 20px;}}
+
+/* ===== cover ===== */
+.cover{background:linear-gradient(180deg,var(--paper-content),var(--paper-outer));position:relative;padding:56px 44px 40px;}
+.eyebrow{display:inline-block;font-size:12.5px;letter-spacing:.12em;color:var(--indigo);border:1px solid var(--indigo);border-radius:999px;padding:4px 14px;margin-bottom:18px;}
+.cover h1{font-size:clamp(28px,4.5vw,42px);font-weight:900;margin:0 0 8px;color:var(--ink);}
+.cover .sub{font-size:16px;color:var(--ink-45);margin-bottom:14px;}
+.cover-meta{display:flex;flex-wrap:wrap;gap:10px;font-size:12.5px;margin-bottom:26px;}
+.cover-meta span{border:1px solid var(--indigo);border-radius:6px;padding:3px 10px;color:var(--indigo);background:var(--paper-card);}
+.cover-meta .ver-badge{border-color:var(--seal);color:var(--seal);}
+.seal-mark{position:absolute;top:38px;right:44px;width:74px;height:96px;border:2px solid var(--seal);border-radius:6px;display:flex;align-items:center;justify-content:center;transform:rotate(6deg);background:var(--paper-card);}
+.seal-mark span{writing-mode:vertical-rl;color:var(--seal);font-family:'Noto Serif TC',serif;font-weight:700;font-size:20px;letter-spacing:.15em;}
+.toc{margin-top:20px;background:var(--paper-card);border:1px solid var(--border);border-radius:10px;padding:18px 22px;}
+.toc h3{margin:0 0 10px;font-size:14px;color:var(--indigo);}
+.toc ol{margin:0;padding-left:20px;font-size:14px;color:var(--ink);}
+.toc li{margin-bottom:4px;}
+
+/* ===== article box ===== */
+.article-box{position:relative;background:var(--paper-card);border-left:3px solid var(--indigo);border-radius:0 8px 8px 0;padding:22px 26px;margin:16px 0;overflow:hidden;box-shadow:0 1px 3px rgba(22,35,59,.06);}
+.article-box .num-wm{position:absolute;right:14px;bottom:-14px;font-family:'Noto Serif TC',serif;font-weight:900;font-size:96px;color:var(--ink);opacity:.06;line-height:1;pointer-events:none;}
+.article-box h4{margin:0 0 10px;font-size:15px;color:var(--indigo);}
+.article-box p{margin:0 0 6px;font-size:15px;}
+
+/* ===== tables ===== */
+table{width:100%;border-collapse:collapse;background:var(--paper-card);border:1px solid var(--border);font-size:14.5px;}
+th,td{border:1px solid var(--border);padding:10px 14px;text-align:left;vertical-align:top;}
+th{background:var(--ink);color:var(--paper-content);font-weight:500;}
+tr:nth-child(even) td{background:#f6f1e6;}
+
+.pos{font-weight:700;color:var(--ink);background:linear-gradient(transparent 60%,rgba(169,131,47,.35) 60%);}
+.neg{font-weight:700;color:var(--seal);}
+
+/* ===== placeholder ===== */
+.placeholder{border:2px dashed #cdbf9a;border-radius:10px;padding:34px;text-align:center;background:repeating-linear-gradient(135deg,var(--paper-content),var(--paper-content) 10px,#f2ead6 10px,#f2ead6 20px);}
+.placeholder .icon{font-size:26px;margin-bottom:8px;}
+.placeholder .badge{display:inline-block;margin-top:10px;background:var(--brass);color:#fff;font-size:12px;padding:3px 12px;border-radius:999px;}
+
+/* ===== cards ===== */
+.case-card,.essay-card{background:var(--paper-card);border-radius:10px;border:1px solid var(--border);margin:20px 0;box-shadow:0 1px 2px rgba(22,35,59,.08),0 6px 16px -10px rgba(22,35,59,.25);overflow:hidden;}
+.case-card .hd{background:var(--indigo);color:var(--paper-content);padding:12px 20px;font-family:'Noto Serif TC',serif;font-weight:700;}
+.essay-card .hd{background:var(--ink);color:var(--paper-content);padding:12px 20px;font-family:'Noto Serif TC',serif;font-weight:700;}
+.case-card .bd,.essay-card .bd{padding:20px 24px;}
+.tag{display:inline-block;font-size:12px;background:var(--paper-outer);border:1px solid var(--border);border-radius:999px;padding:2px 10px;margin-left:8px;color:var(--ink-45);}
+
+/* relation diagram */
+.relation-wrap{margin:18px 0;text-align:center;}
+.relation-note{font-size:13px;color:var(--ink-45);margin-top:6px;}
+
+/* cheat sheet */
+.cheat{background:var(--ink);color:var(--paper-content);border-radius:12px;padding:28px 30px;position:relative;overflow:hidden;}
+.cheat .big-wm{position:absolute;right:10px;bottom:-30px;font-family:'Noto Serif TC',serif;font-weight:900;font-size:150px;opacity:.08;}
+.cheat h3{margin-top:0;color:var(--paper-content);font-size:17px;}
+.cheat ul{padding-left:20px;font-size:14.5px;}
+.mnemonic{margin-top:16px;background:var(--seal);border-radius:8px;padding:14px 18px;font-family:'Noto Serif TC',serif;font-size:16px;letter-spacing:.05em;}
+
+.link-note{border:1px dashed var(--border);border-radius:8px;padding:14px 18px;font-size:14px;margin-top:24px;background:var(--paper-card);}
+
+.src-note{font-size:12.5px;color:var(--ink-45);border-top:1px dashed var(--border);margin-top:14px;padding-top:8px;}
+h2.sec-title{font-size:20px;border-left:5px solid var(--brass);padding-left:12px;margin-bottom:22px;}
+h3.sub-title{font-size:16px;color:var(--indigo);border-left:3px solid var(--indigo);padding-left:10px;margin:26px 0 12px;}
+</style>
+</head>
+<body>
+
+<div class="mobilenav" id="mobilenav"></div>
+
+<div class="shell">
+  <nav class="sidenav" id="sidenav"></nav>
+
+  <main class="main">
+
+    <!-- 封面 -->
+    <section class="cover" id="cover">
+      <div class="seal-mark"><span>應返還</span></div>
+      <div class="eyebrow">民法第二編 債｜第一章 通則｜第一節 債之發生｜第四款 不當得利</div>
+      <h1>民法第179條</h1>
+      <div class="sub">不當得利 — 無法律上原因受利益之返還義務</div>
+      <div class="cover-meta">
+        <span class="ver-badge">v1.0</span>
+        <span class="meta-date">建立日期 2026-08-27</span>
+        <span><img alt="visitor" style="vertical-align:middle;height:14px;" src="https://visitor-badge.laobi.icu/badge?page_id=mjib007.civil-law-interpretation.179-182"></span>
+      </div>
+      <div class="toc">
+        <h3>目錄</h3>
+        <ol>
+          <li>條文原文</li>
+          <li>條文結構</li>
+          <li>要件逐項解析</li>
+          <li>學說見解</li>
+          <li>實務見解</li>
+          <li>教學案例</li>
+          <li>申論練習題與模擬解答</li>
+          <li>速查卡</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 條文原文 -->
+    <section id="article">
+      <h2 class="sec-title">一、條文原文</h2>
+      <div class="article-box">
+        <span class="num-wm">179</span>
+        <h4>民法第179條（主條文）</h4>
+        <p>無法律上之原因而受利益，致他人受損害者，應返還其利益。雖有法律上之原因，而其後已不存在者，亦同。</p>
+      </div>
+
+      <h3 class="sub-title">關聯條文</h3>
+      <div class="article-box">
+        <span class="num-wm">180</span>
+        <h4>民法第180條（不得請求返還之例外事由，必要條文）</h4>
+        <p>給付，有左列情形之一者，不得請求返還：</p>
+        <p>一、給付係履行道德上之義務者。</p>
+        <p>二、債務人於未到期之債務因清償而為給付者。</p>
+        <p>三、因清償債務而為給付，於給付時明知無給付之義務者。</p>
+        <p>四、因不法之原因而為給付者。但不法之原因僅於受領人一方存在時，不在此限。</p>
+      </div>
+      <div class="article-box">
+        <span class="num-wm">181</span>
+        <h4>民法第181條（返還範圍：原物或價額，建議條文）</h4>
+        <p>不當得利之受領人，除返還其所受之利益外，如本於該利益更有所取得者，並應返還。但依其利益之性質或其他情形不能返還者，應償還其價額。</p>
+      </div>
+      <div class="article-box">
+        <span class="num-wm">182</span>
+        <h4>民法第182條（善意／惡意受領人返還範圍之差異，建議條文）</h4>
+        <p>Ⅰ　不當得利之受領人，不知無法律上之原因，而其所受之利益已不存在者，免負返還或償還價額之責任。</p>
+        <p>Ⅱ　受領人於受領時，知無法律上之原因或其後知之者，應將受領時所得之利益，或知無法律上之原因時所現存之利益，附加利息，一併償還；如有損害，並應賠償。</p>
+      </div>
+    </section>
+
+    <!-- 條文結構 -->
+    <section id="structure">
+      <h2 class="sec-title">二、條文結構 — 請求權基礎架構</h2>
+      <table>
+        <tr><th style="width:22%">層次</th><th>內容</th></tr>
+        <tr><td>請求權基礎</td><td>民法第179條前段（自始無法律上原因受利益）／後段（原有法律上原因、其後不存在）</td></tr>
+        <tr><td>成立要件</td><td>①一方受有利益　②他方受有損害　③受利益與受損害間有因果關係　④無法律上之原因</td></tr>
+        <tr><td>類型區分（學說，非統一說）</td><td>給付型不當得利（基於受損人有意識、有目的之給付而生）／非給付型不當得利（因給付以外之事實，如權益侵害、支出費用、求償等而生）— 兩者「無法律上原因」之審查方式不同，詳見下方要件解析與學說見解</td></tr>
+        <tr><td>排除事由（不得請求返還）</td><td>第180條四款情形（履行道德義務、未到期清償、明知無債清償、不法原因給付）</td></tr>
+        <tr><td>返還範圍</td><td>原則：原物或依其性質不能返還者償還價額（第181條）；依受領人善意或惡意，範圍再區分為「現存利益」或「受領時利益＋利息＋損害賠償」（第182條）</td></tr>
+      </table>
+    </section>
+
+    <!-- 要件解析 -->
+    <section id="elements">
+      <h2 class="sec-title">三、要件逐項解析</h2>
+
+      <h3 class="sub-title">要件① 一方受有利益</h3>
+      <table>
+        <tr><th style="width:20%">積極增加</th><td>財產總額實質增加，例如受領金錢、取得物之所有權、取得債權等。</td></tr>
+        <tr><td>消極增加</td><td>財產總額雖未增加，但本應支出之費用因而免於支出，例如無權占有他人房屋而免付租金、以他人之物清償自己債務而免於另行支出。</td></tr>
+      </table>
+
+      <h3 class="sub-title">要件② 他方受有損害</h3>
+      <table>
+        <tr><th style="width:20%">內容</th><td>受損害不以財產「積極減少」為限，亦包括財產應增加而未增加之「消極損害」（如本應收取之租金因他人無權占用而未能收取）。</td></tr>
+      </table>
+
+      <h3 class="sub-title">要件③ 受利益與受損害間有因果關係</h3>
+      <table>
+        <tr><th style="width:20%">判斷基準</th><td>應視受利益之原因事實與受損害之原因事實是否為「同一事實」而定；非同一事實者，縱二者間有所牽連，仍不具因果關係，不合本條要件。</td></tr>
+        <tr><td>直接性要求（非給付型／權益侵害型）</td><td>於權益侵害型不當得利，受利益須「直接」來自受損害，而非經由第三人財產輾轉而來；若僅屬經濟上反射利益（如「搭便車」享受他人投入之成本），因欠缺直接性且應予容許，不成立不當得利。</td></tr>
+      </table>
+
+      <h3 class="sub-title">要件④ 無法律上之原因（區分給付型／非給付型）</h3>
+      <table>
+        <tr><th style="width:20%">給付型不當得利</th><td>受損人係基於自己有意識、有目的之給付行為而使他方受利益，其「無法律上原因」之審查重點在於：給付所欲達成之目的（如清償特定債務、履行契約）是否自始不存在、嗣後不存在，或自始不能達成。</td></tr>
+        <tr><td>非給付型不當得利</td><td>並非基於受損人之給付行為而生，而係因受益人之行為、受損人以外第三人之行為、法律規定或事件（如自然事件）所致，其中又以「權益侵害型」最為常見（如無權占有、無權處分他人之物），其「無法律上原因」之審查重點在於：受益人取得該利益，是否具有法律上得保有之正當性（即是否侵害了本應歸屬他人之權益內容）。</td></tr>
+        <tr><td>前段／後段之別</td><td>179條前段：自始欠缺法律上原因（如誤付、無權占有）；179條後段：原有法律上原因（如契約），但嗣後不存在（如契約嗣後解除、撤銷、無效確定）。</td></tr>
+      </table>
+
+      <h3 class="sub-title">法律效果對照</h3>
+      <table>
+        <tr><th>情形</th><th>效果</th></tr>
+        <tr><td>符合179條要件，且不具180條各款事由</td><td class="pos">受損人得請求受益人返還其利益</td></tr>
+        <tr><td>符合180條任一款事由</td><td class="neg">不得請求返還（履行道德義務、未到期清償、明知無債清償、不法原因給付且雙方均有不法原因）</td></tr>
+        <tr><td>受領人為善意（不知無法律上原因），利益已不存在</td><td>免負返還或償還價額之責任（182條Ⅰ）</td></tr>
+        <tr><td>受領人為惡意（受領時明知或其後知悉無法律上原因）</td><td class="neg">應將受領時利益（或知悉時現存利益）附加利息一併償還，並應賠償損害（182條Ⅱ）</td></tr>
+        <tr><td>受領人本於所受利益更有所取得（孳息、代替利益等）</td><td>並應一併返還；不能返還者，償還其價額（181條）</td></tr>
+      </table>
+    </section>
+
+    <!-- 學說見解 -->
+    <section id="doctrine">
+      <h2 class="sec-title">四、學說見解</h2>
+      <table>
+        <tr><th style="width:14%">學者</th><th style="width:56%">見解摘要</th><th>出處</th></tr>
+        <tr>
+          <td>王澤鑑</td>
+          <td>主張不當得利之解釋應採<strong>非統一說</strong>，將其區分為「給付型不當得利」與「非給付型不當得利」（其下又含權益侵害型、支出費用型、求償型等），二者之成立要件、請求權基礎思考模式、舉證責任分配均不相同，不宜以單一公式套用；此一見解已為近年最高法院實務逐步採納。</td>
+          <td>王澤鑑，《不當得利》專書；司法院司法周刊〈王澤鑑前大法官評析近年最高法院不當得利相關判決〉</td>
+        </tr>
+        <tr>
+          <td>王澤鑑</td>
+          <td>就非給付型不當得利中之「權益侵害型」，指出其成立關鍵在於受益與受損害間須具「直接性」，即受益係直接來自受損害，而非經由第三人財產輾轉取得；並以「利用他人興建燈塔而夜航捕魚」之經濟上反射利益為例，說明此等「搭便車」利益因欠缺直接性且應容許其存在，不構成不當得利。</td>
+          <td>司法院司法周刊〈王澤鑑前大法官評析近年最高法院不當得利相關判決〉</td>
+        </tr>
+      </table>
+      <p class="src-note">⚠️ 上列見解摘要之出處，第一則轉引自司法院司法周刊官方報導（可信度較高），惟原書專章內容仍建議查證原文頁碼；第二則同為司法院司法周刊轉述之見解摘要，尚未逐字核對原書原文。</p>
+    </section>
+
+    <!-- 實務見解 -->
+    <section id="precedent">
+      <h2 class="sec-title">五、實務見解</h2>
+      <table>
+        <tr><th style="width:20%">案號</th><th style="width:52%">要旨</th><th>查詢方式</th></tr>
+        <tr>
+          <td>最高法院72年台上字第4012號、82年台上字第1764號判決</td>
+          <td>不當得利返還請求權之返還範圍，應以「受益人所受之利益」為度，而非以「受損人所受損害」若干為準；此與侵權行為損害賠償以「被害人實際損害」定賠償金額之計算基準不同。</td>
+          <td>law.moj.gov.tw 判例查詢／judgment.judicial.gov.tw 輸入案號查詢</td>
+        </tr>
+        <tr>
+          <td>最高法院107年度台上字第440號判決</td>
+          <td>涉及給付型不當得利中「無法律上原因」要件之舉證責任分配問題（元照出版有摘要評釋）。</td>
+          <td>judgment.judicial.gov.tw 輸入案號查詢</td>
+        </tr>
+        <tr>
+          <td>最高法院104年度台上字第1174號、105年度台上字第1434號、108年度台上字第794號判決</td>
+          <td>「給付目的不達型」不當得利：當事人間如另有契約關係（如承攬契約）者，應優先適用契約規範處理，排除本類型不當得利之適用（司法院司法周刊轉述王澤鑑前大法官評析內容）。</td>
+          <td>judgment.judicial.gov.tw 輸入案號查詢</td>
+        </tr>
+        <tr>
+          <td>最高法院94年度台上字第942號判決</td>
+          <td>最高法院嘗試由傳統之「統一說」改採學說上之「非統一說」之代表性判決。</td>
+          <td>judgment.judicial.gov.tw 輸入案號查詢</td>
+        </tr>
+      </table>
+      <p class="src-note">
+        📌 除「104年度台上字第1174號」等三則案號係轉引自司法院官方司法周刊報導外，其餘案號（72年台上4012號、82年台上1764號、107年台上440號、94年台上942號）均轉引自法律事務所或期刊網站之整理，尚未經司法院原文逐字核實，建議查詢全文後再正式引用。<br>
+        📌 各判決原文可至司法院裁判書查詢系統（<a href="https://judgment.judicial.gov.tw/" target="_blank">judgment.judicial.gov.tw</a>）輸入對應案號自行查閱全文。<br>
+        📌 本條（§179）目前查無大法官解釋或憲法法庭判決，理由：本條屬私法上財產返還規範，未見有人以此聲請違憲審查。
+      </p>
+    </section>
+
+    <!-- 教學案例 -->
+    <section id="cases">
+      <h2 class="sec-title">六、教學案例<span class="tag">AI虛構・教學用途</span></h2>
+
+      <div class="case-card">
+        <div class="hd">案例一　銀行轉帳手滑 — 給付型不當得利與善惡意之判斷</div>
+        <div class="bd">
+          <p><strong>事實：</strong>甲於網路銀行操作時手誤，將原欲匯給乙之10萬元誤按為100萬元，多匯90萬元至乙帳戶。乙收到款項時已察覺金額明顯異常（雙方僅約定10萬元借款），卻未告知甲，逕將該筆多出之90萬元用於清償自己對第三人丙積欠已久之舊債務。</p>
+
+          <p><strong>分析：</strong>乙因甲之匯款而使銀行存款增加90萬元，屬「受有利益」；甲之存款則相應減少90萬元，屬「受有損害」；二者係基於同一匯款事實，具有因果關係；又甲乙間就此90萬元並無借貸、贈與或其他給付目的之合意，乙受領該部分款項欠缺法律上原因，依179條前段，不當得利之基本要件已具備（此屬典型之給付型不當得利，因給付目的自始未涵蓋該溢付部分）。乙雖已將該筆款項用於清償自己對丙之舊債務，形式上該筆利益似已不存在，惟依182條第2項，乙於受領時已因金額顯與約定不符而知悉無法律上原因，應認乙為惡意受領人；惡意受領人不得主張182條第1項「利益不存在」之免責，而應將受領時所得之利益附加利息一併償還，如另有損害並應賠償。</p>
+          <p><strong>結論：</strong>甲得依179條前段，請求乙返還90萬元並附加法定利息；乙不得以「已用於清償自己舊債、利益已不存在」為由主張免責。</p>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="hd">案例二　三角匯款的落空契約 — 指示給付關係中之不當得利當事人</div>
+        <div class="bd">
+          <p><strong>事實：</strong>甲向乙購買一批機具，約定價金100萬元。甲同時對第三人丙享有100萬元貨款債權（丙積欠甲貨款），甲遂指示丙將該100萬元直接匯入乙之帳戶，以此同時清償「甲對乙之價金債務」及「丙對甲之貨款債務」。丙依甲之指示如期匯款完畢。事後因乙交付之機具具有重大瑕疵，甲依法合法解除與乙間之買賣契約。</p>
+
+          <div class="relation-wrap">
+            <svg viewBox="0 0 640 340" xmlns="http://www.w3.org/2000/svg" style="max-width:560px;width:100%;">
+              <rect x="20" y="200" width="160" height="76" rx="6" fill="#fffdf8" stroke="#2c4a76" stroke-width="1.5"/>
+              <text x="100" y="223" text-anchor="middle" font-family="Noto Serif TC" font-weight="700" font-size="14" fill="#16233b">丙・指示受領</text>
+              <text x="100" y="241" text-anchor="middle" font-size="11" fill="#5b6472">積欠甲貨款100萬</text>
+              <text x="100" y="259" text-anchor="middle" font-size="11" fill="#5b6472">受甲指示匯款</text>
+
+              <rect x="240" y="40" width="160" height="80" rx="6" fill="#fffdf8" stroke="#9c2b3a" stroke-width="1.5"/>
+              <text x="320" y="65" text-anchor="middle" font-family="Noto Serif TC" font-weight="700" font-size="14" fill="#16233b">甲・指示人</text>
+              <text x="320" y="84" text-anchor="middle" font-size="11" fill="#5b6472">向乙買機具・對丙有貨款債權</text>
+              <text x="320" y="102" text-anchor="middle" font-size="11" fill="#9c2b3a">已解除與乙之買賣契約</text>
+
+              <rect x="460" y="200" width="160" height="76" rx="6" fill="#fffdf8" stroke="#2c4a76" stroke-width="1.5"/>
+              <text x="540" y="223" text-anchor="middle" font-family="Noto Serif TC" font-weight="700" font-size="14" fill="#16233b">乙・受領人</text>
+              <text x="540" y="241" text-anchor="middle" font-size="11" fill="#5b6472">出賣機具（有瑕疵）</text>
+              <text x="540" y="259" text-anchor="middle" font-size="11" fill="#5b6472">收受100萬匯款</text>
+
+              <line x1="100" y1="200" x2="280" y2="122" stroke="#2c4a76" stroke-width="1.8"/>
+              <text x="115" y="165" font-size="11" fill="#2c4a76">清償丙對甲之貨款債務</text>
+
+              <line x1="180" y1="230" x2="460" y2="230" stroke="#a9832f" stroke-width="1.8" stroke-dasharray="5 5"/>
+              <text x="270" y="220" font-size="11" fill="#a9832f">丙依指示逕行匯款</text>
+
+              <line x1="360" y1="122" x2="530" y2="198" stroke="#9c2b3a" stroke-width="1.8" stroke-dasharray="5 5"/>
+              <text x="380" y="175" font-size="11" fill="#9c2b3a">契約解除後給付目的消滅</text>
+            </svg>
+            <div class="relation-note">爭點：契約解除後，應由誰向乙請求返還該100萬元不當得利？丙得否越過甲直接向乙請求？</div>
+          </div>
+
+          <p><strong>分析：</strong>依指示給付關係之法理，於此三角關係中應嚴格區分兩個各自獨立之給付關係：其一為「甲丙間」（丙清償對甲之貨款債務），其二為「甲乙間」（甲清償對乙之價金債務）。丙係依甲之指示而為給付，其給付目的僅在於清償自己對甲之貨款債務，對乙並無獨立之給付合意或給付目的，故丙、乙之間不成立給付關係，亦不成立給付型不當得利；甲丙間之貨款債務，因丙已完成給付而消滅，該給付關係本身並未受買賣契約解除之影響，故無不當得利問題。真正受影響者為「甲乙間」之給付關係：甲原欲藉丙之給付清償其對乙之價金債務，惟嗣後買賣契約經合法解除，該給付目的溯及消滅，故甲乙間之給付關係欠缺法律上原因，甲得依179條後段向乙請求返還。</p>
+          <p><strong>結論：</strong>僅甲得依179條後段向乙請求返還100萬元；丙不得越過甲直接向乙請求返還（丙丙間無給付關係、亦無受損害），乙亦不得以「甲對丙尚有其他糾葛」等甲丙間事由對甲主張抗辯，以維護三角關係中個別給付關係之獨立性。本案凸顯指示給付關係下，不當得利返還請求權應嚴格限於各自給付關係之當事人間行使，不得任意跨越三角關係向第三人求償。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 申論題 -->
+    <section id="essays">
+      <h2 class="sec-title">七、申論練習題與模擬解答<span class="tag">AI自行出題（已授權）</span></h2>
+
+      <div class="essay-card">
+        <div class="hd">練習題一</div>
+        <div class="bd">
+          <p><strong>題目：</strong>甲、乙為交往多年之情侶，同居於乙所有之房屋。甲於同居期間出資100萬元，為該房屋進行全面裝修，雙方口頭約定共同生活、共享裝修後之居住品質，未有任何書面約定出資返還事宜。嗣後雙方分手，甲搬離該屋，並向乙請求返還裝修款100萬元。試問甲之請求有無理由？</p>
+          <div class="src-note">📂 題目來源｜AI 自行擬定（依授權），非真實考題或真實案例</div>
+
+          <h3 class="sub-title" style="margin-top:22px;">模擬解答</h3>
+          <p>甲出資裝修乙所有之房屋，使該房屋價值增加，乙因而受有利益；甲則因出資而受有損害；二者基於同一裝修出資之事實，具有因果關係。又甲乙間就該裝修款並無借貸、贈與或其他給付目的之合意，甲之出資係基於雙方共同生活之期待而為之單方給付，並無法律上原因可資保有，形式上已該當第179條前段之不當得利要件。</p>
+          <p>惟乙得否主張第180條第1款「給付係履行道德上之義務」而拒絕返還，應審酌甲之出資是否確屬「道德上義務」之履行。第180條第1款之立法意旨，在於避免受贈與人事後翻異、破壞既有之倫常或情誼關係，其適用範圍應從嚴解釋，通常限於扶養、奉養等具倫理色彩之給付。本案甲之出資裝修，係基於雙方交往中對「共同生活品質」之期待而為，性質上較接近以感情關係之存續為前提之給付，並非基於扶養等道德義務而生，難認屬第180條第1款所稱之道德義務履行；且該給付之基礎（共同生活關係）已因分手而消滅，依179條後段「原有法律上原因，其後已不存在」之精神觀察，亦可認甲之給付欠缺得保有之正當性。</p>
+          <p>從而，乙尚不得以第180條第1款為由拒絕返還，甲得依第179條規定向乙請求返還裝修款；返還範圍依第181條，如原裝修利益已附合於房屋而不能返還原物，乙應償還其相當價額。</p>
+        </div>
+      </div>
+
+      <div class="essay-card">
+        <div class="hd">練習題二</div>
+        <div class="bd">
+          <p><strong>題目：</strong>甲擁有A地一筆，長期閒置未使用。乙未經甲同意，擅自於A地上經營收費停車場，每月獲取停車費收入約5萬元。十年後甲偶然發現此事，欲向乙請求返還其無權占用A地所受之利益。試問：（1）甲之請求權基礎為何？（2）甲得請求返還之範圍，應以乙「實際收取之停車費」為準，或以A地依通常使用方法「客觀可能收取之租金」為準？（3）甲之請求權是否已罹於時效？</p>
+          <div class="src-note">📂 題目來源｜AI 自行擬定（依授權），非真實考題或真實案例</div>
+
+          <h3 class="sub-title" style="margin-top:22px;">模擬解答</h3>
+          <p>乙未經甲同意，擅自占用甲所有之A地經營停車場，其占用行為並非基於甲之給付，而係乙單方之行為所致，屬非給付型不當得利中之「權益侵害型」。乙因無權占用A地而受有相當於租金之利益（消極增加：本應支付使用對價而未支付），甲則因喪失使用收益A地之權能而受有損害（消極損害），二者間之利益與損害係直接源於乙占用A地之同一事實，具備直接性，且乙占用A地欠缺任何法律上原因（無租賃、無使用借貸等權源），故甲得依第179條前段，向乙請求返還不當得利。</p>
+          <p>關於返還範圍，依權益侵害型不當得利之法理，其規範目的在於剝奪受益人「無法律上原因而侵害他人權益內容」所取得之利益，而非填補受損人之實際損害，故其計算基準應以「該權益依通常使用方法客觀上可能獲取之利益」（即相當於租金之客觀對價）為度，而非以乙實際經營所得之停車費收入為準；蓋乙之實際收入可能因其個人經營能力、成本控制等因素而異，非甲喪失之權益內容所直接對應者。若乙實際所得高於客觀租金，其差額部分應認屬乙個人經營能力所生之額外收益，非甲得請求返還之範圍。</p>
+          <p>關於時效，不當得利返還請求權之消滅時效並無特別規定，依第125條，應適用十五年一般時效，且因乙係持續占用A地，其不當得利屬「繼續性侵害」，各期得請求返還之利益，應自各期利益發生時分別起算十五年時效，而非自最初占用時一次性起算。甲雖遲至十年後始發現，惟距每期利益發生均未逾十五年，故甲就過去十年之相當租金利益，均未罹於時效，仍得請求乙返還。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 速查卡 -->
+    <section id="cheatsheet">
+      <h2 class="sec-title">八、速查卡</h2>
+      <div class="cheat">
+        <span class="big-wm">速</span>
+        <h3>民法第179條 — 不當得利</h3>
+        <ul>
+          <li><strong>四要件：</strong>①受有利益（積極／消極）②他方受損害（積極／消極）③因果關係（同一事實，權益侵害型須具直接性）④無法律上原因</li>
+          <li><strong>非統一說：</strong>給付型（審查給付目的是否達成）vs. 非給付型（審查受益有無正當性，如權益侵害型）</li>
+          <li><strong>179條前段／後段：</strong>前段＝自始無原因；後段＝原有原因、嗣後不存在（如契約解除）</li>
+          <li><strong>不得請求返還（180條）：</strong>道德義務、未到期清償、明知無債清償、不法原因給付（雙方均不法時除外）</li>
+          <li><strong>返還範圍（181、182條）：</strong>善意受領人（不知無原因）＋利益已不存在＝免責；惡意受領人（知悉無原因）＝返還受領時利益＋利息＋損害賠償</li>
+          <li><strong>時效：</strong>無特別規定，依第125條，一般時效十五年</li>
+        </ul>
+        <div class="mnemonic">「善返現存，惡連本息」</div>
+      </div>
+
+      <div class="link-note" id="related">
+        <strong>相關主題：</strong>《民法197條—侵權行為損害賠償請求權之時效與不當得利返還》一文中，第197條第2項（時效完成後之補充性不當得利返還請求權）結合本條（第179條）作為請求權基礎，可對照參閱。
+        <br><a href="../講義/民法197條-侵權行為損害賠償請求權時效與不當得利返還.html">→ 前往《民法197條》講義</a>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+const sections = [
+  {id:'cover', label:'封面'},
+  {id:'article', label:'一、條文原文'},
+  {id:'structure', label:'二、條文結構'},
+  {id:'elements', label:'三、要件解析'},
+  {id:'doctrine', label:'四、學說見解'},
+  {id:'precedent', label:'五、實務見解'},
+  {id:'cases', label:'六、教學案例'},
+  {id:'essays', label:'七、申論練習題'},
+  {id:'cheatsheet', label:'八、速查卡'}
+];
+const sidenav = document.getElementById('sidenav');
+const mobilenav = document.getElementById('mobilenav');
+sections.forEach(s=>{
+  const a1 = document.createElement('a'); a1.href='#'+s.id; a1.textContent=s.label; a1.dataset.id=s.id;
+  sidenav.appendChild(a1);
+  const a2 = document.createElement('a'); a2.href='#'+s.id; a2.textContent=s.label; a2.dataset.id=s.id;
+  mobilenav.appendChild(a2);
+});
+sidenav.querySelectorAll('a').forEach(a=>{
+  a.addEventListener('click', e=>{ e.preventDefault(); document.getElementById(a.dataset.id).scrollIntoView({behavior:'smooth'}); });
+});
+mobilenav.querySelectorAll('a').forEach(a=>{
+  a.addEventListener('click', e=>{ e.preventDefault(); document.getElementById(a.dataset.id).scrollIntoView({behavior:'smooth'}); });
+});
+const allLinks = () => [...sidenav.querySelectorAll('a'), ...mobilenav.querySelectorAll('a')];
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      allLinks().forEach(l=>l.classList.remove('active'));
+      allLinks().filter(l=>l.dataset.id===entry.target.id).forEach(l=>l.classList.add('active'));
+    }
+  });
+}, {rootMargin:'-40% 0px -50% 0px'});
+sections.forEach(s=>{ const el=document.getElementById(s.id); if(el) observer.observe(el); });
+</script>
+</body>
+</html>

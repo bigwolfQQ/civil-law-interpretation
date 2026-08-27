@@ -6,6 +6,7 @@
 <title>民法第1031條｜共同財產制之成立與管理處分</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js"></script>
 <style>
   :root{
     --ink:#16233b;
@@ -132,6 +133,7 @@
   .mnemonic{background:var(--red);color:var(--paper-inner);padding:14px 18px;border-radius:8px;font-family:'Noto Serif TC',serif;font-size:18px;text-align:center;margin:16px 0;}
 
   .link-note{border:1px dashed var(--ink2);border-radius:8px;padding:16px 20px;margin-top:24px;font-size:14px;color:var(--ink2);}
+  .mindmap-wrap{background:var(--paper-card);border:1px solid var(--border);border-radius:10px;padding:12px;overflow-x:auto;}
 
   .section-title{display:flex;align-items:baseline;gap:10px;margin-bottom:4px;}
   .section-title .no{color:var(--brass);font-family:'Noto Serif TC',serif;font-weight:900;font-size:14px;}
@@ -177,7 +179,7 @@
       <h1>民法第1031條</h1>
       <div class="subtitle">共同財產制之成立——夫妻財產及所得合併為公同共有</div>
       <div class="cover-meta">
-        <span class="ver-badge">v1.1</span>
+        <span class="ver-badge">v1.2</span>
         <span>建立日期：2026-08-27</span>
         <span><img src="https://visitor-badge.laobi.icu/badge?page_id=mjib007.civil-law-interpretation.1031-1031-1" alt="訪客數" style="height:14px;vertical-align:middle;"></span>
       </div>
@@ -260,6 +262,40 @@
         <tr><td>⑤ 處分限制</td><td>處分共同財產應得他方同意；同意欠缺原則不得對抗善意第三人</td><td>§1033</td></tr>
         <tr><td>⑥ 債務清償</td><td>婚前婚後債務均由共同財產清償，並各就特有財產負責</td><td>§1034</td></tr>
       </table>
+
+      <h3 style="margin-top:32px;">結構心智圖</h3>
+      <div class="mindmap-wrap">
+        <div class="mermaid">
+mindmap
+  root((民法1031條<br/>共同財產制))
+    成立前提
+      書面契約約定財產制
+      未約定回歸法定財產制§1005
+    財產範圍
+      共同財產原則
+        財產及所得合併
+      特有財產例外§1031-1
+        個人專用物
+        職業必需品
+        經書面聲明之贈物
+    所有型態
+      公同共有
+        無應有部分
+        全體同意始得處分
+    法律效果
+      管理§1032
+        原則共同管理
+        得約定一方管理
+        管理費用由共同財產負擔
+      處分§1033
+        原則應得他方同意
+        同意欠缺不得對抗第三人
+        但書：第三人明知或可得而知
+      債務清償§1034
+        共同財產優先負擔
+        各自特有財產併負清償責任
+        </div>
+      </div>
     </section>
 
     <!-- 三、要件逐項解析 -->
@@ -446,6 +482,23 @@
   </main>
 </div>
 
+<script>
+  mermaid.initialize({
+    startOnLoad:true,
+    theme:'base',
+    themeVariables:{
+      background:'#fffdf8',
+      primaryColor:'#fffdf8',
+      primaryTextColor:'#16233b',
+      primaryBorderColor:'#2c4a76',
+      lineColor:'#a9832f',
+      secondaryColor:'#f6f1e6',
+      tertiaryColor:'#fbf8f1',
+      fontFamily:'"Noto Sans TC","Noto Serif TC",sans-serif'
+    },
+    mindmap:{ padding:12 }
+  });
+</script>
 <script>
   const sections = document.querySelectorAll('.section[id]');
   const sideLinks = document.querySelectorAll('#sideNav a');
